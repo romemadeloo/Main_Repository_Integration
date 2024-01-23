@@ -1,10 +1,19 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import "./index.css";
+import { BrowserRouter as Router } from "react-router-dom";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+//import dashboardprovider
+import DashBoardProvider from '../src/TeamBComponents/components/context/DashBoardContext.jsx'
+
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <Router>
+    <DashBoardProvider>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </DashBoardProvider>
+  </Router>
+);
