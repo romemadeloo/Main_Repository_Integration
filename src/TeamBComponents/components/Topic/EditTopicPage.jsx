@@ -11,10 +11,9 @@ import { IoIosAddCircle } from "react-icons/io";
 import { FaEdit } from "react-icons/fa";
 
 
-//import img for vid link and file link
-import vidUpload from "../../../assets/vidUpload.svg";
+import vidUpload from "../../../assets/TeamBassests/vidUpload.svg";
 
-import quizLink from "../../../assets/quizLink.svg";
+import quizLink from "../../../assets/TeamBassests/quizLink.svg";
 
 import Footer from "../Footer";
 
