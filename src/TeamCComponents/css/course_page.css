@@ -1,0 +1,23 @@
+/* COURSE TABS HOVER EFFECT */
+.courseTabs:hover {
+    background-color: #BCE8B1;
+    color: #1E6C0B;
+}
+
+/* Add or update the following styles in your CSS */
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .nav-tabs {
+    flex-grow: 1;
+  }
+  
+  .courseTabs {
+    padding: 0.5rem 1rem;
+  }
+  
+
+

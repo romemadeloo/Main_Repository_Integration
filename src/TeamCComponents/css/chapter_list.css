@@ -1,0 +1,22 @@
+.h4{
+    color: white;
+}
+
+.chapter {
+    will-change: filter;
+    transition: filter 300ms;
+  }
+  
+  .chapter:hover {
+    filter: drop-shadow(0 0 1em #484848);
+  }
+
+.rtnzoom {
+    transition: transform .1s; /* Animation */
+    color: #ffffff;
+    margin: 0 auto;
+  }
+
+  .rtnzoom:hover {
+    transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }

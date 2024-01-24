@@ -1,0 +1,29 @@
+/* MAIN BODY CANVAS */
+body {
+    background-color: #EBFFE5;
+    margin: 0;
+}
+
+/* BODY STYLE OF THE HEADER SELECTED TITLES */
+.header {
+    background-color: #BCE8B1;
+}
+
+/* TEXT STYLES FOR HEADER SELECTED TITLES */
+.jap-char, .eng-char, .course-prev {
+    color: #0e3b03;
+}
+
+/* VIEW COURSE BUTTON FROM HEADER SELECTED TITLES */
+.btn-view-course {
+    background-color: #0e3b03;
+}
+
+/* HOLD-CLICK EFFECT FOR VIEW COURSE ON HEADER SELECTED TITLES */
+.btn-view-course:hover {
+    background-color: #145304;
+}
+
+@media (max-width: 600px) {
+}
+
