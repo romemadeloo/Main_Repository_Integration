@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import logo from "../../../assets/companyLogo.png";
+import logo from "../../../assets/TeamBassests/companyLogo.png";
 
 //import react icon
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -7,85 +7,28 @@ import NavSideBar from "./NavSideBar";
 import { Link } from "react-router-dom";
 
 //import profile logo
-import profileLogo from "../../../assets/profile.svg";
+import profileLogo from "../../../assets/TeamBassests/profile.svg";
 
 //import react icon
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
-import { DashBoardContext } from "../context/DashBoardContext";
+import { NavBarContext } from "../context/NavBarContext";
 
 const Nav = () => {
-  //react hook for showing and hiding element
-  const [show, setShow] = useState(false);
-
-  //nav active focus when clicking elements
-  const [logoShow, setLogoShow] = useState(false);
-  const [dashBoardShow, setDashBoardShow] = useState(false);
-  const [profileShow, setProfileShow] = useState(false);
-  const [courseListShow, setCourseListShow] = useState(false);
-  const [logout, setLogout] = useState(false)
-
-  //use context for dropdown
-  const { showDropDown, setShowDropDown } = useContext(DashBoardContext);
-
-   const showLogout = () => {
-    setLogout(true);
-    setLogoShow(false);
-    setDashBoardShow(false);
-    setProfileShow(false);
-    setCourseListShow(false);
-    setShowDropDown(false);
-  
-  };
-  const showLogo = () => {
-    setLogoShow(true);
-    setDashBoardShow(false);
-    setProfileShow(false);
-    setCourseListShow(false);
-    setShowDropDown(false);
-    setLogout(false);
-
-  
-  };
-
-  const showDashBoard = () => {
-    setDashBoardShow(true);
-    setProfileShow(false);
-    setCourseListShow(false);
-    setLogoShow(false);
-    setShowDropDown(false);
-    setLogout(false);
-
-  };
-  const showProfile = () => {
-    setProfileShow(true);
-    setDashBoardShow(false);
-    setCourseListShow(false);
-    setLogoShow(false);
-    setShowDropDown(false);
-    setLogout(false);
-
-  };
-  const showCourseList = () => {
-    setCourseListShow(true);
-    setProfileShow(false);
-    setDashBoardShow(false);
-    setLogoShow(false);
-    setShowDropDown(false);
-    setLogout(false);
-
-  };
-
-  const [header, setHeader] = useState(false)
-  //scroll event
-  useEffect(() => {
-    window.addEventListener(
-      "scroll",
-      () => {
-        window.scrollY > 20 ? setHeader(true) : setHeader(false);
-      },
-      []
-    );
-  });
+  const {
+    header,
+    dashBoardShow,
+    profileShow,
+    courseListShow,
+    showDropDown,
+    setShowDropDown,
+    showLogout,
+    show,
+    setShow,
+    showLogo,
+    showDashBoard,
+    showProfile,
+    showCourseList,
+  } = useContext(NavBarContext);
 
   return (
     <>
@@ -112,8 +55,8 @@ const Nav = () => {
               <ul
                 className={
                   dashBoardShow
-                    ? "font-bold text-[#126912] text-shadow"
-                    : "font-light text-shadow"
+                    ? "font-semibold text-[#116211] text-center p-1 text-shadow transition-all"
+                    : "font-light text-shadow p-1  hover:text-[#116211] transition-all hover:bg-opacity-[50%] hover:font-semibold "
                 }>
                 DASHBOARD
               </ul>
@@ -122,8 +65,8 @@ const Nav = () => {
               <ul
                 className={
                   courseListShow
-                    ? "font-bold text-[#126912] text-shadow"
-                    : "font-light text-shadow"
+                    ? "font-semibold text-[#116211]  text-center p-1 text-shadow transition-all"
+                    : "font-light text-shadow p-1  hover:text-[#116211] hover:bg-opacity-[50%] hover:font-semibold transition-all"
                 }>
                 COURSE LIST
               </ul>
@@ -162,8 +105,12 @@ const Nav = () => {
                   <p
                     className={
                       profileShow
-                        ? "font-semibold text-[#fff] bg-[#116211] text-center p-1 text-shadow "
-                        : "font-light text-[#000000] text-center p-1 bg-white text-shadow hover:bg-[#116211] hover:bg-opacity-[50%] hover:font-semibold hover:text-[#fff]"
+                        ? showDropDown
+                          ? "font-light text-[#000000] text-center p-1 bg-white text-shadow hover:bg-[#116211] hover:bg-opacity-[50%] hover:font-semibold hover:text-[#fff]"
+                          : "font-semibold text-[#fff]  text-center p-1 text-shadow "
+                        : showDropDown
+                        ? "font-light text-[#000000] text-center p-1 bg-white text-shadow hover:bg-[#116211] hover:bg-opacity-[50%] hover:font-semibold hover:text-[#fff]"
+                        : "font-semibold text-[#fff]  text-center p-1 text-shadow "
                     }>
                     PROFILE
                   </p>
@@ -174,9 +121,13 @@ const Nav = () => {
                   className="w-full text-center ">
                   <p
                     className={
-                      logout
-                        ? "font-semibold text-[#fff] bg-[#116211] text-center p-1 text-shadow"
-                        : "font-light text-[#000000] text-center p-1 bg-white text-shadow hover:bg-[#116211] hover:bg-opacity-[50%] hover:font-semibold hover:text-[#fff]"
+                      profileShow
+                        ? showDropDown
+                          ? "font-light text-[#000000] text-center p-1 bg-white text-shadow hover:bg-[#116211] hover:bg-opacity-[50%] hover:font-semibold hover:text-[#fff]"
+                          : "font-semibold text-[#fff]  text-center p-1 text-shadow "
+                        : showDropDown
+                        ? "font-light text-[#000000] text-center p-1 bg-white text-shadow hover:bg-[#116211] hover:bg-opacity-[50%] hover:font-semibold hover:text-[#fff]"
+                        : "font-semibold text-[#fff]  text-center p-1 text-shadow "
                     }>
                     LOGOUT
                   </p>
@@ -189,6 +140,7 @@ const Nav = () => {
     </>
   );
 };
+
 
 export default Nav;
 //1/23/2024
