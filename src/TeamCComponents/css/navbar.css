@@ -1,0 +1,33 @@
+/* NAVBAR BODY STYLE */
+.navbar-nav .nav-item .dropdown-menu {
+    background-color: #D9FFCF; /* Set the background color for the dropdown items */
+}
+
+
+/* APPLY STYLE FOR HOLD-CLICK MENU ITEMS */
+.dropdown a:hover {
+    background-color: #D9FFCF;
+    color: black;
+}
+
+/* DROPDOWN ITEM ACTIVE COLOR */
+.dropdown a.active {
+    color:black;
+    background-color: #BCE8B1;
+}
+
+/* NAVBAR MENU ITEMS HOVER EFFECT */
+.nav-link:hover {
+    background-color: #BCE8B1;
+    color: #1E6C0B;
+}
+.menuTabs .menuDropdown:hover .nav-link,
+.menuTabs .menuDropdown:active .nav-link,
+.menuTabs .menuDropdown:focus .nav-link {
+    background-color: #BCE8B1;
+}
+
+.navbar {
+    z-index: 2;
+}
+
