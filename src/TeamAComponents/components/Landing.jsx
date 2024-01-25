@@ -9,7 +9,7 @@ const Landing = () => {
   return (
     <div>
       <nav>
-        <img src="../../assets/TeamAassets/companyLogo.png" alt="Logo" />
+        <img src="..\src\assets\TeamAassets\companyLogo.png" alt="Logo" />
         <ul className="menu hide">
           <li>
             <a href="About">About</a>
@@ -18,7 +18,7 @@ const Landing = () => {
             <a href="profile">Profile</a>
           </li>
         </ul>
-        <div>
+        <div className="Navbar_landing_Button">
           <Link to="/register">
             <button id="register">Register</button>
           </Link>
@@ -30,8 +30,10 @@ const Landing = () => {
 
       <div className="content-container">
         <div className="text-container">
-          <h1 style={{ fontFamily: "Inter, sans-serif" }}>ONLINE LEARNING</h1>
-          <h2>Gain knowledge. Learn your way. Be the best</h2>
+         <div>
+          <h1 style={{ fontFamily: "Inter, sans-serif", fontSize: "2rem", fontWeight: 800, marginBottom: "1rem"}}>ONLINE LEARNING</h1>
+          <h2 style={{ fontSize: "1.5rem", fontWeight: 600, marginBottom: "1rem"}}>Gain knowledge. Learn your way. Be the best</h2>
+          </div>
           <div className="card-container">
             <div className="card">
               <div className="card-title">
@@ -40,12 +42,12 @@ const Landing = () => {
 
               <div className="card-body">
                 <Link to="/">
-                  <button>View </button>
+                  <button className="teamA_button">View </button>
                 </Link>
               </div>
 
               <div className="card-button">
-                <button>Enroll </button>
+                <button  className="teamA_button" >Enroll </button>
               </div>
             </div>
             <div className="card">
@@ -55,12 +57,12 @@ const Landing = () => {
 
               <div className="card-body">
                 <Link to="/">
-                  <button>View </button>
+                  <button className="teamA_button" >View </button>
                 </Link>
               </div>
 
               <div className="card-button">
-                <button>Enroll </button>
+                <button className="teamA_button">Enroll </button>
               </div>
             </div>
             <div className="card">
@@ -70,12 +72,12 @@ const Landing = () => {
 
               <div className="card-body">
                 <Link to="/">
-                  <button>View </button>
+                  <button className="teamA_button">View </button>
                 </Link>
               </div>
 
               <div className="card-button">
-                <button>Enroll</button>
+                <button className="teamA_button">Enroll</button>
               </div>
             </div>
           </div>
@@ -83,7 +85,7 @@ const Landing = () => {
 
         <div className="image-container">
           <img
-            src="../../assets/TeamAassets/logo.png"
+            src="..\src\assets\TeamAassets\logo.png"
             alt="Description of the photo"
           />
         </div>

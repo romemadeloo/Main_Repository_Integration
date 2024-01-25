@@ -118,13 +118,13 @@ const CourseOverviewCard = () => {
               </Link>
             </div>
             <div>
-              <footer className="flex justify-center p-10">
+              {/* <footer className="flex justify-center p-10">
                 <div>
                   <p className="text-[#4D9349] font-medium">
                     All Rights Reserved | Copyright 2024
                   </p>
                 </div>
-              </footer>
+              </footer> */}
             </div>
             {/*January 19 2024 -gem modify buttons add footer*/}
           </div>
