@@ -30,7 +30,7 @@ import 'bootstrap/dist/js/bootstrap.bundle';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
-function App() {
+function TeamC_Router() {
   
   return (
     <>
@@ -74,4 +74,4 @@ function App() {
   );
 }
 
-export default App;
+export default TeamC_Router;
