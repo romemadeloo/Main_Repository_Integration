@@ -43,5 +43,7 @@ function redirectToGoogle() {
 
 
 
+
+
 // Exporting all functions and hooks
 export { showNextTopic, hideAllTopics, enroll, redirectToGoogle };

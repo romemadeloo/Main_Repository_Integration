@@ -16,7 +16,7 @@ function TeamC_CourseSvn2(){
   switch (pathname) {
  
     case '/course2_svn':
-      layoutTitle = 'CHAPTER 3';
+      layoutTitle = 'CHAPTER 2';
       subTitle = 'Subversion Control commands and their usages.';
       descText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
       break;
@@ -55,11 +55,10 @@ function TeamC_CourseSvn2(){
                 >
                   <p className="lh-base">{descText}</p>
                 </div>
-                <div class="d-grid gap-2 d-md-flex justify-content-md-end" style={{margin: '10px'}}>
-                <button class="btn btn-primary courseButton" 
+                <div className="d-grid gap-2 d-md-flex justify-content-md-end" style={{margin: '10px'}}>
+                <button className="btn  courseButton" 
                 data-bs-toggle="modal" 
-                data-bs-target="#mainId" 
-                className="btn" 
+                data-bs-target="#mainId"
                 type="button"
                 style={{backgroundColor: '#D9FFCF',
                 borderColor: "0E3B03",
@@ -67,10 +66,9 @@ function TeamC_CourseSvn2(){
                 }}
                 >Go to quiz</button>
 
-                <button class="btn btn-primary courseButton" 
+                <button className="btn  courseButton" 
                 data-bs-toggle="modal" 
                 data-bs-target="#subId" 
-                className="btn" 
                 type="button"
                 style={{backgroundColor: '#0E3B03', 
                 color: 'white',
@@ -87,7 +85,7 @@ function TeamC_CourseSvn2(){
       {/* End of Topic Container */}
       {/* End of Main Layout */}
     
-      <div className="modal fade modalMain" id="mainId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+      <div className="modal fade modalMain" id="mainId" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
       <div className="modal-dialog">
         <div className="modal-content" style={{ backgroundColor: '#D9FFCF' }}>
           <div className="modal-header">
@@ -106,7 +104,7 @@ function TeamC_CourseSvn2(){
       </div>
     </div>
 
-    <div className="modal fade modalSub" id="subId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div className="modal fade modalSub" id="subId" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
       <div className="modal-dialog">
         <div className="modal-content" style={{ backgroundColor: '#D9FFCF' }}>
           <div className="modal-header">

@@ -1,22 +1,57 @@
-.h4{
-    color: white;
-}
-
-.chapter {
+.c_chapter_cardmain {
     will-change: filter;
     transition: filter 300ms;
   }
-  
-  .chapter:hover {
+  .c_chapter_cardbody,
+  .c_chapter_cardmain {
+    background-color: #126912; 
+    border-radius: 1rem;
+  }
+  .c_chapter_cardmain:hover {
     filter: drop-shadow(0 0 1em #484848);
   }
 
-.rtnzoom {
+.c_chapter_return {
     transition: transform .1s; /* Animation */
     color: #ffffff;
     margin: 0 auto;
+    width: 3rem;
+    height: 3rem;
+    margin-top: 0rem;
   }
 
-  .rtnzoom:hover {
-    transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  .buttonReturn:hover .c_chapter_return,
+  .buttonReturn:hover .c_chapter_returnText {
+    transform: scale(1.2);
   }
+  
+  .c_chapter_scoremain{
+    margin-top: 0.6rem; 
+    margin-left: 0.99rem;
+  }
+  .c_chapter_scoresub{
+    background-color: #126912;
+    width: 4rem; 
+    height: 4rem; 
+    border-radius: 10px;
+  }
+
+  .c_chapter_returnText{
+    margin-left: 0.5rem; 
+    color: #126912;
+    font-size: 1.5rem; 
+    margin-top: 0rem;
+  }
+
+  .c_chapter_returncontainer{
+    text-decoration: none; 
+    color: black; 
+    margin-top: 2rem;
+    width: fit-content;
+  }
+
+
+
+
+
+

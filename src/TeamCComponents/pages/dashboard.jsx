@@ -17,9 +17,6 @@ function TeamC_Dashboard() {
           <div className="eng-char">
             <h4>Learn your way at Tsukiden.</h4>
           </div>
-          <div className="courses-btn mt-3">
-            <Link to="/course" className="btn btn-view-course text-white">View Courses</Link>
-          </div>
         </div>
       </div>
       {/* End of Header title */}

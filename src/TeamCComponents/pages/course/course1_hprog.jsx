@@ -5,7 +5,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import '../../css/sidebar.css';
-import '../../css/mainLayout_styles.css';
 
 
 function TeamC_CourseHprog1(){
@@ -33,9 +32,9 @@ function TeamC_CourseHprog1(){
         <Fragment>
           <div id="layoutContainer">
           {/* Main layout */}
-      <main className="mainLayout">
+      <main className="c_chapcourse_mainlayout">
         {/* Start of Topic Container */}
-        <div id="topic0" className="hidden">
+        <div id="topic0" className="c_chapcourse_hidden">
           <div className="container">
             <h1>{layoutTitle}</h1>
             <h4>{subTitle}</h4>
@@ -56,22 +55,19 @@ function TeamC_CourseHprog1(){
                 >
                   <p className="lh-base">{descText}</p>
                 </div>
-                <div class="d-grid gap-2 d-md-flex justify-content-md-end" style={{margin: '10px'}}>
-                <button class="btn btn-primary courseButton" 
+                <div className="d-grid gap-2 d-md-flex justify-content-md-end" style={{margin: '10px'}}>
+                <button className="btn courseButton" 
                 data-bs-toggle="modal" 
                 data-bs-target="#mainId" 
-                className="btn" 
                 type="button"
                 style={{backgroundColor: '#D9FFCF',
-                borderColor: "0E3B03",
-                boxShadow: '0 2px 5px 0 rgb(0 0 0 / 25%), 0 5px 5px 0 rgb(0 0 0 / 30%)'
+                boxShadow: '0 2px 5px 0 rgb(0 0 0 / 25%), 0 5px 5px 0 rgb(0 0 0 / 30%)',
                 }}
                 >Go to quiz</button>
 
-                <button class="btn btn-primary courseButton" 
+                <button className="btn courseButton" 
                 data-bs-toggle="modal" 
-                data-bs-target="#subId" 
-                className="btn" 
+                data-bs-target="#subId"
                 type="button"
                 style={{backgroundColor: '#0E3B03', 
                 color: 'white',
@@ -88,7 +84,7 @@ function TeamC_CourseHprog1(){
       {/* End of Topic Container */}
       {/* End of Main Layout */}
     
-      <div className="modal fade modalMain" id="mainId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+      <div className="modal fade modalMain" id="mainId" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
       <div className="modal-dialog">
         <div className="modal-content" style={{ backgroundColor: '#D9FFCF' }}>
           <div className="modal-header">
@@ -107,7 +103,7 @@ function TeamC_CourseHprog1(){
       </div>
     </div>
 
-    <div className="modal fade modalSub" id="subId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div className="modal fade modalSub" id="subId" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
       <div className="modal-dialog">
         <div className="modal-content" style={{ backgroundColor: '#D9FFCF' }}>
           <div className="modal-header">

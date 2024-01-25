@@ -9,15 +9,7 @@ body {
     background-color: #BCE8B1;
 }
 
-/* TEXT STYLES FOR HEADER SELECTED TITLES */
-.jap-char, .eng-char, .course-prev {
-    color: #0e3b03;
-}
 
-/* VIEW COURSE BUTTON FROM HEADER SELECTED TITLES */
-.btn-view-course {
-    background-color: #0e3b03;
-}
 
 /* HOLD-CLICK EFFECT FOR VIEW COURSE ON HEADER SELECTED TITLES */
 .btn-view-course:hover {

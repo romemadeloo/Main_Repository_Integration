@@ -61,28 +61,31 @@ switch (pathname) {
 
     return (
         <>
-            <div className="c_sidebar_maincontainer">
-                <div className="c_sidebar_main sidebar">
-                    <hr />
-                    <span className="d-flex justify-content-center c_sidebar_sidebarTitle">{sidebarTitle}</span>
-                    <ul className="nav nav-pills flex-column mb-auto">
-                      {/* START OF SIDEBAR ITEM */}
-                        <li className="sidebarItem nav-item">
-                            <a onClick={() => showNextTopic(0)} className="c_sidebar_sidebaritems sidebarItems nav-link" aria-current="page">
-                                HOME
-                            </a>
-                        </li>
-                        {/* END OF SIDEBAR ITEM */}
-                    </ul>
-                    <hr />
-                    <Link to={url} className="buttonReturn text-center" style={{ textDecoration: 'none', color: 'black' }}>
-                          <div>
-                            <img src="/pics/return.png" className="c_sidebar_btnReturn" alt="return-icon" />
-                            <span className="returnTitle" style={{ marginLeft: '5px' , color:'white'}}>Back</span>
-                          </div> 
-                        </Link>
-                </div>
-            </div>
+          <div className="c_sidebar_maincontainer">
+  <div className="c_sidebar_main sidebar">
+    <hr />
+    <span className="d-flex justify-content-center c_sidebar_sidebarTitle">{sidebarTitle}</span>
+    <ul className="nav nav-pills flex-column mb-auto">
+      {/* START OF SIDEBAR ITEM */}
+      <li className="sidebarItem nav-item">
+        <a onClick={() => showNextTopic(0)} className="c_sidebar_sidebaritems sidebarItems nav-link" aria-current="page">
+          HOME
+        </a>
+      </li>
+      {/* END OF SIDEBAR ITEM */}
+    </ul>
+    <hr />
+    <div className="d-flex justify-content-center"> {/* Added this container for center alignment */}
+      <Link to={url} className="buttonReturn text-center" style={{ textDecoration: 'none', color: 'black', display: 'inline-block' }}>
+        <div>
+          <img src="/pics/return.png" className="c_sidebar_btnReturn" alt="return-icon" />
+          <span className="returnTitle" style={{ marginLeft: '5px', color: 'white' }}>Back</span>
+        </div>
+      </Link>
+    </div>
+  </div>
+</div>
+
         </>
     )
 }

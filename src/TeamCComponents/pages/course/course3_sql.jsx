@@ -54,11 +54,10 @@ function TeamC_CourseSql3(){
                 >
                   <p className="lh-base">{descText}</p>
                 </div>
-                <div class="d-grid gap-2 d-md-flex justify-content-md-end" style={{margin: '10px'}}>
-                <button class="btn btn-primary courseButton" 
+                <div className="d-grid gap-2 d-md-flex justify-content-md-end" style={{margin: '10px'}}>
+                <button className="btn  courseButton" 
                 data-bs-toggle="modal" 
-                data-bs-target="#mainId" 
-                className="btn" 
+                data-bs-target="#mainId"
                 type="button"
                 style={{backgroundColor: '#D9FFCF',
                 borderColor: "0E3B03",
@@ -66,10 +65,9 @@ function TeamC_CourseSql3(){
                 }}
                 >Go to quiz</button>
 
-                <button class="btn btn-primary courseButton" 
+                <button className="btn  courseButton" 
                 data-bs-toggle="modal" 
                 data-bs-target="#subId" 
-                className="btn" 
                 type="button"
                 style={{backgroundColor: '#0E3B03', 
                 color: 'white',
@@ -86,7 +84,7 @@ function TeamC_CourseSql3(){
       {/* End of Topic Container */}
       {/* End of Main Layout */}
     
-      <div className="modal fade modalMain" id="mainId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+      <div className="modal fade modalMain" id="mainId" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
       <div className="modal-dialog">
         <div className="modal-content" style={{ backgroundColor: '#D9FFCF' }}>
           <div className="modal-header">
@@ -105,7 +103,7 @@ function TeamC_CourseSql3(){
       </div>
     </div>
 
-    <div className="modal fade modalSub" id="subId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div className="modal fade modalSub" id="subId" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
       <div className="modal-dialog">
         <div className="modal-content" style={{ backgroundColor: '#D9FFCF' }}>
           <div className="modal-header">

@@ -6,6 +6,7 @@ import TeamC_Course from '../src/TeamCComponents/pages/course';
 import TeamC_Navbar from '../src/TeamCComponents/components/navbar';
 import TeamC_Assessments from '../src/TeamCComponents/pages/assessment';
 import TeamC_Sidebar from '../src/TeamCComponents/components/sidebar';
+import TeamC_Forum from './TeamCComponents/pages/Forum';
 import { Helmet } from 'react-helmet';
 
 /* COURSE LISTS */
@@ -39,6 +40,7 @@ function App() {
           <Route path="/" element={<TeamC_Dashboard />} />
           <Route path="/assessment" element={<TeamC_Assessments />} />
           <Route path="/course" element={<TeamC_Course />} />
+          <Route path="/forum" element={<TeamC_Forum />} />
 
           {/* COURSE 1 */}
           <Route path="/course1_svn/*" element={<><TeamC_Sidebar /><TeamC_CourseSvn1 /></>}
