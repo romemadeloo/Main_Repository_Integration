@@ -7,7 +7,7 @@ const App = () => {
   return (
     <>
 
-        <TeamA_Router />
+        <TeamB_Router />
   
       {/* <TeamB_Router /> */}
     </>

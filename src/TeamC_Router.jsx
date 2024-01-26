@@ -7,7 +7,6 @@ import TeamC_Navbar from '../src/TeamCComponents/components/navbar';
 import TeamC_Assessments from '../src/TeamCComponents/pages/assessment';
 import TeamC_Sidebar from '../src/TeamCComponents/components/sidebar';
 import TeamC_Forum from './TeamCComponents/pages/Forum';
-import { Helmet } from 'react-helmet';
 
 /* COURSE LISTS */
 import TeamC_ChapterSvn from '../src/TeamCComponents/pages/chapter_svn';
