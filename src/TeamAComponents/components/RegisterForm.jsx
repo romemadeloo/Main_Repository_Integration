@@ -83,9 +83,10 @@ function RegisterForm() {
         <input
           type="text"
           id="username"
+          maxLength={20}
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
-          placeholder={`Username (${userType === 'Admin' ? 'Admin' : userType})`}
+          placeholder={`Username (${userType === 'Student' ? 'Student' : userType})`}
         />
         <select
           id="userType"
@@ -93,7 +94,6 @@ function RegisterForm() {
           onChange={handleUserTypeChange}
         >
           <option value="Student">Student</option>
-          <option value="Admin">Admin</option>
           <option value="Instructor">Instructor</option>
         </select>
       </div>
@@ -126,8 +126,8 @@ function RegisterForm() {
         placeholder="Password"
       />
       <div className="data-validation">
-        <label style={{ color: error ? 'red' : 'green', fontSize: '20px', fontWeight: '700', transition: 'color 0.3s' }}>
-          {error || 'Password must be at least 8 characters long with one uppercase character, number, and symbol.'}
+        <label style={{ color: error ? 'red' : 'green', fontSize: '15px', fontWeight: '700', transition: 'color 0.3s' }}>
+          { error || 'Password must be at least 8 characters long with one uppercase character, number, and symbol.'}
         </label>
       </div>
       <div>
@@ -138,7 +138,9 @@ function RegisterForm() {
       Already have an account?
         </div>
       </Link>
-      <button type="submit">Sign up</button>
+       <Link to="/Dashboard">
+      <button id="SigUp_Btn">Sign up</button>
+      </Link>
     </form>
   );
 }

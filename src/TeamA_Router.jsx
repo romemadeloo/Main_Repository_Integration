@@ -13,6 +13,7 @@ import ProfileEdit from "../src/TeamAComponents/components/ProfileEdit";
 import Verification from "../src/TeamAComponents/components/Verification";
 import ChangePassword from "../src/TeamAComponents/components/ChangePassword";
 import About from "../src/TeamAComponents/components/About";
+import Footer from "./TeamAComponents/components/Footer";
 
 function TeamA_Router() {
   return (
@@ -30,6 +31,7 @@ function TeamA_Router() {
         <Route path="/change" element={<ChangePassword />} />
         <Route path="/about" element={<About />} />
       </Routes>
+  
     </>
   );
 }
