@@ -4,7 +4,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 //import logo for profile pic
-import profilePic from "../../../assets/TeamBassests/profile.svg";
+import profilePic from "../../../assets/TeamBassests/Registration.png";
 import Footer from "../Footer";
 
 const PersonalEdit = () => {
