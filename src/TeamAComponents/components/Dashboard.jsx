@@ -1,10 +1,11 @@
 import React from "react";
-import "../Auth.css";
-import Navigation from './TeamA_Navigation';
-import { useAuth } from "./TeamA_AuthContext"; // Make sure to import your auth context
+import "../styles/Auth.css";
+
+import Navigation from './Navigation';
+import { useAuth } from "./AuthContext"; // Make sure to import your auth context
 
 
-const TeamA_Dashboard = () => {
+const Dashboard = () => {
   const { isLoggedIn, handleLogout } = useAuth();
 
   return (
@@ -36,4 +37,4 @@ const TeamA_Dashboard = () => {
   );
 };
 
-export default TeamA_Dashboard;
+export default Dashboard;

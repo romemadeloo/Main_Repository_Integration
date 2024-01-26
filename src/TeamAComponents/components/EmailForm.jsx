@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-function TeamA_EmailForm({ onEmailForm }) {
+function EmailForm({ onEmailForm }) {
   const [email, setEmail] = useState('');
 
   const handleFormSubmit = (e) => {
@@ -52,8 +52,8 @@ function TeamA_EmailForm({ onEmailForm }) {
           </Link>
           
        </p>
-        <Link to="/new"> 
-          <button className="TeamA-button" >Send to Email</button>
+        <Link to="/verify"> 
+          <button>Send to Email</button>
           </Link>
         
       </form>
@@ -70,4 +70,4 @@ function TeamA_EmailForm({ onEmailForm }) {
   );
 }
 
-export default TeamA_EmailForm;
+export default EmailForm;

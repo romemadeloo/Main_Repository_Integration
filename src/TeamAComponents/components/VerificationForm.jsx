@@ -1,9 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../Auth.css'; // Import a CSS file for styling
+import "../styles/Auth.css";
+// Import a CSS file for styling
 
-function TeamA_VerificationForm({ onVerificationForm }) {
+function VerificationForm({ onVerificationForm }) {
   const [verification, setVerification] = useState('');
 
   const handleFormSubmit = (e) => {
@@ -35,7 +36,7 @@ function TeamA_VerificationForm({ onVerificationForm }) {
             onChange={(e) => setVerification(e.target.value)}
             required
           />
-          <button type="submit" className="TeamA-button">Send</button>
+          <button type="submit" className="verification-button">Send</button>
         </div>
       </form>
 
@@ -46,4 +47,4 @@ function TeamA_VerificationForm({ onVerificationForm }) {
   );
 }
 
-export default TeamA_VerificationForm;
+export default VerificationForm;

@@ -1,7 +1,8 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-function TeamA_ForgotForm({ onForgotPassword }) {
+function ForgotForm({ onForgotPassword }) {
   const [email, setEmail] = useState('');
 
   const navigate = useNavigate();
@@ -38,8 +39,6 @@ const handleForgot = (e) => {
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-        required
-
             />
           </div>
           <Link to="/login"> 
@@ -48,7 +47,7 @@ const handleForgot = (e) => {
           </div>
           </Link>
           <Link to="/Email">
-          <button className="TeamA-button" >Send to Email</button>
+          <button>Send to Email</button>
           </Link>
         </form>
       </div>
@@ -62,4 +61,4 @@ const handleForgot = (e) => {
   );
 }
 
-export default TeamA_ForgotForm;
+export default ForgotForm;

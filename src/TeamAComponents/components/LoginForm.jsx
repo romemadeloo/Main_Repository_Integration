@@ -1,29 +1,33 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from "./TeamA_AuthContext";
+import { useAuth } from "./AuthContext";
 
-function TeamA_LoginForm() {
+function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
 
   // Use the useAuth hook to get the handleLogin and setLoggedIn functions
-  const { handleLogin } = useAuth(); 
+  const { handleLogin, setLoggedIn } = useAuth(); 
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      // Pass the navigate function as an argument to handleLogin
-      await handleLogin({ email, password }, navigate);
+      // Use the handleLogin function from useAuth
+      await handleLogin({ email, password });
+      // Set the login state using setLoggedIn
+      setLoggedIn(true);
+      // Redirect upon successful login
+      navigate('/Dashboard');
     } catch (error) {
       setError('Invalid email or password. Please try again.');
       console.error('Login failed:', error);
     }
   };
-  
 
   return (
     <form onSubmit={handleSubmit} className="template-form">
@@ -53,7 +57,7 @@ function TeamA_LoginForm() {
         required
       />
       <div className="remember-me">
-        {/* Your remember me checkbox */}
+        <input type="checkbox" id="rememberMe" className='rememberMe_input'/><p>Remember me </p>
       </div>
       <div>
         <h3>By clicking "Sign in," you agree to our Terms of Use and our Privacy Policy.</h3>
@@ -63,11 +67,10 @@ function TeamA_LoginForm() {
           Forgot your password?
         </div>
       </Link>
-      <button type="submit" className="TeamA-button">Sign in</button>
+      <button id="LogIn_Btn" type="submit">Sign in</button>
       {error && <div className="error-message">{error}</div>}
     </form>
   );
 }
 
-
-export default TeamA_LoginForm;
+export default LoginForm;

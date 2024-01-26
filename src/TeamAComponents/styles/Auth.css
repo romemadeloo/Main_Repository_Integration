@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
 body {
   display: block;
@@ -8,7 +8,7 @@ body {
   margin: 0;
   padding: 0;
   background-color:#EBFFE5 ;
-  font-family: 'Inter';
+  font-family: sans-serif;
 }
 
 /* src/App.css */
@@ -25,25 +25,92 @@ body {
 
 .buttons {
   margin-top: 20px;
-  border-radius: 150px;
 }
 
-.TeamA-button {
-  margin: 10px 10px 10px;
+/* comment muna kasi apektado yung iba -border  */
+ /* button {
+  margin: 0 10px;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
   color: #ffffff;
-  border-radius: 150px;
+  border-radius: 100px;
+  background-color: #126912;
+  border: 1px solid #126912;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
+  width: 3rem;
+  height: 2rem;
+}  */
+
+#SigUp_Btn
+{
+  
+  font-size: 16px;
+  cursor: pointer;
+  color: #ffffff;
+  border-radius: 100px;
+  background-color: #126912;
+  border: 1px solid #126912;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
+  width: 6rem;
+  height: 2rem;
+ 
+}
+
+#LogIn_Btn
+{
+  
+  font-size: 16px;
+  cursor: pointer;
+  color: #ffffff;
+  border-radius: 100px;
+  background-color: #126912;
+  border: 1px solid #126912;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
+  width: 6rem;
+  height: 2rem;
+ 
+}
+
+/* hindi nagagamit */
+/* .submit_signup
+{
+  cursor: pointer;
+    color: #ffffff;
+    border-radius: 100px;
+    background-color: #126912;
+    border: 1px solid #126912;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
+    width: 5rem;
+    height: 2rem;
+    display: flex;
+} */
+
+.login-button
+{
+
+  cursor: pointer;
+  color: #ffffff;
+  border-radius: 100px;
+  background-color: #126912;
+  border: 1px solid #126912;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
+  width: 5rem;
+  height: 2rem;
+} 
+
+.teamA_button
+{
+  margin:  10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #ffffff;
+  border-radius: 100px;
   background-color: #126912;
   border: 1px solid #126912;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
 }
-
-button:hover {
-  background-color: gray;
-}
-
 
 
 .home-container {
@@ -61,6 +128,8 @@ button:hover {
   margin: 0;
 }
 
+
+
 .left-container {
   display: flex;
   align-items: center;
@@ -68,11 +137,10 @@ button:hover {
 }
 
 
-.right-container {
-  display: flex;
+.right-container button{
   align-items: center;
   margin-right: 20px;
-}
+} 
 
 .logo-container {
   display: flex;
@@ -84,7 +152,6 @@ button:hover {
   width: 170px;
   height: auto;
 }
-
 
 
 .home-header nav a {
@@ -183,10 +250,17 @@ button:hover {
 }
 
 .label-container {
+ display: flex;
+ padding-bottom: 4rem;
+ justify-content: center;
+
+} 
+
+.container-under
+{
   display: flex;
-  padding-right:240px;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  align-items: start;
 
 }
 
@@ -198,7 +272,22 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+
+
 }
+
+
+/* Landing Page Nav-Bar */
+
+.landingPage_NavBar
+{
+  background-color: #BCE8B1;
+  padding: 1em 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 
 .auth-navi {
   padding-top: 20px;
@@ -276,13 +365,11 @@ button:hover {
   cursor: pointer;
   font-size: 14px;
   text-decoration: underline;
-  margin-top: 10px;
 }
 
 .template-form .forgot-password:hover {
   color: #0056b3;
 }
-
 
 /* ... existing styles ... */
 
@@ -415,25 +502,18 @@ justify-content: center;
 }
 
 
-.group_input {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 67px;
-}
-
 .group_input input {
   width: 300px;
 }
 
 .group_input select {
-  width: 100px;
-  height: 57px;
+  width:  6rem;
+  height: 3rem;
   margin-bottom: px;
   border-radius: 5px;
 }
 
-/* Email  */
+/* Email and Code Verifictaion */
 
 /* Updated styles for the EmailForm Component */
 
@@ -558,7 +638,6 @@ justify-content: center;
   background-color: transparent; /* Remove the background color */
 }
 
-/*verification*/
 .verification-forms-container {
   position: relative;
   width: 100%;
@@ -676,7 +755,6 @@ justify-content: center;
 }
 
 
-/*Profile1*/
 
 /* SharedStyles.css */
 
@@ -762,6 +840,8 @@ justify-content: center;
     transition: background-color 0.3s ease;
   }
 
+ 
+
 .Prof1-editButton:hover {
   background-color: #999
 }
@@ -818,11 +898,6 @@ justify-content: center;
 .Prof1-projects_data {
   margin-top: 20px; /* Add space above the projects data */
 }
-
-
-
-
-/*Profile2*/
 
 
 .Prof2-navbar {
@@ -980,7 +1055,6 @@ justify-content: center;
   justify-content: flex-start;
   padding-left: 90px;
   gap: 10px;
-  align-self: flex-start;
 }
 
 #password {
@@ -1024,7 +1098,6 @@ justify-content: center;
   cursor: pointer;
   font-size: 14px;
   transition: background-color 0.3s ease;
-  margin-right: 10px;
   
 }
 
@@ -1053,10 +1126,15 @@ justify-content: center;
   font-size: 14px;
   margin-right: 10px;
   transition: background-color 0.3s ease;
+  margin-left: 1rem;
 }
+.Prof1-Editbuttons
+{
 
+  margin-right: 1rem;
+}
 .Prof1-Editbuttons {
-  margin-right: 10px; /* Remove the right margin for the Edit button */
+  margin-right: 0; /* Remove the right margin for the Edit button */
 }
 
 .Prof1-ChangeButton:hover,
@@ -1066,8 +1144,38 @@ justify-content: center;
 
 /*Change Password*/
 
+.Change-navbar {
+  background-color: #D9FFCF;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
+.Change-nav-logo {
+  color: #0e3b03;
+  font-size: 20px;
+}
 
+.Change-nav-links {
+  flex-grow: 1;
+}
+
+.Change-nav-list {
+  list-style: none;
+  display: flex;
+  justify-content: flex-start; /* Align items to the left */
+}
+
+.Change-nav-list li {
+  margin-right: 20px;
+}
+
+.Change-nav-list a {
+  text-decoration: none;
+  color: #0e3b03;
+  font-size: 16px;
+}
 
 .Change-wrapper {
   display: flex;
@@ -1075,7 +1183,7 @@ justify-content: center;
   box-shadow: 0 11px 20px 0 rgba(14, 59, 3, 0.1);
   margin: 20px;
   border-radius: 10px;
-  padding-bottom: 65px;
+  padding-bottom: 85px;
 }
 
 .Change-left {
@@ -1204,11 +1312,18 @@ justify-content: center;
 }
 /* Add this style to position the Backbutton */
 .Backbutton {
+  color: white;
   position: absolute;
+  height: 2rem;
+  width: 3rem;
   top: 10px;
   left: 10px;
   border-radius: 100px;
   background-color: #4caf50;
+  border: 1px solid black;
+}
+.Backbutton svg{
+  margin: auto;
 }
 .Prof2-Backbutton {
   position: absolute;
@@ -1297,18 +1412,14 @@ justify-content: center;
   font-size: 14px;
   text-decoration: underline;
 }
-.resend:hover {
-  color: blue;
-}
 
 /* Default styles for the back button */
 .qBackbutton {
   cursor: pointer;
   display: inline-block;
   padding: 10px;
-
+  background-color: #0e3b03;
   color: #fff;
-  background-color: #126912;
   border: none;
   border-radius: 5px;
   transition: background-color 0.3s ease;
@@ -1337,7 +1448,6 @@ justify-content: center;
   display: inline-block;
   padding: 10px;
   color: #fff;
-  background-color: #126912;
   border: none;
   border-radius: 5px;
   transition: background-color 0.3s ease;
@@ -1371,25 +1481,31 @@ justify-content: center;
 }
 
 
-/*landing page nav bar*/
+/*landing page*/
 
-
-
-.my-navigation {
+/* Landing Page NavBar */
+/* naapektuhan ang navbar ng team B*/
+/* nav {
   background-color: #BCE8B1;
   padding: 1em 2em;
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
+} */
+
+nav .Navbar_landing_Button #register
+{
+  margin-right: 1rem;
+
+ }
 
 
-.my-navigation img {
+nav img {
   height: 50px;
   width: auto;
 }
 
-.my-navigation ul {
+nav ul {
   list-style: none;
   display: flex;
   flex-direction: row;
@@ -1397,32 +1513,25 @@ justify-content: center;
   padding: 0;
 }
 
-.my-navigation ul li {
+nav ul li {
   margin-right: 95px;
 }
 
-.my-navigation a {
+nav a {
   text-decoration: none;
   color: #333;
   font-weight: bold;
-}
+}  
 
-#register  {
+
+
+#register, #login {
   background-color: #126912;
   color: #fff;
   padding: 10px 15px;
   border: none;
-  border-radius: 150px;
+  border-radius: 5px;
   cursor: pointer;
-}
-#login {
-  background-color: #126912;
-  color: #fff;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 150px;
-  cursor: pointer;
-  margin-left: 10px;
 }
 
 #register:hover, #login:hover {
@@ -1443,25 +1552,37 @@ justify-content: center;
   max-width: 50%;
   margin-bottom:120px ;
   margin-left: 100px;
-
+  font-family: 'Inter, sans-serif';
 }
 
-.text-container h1 {
-  font-size: 2em;
+/* .text-container h1 {
   margin-bottom: 1em;
+  font-weight: 900;
+
 }
 
-.image-container {
+.text-container h2 {
+  margin-bottom: 1em;
+  font-weight: 900;
+
+} */
+
+
+
+
+
+/* para hindi dumikit sa gilid */
+/* .image-container {
   flex: 1;
   text-align: right;
-}
+} */
 
 .image-container img {
   width: 400px;
   border-radius: 8px;
 }
 
-.footer {
+.TeamA_Footer{
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1469,40 +1590,49 @@ justify-content: center;
   bottom: 0;
   left: 0;
   right: 0;
-  
-  background-color: #BCE8B1; /* Add a background color for better visibility */
+  background-color: #BCE8B1;
+  height: 3rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
-.social-icons {
+
+
+.TeamA_Footer .social-icons
+{
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.social-icons img {
-  width: 30px;
-  height: auto;
-  margin-right: 10px;
+.TeamA_Footer .social-icons .icons {
+display: flex !important;
+justify-content: center !important;
+align-items: center !important;
 }
 
-.terms-conditions {
-  margin-left: auto;
+.TeamA_Footer .social-icons .icons a {
+display: flex !important;
+justify-content: center !important;
+align-items: center !important;
 }
 
-.contact-number {
-  margin-right: 10px;
-}
+.TeamA_Footer .socila-icons .contacts {
+     width: 100px;
+  }
 
 
-
-.TeamA-card-container {
+.card-container {
   display: flex;
-  align-items: stretch; /* Make sure all cards have the same height */
+  align-items: stretch;
   justify-content: center;
   width: 100%;
   gap: 20px;
   
+
 }
 
-.TeamA-card {
+.card {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -1515,7 +1645,7 @@ justify-content: center;
   overflow: hidden;
   text-align: center;
 }
-.TeamA-card-title {
+.card-title {
   font-size: small;
   margin-bottom: 10px; /* Add margin to separate title from content */
   overflow: hidden;
@@ -1525,18 +1655,18 @@ justify-content: center;
   justify-content: center;
 }
 
-.All {
+/* .All {
   align-items:center;
   margin-left: 325px;
-}
+} */
 .photo-section {
   flex:1;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around; /* Adjust as needed */
   margin-top: 20px; /* Adjust as needed */
   gap: 50px;
   width:auto;
-  text-align: center;
   font-size: medium;
 }
 
@@ -1546,15 +1676,17 @@ justify-content: center;
   
 }
 
-.photo-box img {
-  width: 100%; /* Adjust as needed */
+.photo-box svg {
+  /* width: 100%; Adjust as needed */
+  display: flex;
+  margin: auto;
   height: auto;
   margin-bottom: 10px; /* Adjust as needed */
 }
 
 /*about container*/
 
-.TeamA-about-container {
+.about-container {
   text-align: center;
   font-family: 'Times New Roman', Times, serif;
   width: fit-content;
@@ -1562,3 +1694,23 @@ justify-content: center;
 
 }
 
+.about-container h1{
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  font-size: 2rem;
+
+}
+
+.home-button
+{
+  cursor: pointer;
+  color: #ffffff;
+  border-radius: 100px;
+  background-color: #126912;
+  border: 1px solid #126912;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
+  width: 5rem;
+  height: 2rem;
+  display: flex;
+}

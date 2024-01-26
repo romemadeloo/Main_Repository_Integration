@@ -1,30 +1,35 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import EmailForm from './TeamA_EmailForm';
+import EmailForm from './EmailForm';
 import { Link } from 'react-router-dom';
-import '../Auth.css'; // Assuming you want to include Auth.css
+import "../styles/Auth.css";
+// Assuming you want to include Auth.css
 
-function TeamA_Email() {
+function Email() {
   return (
     <div className="email-container">
       <div className="auth-header">
-        <img src="/assets/images/companyLogo.png" alt="Logo" className="logo" />
+        <img
+          src="../../assets/TeamAassets/companyLogo.png"
+          alt="Logo"
+          className="logo"
+        />
       </div>
       <div className="email-navi">
         <div className="home-button">
           <Link to="/verify">
-            <button className="TeamA-button" >Home</button>
+            <button>Home</button>
           </Link>
         </div>
       </div>
-      
+
       <div className="content">
         <div className="email-sign">
-          <EmailForm/>
+          <EmailForm />
         </div>
       </div>
     </div>
   );
 }
 
-export default TeamA_Email;
+export default Email;
