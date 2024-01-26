@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-function RegisterForm() {
+function TeamA_RegisterForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -83,11 +83,13 @@ function RegisterForm() {
         <input
           type="text"
           id="username"
-          maxLength={20}
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
-          placeholder={`Username (${userType === 'Student' ? 'Student' : userType})`}
+          placeholder={`Username (${userType === 'Student' ? 'S' : userType})`}
+        required
+
         />
+
         <select
           id="userType"
           value={userType}
@@ -103,6 +105,8 @@ function RegisterForm() {
         value={firstName}
         onChange={(e) => setFirstName(e.target.value)}
         placeholder="First Name"
+        required
+
       />
       <input
         type="text"
@@ -110,6 +114,8 @@ function RegisterForm() {
         value={lastName}
         onChange={(e) => setLastName(e.target.value)}
         placeholder="Last Name"
+        required
+
       />
       <input
         type="email"
@@ -117,6 +123,7 @@ function RegisterForm() {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="Email Address"
+        required
       />
       <input
         type="password"
@@ -124,6 +131,7 @@ function RegisterForm() {
         value={password}
         onChange={handlePasswordChange}
         placeholder="Password"
+        required
       />
       <div className="data-validation">
         <label style={{ color: error ? 'red' : 'green', fontSize: '15px', fontWeight: '700', transition: 'color 0.3s' }}>
@@ -138,11 +146,9 @@ function RegisterForm() {
       Already have an account?
         </div>
       </Link>
-       <Link to="/Dashboard">
-      <button id="SigUp_Btn">Sign up</button>
-      </Link>
+      <button type="submit" className="TeamA-button" >Sign up</button>
     </form>
   );
 }
 
-export default RegisterForm;
+export default TeamA_RegisterForm;

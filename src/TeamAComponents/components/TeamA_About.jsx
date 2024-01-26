@@ -2,9 +2,9 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/no-unknown-property */
 import React from "react";
-import '../styles/Auth.css';
+import '../Auth.css';
 import { Link } from "react-router-dom";
-import Footer from "./Footer";
+import Footer from "./TeamA_Footer";
 
 // New component for the photo section
 const PhotoSection = () => {
@@ -34,23 +34,24 @@ for the welfare of our COMMUNITY & SOCIETY.</p>
   );
 };
 
-const About = () => {
+const TeamA_About = () => {
   return (
     <>
       {/* Header Section */}
       <div className="home-header">
         <div className="logo-container">
-        <img src="..\src\assets\TeamAassets\companyLogo.png" alt="Logo" className="logo" />
+        <img src="/assets/images/companyLogo.png" alt="Logo" className="logo" />
         
        
         </div>
         <nav>
           <ul>
             <Link to='/dashboard'>
-              <button>Home</button>
+              <button className="TeamA-button">
+              Home</button>
             </Link>
             <Link to='/'>
-              <button>Logout</button>
+              <button className="TeamA-button">Logout</button>
             </Link>
             {/* Add more navigation links as needed */}
           </ul>
@@ -59,15 +60,15 @@ const About = () => {
 
       {/* Main Content Section */}
       <div className="home-content">
-        <div className="about-container">
+        <div className="TeamA-about-container">
           <h1>About Us</h1>
-          <p style={{padding: '.5rem'}}> 
+          <p>
             Tsukiden Global Solutions, Inc. YOUR RELIABLE IT PARTNER That's who WE are. For more than 30 years now, Team Tsukiden has always been the trusted reliable IT partner of its clients for various projects in Japan, Philippines, Malaysia, Hong Kong, Singapore, Taiwan, United Kingdom, and the United States of America.
-          </p >
-          <p style={{padding: '.5rem'}}>Pioneer in IT Outsourcing
+          </p>
+          <p>Pioneer in IT Outsourcing
 Tsukiden Global Solutions Inc. is one of the pioneers in IT Outsourcing for the Japanese market here in the Philippines. Since 1989, even before the word “outsourcing” was coined, WE have been sending engineers to Japan for software development. With our years of experience and still growing, there is no other more stable company to outsource to than Tsukiden Global Solutions Inc.
 </p>
-<p style={{padding: '.5rem'}}>Tsukiden Global Solutions Inc. provide its clients the advantage of having hardworking, committed and talented manpower on demand, where and when they are needed at a cost that fits the development budget.
+<p>Tsukiden Global Solutions Inc. provide its clients the advantage of having hardworking, committed and talented manpower on demand, where and when they are needed at a cost that fits the development budget.
   
 </p>
           {/* Include the PhotoSection component here */}
@@ -79,4 +80,4 @@ Tsukiden Global Solutions Inc. is one of the pioneers in IT Outsourcing for the 
   );
 }
 
-export default About;
+export default TeamA_About;

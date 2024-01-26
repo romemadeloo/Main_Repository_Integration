@@ -1,13 +1,12 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import "../styles/Auth.css";
+import '../Auth.css';
+import ProfileEditForm from "./TeamA_ProfileEditForm";
+import Navigation from './TeamA_Navigation';
+import { useAuth } from "./TeamA_AuthContext";
 
-import ProfileEditForm from "./ProfileEditForm";
-import Navigation from './Navigation';
-import { useAuth } from "./AuthContext";
 
-
-function ProfileEdit() {
+function TeamA_ProfileEdit() {
 
   const { isLoggedIn, handleLogout } = useAuth();
 
@@ -30,4 +29,4 @@ function ProfileEdit() {
   );
 }
 
-export default ProfileEdit;
+export default TeamA_ProfileEdit;

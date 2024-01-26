@@ -1,15 +1,14 @@
 import React from "react";
-import Navigation from './Navigation';
-import { useAuth } from './AuthContext';
-import "../styles/Auth.css";
+import Navigation from './TeamA_Navigation';
+import { useAuth } from './TeamA_AuthContext';
+import '../Auth.css';
 
-
-const Home = () => {
+const TeamA_Home = () => {
   const { isLoggedIn, handleLogin, handleLogout } = useAuth();
 
   return (
     <div className="home-container">
-      <Navigation isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
+      <Navigation isLoggedIn={isLoggedIn} handleLogout={handleLogout} /> 
       <div className="home-content">
         <div className="japanese-message">
           <h1>知識を得る。自分のやり方で学ぼう。ベストを尽くす。</h1>
@@ -36,4 +35,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default TeamA_Home;

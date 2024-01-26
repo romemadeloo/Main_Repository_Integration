@@ -1,14 +1,13 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import { Link } from "react-router-dom";
-import "../styles/Auth.css";
 
-const Footer = () => {
+const TeamA_Footer = () => {
   const year = new Date().getFullYear();
 
   return (
     <footer>
-      <div className="TeamA_Footer">
+      <div className="footer">
         <div className="social-icons">
           {/* Facebook SVG */}
           <div className="icons">
@@ -75,7 +74,7 @@ const Footer = () => {
           </div>
           <div className="contacts">
             <div className="contact-number">
-              <a href="tel:09242-98"> Contact: 09242989812</a>
+              Contact: 09242-98
             </div>
           </div>
         </div>
@@ -94,4 +93,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default TeamA_Footer;
