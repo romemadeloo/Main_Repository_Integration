@@ -116,7 +116,7 @@ const Nav = () => {
                   </p>
                 </Link>
                 <Link
-                  to="/"
+                  to="/login"
                   onClick={showLogout}
                   className="w-full text-center ">
                   <p
