@@ -13,6 +13,7 @@ import { TfiSave } from "react-icons/tfi";
 //back icon and back function
 import { IoArrowBackCircle } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
+import Nav from "../NavBar/Nav";
 
 const CreateNewChapterTitle = () => {
   /*January 17 2023 API connection from backend to front end displaying data */
@@ -40,6 +41,7 @@ const CreateNewChapterTitle = () => {
   const limitChapterList = chapterlist.slice(0, 4);
   return (
     <>
+    <Nav/>
       {/*January 19 2024 -gem modify responsiveness*/}
       <div className="relative w-full h-full mt-[70px]  ">
         <div className="relative w-full h-full mt-5 ">

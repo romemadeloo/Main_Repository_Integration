@@ -39,7 +39,7 @@ const Nav = () => {
               ? "relative flex justify-between items-center lg:justify-normal bg-[#BCE8B1] h-[69px] transition-all "
               : "relative flex justify-between items-center lg:justify-normal bg-transparent h-[69px] transition-all "
           }>
-          <Link to="/">
+          <Link to="/teambdashboard">
             <img
               className="  ml-10 xl:w-[171.67px] xl:h-[50px] lg:h-[5rem] xl:ml-[95px] py-3 xl:py-1"
               src={logo}
@@ -51,7 +51,7 @@ const Nav = () => {
           </Link>
           <div className="hidden lg:flex lg:items-end xl:w-[300px] lg:pl-10 lg:min-w-[280px] lg:justify-between">
             {/* 1/11/2024 */}
-            <Link to="/" onClick={showDashBoard}>
+            <Link to="/teambdashboard" onClick={showDashBoard}>
               <ul
                 className={
                   dashBoardShow
@@ -61,7 +61,7 @@ const Nav = () => {
                 DASHBOARD
               </ul>
             </Link>
-            <Link to="/courselist" onClick={showCourseList}>
+            <Link to="/teambcourselist" onClick={showCourseList}>
               <ul
                 className={
                   courseListShow
