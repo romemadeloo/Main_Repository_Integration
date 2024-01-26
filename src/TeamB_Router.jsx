@@ -37,7 +37,7 @@ import CreateNewChapterTitle from "./TeamBComponents/components/CourseList & Add
 function TeamB_Router() {
   return (
     <div className="bg-[#EBFFE5]">
-      <Nav />
+   
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/profile" element={<Profile />} />
