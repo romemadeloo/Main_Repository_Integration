@@ -12,6 +12,7 @@ import { TfiSave } from "react-icons/tfi";
 //back icon and back function
 import { IoArrowBackCircle } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
+import Nav from "../NavBar/Nav";
 
 
 const EditChapterTitle = () => {
@@ -37,6 +38,7 @@ const EditChapterTitle = () => {
   };
   return (
     <>
+    <Nav/>
       {/*January 19 2024 -gem modify responsiveness*/}
 
       <div className="relative w-full h-full mt-[70px] ">
