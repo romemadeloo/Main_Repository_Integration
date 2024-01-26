@@ -1,10 +1,10 @@
 import React from "react";
-import TeamIntegrationROutes from "./TeamIntegratioRoutes";
+import TeamIntegrationRoutes from "./TeamIntegrationRoutes";
 
 const App = () => {
   return (
     <>
-      <TeamIntegrationROutes />
+      <TeamIntegrationRoutes/>
     </>
   );
 };

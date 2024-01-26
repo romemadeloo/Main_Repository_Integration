@@ -99,7 +99,7 @@ const Nav = () => {
             {showDropDown && (
               <div className=" absolute right-0 top-12 w-[8vw] flex flex-col justify-center items-center border-solid border-2 border-[#116211]">
                 <Link
-                  to="/profile"
+                  to="/teambprofile"
                   onClick={showProfile}
                   className="w-full text-center ">
                   <p
@@ -116,7 +116,7 @@ const Nav = () => {
                   </p>
                 </Link>
                 <Link
-                  to="/"
+                  to="/teambdashboard"
                   onClick={showLogout}
                   className="w-full text-center ">
                   <p
