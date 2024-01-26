@@ -45,16 +45,16 @@ const TeamC_Forum = () => {
         newDiscussionCard.className = "c_forum_newdiscussioncard card row-hover pos-relative py-3 px-3 mb-3 border-top-0 border-right-0 border-bottom-0 rounded-0 discussion-container c_forum_discussioncontainer";
         
         var cardContent = `
-            <div class="row align-items-center">
-                <div class="col-md-8 mb-3 mb-sm-0">
-                    <h5><a href="#" class="c_forum_discussiontext text-primary c_forum_posttitle" id="discussionTitle_${Date.now()}">${discussionTitle}</a></h5>
-                    <p class="text-sm"><span class="op-6">Posted by</span> <a class="c_forum_discussiontext text-black" href="#">Your Name</a></p>
+            <div className="row align-items-center">
+                <div className="col-md-8 mb-3 mb-sm-0">
+                    <h5><a href="#" className="c_forum_discussiontext text-primary c_forum_posttitle" id="discussionTitle_${Date.now()}">${discussionTitle}</a></h5>
+                    <p className="text-sm"><span className="op-6">Posted by</span> <a className="c_forum_discussiontext text-black" href="#">Your Name</a></p>
                 </div>
-                <div class="col-md-4 op-7 d-flex justify-content-end align-items-center">
-                    <div class="row text-center op-3">
-                        <div class="col px-5"> 
-                            <a class="ion-ios-chatboxes-outline icon-1x c_forum_iconchatbox" href="#"></a> 
-                            <span class="d-block text-sm">0 replies</span> 
+                <div className="col-md-4 op-7 d-flex justify-content-end align-items-center">
+                    <div className="row text-center op-3">
+                        <div className="col px-5"> 
+                            <a className="ion-ios-chatboxes-outline icon-1x c_forum_iconchatbox" href="#"></a> 
+                            <span className="d-block text-sm">0 replies</span> 
                         </div>
                     </div>
                 </div>
