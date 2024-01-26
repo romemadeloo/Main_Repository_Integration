@@ -17,6 +17,7 @@ import vidUpload from "../../../assets/TeamBassests/vidUpload.svg";
 import quizLink from "../../../assets/TeamBassests/quizLink.svg";
 
 import Footer from "../Footer";
+import Nav from "../NavBar/Nav";
 
 const DisplayTopic = () => {
   //use navigate to back
@@ -27,6 +28,7 @@ const DisplayTopic = () => {
   };
   return (
     <>
+    <Nav/>
       <div className="flex mt-[100px]">
         {/* sidebar */}
         <div className="h-[100vh] flex flex-col items-center lg:w-[250px] 2xl:w-[375px] bg-[#126912]">
@@ -69,7 +71,7 @@ const DisplayTopic = () => {
         {/* add topic title */}
         <div className="r w-full h-[100vh] pt-2 ">
           <div className="flex items-center justify-end w-full ">
-            <Link to="/edittopic">
+            <Link to="/teambedittopic">
               <div className="flex items-center gap-2 pr-5 cursor-pointer">
                 <div className="text-[#126912] text-[1.5rem]">
                   <FaEdit />

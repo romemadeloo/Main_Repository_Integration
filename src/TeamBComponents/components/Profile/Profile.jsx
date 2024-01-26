@@ -9,6 +9,7 @@ import Footer from "../Footer";
 
 
 import { ProfileContext } from "../context/ProfileContext";
+import Nav from "../NavBar/Nav";
 const Profile = () => {
   //use navigate to back
   const navigate = useNavigate();
@@ -23,6 +24,7 @@ const Profile = () => {
 
   return (
     <>
+    <Nav/>
       <div className="h-[100vh] mt-[100px]">
         <div>
           {/* Use react icon instead of word back */}

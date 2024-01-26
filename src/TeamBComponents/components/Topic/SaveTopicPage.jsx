@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Nav from "../NavBar/Nav";
 
 const SaveTopicPage = () => {
   const [topic, setTopic] = useState({
@@ -62,16 +63,17 @@ const SaveTopicPage = () => {
 
   return (
     <div className="flex h-[100vh]">
+    <Nav/>
       {/* Side Navigation Bar */}
       <nav className="w-1/4 bg-[#1E6C0B] p-4">
         <ul className="bg-[#1E6C0B] flex flex-col h-full">
           <li className="mb-2">
             {/* Apply styling to the back button */}
             <button className="text-white hover:underline">
-              <Link to="/">Back</Link>
+              <Link to="/teambdashboard">Back</Link>
             </button>
           </li>
-          <li className="flex-grow text-white mb-4 font-bold">Topics:</li>
+          <li className="flex-grow mb-4 font-bold text-white">Topics:</li>
           {/* Display the list of topics */}
           {topics.map((t, index) => (
             <li
@@ -97,27 +99,27 @@ const SaveTopicPage = () => {
       </nav>
 
       {/* Content Area */}
-      <div className="flex-grow p-4 flex flex-col items-center">
+      <div className="flex flex-col items-center flex-grow p-4">
          {/* Save button added on the right top corner below the navigation bar */}
-         <div className="mb-4 flex items-center justify-end w-full">
+         <div className="flex items-center justify-end w-full mb-4">
           <button
             onClick={handleSave}
-            className="bg-blue-500 text-white px-4 py-2 rounded-md"
+            className="px-4 py-2 text-white bg-blue-500 rounded-md"
           >
             Save
           </button>
         </div>
         {/* Center content */}
-        <div className="mb-5 flex items-center">
-          <h1 className="text-2xl font-bold mb-2 mr-4">Course Title</h1>
+        <div className="flex items-center mb-5">
+          <h1 className="mb-2 mr-4 text-2xl font-bold">Course Title</h1>
         </div>
        
         <form onSubmit={handleSubmit} className="flex flex-col w-full">
           {/* Center form */}
-          <div className="mb-4 flex items-center">
+          <div className="flex items-center mb-4">
             <label
               htmlFor="title"
-              className="block text-sm font-medium text-gray-600 mr-2"
+              className="block mr-2 text-sm font-medium text-gray-600"
             >
               Chapter Title:
             </label>
@@ -127,12 +129,12 @@ const SaveTopicPage = () => {
               name="title"
               value={topic.title}
               onChange={handleInputChange}
-              className="p-2 border border-gray-300 rounded-md flex-grow"
+              className="flex-grow p-2 border border-gray-300 rounded-md"
               placeholder="Add Topic Title"
               required
             />
           </div>
-          <div className="mb-4 w-full"> {/* Set width to full */}
+          <div className="w-full mb-4"> {/* Set width to full */}
             <label
               htmlFor="description"
               className="block text-sm font-medium text-gray-600"
@@ -153,9 +155,9 @@ const SaveTopicPage = () => {
             ></textarea>
           </div>
  {/* Additional input for video link and file */}
-<div className="mb-4 flex flex-col items-center w-full">
+<div className="flex flex-col items-center w-full mb-4">
   {/* Center additional inputs */}
-  <div className="mb-2 w-full flex justify-center"> {/* Set width to full and center content */}
+  <div className="flex justify-center w-full mb-2"> {/* Set width to full and center content */}
     <div className="w-1/2 mr-2"> {/* Set width to half */}
       <label
         htmlFor="videoLink"
@@ -169,7 +171,7 @@ const SaveTopicPage = () => {
         name="videoLink"
         value={topic.videoLink}
         onChange={handleInputChange}
-        className="p-2 border border-gray-300 rounded-md w-full"
+        className="w-full p-2 border border-gray-300 rounded-md"
         placeholder="Add Video Link"
       />
     </div>
@@ -185,7 +187,7 @@ const SaveTopicPage = () => {
         id="file"
         name="file"
         onChange={handleInputChange}
-        className="p-2 border border-gray-300 rounded-md w-full"
+        className="w-full p-2 border border-gray-300 rounded-md"
       />
     </div>
   </div>

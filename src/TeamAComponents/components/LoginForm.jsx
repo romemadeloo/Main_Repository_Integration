@@ -22,7 +22,11 @@ function LoginForm() {
       // Set the login state using setLoggedIn
       setLoggedIn(true);
       // Redirect upon successful login
+<<<<<<< HEAD
       navigate('/teambdashboardx`');
+=======
+      navigate('/teambdashboard');
+>>>>>>> c70cfa3476cc778b21bf74da33bcf7065cbf512b
     } catch (error) {
       setError('Invalid email or password. Please try again.');
       console.error('Login failed:', error);
