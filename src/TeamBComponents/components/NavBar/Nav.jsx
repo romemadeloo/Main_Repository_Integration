@@ -116,7 +116,11 @@ const Nav = () => {
                   </p>
                 </Link>
                 <Link
-                  to="/teambdashboard"
+
+                  to="/login"
+
+                
+
                   onClick={showLogout}
                   className="w-full text-center ">
                   <p
