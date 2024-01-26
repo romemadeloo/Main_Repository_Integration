@@ -13,7 +13,7 @@ const Navigation = () => {
       <div className="left-container">
         <div className="logo-container">
           <img
-            src="../../assets/TeamAassets/companyLogo.png"
+            src="..\src\assets\TeamAassets\companyLogo.png"
             alt="Logo"
             className="logo"
           />

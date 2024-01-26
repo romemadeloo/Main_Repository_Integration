@@ -40,7 +40,7 @@ const About = () => {
       {/* Header Section */}
       <div className="home-header">
         <div className="logo-container">
-        <img src="../../assets/TeamAassets/companyLogo.png" alt="Logo" className="logo" />
+        <img src="..\src\assets\TeamAassets\companyLogo.png" alt="Logo" className="logo" />
         
        
         </div>
@@ -61,13 +61,13 @@ const About = () => {
       <div className="home-content">
         <div className="about-container">
           <h1>About Us</h1>
-          <p>
+          <p style={{padding: '.5rem'}}> 
             Tsukiden Global Solutions, Inc. YOUR RELIABLE IT PARTNER That's who WE are. For more than 30 years now, Team Tsukiden has always been the trusted reliable IT partner of its clients for various projects in Japan, Philippines, Malaysia, Hong Kong, Singapore, Taiwan, United Kingdom, and the United States of America.
-          </p>
-          <p>Pioneer in IT Outsourcing
+          </p >
+          <p style={{padding: '.5rem'}}>Pioneer in IT Outsourcing
 Tsukiden Global Solutions Inc. is one of the pioneers in IT Outsourcing for the Japanese market here in the Philippines. Since 1989, even before the word “outsourcing” was coined, WE have been sending engineers to Japan for software development. With our years of experience and still growing, there is no other more stable company to outsource to than Tsukiden Global Solutions Inc.
 </p>
-<p>Tsukiden Global Solutions Inc. provide its clients the advantage of having hardworking, committed and talented manpower on demand, where and when they are needed at a cost that fits the development budget.
+<p style={{padding: '.5rem'}}>Tsukiden Global Solutions Inc. provide its clients the advantage of having hardworking, committed and talented manpower on demand, where and when they are needed at a cost that fits the development budget.
   
 </p>
           {/* Include the PhotoSection component here */}

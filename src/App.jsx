@@ -1,15 +1,10 @@
 import React from "react";
-import TeamB_Router from "./TeamB_Router";
-import TeamA_Router from "./TeamA_Router";
-
+import TeamIntegrationROutes from "./TeamIntegratioRoutes";
 
 const App = () => {
   return (
     <>
-
-        {/* <TeamA_Router /> */}
-  
-      <TeamB_Router />
+      <TeamIntegrationROutes />
     </>
   );
 };
