@@ -5,6 +5,7 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
+
 function TeamC_Sidebar() {
     const { pathname } = useLocation();
 let sidebarTitle = '';

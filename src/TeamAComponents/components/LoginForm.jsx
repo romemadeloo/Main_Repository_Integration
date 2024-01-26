@@ -22,7 +22,7 @@ function LoginForm() {
       // Set the login state using setLoggedIn
       setLoggedIn(true);
       // Redirect upon successful login
-      navigate('/dashboard');
+      navigate('/teambdashboard');
     } catch (error) {
       setError('Invalid email or password. Please try again.');
       console.error('Login failed:', error);
@@ -67,7 +67,7 @@ function LoginForm() {
           Forgot your password?
         </div>
       </Link>
-      <button type="submit">Sign in</button>
+      <button id="LogIn_Btn" type="submit">Sign in</button>
       {error && <div className="error-message">{error}</div>}
     </form>
   );

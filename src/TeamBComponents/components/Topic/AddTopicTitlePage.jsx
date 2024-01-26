@@ -18,6 +18,7 @@ import vidUpload from "../../../assets/TeamBassests/vidUpload.svg";
 import quizLink from "../../../assets/TeamBassests/quizLink.svg";
 
 import Footer from "../Footer";
+import Nav from "../NavBar/Nav";
 
 const AddTopicTitlePage = () => {
   //use navigate to back
@@ -28,6 +29,7 @@ const AddTopicTitlePage = () => {
   };
   return (
     <>
+    <Nav/>
       <div className="flex mt-[100px]">
         {/* sidebar */}
         <div className="h-[100vh] flex flex-col items-center lg:w-[250px] 2xl:w-[375px] bg-[#126912]">
@@ -68,7 +70,7 @@ const AddTopicTitlePage = () => {
         {/* add topic title */}
         <div className="h-[100vh] w-full pt-2 ">
           <div className="flex items-center justify-end w-full ">
-            <Link to="/displaytopic">
+            <Link to="/teambdisplaytopic">
               <div className="flex items-center gap-2 pr-5 cursor-pointer">
                 <div className="text-[#126912] text-[1.5rem]">
                   <TfiSave />

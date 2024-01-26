@@ -6,6 +6,7 @@ body {
   justify-content: center;
   height: 100vh;
   margin: 0;
+  padding: 0;
   background-color:#EBFFE5 ;
   font-family: sans-serif;
 }
@@ -26,8 +27,81 @@ body {
   margin-top: 20px;
 }
 
-button {
+/* comment muna kasi apektado yung iba -border  */
+ /* button {
   margin: 0 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #ffffff;
+  border-radius: 100px;
+  background-color: #126912;
+  border: 1px solid #126912;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
+  width: 3rem;
+  height: 2rem;
+}  */
+
+#SigUp_Btn
+{
+  
+  font-size: 16px;
+  cursor: pointer;
+  color: #ffffff;
+  border-radius: 100px;
+  background-color: #126912;
+  border: 1px solid #126912;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
+  width: 6rem;
+  height: 2rem;
+ 
+}
+
+#LogIn_Btn
+{
+  
+  font-size: 16px;
+  cursor: pointer;
+  color: #ffffff;
+  border-radius: 100px;
+  background-color: #126912;
+  border: 1px solid #126912;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
+  width: 6rem;
+  height: 2rem;
+ 
+}
+
+/* hindi nagagamit */
+/* .submit_signup
+{
+  cursor: pointer;
+    color: #ffffff;
+    border-radius: 100px;
+    background-color: #126912;
+    border: 1px solid #126912;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
+    width: 5rem;
+    height: 2rem;
+    display: flex;
+} */
+
+.login-button
+{
+
+  cursor: pointer;
+  color: #ffffff;
+  border-radius: 100px;
+  background-color: #126912;
+  border: 1px solid #126912;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
+  width: 5rem;
+  height: 2rem;
+} 
+
+.teamA_button
+{
+  margin:  10px;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
@@ -38,10 +112,6 @@ button {
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
 }
 
-body {
-  margin: 0;
-  padding: 0;
-}
 
 .home-container {
   text-align: center;
@@ -58,6 +128,8 @@ body {
   margin: 0;
 }
 
+
+
 .left-container {
   display: flex;
   align-items: center;
@@ -65,11 +137,10 @@ body {
 }
 
 
-.right-container {
-  display: flex;
+.right-container button{
   align-items: center;
   margin-right: 20px;
-}
+} 
 
 .logo-container {
   display: flex;
@@ -82,21 +153,6 @@ body {
   height: auto;
 }
 
-nav ul {
-  list-style: none;
-  display: flex;
-  margin-right: 20px; /* Adjusted margin */
-}
-
-nav li {
-  margin-right: 20px;
-}
-
-nav h3 {
-  margin: 0; /* Remove default margin for h3 elements */
-  font-weight: normal;
-  font-size:18px;
-}
 
 .home-header nav a {
   text-decoration: none;
@@ -194,8 +250,18 @@ nav h3 {
 }
 
 .label-container {
+ display: flex;
+ padding-bottom: 4rem;
+ justify-content: center;
+
+} 
+
+.container-under
+{
   display: flex;
-  padding-right:240px;
+  flex-direction: column;
+  align-items: start;
+
 }
 
 .auth-label {
@@ -206,7 +272,22 @@ nav h3 {
   display: flex;
   justify-content: center;
   align-items: center;
+
+
 }
+
+
+/* Landing Page Nav-Bar */
+
+.landingPage_NavBar
+{
+  background-color: #BCE8B1;
+  padding: 1em 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 
 .auth-navi {
   padding-top: 20px;
@@ -290,11 +371,6 @@ nav h3 {
   color: #0056b3;
 }
 
-div {
-  align-items: center;
-  justify-content: center;
-  
-}
 /* ... existing styles ... */
 
 /* New styles for Forgot.jsx form */
@@ -426,20 +502,13 @@ justify-content: center;
 }
 
 
-.group_input {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 67px;
-}
-
 .group_input input {
   width: 300px;
 }
 
 .group_input select {
-  width: 100px;
-  height: 57px;
+  width:  6rem;
+  height: 3rem;
   margin-bottom: px;
   border-radius: 5px;
 }
@@ -686,13 +755,6 @@ justify-content: center;
 }
 
 
-/*Profile1*/
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Josefin Sans', sans-serif;
-  background-color: #EBFFE5;
-}
 
 /* SharedStyles.css */
 
@@ -778,6 +840,8 @@ body {
     transition: background-color 0.3s ease;
   }
 
+ 
+
 .Prof1-editButton:hover {
   background-color: #999
 }
@@ -835,16 +899,6 @@ body {
   margin-top: 20px; /* Add space above the projects data */
 }
 
-
-
-
-/*Profile2*/
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Josefin Sans', sans-serif;
-  background-color: #EBFFE5;
-}
 
 .Prof2-navbar {
   background-color: #D9FFCF;
@@ -1072,8 +1126,13 @@ body {
   font-size: 14px;
   margin-right: 10px;
   transition: background-color 0.3s ease;
+  margin-left: 1rem;
 }
+.Prof1-Editbuttons
+{
 
+  margin-right: 1rem;
+}
 .Prof1-Editbuttons {
   margin-right: 0; /* Remove the right margin for the Edit button */
 }
@@ -1084,13 +1143,6 @@ body {
 }
 
 /*Change Password*/
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Josefin Sans', sans-serif;
-  background-color: #EBFFE5;
-}
 
 .Change-navbar {
   background-color: #D9FFCF;
@@ -1260,11 +1312,18 @@ body {
 }
 /* Add this style to position the Backbutton */
 .Backbutton {
+  color: white;
   position: absolute;
+  height: 2rem;
+  width: 3rem;
   top: 10px;
   left: 10px;
   border-radius: 100px;
   background-color: #4caf50;
+  border: 1px solid black;
+}
+.Backbutton svg{
+  margin: auto;
 }
 .Prof2-Backbutton {
   position: absolute;
@@ -1424,20 +1483,21 @@ body {
 
 /*landing page*/
 
-body {
-  font-family: sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #EBFFE5;
-}
-
-nav {
+/* Landing Page NavBar */
+/* naapektuhan ang navbar ng team B*/
+/* nav {
   background-color: #BCE8B1;
   padding: 1em 2em;
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
+} */
+
+nav .Navbar_landing_Button #register
+{
+  margin-right: 1rem;
+
+ }
 
 
 nav img {
@@ -1461,7 +1521,9 @@ nav a {
   text-decoration: none;
   color: #333;
   font-weight: bold;
-}
+}  
+
+
 
 #register, #login {
   background-color: #126912;
@@ -1490,25 +1552,37 @@ nav a {
   max-width: 50%;
   margin-bottom:120px ;
   margin-left: 100px;
-
+  font-family: 'Inter, sans-serif';
 }
 
-.text-container h1 {
-  font-size: 2em;
+/* .text-container h1 {
   margin-bottom: 1em;
+  font-weight: 900;
+
 }
 
-.image-container {
+.text-container h2 {
+  margin-bottom: 1em;
+  font-weight: 900;
+
+} */
+
+
+
+
+
+/* para hindi dumikit sa gilid */
+/* .image-container {
   flex: 1;
   text-align: right;
-}
+} */
 
 .image-container img {
   width: 400px;
   border-radius: 8px;
 }
 
-.footer {
+.TeamA_Footer{
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1516,37 +1590,46 @@ nav a {
   bottom: 0;
   left: 0;
   right: 0;
-  
-  background-color: #BCE8B1; /* Add a background color for better visibility */
+  background-color: #BCE8B1;
+  height: 3rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
-.social-icons {
+
+
+.TeamA_Footer .social-icons
+{
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.social-icons img {
-  width: 30px;
-  height: auto;
-  margin-right: 10px;
+.TeamA_Footer .social-icons .icons {
+display: flex !important;
+justify-content: center !important;
+align-items: center !important;
 }
 
-.terms-conditions {
-  margin-left: auto;
+.TeamA_Footer .social-icons .icons a {
+display: flex !important;
+justify-content: center !important;
+align-items: center !important;
 }
 
-.contact-number {
-  margin-right: 10px;
-}
-
+.TeamA_Footer .socila-icons .contacts {
+     width: 100px;
+  }
 
 
 .card-container {
   display: flex;
-  align-items: stretch; /* Make sure all cards have the same height */
+  align-items: stretch;
   justify-content: center;
   width: 100%;
   gap: 20px;
   
+
 }
 
 .card {
@@ -1572,18 +1655,18 @@ nav a {
   justify-content: center;
 }
 
-.All {
+/* .All {
   align-items:center;
   margin-left: 325px;
-}
+} */
 .photo-section {
   flex:1;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around; /* Adjust as needed */
   margin-top: 20px; /* Adjust as needed */
   gap: 50px;
   width:auto;
-  text-align: center;
   font-size: medium;
 }
 
@@ -1593,8 +1676,10 @@ nav a {
   
 }
 
-.photo-box img {
-  width: 100%; /* Adjust as needed */
+.photo-box svg {
+  /* width: 100%; Adjust as needed */
+  display: flex;
+  margin: auto;
   height: auto;
   margin-bottom: 10px; /* Adjust as needed */
 }
@@ -1607,4 +1692,25 @@ nav a {
   width: fit-content;
   font-size:medium;
 
+}
+
+.about-container h1{
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  font-size: 2rem;
+
+}
+
+.home-button
+{
+  cursor: pointer;
+  color: #ffffff;
+  border-radius: 100px;
+  background-color: #126912;
+  border: 1px solid #126912;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
+  width: 5rem;
+  height: 2rem;
+  display: flex;
 }

@@ -43,7 +43,7 @@ const CourseListCard = () => {
                 Course List
               </p>
             </div>
-            <Link to="/courseoverview">
+            <Link to="/teambcourseoverview">
               {courselist.map((course, idx) => {
                 return (
                   <div key={idx} className="w-[60vw] mb-5 rounded-md shadow-md">
@@ -68,7 +68,7 @@ const CourseListCard = () => {
             {/*January 15 2024*/}
             {/*January 19 2024 -gem modify buttons add footer*/}
 
-            <Link to="/AddNewCourse">
+            <Link to="/teambaddnewcourse">
               <div className=" h-[10vh] mb-10 flex w-[50%] lg:w-[80vw]  items-center justify-center">
                 <div className="bg-[#87D275] w-[10%]  flex items-center justify-center h-[5vh] lg:h-[10vh] rounded-l-sm lg:rounded-l-md">
                   <span>

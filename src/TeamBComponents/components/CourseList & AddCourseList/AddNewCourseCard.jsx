@@ -90,7 +90,7 @@ const AddNewCourseCard = () => {
   //navigate to back course list */}
   {/*January 19 2024 -gem */}
           <div className="lg:w-[100%] lg:flex lg:justify-center grid gap-4 grid-cols-2">
-           <Link to ="/courseoverview">
+           <Link to ="/teambcourseoverview">
             <button className="w-full mb-5 lg:mb-0 lg:mt-5 btn-style lg:w-[120px] lg:flex lg:justify-center xl:w-[170px] rounded-full cursor-pointer">
               <div className="mr-1">
                 <span>
@@ -101,7 +101,7 @@ const AddNewCourseCard = () => {
             </button>
             </Link>
             <div className="lg:flex lg:justify-space-between"></div>
-            <Link to="/courselist">
+            <Link to="/teambcourselist">
               <button className="w-full mb-5 lg:mb-0 lg:mt-5 btn-style lg:w-[120px] lg:flex lg:justify-center xl:w-[170px] rounded-full ">
                 <div className="mr-1">
                   <span>
@@ -113,11 +113,11 @@ const AddNewCourseCard = () => {
             </Link>
           </div>
         </form>
-        <footer className="flex justify-center pt-20">
+        {/* <footer className="flex justify-center pt-20">
         <div>
           <p className="text-[#4D9349] font-medium">All Rights Reserved | Copyright 2024</p>
         </div>
-      </footer>
+      </footer> */}
       </div>
         {/*January 19 2024 -gem */}
 
