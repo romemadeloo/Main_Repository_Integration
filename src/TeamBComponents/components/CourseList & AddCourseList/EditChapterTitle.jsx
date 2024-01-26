@@ -92,7 +92,7 @@ const EditChapterTitle = () => {
 
             <div className="2xl:w-[297px] 2xl:h-[65px] lg:w-[20%] lg:flex lg:justify-center lg:items-center gap-5 ml-16">
               <Link
-                to="/courseoverview"
+                to="/teambcourseoverview"
                 className=" h-[10vh] flex items-center justify-center w-[100%] lg:w-[100%] cursor-pointer">
                 <div className="bg-[#BCE8B1] w-[100%] flex justify-center items-center pr-2 justify-end h-[5vh] lg:h-[50px] rounded-sm lg:rounded-[1rem]">
                   <span className="pr-3">

@@ -68,7 +68,7 @@ const CourseOverviewCard = () => {
             {chapterlist.map((chapter, idx) => {
               return (
                 <Link
-                  to="/addtopictitlepage"
+                  to="/teambaddtopictitlepage"
                   key={idx}
                   className="flex 2xl:w-[1186px] 2xl:h-[65px] lg:w-[80%] justify-between items-center">
                   <div className="h-[1.5rem] w-[1.5rem] bg-[#126912] rounded-[100%]"></div>
@@ -90,7 +90,7 @@ const CourseOverviewCard = () => {
 
             <div className="lg:w-[65%] lg:flex lg:justify-center gap-5 ml-16">
               <Link
-                to="/createnewchaptertitle"
+                to="/teambcreatenewchaptertitle"
                 className="lg:rounded-[1rem] h-[5vh] lg:h-[50px] 2xl:h-[65px] flex items-center justify-center w-[100%] lg:w-[100%] cursor-pointer bg-[#BCE8B1]">
                 <div className="flex items-center justify-center w-full">
                   <span className="pr-4">
@@ -104,7 +104,7 @@ const CourseOverviewCard = () => {
               <div className="lg:flex lg:justify-space-between"></div>
 
               <Link
-                to="/editchaptertitle"
+                to="/teambeditchaptertitle"
                 className=" lg:rounded-[1rem] h-[5vh] lg:h-[50px] 2xl:h-[65px] flex items-center justify-center w-[100%] lg:w-[100%] cursor-pointer bg-[#BCE8B1]">
                 <div className="flex items-center justify-center w-full ">
                   <span className="pr-4 ">
