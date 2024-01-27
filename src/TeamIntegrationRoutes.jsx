@@ -60,7 +60,7 @@ function TeamIntegrationRoutes() {
         />
         <Route path="/teambaddtopictitlepage" element={<TeamBAddTopicTitlePage />} />
         <Route path="/teambdisplaytopic" element={<TeamBDisplayTopic />} />
-        <Route path="/teambedittopic" element={<TeamBEditTopicPage />} />
+        <Route path="/teambedittopic" element={<TeamBEditTopicPage />} />t
       </Routes>
     </>
   );
