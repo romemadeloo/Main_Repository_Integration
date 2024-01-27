@@ -1,6 +1,7 @@
+//* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from "./TeamA_AuthContext";
+import { useAuth } from "./AuthContext";  
 
 
 function TeamA_LoginForm() {
@@ -20,10 +21,10 @@ function TeamA_LoginForm() {
 
     try {
       // Hardcoded logic to check email and password
-      if (email === 'student@gmail.com' && password === 'tgsivsbu') {
-        navigate('/TeamBdashboard'); // Redirect to TeamBdashboard
-      } else if (email === 'faculty@gmail.com' && password === 'tgsivsbu') {
-        navigate('/TeamCdashboard'); // Redirect to TeamCdashboard
+      if (email === 'student@gmail.com' && password === 'admin123') {
+        navigate('/TeamCdashboard'); // Redirect to TeamBdashboard
+      } else if (email === 'faculty@gmail.com' && password === 'admin123') {
+        navigate('/TeamBdashboard'); // Redirect to TeamCdashboard
       } else {
         // If email or password is incorrect, perform normal login
         await handleLogin({ email, password }, navigate);
