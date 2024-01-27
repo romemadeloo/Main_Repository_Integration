@@ -30,6 +30,26 @@ import TeamBAddTopicTitlePage from "./TeamBComponents/components/Topic/AddTopicT
 import TeamBEditChapterTitle from "./TeamBComponents/components/CourseList & AddCourseList/EditChapterTitle";
 import TeamBCreateNewChapterTitle from "./TeamBComponents/components/CourseList & AddCourseList/CreateNewChapterTitle";
 
+// TEAM C IMPORT
+
+import TeamC_Dashboard from "./TeamCComponents/pages/dashboard";
+import TeamC_Assessments from "./TeamCComponents/pages/assessment";
+import TeamC_Course from "./TeamCComponents/pages/course";
+import TeamC_Forum from "./TeamCComponents/pages/Forum";
+import TeamC_Sidebar from "./TeamCComponents/components/sidebar";
+import TeamC_CourseSql1 from "./TeamCComponents/pages/course/course1_sql";
+import TeamC_CourseSvn1 from "./TeamCComponents/pages/course/course1_svn";
+import TeamC_CourseHprog1 from "./TeamCComponents/pages/course/course1_hprog";
+import TeamC_CourseSvn2 from "./TeamCComponents/pages/course/course2_svn";
+import TeamC_CourseHprog2 from "./TeamCComponents/pages/course/course2_hprog";
+import TeamC_CourseSql2 from "./TeamCComponents/pages/course/course2_sql";
+import TeamC_CourseSql3 from "./TeamCComponents/pages/course/course3_sql";
+import TeamC_CourseSvn3 from "./TeamCComponents/pages/course/course3_svn";
+import TeamC_CourseHprog3 from "./TeamCComponents/pages/course/course3_hprog";
+import TeamC_ChapterSql from "./TeamCComponents/pages/chapter_sql";
+import TeamC_ChapterSvn from "./TeamCComponents/pages/course";
+import TeamC_ChapterHprog from "./TeamCComponents/pages/chapter_hprog";
+
 function TeamIntegrationRoutes() {
   return (
     <>
@@ -54,14 +74,34 @@ function TeamIntegrationRoutes() {
         <Route path="/teambaddnewcourse" element={<TeamBAddNewCourse />} />
         <Route path="/teambcourseoverview" element={<TeamBCourseOverview />} />
         <Route path="/teambeditchaptertitle" element={<TeamBEditChapterTitle />} />
-        <Route
-          path="/teambcreatenewchaptertitle"
-          element={<TeamBCreateNewChapterTitle />}
-        />
+        <Route path="/teambcreatenewchaptertitle" element={<TeamBCreateNewChapterTitle />}/>
         <Route path="/teambaddtopictitlepage" element={<TeamBAddTopicTitlePage />} />
         <Route path="/teambdisplaytopic" element={<TeamBDisplayTopic />} />
-        <Route path="/teambedittopic" element={<TeamBEditTopicPage />} />t
-      </Routes>
+        <Route path="/teambedittopic" element={<TeamBEditTopicPage />} />
+
+        {/* TEAM C */}
+          <Route path="/teamcdashboard" element={<TeamC_Dashboard />} />
+          <Route path="/assessment" element={<TeamC_Assessments />} />
+          <Route path="/course" element={<TeamC_Course />} />
+          <Route path="/forum" element={<TeamC_Forum />} />
+            {/* COURSE 1 */}
+          <Route path="/course1_svn/*" element={<><TeamC_Sidebar /><TeamC_CourseSvn1 /></>}/>
+          <Route path="/course1_hprog/*" element={<><TeamC_Sidebar /><TeamC_CourseHprog1 /></>}/>
+          <Route path="/course1_sql/*" element={<><TeamC_Sidebar /><TeamC_CourseSql1 /></>}/>
+            {/* COURSE 2 */}          
+          <Route path="/course2_svn/*" element={<><TeamC_Sidebar /><TeamC_CourseSvn2 /></>}/>
+          <Route path="/course2_hprog/*" element={<><TeamC_Sidebar /><TeamC_CourseHprog2 /></>}/>
+          <Route path="/course2_sql/*" element={<><TeamC_Sidebar /><TeamC_CourseSql2 /></>}/>
+            {/* COURSE 3 */}
+          <Route path="/course3_svn/*" element={<><TeamC_Sidebar /><TeamC_CourseSvn3 /></>}/>
+          <Route path="/course3_hprog/*" element={<><TeamC_Sidebar /><TeamC_CourseHprog3 /></ >}/>
+          <Route path="/course3_sql/*" element={<><TeamC_Sidebar /><TeamC_CourseSql3 /></>}/> 
+            {/* CHAPTER LIST */}
+          <Route path="/chapters_svn/*" element={<TeamC_ChapterSvn />} />
+          <Route path="/chapters_sql/*" element={<TeamC_ChapterSql />} />
+          <Route path="/chapters_hprog/*" element={<TeamC_ChapterHprog />} />
+
+          </Routes>
     </>
   );
 }
