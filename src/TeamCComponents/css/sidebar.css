@@ -1,23 +1,3 @@
-/* Sidebar styles */
-.c_sidebar_main {
-  bottom: 0; /* FOR PULLING THE SIDEBAR DOWNWARDS */
-  padding: 70px 0 0; /* FOR SIDEBAR HEIGHT */
-  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 50%), 0 5px 15px 0 rgb(0 0 0 / 30%); /* FOR SHADOW EFFECT */
-  overflow-y: auto; /* OVERFLOW PROPERTY TO WRAP LONG TEXTS */
-  position: fixed;
-  z-index: 1; /* Ensure this value is higher than the z-index of mainLayout */
-  height: 100%;
-  width: 15%; /* Set the width as a percentage */
-  background-color: #126912;
-  white-space: nowrap;
-}
-
-@media (max-width: 991.98px) {  
-  .c_sidebar_main {
-    width: 100%; /* FULL WIDTH FOR SMALLER SCREENS */
-  }
-}
-
 .c_sidebar_main .active {
   border-radius: 5px;
   box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
@@ -39,16 +19,10 @@
 .c_sidebar_sidebaritems.sidebarItems:focus,
 .c_sidebar_sidebaritems.sidebarItems:hover {
   color: #0e3b03;
+  background-color: #ffffff;
 }
 
-.c_sidebar_sidebarTitle {
-  font-size: 200%; /* Adjust the font size as needed */
-  color: #ffffff; /* Set the text color */
-  white-space: wrap; /* Prevent text wrapping */
-  text-align: center;
-  align-items: center;
-  font-size: 1.7rem !important;
-}
+
 
 /* mainLayout_styles.css */
 .c_chapcourse_mainlayout {

@@ -7,7 +7,7 @@ import "../css/slideshow_dashboard.css";
 function CoursePreview () {
 
   return (
-<div className="c_cardpreview_cardouter course-preview-ctn ">
+<div className="course-preview-ctn" id="c_cardpreview_cardouter" style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', textAlign: 'left', maxHeight: '100%'}}>
 {/* SQL QUERY */}
 <div className="card-container">
   <div className="card border-success mt-3 mb-3 h-100" style={{ maxWidth: '235px', borderRadius: '10px' }}>

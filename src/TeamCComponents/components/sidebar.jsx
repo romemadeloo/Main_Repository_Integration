@@ -63,13 +63,13 @@ switch (pathname) {
     return (
         <>
           <div className="c_sidebar_maincontainer">
-  <div className="c_sidebar_main sidebar">
+  <div className="c_sidebar_main sidebar" style={{  bottom: '0', padding: '70px 0 0', boxShadow: '0 2px 5px 0 rgb(0 0 0 / 50%), 0 5px 15px 0 rgb(0 0 0 / 30%)', overflowY: 'auto', position: 'fixed', zIndex: '1', height: '100%', width: '15%', backgroundColor: '#126912', whiteSpace: 'nowrap'}}>
     <hr />
-    <span className="d-flex justify-content-center c_sidebar_sidebarTitle">{sidebarTitle}</span>
+    <span className="d-flex justify-content-center c_sidebar_sidebarTitle" style={{ fontSize: '200%', color: '#ffffff', whiteSpace: 'wrap', textAlign: 'center', alignItems: 'center', fontSize: '1.7rem !important'}}>{sidebarTitle}</span>
     <ul className="nav nav-pills flex-column mb-auto">
       {/* START OF SIDEBAR ITEM */}
       <li className="sidebarItem nav-item">
-        <a onClick={() => showNextTopic(0)} className="c_sidebar_sidebaritems sidebarItems nav-link" aria-current="page">
+        <a onClick={() => showNextTopic(0)} className="c_sidebar_sidebaritems sidebarItems nav-link"  aria-current="page">
           HOME
         </a>
       </li>

@@ -14,14 +14,14 @@ function TeamC_ChapterSvn() {
         {/* Chapter 1 */}
         <div className="c_course_itemcontainer d-flex align-items-center">
 
-          <div className='c_course_tag d-flex align-items-center justify-content-center'>
+          <div className='c_course_tag d-flex align-items-center justify-content-center' id="c_course_tag ">
             <span>BSQL-01</span>
           </div>  
 
           <div className="c_course_cardmain card flex-grow-1" style={{ marginTop: '10px' }}>
             <Link to="/chapters_sql" className="h4 text-white text-decoration-none c_chapter_cardtext">
               <div className="card-body d-flex c_course_cardbody" style={{ backgroundColor: '#126912', borderRadius: '10px' }}>
-                The SQL Query
+                The SQL Query   
               </div>
             </Link>
           </div>
