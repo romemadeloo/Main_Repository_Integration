@@ -47,11 +47,16 @@ function TeamA_NewPassForm() {
             required
           />
         </div>
-        <button type="button" onClick={handleTogglePassword}>
+        <button
+          type="button" 
+          className="Show-button"
+          style={{ backgroundColor: '#126912' }}
+          onClick={handleTogglePassword}
+        >
           {showPassword ? 'Hide Password' : 'Show Password'}
         </button>
-        <Link to="/dashboard">
-          <button>Confirm</button>
+        <Link to="/">
+          <button type="submit" className="Confirm-button" style={{ backgroundColor: '#126912' }}>Confirm</button>
         </Link>
       </form>
 
