@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { enroll } from "../js/script";
 import CoursePreview from "../components/course_preview";
+import Team_D_HeaderV2 from "../../TeamDComponents/Team_D_HeaderV2";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -9,6 +10,7 @@ function TeamC_Dashboard() {
   return (
     <Fragment>
       {/* Header title */}
+      <Team_D_HeaderV2/>
       <div className="c_dashboard_header header p-3 h-50 d-flex align-items-center justify-content-center">
         <div className="c_dashboard_title title p-3 text-center">
           <div className="c_dashboard_japchar jap-char">
