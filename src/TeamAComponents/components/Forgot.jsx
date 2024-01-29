@@ -19,7 +19,11 @@ function Forgot() {
       </div>
       <div className="forgot-navi">
         <div className="home-button">
-          <Home />
+        <Link to="/">
+          
+            <button className='login-button'>Home</button>
+           
+          </Link>
         </div>
       </div>
       <div className="forgot-content">

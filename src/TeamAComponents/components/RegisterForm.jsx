@@ -139,7 +139,7 @@ function RegisterForm() {
         </div>
       </Link>
        <Link to="/Dashboard">
-      <button id="SigUp_Btn">Sign up</button>
+<button type="submit" className="TeamA-button" style={{ backgroundColor: '#126912' }}>Sign Up</button>
       </Link>
     </form>
   );

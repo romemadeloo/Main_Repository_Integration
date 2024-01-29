@@ -14,6 +14,7 @@ import Verification from "../src/TeamAComponents/components/Verification";
 import ChangePassword from "../src/TeamAComponents/components/ChangePassword";
 import About from "../src/TeamAComponents/components/About";
 import Footer from "./TeamAComponents/components/Footer";
+import Email from "./TeamAComponents/components/Email";
 
 function TeamA_Router() {
   return (
@@ -30,6 +31,7 @@ function TeamA_Router() {
         <Route path="/navigation" element={<Navigation />} />
         <Route path="/change" element={<ChangePassword />} />
         <Route path="/about" element={<About />} />
+        <Route path="/email" element={<Email/>}/>
       </Routes>
   
     </>
