@@ -7,6 +7,15 @@ import '../css/chapter_list.css';
 function TeamC_ChapterHprog() {
   return (
     <>
+    {/* Back button */}
+    <Link to='/course' className="buttonReturn d-flex align-items-center c_chapter_returncontainer">
+          <div className="d-flex align-items-center">
+            <div>
+              <img src="/pics/return1.png" className="btnReturn c_chapter_return" alt="return-icon" />
+            </div>
+            <span className="returnTitle c_chapter_returnText">Back</span>
+          </div>
+        </Link>
       <div className="container mt-5 mx-auto">
         <h2 className="text-left mb-4">HTML Programming Chapters</h2>
         <hr />
@@ -59,16 +68,6 @@ function TeamC_ChapterHprog() {
           </div>
           </div>
         </div>
-
-        {/* Back button */}
-        <Link to='/course' className="buttonReturn d-flex align-items-center c_chapter_returncontainer">
-          <div className="d-flex align-items-center">
-            <div>
-              <img src="/pics/return1.png" className="btnReturn c_chapter_return" alt="return-icon" />
-            </div>
-            <span className="returnTitle c_chapter_returnText">Back</span>
-          </div>
-        </Link>
       </div>
     </>
   )

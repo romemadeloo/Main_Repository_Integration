@@ -2,7 +2,6 @@ import { Fragment } from "react";
 import { useLocation } from "react-router-dom";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 import '../../css/sidebar.css';
 

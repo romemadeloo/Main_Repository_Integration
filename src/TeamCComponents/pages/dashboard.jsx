@@ -1,8 +1,7 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { enroll } from "../js/script";
-import CardCarousel from "../components/slideshow";
-
+import CoursePreview from "../components/course_preview";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -32,23 +31,23 @@ function TeamC_Dashboard() {
       </div>
 
       {/* Courses */}
-      <CardCarousel />
+      <CoursePreview />
       {/* End of Courses */}
 
       {/* Modals */}
-      {/* MODAL C-LANG */}
+      {/* MODAL SQL */}
       <div
-        className="modal fade"
-        id="exampleModal1"
+        className="modal-sql modal fade"
+        id="modalSql"
         tabIndex="-1"
-        aria-labelledby="exampleModalLabel1"
+        aria-labelledby="modalSql"
         aria-hidden="true"
       >
         <div className="modal-dialog">
           <div className="modal-content" style={{ backgroundColor: "#D9FFCF" }}>
             <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel1">
-                C Language Course
+              <h5 className="modal-title" id="modalSql">
+                The SQL Query Course
               </h5>
               <button
                 type="button"
@@ -96,7 +95,7 @@ function TeamC_Dashboard() {
       {/* MODAL SUBVERSION */}
       <div
         className="modal fade"
-        id="exampleModal2"
+        id="modalSvn"
         tabIndex="-1"
         aria-labelledby="exampleModalLabel2"
         aria-hidden="true"
@@ -104,7 +103,7 @@ function TeamC_Dashboard() {
         <div className="modal-dialog">
           <div className="modal-content" style={{ backgroundColor: "#D9FFCF" }}>
             <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel2">
+              <h5 className="modal-title" id="modalSvn">
                 The Subversion Course
               </h5>
               <button
@@ -153,7 +152,7 @@ function TeamC_Dashboard() {
       {/* MODAL HTML PROGRAMMING */}
       <div
         className="modal fade"
-        id="exampleModal3"
+        id="modalHtml"
         tabIndex="-1"
         aria-labelledby="exampleModalLabel3"
         aria-hidden="true"
@@ -161,7 +160,7 @@ function TeamC_Dashboard() {
         <div className="modal-dialog">
           <div className="modal-content" style={{ backgroundColor: "#D9FFCF" }}>
             <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel3">
+              <h5 className="modal-title" id="modalHtml">
                 HTML Programming Course
               </h5>
               <button
@@ -212,7 +211,6 @@ function TeamC_Dashboard() {
       >
         <div className="flex-grow-1"></div>
         <p className="footerText text-center">
-          All Rights Reserved | Copyright © 2024
         </p>
       </div>
 
