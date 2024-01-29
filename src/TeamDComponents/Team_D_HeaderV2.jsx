@@ -72,7 +72,7 @@ const Team_D_HeaderV2 = () => {
             <li className="divider"></li>
             <li>
               <NavLink
-                to="/"
+                to="/TeamCdashboard"
                 activeClassName="active"
                 onClick={closeMobileNavbar}
               >
