@@ -15,6 +15,7 @@ import Verification from "../src/TeamAComponents/components/Verification";
 import ChangePassword from "../src/TeamAComponents/components/ChangePassword";
 import About from "../src/TeamAComponents/components/About";
 import Footer from "./TeamAComponents/components/Footer";
+import Email from "./TeamAComponents/components/Email";
 
 // TEAM B IMPORTS
 
@@ -49,6 +50,7 @@ import TeamC_CourseHprog3 from "./TeamCComponents/pages/course/course3_hprog";
 import TeamC_ChapterSql from "./TeamCComponents/pages/chapter_sql";
 import TeamC_ChapterSvn from "./TeamCComponents/pages/course";
 import TeamC_ChapterHprog from "./TeamCComponents/pages/chapter_hprog";
+import TeamA_NewPass from "./TeamAComponents/components/NewPass";
 
 function TeamIntegrationRoutes() {
   return (
@@ -66,6 +68,8 @@ function TeamIntegrationRoutes() {
         <Route path="/navigation" element={<Navigation />} />
         <Route path="/change" element={<ChangePassword />} />
         <Route path="/about" element={<About />} />
+        <Route path="/email" element={<Email/>} />
+        <Route path="new" element={<TeamA_NewPass/>}/>
 
         {/* TEAM B */}
         <Route path="/teambdashboard" element={<TeamBDashboard />} />

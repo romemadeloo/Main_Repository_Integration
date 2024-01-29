@@ -30,7 +30,7 @@ function Login({ onNavigateHome, onForgotPassword }) {
       <div style={{display: "flex", flexDirection: "column", alignItems: "start", }}>
       <div>
         <div className="auth-label">
-          <h1>SIGN IN</h1>
+          <h1>LOG IN</h1>
         </div>
       </div>
       <div className="auth-content">

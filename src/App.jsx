@@ -10,7 +10,7 @@ const App = () => {
       {/* <TeamB_Router /> */}
 
       <TeamIntegrationRoutes/>
-      <h1>hi</h1>
+  
     </>
   );
 };
