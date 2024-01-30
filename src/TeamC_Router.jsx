@@ -3,7 +3,6 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import TeamC_Dashboard from '../src/TeamCComponents/pages/dashboard';
 import TeamC_Course from '../src/TeamCComponents/pages/course';
-import TeamC_Navbar from '../src/TeamCComponents/components/navbar';
 import TeamC_Assessments from '../src/TeamCComponents/pages/assessment';
 import TeamC_Sidebar from '../src/TeamCComponents/components/sidebar';
 import TeamC_Forum from './TeamCComponents/pages/Forum';
@@ -33,7 +32,6 @@ function TeamC_Router() {
   
   return (
     <>
-      <TeamC_Navbar />
       <div className="navcontainer">
         <Routes>
           <Route path="/" element={<TeamC_Dashboard />} />
@@ -44,7 +42,7 @@ function TeamC_Router() {
           {/* COURSE 1 */}
           <Route path="/course1_svn/*" element={<><TeamC_Sidebar /><TeamC_CourseSvn1 /></>}
           />
-          <Route path="/course1_hprog/*" element={<><TeamC_Sidebar /><TeamC_CourseHprog1 /></>}
+          <Route path="/course1_hprog/*" element={<><TeamC_Sidebar/><TeamC_CourseHprog1 /></>}
           />
           <Route path="/course1_sql/*" element={<><TeamC_Sidebar /><TeamC_CourseSql1 /></>}
           />

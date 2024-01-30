@@ -1,37 +1,5 @@
-.c_course_scoremain{
-  margin-top: 0.6rem; 
-  margin-left: 0.99rem;
-}
-.c_course_scoresub{
-  background-color: #126912;
-  width: 5rem; 
-  height: 5rem; 
-}
-
-.c_course_tag {
-  margin-top: 0.5rem;
-  margin-right: 0.5rem;
-  width: 7rem;
-  height: 4rem;
-  background-color: #BCE8B1;
-  border-radius: 0.5rem;
-  border: 2px solid #126912;
-
-}
-
-.c_course_cardmain {
-  will-change: filter;
-  transition: filter 300ms;
-}
-.c_course_cardbody,
-.c_course_cardmain {
-  background-color: #126912; 
-  border-radius: 1rem;
-}
 .c_course_itemcontainer:hover {
   filter: drop-shadow(0 0 1em #126912);
 }
 
-.courseButton{
-  color: #126912;
-}
+

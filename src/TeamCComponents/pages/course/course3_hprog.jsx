@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import { useLocation } from "react-router-dom";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import '../../css/sidebar.css';
 
@@ -57,12 +58,13 @@ function TeamC_CourseHprog3(){
                 <div className="d-grid gap-2 d-md-flex justify-content-md-end" style={{margin: '10px'}}>
                 <button className="btn  courseButton" 
                 data-bs-toggle="modal" 
-                data-bs-target="#mainId" 
+                data-bs-target="#mainId"
                 type="button"
                 style={{backgroundColor: '#D9FFCF',
                 borderColor: "0E3B03",
-                boxShadow: '0 2px 5px 0 rgb(0 0 0 / 25%), 0 5px 5px 0 rgb(0 0 0 / 30%)'
-                }}
+                boxShadow: '0 2px 5px 0 rgb(0 0 0 / 25%), 0 5px 5px 0 rgb(0 0 0 / 30%)',
+                color: '#126912',
+              }}
                 >Go to quiz</button>
 
                 <button className="btn  courseButton" 

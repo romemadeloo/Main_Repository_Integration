@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import { useLocation } from "react-router-dom";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import '../../css/sidebar.css';
 
@@ -61,8 +62,9 @@ function TeamC_CourseSvn1(){
                 type="button"
                 style={{backgroundColor: '#D9FFCF',
                 borderColor: "0E3B03",
-                boxShadow: '0 2px 5px 0 rgb(0 0 0 / 25%), 0 5px 5px 0 rgb(0 0 0 / 30%)'
-                }}
+                boxShadow: '0 2px 5px 0 rgb(0 0 0 / 25%), 0 5px 5px 0 rgb(0 0 0 / 30%)',
+                color: '#126912',
+              }}
                 >Go to quiz</button>
 
                 <button className="btn  courseButton" 
