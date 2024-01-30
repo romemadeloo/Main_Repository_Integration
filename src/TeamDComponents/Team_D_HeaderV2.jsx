@@ -95,8 +95,9 @@ const Team_D_HeaderV2 = () => {
               </NavDropdown>
             </li>
             <li>
+              {/* this is the forum */}
               <NavLink
-                to="/forums"
+                to="/ForumF"
                 activeClassName="active"
                 onClick={closeMobileNavbar}
               >

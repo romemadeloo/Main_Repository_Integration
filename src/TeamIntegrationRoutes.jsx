@@ -51,6 +51,7 @@ import TeamC_ChapterSql from "./TeamCComponents/pages/chapter_sql";
 import TeamC_ChapterSvn from "./TeamCComponents/pages/course";
 import TeamC_ChapterHprog from "./TeamCComponents/pages/chapter_hprog";
 import TeamA_NewPass from "./TeamAComponents/components/NewPass";
+import ForumF from "./TeamCComponents/pages/ForumF";
 
 // team D
 import Team_D_View from "./TeamDComponents/Team_D_View";
@@ -102,7 +103,8 @@ function TeamIntegrationRoutes() {
         <Route path="/teamcdashboard" element={<TeamC_Dashboard />} />
         <Route path="/assessment" element={<TeamC_Assessments />} />
         <Route path="/course" element={<TeamC_Course />} />
-        <Route path="/forum" element={<TeamC_Forum />} />
+        <Route path="/ForumF" element={<TeamC_Forum />} />
+
         {/* COURSE 1 */}
         <Route
           path="/course1_svn/*"
