@@ -1,22 +1,24 @@
 import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
 import { enroll } from "../js/script";
 import CoursePreview from "../components/course_preview";
 
+import "../css/base_style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function TeamC_Dashboard() {
   return (
     <Fragment>
       {/* Header title */}
-      <div className="header p-3 h-50 d-flex align-items-center justify-content-center" id="c_dashboard_header">
-        <div className="title p-3 text-center" id="c_dashboard_title">
-          <div className="jap-char" id="c_dashboard_japchar">
-            <h1 className="fw-bold" id="c_dashboard_char">
+      <div className="c_dashboard_header header p-3 h-50 d-flex align-items-center justify-content-center">
+        <div className="c_dashboard_title title p-3 text-center">
+          <div className="c_dashboard_japchar jap-char">
+            <h1 className="c_dashboard_char fw-bold" id="c_preview_headerTitle">
               月伝で自分のやり方を学びましょう。
             </h1>
           </div>
-          <div className="eng-char" id="c_dashboard_char">
-            <h4>Learn your way at Tsukiden.</h4>
+          <div className="eng-char" id="c_preview_headerSub">
+            <h4 id="c_preview_headerSub fw-bold">Learn your way at Tsukiden.</h4>
           </div>
         </div>
       </div>
@@ -24,7 +26,7 @@ function TeamC_Dashboard() {
 
       {/* Course Previews */}
       <div className="course-title">
-        <h1 className="course-prev fw-bold text-center mt-5">
+        <h1 className="course-prev fw-bold text-center mt-5" id="c_preview_headerTitle">   
           Course Previews
         </h1>
       </div>
@@ -207,7 +209,7 @@ function TeamC_Dashboard() {
       <div
         className="footerContainer d-flex flex-column align-items-center"
         style={{ color: "#0e3b03", minHeight: "1vh" }}
-      >
+      ><br/>
         <div className="flex-grow-1"></div>
         <p className="footerText text-center">
         </p>

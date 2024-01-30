@@ -5,7 +5,6 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
-
 function TeamC_Sidebar() {
     const { pathname } = useLocation();
 let sidebarTitle = '';
@@ -62,14 +61,14 @@ switch (pathname) {
 
     return (
         <>
-          <div className="c_sidebar_maincontainer">
-  <div className="c_sidebar_main sidebar" style={{  bottom: '0', padding: '70px 0 0', boxShadow: '0 2px 5px 0 rgb(0 0 0 / 50%), 0 5px 15px 0 rgb(0 0 0 / 30%)', overflowY: 'auto', position: 'fixed', zIndex: '1', height: '100%', width: '15%', backgroundColor: '#126912', whiteSpace: 'nowrap'}}>
+          <div className="container" id="c_sidebar_main">
+  <div className="c_sidebar_main sidebar">
     <hr />
-    <span className="d-flex justify-content-center c_sidebar_sidebarTitle" style={{ fontSize: '200%', color: '#ffffff', whiteSpace: 'wrap', textAlign: 'center', alignItems: 'center', fontSize: '1.7rem !important'}}>{sidebarTitle}</span>
+    <span className="d-flex justify-content-center" id="c_sidebar_sidebarTitle">{sidebarTitle}</span>
     <ul className="nav nav-pills flex-column mb-auto">
       {/* START OF SIDEBAR ITEM */}
       <li className="sidebarItem nav-item">
-        <a onClick={() => showNextTopic(0)} className="c_sidebar_sidebaritems sidebarItems nav-link"  aria-current="page">
+        <a onClick={() => showNextTopic(0)} className="sidebarItems nav-link" aria-current="page" id="c_sidebar_sidebaritems">
           HOME
         </a>
       </li>
