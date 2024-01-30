@@ -2,8 +2,10 @@ import { Fragment } from "react";
 import { useLocation } from "react-router-dom";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import '../../css/sidebar.css';
+import TeamC_Sidebar from "../../components/sidebar";
 
 
 function TeamC_CourseHprog1(){
@@ -28,8 +30,7 @@ function TeamC_CourseHprog1(){
   }
 
     return (
-        <Fragment>
-          <div id="layoutContainer">
+        <Fragment>  
           {/* Main layout */}
       <main className="c_chapcourse_mainlayout">
         {/* Start of Topic Container */}
@@ -61,6 +62,7 @@ function TeamC_CourseHprog1(){
                 type="button"
                 style={{backgroundColor: '#D9FFCF',
                 boxShadow: '0 2px 5px 0 rgb(0 0 0 / 25%), 0 5px 5px 0 rgb(0 0 0 / 30%)',
+                color: '#126912',
                 }}
                 >Go to quiz</button>
 
@@ -70,8 +72,8 @@ function TeamC_CourseHprog1(){
                 type="button"
                 style={{backgroundColor: '#0E3B03', 
                 color: 'white',
-                boxShadow: '0 2px 5px 0 rgb(0 0 0 / 25%), 0 5px 5px 0 rgb(0 0 0 / 30%)'
-                }}
+                boxShadow: '0 2px 5px 0 rgb(0 0 0 / 25%), 0 5px 5px 0 rgb(0 0 0 / 30%)', 
+              }}
                 >Download</button>
                </div>
               </div>
@@ -79,7 +81,6 @@ function TeamC_CourseHprog1(){
           </div>
         </div>
       </main>
-      </div>
       {/* End of Topic Container */}
       {/* End of Main Layout */}
     

@@ -1,11 +1,12 @@
 import React, { Fragment } from "react";
-
+import Team_D_HeaderV2 from "../../TeamDComponents/Team_D_HeaderV2";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 function TeamC_Assessments() {
   return (
     <Fragment>
+      <Team_D_HeaderV2/>
       <div className="container mt-5 mx-auto">
         <h2 className="text-left mb-4">ASSESSMENTS</h2>
 

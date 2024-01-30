@@ -1,10 +1,9 @@
 import { Link, useLocation } from 'react-router-dom';
-import { showNextTopic } from "../js/script";
+import { showNextTopic } from "../js/script.jsx";
 
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-
 
 function TeamC_Sidebar() {
     const { pathname } = useLocation();
@@ -62,14 +61,14 @@ switch (pathname) {
 
     return (
         <>
-          <div className="c_sidebar_maincontainer">
+          <div className="container" id="c_sidebar_main">
   <div className="c_sidebar_main sidebar">
     <hr />
-    <span className="d-flex justify-content-center c_sidebar_sidebarTitle">{sidebarTitle}</span>
+    <span className="d-flex justify-content-center" id="c_sidebar_sidebarTitle">{sidebarTitle}</span>
     <ul className="nav nav-pills flex-column mb-auto">
       {/* START OF SIDEBAR ITEM */}
       <li className="sidebarItem nav-item">
-        <a onClick={() => showNextTopic(0)} className="c_sidebar_sidebaritems sidebarItems nav-link" aria-current="page">
+        <a onClick={() => showNextTopic(0)} className="sidebarItems nav-link" aria-current="page" id="c_sidebar_sidebaritems">
           HOME
         </a>
       </li>

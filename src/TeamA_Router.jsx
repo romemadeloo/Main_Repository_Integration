@@ -14,7 +14,7 @@ import Verification from "../src/TeamAComponents/components/Verification";
 import ChangePassword from "../src/TeamAComponents/components/ChangePassword";
 import About from "../src/TeamAComponents/components/About";
 import Footer from "./TeamAComponents/components/Footer";
-import Email from "./TeamAComponents/components/Email";
+import Email from "./TeamAComponents/components/Email"; 
 import About from "../src/TeamAComponents/components/About";
 
 function TeamA_Router() {
