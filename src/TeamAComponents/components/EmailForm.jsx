@@ -52,8 +52,8 @@ function EmailForm({ onEmailForm }) {
           </Link>
           
        </p>
-        <Link to="/verify"> 
-          <button>Send to Email</button>
+        <Link to="/new"> 
+        <button type="submit" className="TeamA-button" style={{ backgroundColor: '#126912' }}>Send Code</button>
           </Link>
         
       </form>

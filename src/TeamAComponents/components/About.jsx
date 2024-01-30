@@ -5,6 +5,8 @@ import React from "react";
 import '../styles/Auth.css';
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
+import "../styles/Auth.css";
+
 
 // New component for the photo section
 const PhotoSection = () => {
@@ -46,11 +48,8 @@ const About = () => {
         </div>
         <nav>
           <ul>
-            <Link to='/dashboard'>
-              <button>Home</button>
-            </Link>
             <Link to='/'>
-              <button>Logout</button>
+              <button className="nav-HOME-button">Home</button>
             </Link>
             {/* Add more navigation links as needed */}
           </ul>
