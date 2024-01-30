@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { showNextTopic } from "../js/script";
+import { showNextTopic } from "../js/script.jsx";
 
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
