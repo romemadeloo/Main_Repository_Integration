@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '../css/chapter_list.css';
+import Team_D_HeaderV2 from "../../TeamDComponents/Team_D_HeaderV2";
 
 function TeamC_ChapterSql() {
   return (
     <>
+    <Team_D_HeaderV2/>
     {/* Back button */}
     <Link to='/course' className="buttonReturn d-flex align-items-center c_chapter_returncontainer" style={{ textDecoration: 'none', color: 'black', width: 'fit-content',}}>
           <div className="d-flex align-items-center">

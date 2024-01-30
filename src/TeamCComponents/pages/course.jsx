@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '../css/course_page.css';
+import Team_D_HeaderV2 from "../../TeamDComponents/Team_D_HeaderV2";
 
 function TeamC_ChapterSvn() {
   return (
     <>
+    <Team_D_HeaderV2/>
       <div className="container mt-5 mx-auto" style={{marginLeft: '5rem', marginRight: '5rem'}}>
         <h2 className="text-center mb-4" style={{fontWeight: 'bold', fontSize: '2rem'}}>The Program Overview</h2>
         <hr />
