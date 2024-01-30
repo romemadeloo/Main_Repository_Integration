@@ -12,11 +12,6 @@
   white-space: nowrap;
 }
 
-@media (max-width: 991.98px) {  
-  #c_sidebar_main {
-    width: 100%; /* FULL WIDTH FOR SMALLER SCREENS */
-  }
-}
 
 /* RESPONSIBLE FOR HIDING MAIN-LAYOUT WHEN USER HAS NOT CLICKED ANYTHING YET */
 .c_chapcourse_hidden {

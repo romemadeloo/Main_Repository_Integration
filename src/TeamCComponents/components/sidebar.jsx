@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { showNextTopic } from "../js/script.jsx";
+import { showNextTopic } from "../../TeamCComponents/js/script";
 
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -61,8 +61,8 @@ switch (pathname) {
 
     return (
         <>
-          <div className="container" id="c_sidebar_main">
-  <div className="c_sidebar_main sidebar">
+          <div className="container" id="c_sidebar_main" style={{zIndex: '1'}}>
+  <div className=" sidebar">
     <hr />
     <span className="d-flex justify-content-center" id="c_sidebar_sidebarTitle">{sidebarTitle}</span>
     <ul className="nav nav-pills flex-column mb-auto">

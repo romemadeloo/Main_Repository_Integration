@@ -48,7 +48,7 @@ import TeamC_CourseSql3 from "./TeamCComponents/pages/course/course3_sql";
 import TeamC_CourseSvn3 from "./TeamCComponents/pages/course/course3_svn";
 import TeamC_CourseHprog3 from "./TeamCComponents/pages/course/course3_hprog";
 import TeamC_ChapterSql from "./TeamCComponents/pages/chapter_sql";
-import TeamC_ChapterSvn from "./TeamCComponents/pages/course";
+import TeamC_ChapterSvn from "./TeamCComponents/pages/chapter_svn";
 import TeamC_ChapterHprog from "./TeamCComponents/pages/chapter_hprog";
 import TeamA_NewPass from "./TeamAComponents/components/NewPass";
 

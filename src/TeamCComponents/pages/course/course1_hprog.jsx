@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import '../../css/sidebar.css';
 import TeamC_Sidebar from "../../components/sidebar";
+import Team_D_HeaderV2 from "../../../TeamDComponents/Team_D_HeaderV2";
 
 
 function TeamC_CourseHprog1(){
@@ -31,6 +32,7 @@ function TeamC_CourseHprog1(){
 
     return (
         <Fragment>  
+          <Team_D_HeaderV2/>
           {/* Main layout */}
       <main className="c_chapcourse_mainlayout">
         {/* Start of Topic Container */}

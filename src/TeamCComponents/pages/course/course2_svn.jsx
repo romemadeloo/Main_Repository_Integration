@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import '../../css/sidebar.css';
-
+import Team_D_HeaderV2 from "../../../TeamDComponents/Team_D_HeaderV2";
 
 function TeamC_CourseSvn2(){
   const { pathname } = useLocation();
@@ -30,6 +30,7 @@ function TeamC_CourseSvn2(){
 
     return (
         <Fragment>
+          <Team_D_HeaderV2/>
           <div id="layoutContainer">
           {/* Main layout */}
       <main className="c_chapcourse_mainlayout">
