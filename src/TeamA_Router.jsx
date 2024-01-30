@@ -1,11 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
-
+import Dashboard from "../src/TeamAComponents/components/Dashboard";
 import Landing from "../src/TeamAComponents/components/Landing";
 import Login from "../src/TeamAComponents/components/Login";
 import Register from "../src/TeamAComponents/components/Register";
 import Forgot from "../src/TeamAComponents/components/Forgot";
-import Dashboard from "../src/TeamAComponents/components/Dashboard";
 import Profile from "../src/TeamAComponents/components/Profile";
 import { Route, Routes } from "react-router-dom";
 import Navigation from "../src/TeamAComponents/components/Navigation";
@@ -21,10 +20,9 @@ function TeamA_Router() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Landing />} />
+        <Route path="/" element={<Dashboard />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/forgot" element={<Forgot />} />
         <Route path="/verify" element={<Verification />} />
         <Route path="/profile" element={<Profile />} />

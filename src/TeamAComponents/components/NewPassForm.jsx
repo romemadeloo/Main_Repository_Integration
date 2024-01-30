@@ -50,11 +50,11 @@ function NewPassForm() {
           </button>
         </Link>
         <h2 className="email-title">Change Password</h2>
-        <p>Please Change Your Password Here.</p>
+        <p>Please Change Your Password Here</p>
         <label htmlFor="newPassword">
           <i className="fas fa-envelope"></i>
         </label>
-        <div className="email-input-field" style={{ marginBottom: '20px' }}>
+        <div className="email-input-field">
           <input
             type={showPassword ? 'text' : 'password'}
             placeholder="Enter New Password here*"
@@ -68,13 +68,11 @@ function NewPassForm() {
             onFocus={() => setNewPasswordError('')}
             required
           />
-          <button type="button" className="toggle-button" onClick={handleTogglePassword}>
-            {showPassword ? 'Hide' : 'Show'}
-          </button>
+         
         </div>
         <div className="email-input-field" style={{ marginBottom: '20px' }}>
           <input
-            style={{ marginTop: '30px' }}
+            style={{ marginTop: '5px' }}
             type={showPassword ? 'text' : 'password'}
             placeholder="Confirm New Password*"
             id="confirmPassword"
@@ -86,15 +84,18 @@ function NewPassForm() {
           />
         </div>
 
-        {newPassword === confirmPassword && newPassword.trim() !== '' && (
-          <span style={{ color: 'green', fontSize: '14px', marginTop: '35px', display: 'flex' }}>Passwords match</span>
-        )}
+        <div className='passstat'>
+          {newPassword === confirmPassword && newPassword.trim() !== '' && (
+            <span style={{ color: 'green', fontSize: '14px'}}>Passwords match</span>
+          )}
 
-        {newPassword !== confirmPassword && confirmPassword.trim() !== '' && newPassword.trim() !== '' && (
-          <span style={{ color: 'red', fontSize: '14px', marginTop: '35px', display: 'block' }}>{confirmPasswordError || 'Passwords do not match'}</span>
-        )}
 
-        <div style={{ marginTop: '0px' }}>
+          {newPassword !== confirmPassword && confirmPassword.trim() !== '' && newPassword.trim() !== '' && (
+            <span style={{ color: 'red', fontSize: '14px'}}>{confirmPasswordError || 'Passwords do not match'}</span>
+          )}
+        </div>
+
+        <div style={{ marginTop: '-60px' }}>
           <Link to="/dashboard">
             <button type="submit" className="Confirm-button" style={{ backgroundColor: '#126912' }}>Confirm</button>
           </Link>
