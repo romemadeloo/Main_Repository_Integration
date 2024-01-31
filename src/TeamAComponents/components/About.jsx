@@ -5,7 +5,6 @@ import React from "react";
 import "../styles/Auth.css";
 import { Link } from "react-router-dom";
 import "../styles/Auth.css";
-import Footer from "./Footer";
 
 // New component for the photo section
 // const PhotoSection = () => {
@@ -98,12 +97,19 @@ const About = () => {
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum facilis quae mollitia vitae. Atque provident fuga eum autem iure reiciendis quisquam magnam, aperiam minus neque laboriosam dolorem, molestiae culpa facilis!
               </p>
             </div>
+            <div>
               
+            </div>
             </div>
           </div>
           <div>
-<Footer/>
-          </div>
+      <footer className="flex justify-center p-5  bottom-0 w-full ">
+        <div>
+          <p className="text-[#4D9349] font-medium">All Rights Reserved | Copyright 2024</p>
+        </div>
+      </footer>
+    </div>
+        
    
     </>
   );

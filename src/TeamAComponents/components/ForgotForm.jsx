@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Footer from "./Footer";
 
 function ForgotForm({ onForgotPassword }) {
   const [email, setEmail] = useState('');
@@ -57,6 +58,7 @@ const handleForgot = (e) => {
           <div className="forgot-content"></div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

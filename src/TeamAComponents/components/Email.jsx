@@ -18,7 +18,7 @@ function Email() {
       </div>
       <div className="email-navi">
         <div className="home-button">
-          <Link to="/verify">
+          <Link to="/dashboard">
             <button>Home</button>
           </Link>
         </div>
