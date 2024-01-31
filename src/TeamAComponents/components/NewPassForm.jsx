@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Footer from "./Footer";
 
 function NewPassForm() {
   const [newPassword, setNewPassword] = useState('');
@@ -110,7 +111,9 @@ function NewPassForm() {
           <img src="your-image.png" className="email-image" alt="" />
         </div>
       </div>
+      <Footer/>
     </div>
+ 
   );
 }
 
