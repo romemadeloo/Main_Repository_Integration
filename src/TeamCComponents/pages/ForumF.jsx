@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../css/ffront.css';
 import { IoIosSearch } from 'react-icons/io';
 
+
 const ForumF = () => {
   const [isSearchButtonDisabled, setIsSearchButtonDisabled] = useState(true);
   const [showDiscussionForm, setShowDiscussionForm] = useState(false);
@@ -127,20 +128,21 @@ const ForumF = () => {
 
   return (
     <>
-      <div className="container stretch-forum">
+    <body className="ForumFSpace">
+    <div className="container stretch-forum">
         <div className="row justify-content-center">
-          <div className="c_forum_adjustm col-lg-12 mb-3">
+          <div className="c_forum_adjustm col-lg-12 mb-3">{/*30/24*/}
             <div className="row text-left mb-5">
               <div className="col-lg-12 text-left">
                 <h1 className="c_forum_big">FORUM</h1>
               </div>
-              <div className="c_forum_adjustm col-lg-9mx-auto">
+              <div className="c_forum_adjustm col-lg-9mx-auto">{/*30/24*/}
                 <div className="row text-left mb-5">
                   <div className="col-lg-6">
                     <button
                       className="c_forum_btngr btn btn-lg btn-success rounded-5 py-2 px-4 mb-3 bg-op-6 roboto-bold"
                       onClick={toggleDiscussionForm}
-                    >
+                    >{/*30/24*/}
                       Add discussion
                     </button>
                   </div>
@@ -152,7 +154,7 @@ const ForumF = () => {
                         id="searchDiscussion"
                         placeholder="Search topic..."
                         onChange={(e) => setSearchTerm(e.target.value)}
-                      />
+                      />{/*30/24*/}
                       <button
                         id="c_forum_btnsrch"
                         className="btn btn-success"
@@ -160,7 +162,7 @@ const ForumF = () => {
                         onClick={searchDiscussions}
                         disabled={isSearchButtonDisabled}
                       >
-                        <IoIosSearch />
+                        <IoIosSearch />{/*30/24*/}
                       </button>
                     </div>
                   </div>
@@ -188,7 +190,7 @@ const ForumF = () => {
                           placeholder="Enter discussion content"
                           value={discussionContent}
                           onChange={(e) => setDiscussionContent(e.target.value)}
-                        />
+                        />{/*30/24*/}
                       </div>
                       <div className="d-md-flex justify-content-md-end">
                         <button
@@ -210,7 +212,7 @@ const ForumF = () => {
                     <h5>
                       <a href={`/Discussion/${post.title}`} className="c_forum_decor text-primary">
                         {post.title}
-                      </a>
+                      </a>{/*30/24*/}
                     </h5>
                     <p className="text-sm">
                       <span className="op-6">Posted by</span>{' '}
@@ -232,6 +234,7 @@ const ForumF = () => {
           </div>
         </div>
       </div>
+    </body>
     </>
   );
 };
