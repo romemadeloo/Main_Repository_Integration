@@ -7,7 +7,7 @@ import "../styles/Auth.css";
 function TeamA_NewPass({ onNewPassForm }) {
   return (
     <div className="email-container">
-     <div className="auth-header">
+      <div className="home-header">
         
         <img
           src="..\src\assets\TeamAassets\companyLogo.png" 
