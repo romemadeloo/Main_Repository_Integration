@@ -1,17 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
-body {
-  display: block;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
-  background-color:#EBFFE5 ;
-  font-family: sans-serif;
-  height: 100vh;
-  
-}
-
 /* src/App.css */
 .app {
   text-align: center;
@@ -812,17 +800,24 @@ input::placeholder{
   text-transform: uppercase;
   letter-spacing: 5px;
 }
+.Prof1-info_data {
+  display: flex;
+  flex-direction: column;
+}
 
-.Prof1-info_data,
-.Prof1-projects_data {
+.Prof1-info_row {
   display: flex;
   justify-content: space-between;
-
+  margin-bottom: 10px;
 }
 
-.Prof1-data {
-  width: 45%;
+.Prof1-info_row h4 {
+  margin-right: 10px;
+  font-weight: bold;
 }
+
+
+
 
 .Prof1-data h4 {
   color: #0e3b03;
@@ -889,7 +884,6 @@ input::placeholder{
   box-shadow: 0 11px 20px 0 rgba(14, 59, 3, 0.1);
   margin: 20px;
   border-radius: 10px;
-  padding-bottom: 45px;
 }
 
 .Prof2-left {
@@ -901,7 +895,6 @@ input::placeholder{
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
 }
 
 .Prof2-left img {
@@ -954,6 +947,7 @@ input::placeholder{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin: 15px;
   
 }
 .Prof2-data input {
@@ -1017,9 +1011,8 @@ input::placeholder{
 .Prof2-buttons {
   display: flex;
   justify-content: flex-end; /* Align buttons to the right */
-  margin-top: 10px; /* Adjust the top margin as needed */
+  margin-top: 60px; /* Adjust the top margin as needed */
   margin-right: 10px; /* Adjust the right margin as needed */
-  margin-bottom: 10px; /* Add margin at the bottom */
   column-gap: 10px;
 }
 
@@ -1129,7 +1122,6 @@ input::placeholder{
   box-shadow: 0 11px 20px 0 rgba(14, 59, 3, 0.1);
   margin: 20px;
   border-radius: 10px;
-  padding-bottom: 85px;
 }
 
 .Change-left {
@@ -1141,7 +1133,7 @@ input::placeholder{
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  
 }
 
 .Change-left img {
@@ -1175,7 +1167,7 @@ input::placeholder{
 
 .Change-right {
   width: 65%;
-  padding: 30px 25px;
+  padding: 25px 25px;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
 }
@@ -1194,6 +1186,7 @@ input::placeholder{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin:15px;
 }
 
 .Change-data {
@@ -1233,10 +1226,12 @@ input::placeholder{
 .Change-buttons {
   display: flex;
   justify-content: flex-end; /* Align buttons to the right */
-  margin-top: 10px; /* Adjust the top margin as needed */
+  margin-top: 60px; /* Adjust the top margin as needed */
   margin-right: 10px; /* Adjust the right margin as needed */
-  margin-bottom: 10px;
   column-gap: 10px;
+}
+.Change-Backbutton:hover {
+  background-color: gray;
 }
 
 .save-button
@@ -1274,13 +1269,16 @@ input::placeholder{
   margin-left: 20px;
 }
 .Change-Backbutton {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background-color: rgb(76, 175, 80);
-  border-radius: 100px;
-  margin-top: 140px;
-  margin-left: 30px;
+  cursor: pointer;
+  display:flex;
+  padding: 10px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  background-color:#126912; 
+  margin-top: 20px;
+  margin-left: 20px;
 }
 
 .Forgot-Backbutton {
