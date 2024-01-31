@@ -9,17 +9,17 @@ function TeamC_ChapterSql() {
   return (
     <>
     <Team_D_HeaderV2/>
-    {/* Back button */}
-    <Link to='/course' className="buttonReturn d-flex align-items-center c_chapter_returncontainer" style={{ textDecoration: 'none', color: 'black', width: 'fit-content',}}>
-          <div className="d-flex align-items-center">
+      {/* Back button */}
+      <Link to='/course' className="buttonReturn d-flex align-items-center c_chapter_returncontainer" style={{ textDecoration: 'none', color: 'black', width: 'fit-content',}}>
+          <div className="d-flex align-items-center" style={{marginTop: '1rem'}}>
             <div>
               <img src="/pics/return1.png" className="btnReturn c_chapter_return" alt="return-icon" style={{ transition: 'transform .1s', color: '#ffffff', 
-              margin: '0 auto', width: '2rem', height: '2rem', }}/>
+                    marginLeft:'1rem',width: '2rem', height: '2rem', }}/>
             </div>
             <span className="returnTitle c_chapter_returnText" style={{ marginLeft: '0.5rem', color: '#126912', fontSize: '1.5rem', marginTop: '0rem',}}>Back</span>
           </div>
         </Link>
-      <div className="container mt-5 mx-auto">
+      <div className="container mt-4 mx-auto">
         <h2 className="text-left mb-4" style={{fontWeight: 'bold', fontSize: '2rem'}}>The SQL Query Chapters</h2>
         <hr />
 

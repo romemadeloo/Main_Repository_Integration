@@ -37,7 +37,6 @@ import TeamC_Dashboard from "./TeamCComponents/pages/dashboard";
 import TeamC_Assessments from "./TeamCComponents/pages/assessment";
 import TeamC_Course from "./TeamCComponents/pages/course";
 import TeamC_Forum from "./TeamCComponents/pages/Forum";
-import TeamC_Sidebar from "./TeamCComponents/components/sidebar";
 import TeamC_CourseSql1 from "./TeamCComponents/pages/course/course1_sql";
 import TeamC_CourseSvn1 from "./TeamCComponents/pages/course/course1_svn";
 import TeamC_CourseHprog1 from "./TeamCComponents/pages/course/course1_hprog";
@@ -48,7 +47,7 @@ import TeamC_CourseSql3 from "./TeamCComponents/pages/course/course3_sql";
 import TeamC_CourseSvn3 from "./TeamCComponents/pages/course/course3_svn";
 import TeamC_CourseHprog3 from "./TeamCComponents/pages/course/course3_hprog";
 import TeamC_ChapterSql from "./TeamCComponents/pages/chapter_sql";
-import TeamC_ChapterSvn from "./TeamCComponents/pages/course";
+import TeamC_ChapterSvn from "./TeamCComponents/pages/chapter_svn";
 import TeamC_ChapterHprog from "./TeamCComponents/pages/chapter_hprog";
 import TeamA_NewPass from "./TeamAComponents/components/NewPass";
 import ForumF from "./TeamCComponents/pages/ForumF";
@@ -110,7 +109,6 @@ function TeamIntegrationRoutes() {
           path="/course1_svn/*"
           element={
             <>
-              <TeamC_Sidebar />
               <TeamC_CourseSvn1 />
             </>
           }
@@ -119,7 +117,6 @@ function TeamIntegrationRoutes() {
           path="/course1_hprog/*"
           element={
             <>
-              <TeamC_Sidebar />
               <TeamC_CourseHprog1 />
             </>
           }
@@ -128,7 +125,6 @@ function TeamIntegrationRoutes() {
           path="/course1_sql/*"
           element={
             <>
-              <TeamC_Sidebar />
               <TeamC_CourseSql1 />
             </>
           }
@@ -138,7 +134,6 @@ function TeamIntegrationRoutes() {
           path="/course2_svn/*"
           element={
             <>
-              <TeamC_Sidebar />
               <TeamC_CourseSvn2 />
             </>
           }
@@ -147,7 +142,6 @@ function TeamIntegrationRoutes() {
           path="/course2_hprog/*"
           element={
             <>
-              <TeamC_Sidebar />
               <TeamC_CourseHprog2 />
             </>
           }
@@ -156,7 +150,6 @@ function TeamIntegrationRoutes() {
           path="/course2_sql/*"
           element={
             <>
-              <TeamC_Sidebar />
               <TeamC_CourseSql2 />
             </>
           }
@@ -166,7 +159,6 @@ function TeamIntegrationRoutes() {
           path="/course3_svn/*"
           element={
             <>
-              <TeamC_Sidebar />
               <TeamC_CourseSvn3 />
             </>
           }
@@ -175,7 +167,6 @@ function TeamIntegrationRoutes() {
           path="/course3_hprog/*"
           element={
             <>
-              <TeamC_Sidebar />
               <TeamC_CourseHprog3 />
             </>
           }
@@ -184,7 +175,6 @@ function TeamIntegrationRoutes() {
           path="/course3_sql/*"
           element={
             <>
-              <TeamC_Sidebar />
               <TeamC_CourseSql3 />
             </>
           }

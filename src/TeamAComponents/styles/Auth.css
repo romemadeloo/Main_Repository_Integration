@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
-
-
 /* src/App.css */
 .app {
   text-align: center;
@@ -1506,6 +1504,10 @@ background-color: gray;
 
 } */
 
+
+
+
+
 /* para hindi dumikit sa gilid */
 /* .image-container {
   flex: 1;
@@ -1765,4 +1767,3 @@ color: gray;
   height: 50px;
   margin-top: 10px;
 }
-

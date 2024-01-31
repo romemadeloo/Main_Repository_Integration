@@ -4,7 +4,6 @@ import { Route, Routes } from 'react-router-dom';
 import TeamC_Dashboard from '../src/TeamCComponents/pages/dashboard';
 import TeamC_Course from '../src/TeamCComponents/pages/course';
 import TeamC_Assessments from '../src/TeamCComponents/pages/assessment';
-import TeamC_Sidebar from '../src/TeamCComponents/components/sidebar';
 import TeamC_Forum from './TeamCComponents/pages/Forum';
 
 /* COURSE LISTS */

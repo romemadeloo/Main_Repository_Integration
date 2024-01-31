@@ -8,7 +8,7 @@ function TeamC_Assessments() {
     <Fragment>
       <Team_D_HeaderV2/>
       <div className="container mt-5 mx-auto">
-        <h2 className="text-left mb-4">ASSESSMENTS</h2>
+        <p className="text-left mb-4" style={{fontSize: '2rem'}}>ASSESSMENTS</p>
 
         <div className="card mb-3" style={{ borderRadius: '15px', backgroundColor: '#bce8b1' }}>
           <div className="card-body d-flex justify-content-between">
