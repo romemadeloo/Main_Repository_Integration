@@ -1,5 +1,6 @@
 import React, {useState,useEffect} from 'react';
 import '../css/forum_styles.css';
+import Team_D_HeaderV2 from '../../TeamDComponents/Team_D_HeaderV2';
 
 const TeamC_Forum = () => {
   const [discussionTitle, setDiscussionTitle] = useState('');
@@ -130,6 +131,7 @@ const TeamC_Forum = () => {
   
     return (
       <>
+      <Team_D_HeaderV2 />
         <div className="container stretch-forum">
           <div className="row justify-content-center">
             <div className="col-lg-9 mb-3">
