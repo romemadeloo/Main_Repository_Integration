@@ -9,9 +9,9 @@ const App = () => {
     {/*<TeamB_Router />*}
   
       {/* <TeamB_Router /> */}
-        {/* <TeamC_Router /> */} 
-      <TeamIntegrationRoutes/>
-      
+
+       <TeamIntegrationRoutes/>
+      {/* <TeamC_Router /> */}
     </>
   );
 };
