@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/Auth.css";
-import Footer from "./Footer";
 import Navigation from './Navigation';
 import { useAuth } from "./AuthContext"; 
+import Footer from "./Footer";
 
 const Dashboard = () => {
   const { isLoggedIn, handleLogout } = useAuth();
@@ -14,14 +14,18 @@ const Dashboard = () => {
         <img src="..\src\assets\TeamAassets\companyLogo.png" alt="Logo" />
         <ul className="menu hide">
           <li>
-            <a href="About">About Us</a>
+            <a href="/">Home</a>
           </li>
           <li>
-            <a href="https://www.tsukiden.com.ph">Contact Us</a>
+            <a href="About">About us</a>
           </li>
           <li>
-            <a href="">Terms and Conditions</a>
+          <a href="https://www.tsukiden.com.ph">Contact us</a>
           </li>
+          <li>
+            <a href="/">Verification</a>
+          </li>
+          <li></li>
         </ul>
         <div className="testing">
           <Link to="/register">
@@ -71,7 +75,10 @@ const Dashboard = () => {
       </div>
       <Footer/>
     </div>
+    
+    
   );
 };
+
 
 export default Dashboard;
