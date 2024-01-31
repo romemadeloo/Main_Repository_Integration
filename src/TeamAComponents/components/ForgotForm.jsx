@@ -28,6 +28,7 @@ const handleForgot = (e) => {
           </svg>
         </button>
       </Link>
+   
           <h2 className="title">Forgot Password</h2>
           <p>Please enter your email address to reset your password.</p>
           <div className="email-input-field">
@@ -51,7 +52,6 @@ const handleForgot = (e) => {
           </Link>
         </form>
       </div>
-
       <div className="forgot-container">
         <div className="forgot left-panel">
           <div className="forgot-content"></div>

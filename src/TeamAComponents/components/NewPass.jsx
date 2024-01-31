@@ -16,11 +16,7 @@ function TeamA_NewPass({ onNewPassForm }) {
         />
       </div>
       <div className="email-navi">
-        <div className="home-button">
-          <Link to="/">
-            <button>Home</button>
-          </Link>
-        </div>
+       
       </div>
 
       <div className="content">

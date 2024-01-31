@@ -36,7 +36,7 @@ function TeamA_LoginForm() {
 
   return (
     <form onSubmit={handleSubmit} className="template-form">
-      <h2>Sign In to  Your Account
+        <h2 style={{margin:'30px'}}>Sign In to Your Account
       and Be Part of the Success</h2>
       <input
         type="email"
