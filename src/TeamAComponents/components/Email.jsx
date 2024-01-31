@@ -8,7 +8,7 @@ import "../styles/Auth.css";
 function Email() {
   return (
     <div className="email-container">
-      <div className="auth-header">
+      <div className="home-header">
         
         <img
           src="..\src\assets\TeamAassets\companyLogo.png" 

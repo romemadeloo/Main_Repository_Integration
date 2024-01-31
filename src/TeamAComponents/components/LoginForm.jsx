@@ -37,6 +37,7 @@ function TeamA_LoginForm() {
 
   return (
     <>
+    
       <form onSubmit={handleSubmit} className="template-form">
         <h2 style={{ margin: '30px' }}>Sign In to Your Account and Be Part of the Success</h2>
         <input
@@ -66,7 +67,7 @@ function TeamA_LoginForm() {
             Forgot your password?
           </div>
         </Link>
-        <button type="submit" className="TeamA-button" style={{ backgroundColor: '#126912' }}>Sign in</button>
+        <button  className="TeamA-button">Sign in</button>
         {error && <div className="error-message">{error}</div>}
       </form>
       <Footer />

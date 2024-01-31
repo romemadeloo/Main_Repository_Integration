@@ -98,7 +98,7 @@ function NewPassForm() {
 
         <div style={{ marginTop: '-60px' }}>
           <Link to="/dashboard">
-            <button type="submit" className="Confirm-button" style={{ backgroundColor: '#126912' }}>Confirm</button>
+            <button className="Confirm-button">Confirm</button>
           </Link>
         </div>
       </form>
