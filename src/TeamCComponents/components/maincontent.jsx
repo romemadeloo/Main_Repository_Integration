@@ -76,7 +76,7 @@ function TeamC_MainContent (){
         return(
         <>
         <Link to='/course' className="buttonReturn d-flex align-items-center c_chapter_returncontainer" style={{ textDecoration: 'none', color: 'black', width: 'fit-content',}}>
-            <div className="d-flex align-items-center">
+            <div className="d-flex align-items-center" style={{marginTop: '1rem'}}>
                 <div>
                     <img src="../../src/assets/TeamCassets/green_button.png" className="btnReturn c_chapter_return" alt="return-icon" style={{ transition: 'transform .1s', color: '#ffffff', 
                     marginLeft:'1rem', width: '2rem', height: '2rem', }}/>
@@ -85,7 +85,7 @@ function TeamC_MainContent (){
             </div>
         </Link>
         {/* Main layout */}
-        <main className="c_chapcourse_mainlayout" style={{marginTop: '3.5rem', marginLeft: '10rem', marginRight: '10rem'}}>
+        <main className="c_chapcourse_mainlayout" style={{marginTop: '1.5rem', marginLeft: '10rem', marginRight: '10rem'}}>
 
         {/* Start of Topic Container */}
         <div id="topic0" className="c_chapcourse_hidden">
