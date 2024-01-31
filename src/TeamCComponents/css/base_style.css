@@ -4,19 +4,10 @@ body {
     margin: 0;
     padding: 0;
 }
-
-/* BODY STYLE OF THE  SELECTED TITLES */
-.header {
-    background-color: #BCE8B1;
-}
-
-
-
 /* HOLD-CLICK EFFECT FOR VIEW COURSE ON  SELECTED TITLES */
 .btn-view-course:hover {
     background-color: #145304;
 }
 
-@media (max-width: 600px) {
-}
+
 
