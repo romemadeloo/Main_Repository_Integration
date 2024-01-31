@@ -10,7 +10,7 @@ function Forgot() {
 
   return (
     <div className="forgot-container">
- <div className="auth-header">
+      <div className="home-header">
         
         <img
           src="..\src\assets\TeamAassets\companyLogo.png" 
