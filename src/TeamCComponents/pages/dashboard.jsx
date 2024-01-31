@@ -12,7 +12,7 @@ function TeamC_Dashboard() {
     <Fragment>
       {/* Header title */}
       <Team_D_HeaderV2/>
-      <div className="c_dashboard_header header p-3 h-50 d-flex align-items-center justify-content-center">
+      <div className="header p-3 h-50 d-flex align-items-center justify-content-center" id="c_dashboard_header">
         <div className="c_dashboard_title title p-3 text-center">
           <div className="c_dashboard_japchar jap-char">
             <h1 className="c_dashboard_char fw-bold" id="c_preview_headerTitle">
