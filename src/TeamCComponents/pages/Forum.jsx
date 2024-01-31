@@ -1,5 +1,6 @@
 import React, {useState,useEffect} from 'react';
 import '../css/forum_styles.css';
+import Team_D_HeaderV2 from '../../TeamDComponents/Team_D_HeaderV2';
 
 const TeamC_Forum = () => {
   const [discussionTitle, setDiscussionTitle] = useState('');
@@ -130,13 +131,17 @@ const TeamC_Forum = () => {
   
     return (
       <>
+      {/* added header 1/31/24 -jake */}
+      <Team_D_HeaderV2/>
         <div className="container stretch-forum">
           <div className="row justify-content-center">
-            <div className="col-lg-9 mb-3">
+            {/* added padding top 1/31/24 -jake */}
+            <div className="col-lg-9 mb-3 pt-4">
               <div className="row text-left mb-5">
-                <div className="col-lg-12 text-left">
+                {/* removed h1 forum 1/31/24 -jake */}
+                {/* <div className="col-lg-12 text-left">
                   <h1>FORUM</h1>
-                </div>
+                </div> */}
                 <div className="col-lg-9 mb-3">
                   <div className="row text-left mb-5">
                     <div className="col-lg-6">

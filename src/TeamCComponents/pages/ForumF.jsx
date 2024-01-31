@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../css/ffront.css';
 import { IoIosSearch } from 'react-icons/io';
-
 const ForumF = () => {
   const [isSearchButtonDisabled, setIsSearchButtonDisabled] = useState(true);
   const [showDiscussionForm, setShowDiscussionForm] = useState(false);
