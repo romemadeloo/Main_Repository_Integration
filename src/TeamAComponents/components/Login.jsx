@@ -8,7 +8,7 @@ function Login({ onNavigateHome, onForgotPassword }) {
 
   return (
     <div className="auth-container">
-      <div className="auth-header">
+      <div className="home-header">
         
         <img
           src="..\src\assets\TeamAassets\companyLogo.png" 

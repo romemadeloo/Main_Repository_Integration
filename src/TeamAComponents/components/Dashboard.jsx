@@ -14,15 +14,18 @@ const Dashboard = () => {
         <img src="..\src\assets\TeamAassets\companyLogo.png" alt="Logo" />
         <ul className="menu hide">
           <li>
-            <a href="/">HOME</a>
+            <a href="/">Home</a>
           </li>
           <li>
             <a href="About">About us</a>
           </li>
           <li>
           <a href="https://www.tsukiden.com.ph">Contact us</a>
-
           </li>
+          <li>
+            <a href="/">Verification</a>
+          </li>
+          <li></li>
         </ul>
         <div className="testing">
           <Link to="/register">
