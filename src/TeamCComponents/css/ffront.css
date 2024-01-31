@@ -1,5 +1,4 @@
-body {
-  margin-top: 20px;
+.ForumFSpace {
   background: #EBFFE5;
   color: #708090;
 }
@@ -144,7 +143,7 @@ body {
 
 /*UPDATE NEWWWWWW FOR MOBILE RESPONSIVE */
 @media (max-width: 767px) {
-body {
+.ForumFSpace {
 margin-top: 60px; /* Adjust the top margin for smaller screens */
 }
 
@@ -190,3 +189,4 @@ text-align: center;
 .c_forum_modbod { 
 padding: 5px; /* Add padding to the modal body */
 }
+
