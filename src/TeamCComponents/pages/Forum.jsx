@@ -1,5 +1,7 @@
 import React, {useState,useEffect} from 'react';
 import '../css/forum_styles.css';
+import TeamC_Dashboard from './dashboard';
+import Team_D_HeaderV2 from "../../TeamDComponents/Team_D_HeaderV2";
 
 const TeamC_Forum = () => {
   const [discussionTitle, setDiscussionTitle] = useState('');
@@ -130,25 +132,26 @@ const TeamC_Forum = () => {
   
     return (
       <>
+       <Team_D_HeaderV2/>
         <div className="container stretch-forum">
           <div className="row justify-content-center">
             <div className="col-lg-9 mb-3">
               <div className="row text-left mb-5">
-                <div className="col-lg-12 text-left">
+                {/* <div className="col-lg-12 text-left mt-50">
                   <h1>FORUM</h1>
-                </div>
+                </div> */}
                 <div className="col-lg-9 mb-3">
                   <div className="row text-left mb-5">
                     <div className="col-lg-6">
-                      <button className="c_forum_successdiscussion btn btn-lg btn-success rounded-5 py-2 px-4 mb-3 bg-op-6 roboto-bold" onClick={toggleDiscussionForm}>
+                      <button className="c_forum_successdiscussion btn btn-lg btn-success rounded-5 py-2 px-4 mt-5 ml-5 bg-op-6 roboto-bold" onClick={toggleDiscussionForm}>
                         Add discussion
                       </button>
                     </div>
                     <div className="col-lg-6">
-                      <div className="input-group">
-                        <input type="text" className="form-control form-control-lg search-bar c_forum_searchbar" id="searchDiscussion" placeholder="Search topic..." onChange={(e) => setSearchTerm(e.target.value)} />
+                      <div className="input-group mt-5 ml-5 pr-10">
+                        <input type="text" className="form-control form-control-lg search-bar c_forum_searchbar " id="searchDiscussion" placeholder="Search topic..." onChange={(e) => setSearchTerm(e.target.value)} />
                         <button className="btn btn-outline-success" type="button" onClick={searchDiscussions} disabled={isSearchButtonDisabled}>
-                          <i className="ion-ios-search"></i>
+                          <i className="ion-ios-search "></i>
                         </button>
                       </div>
                     </div>

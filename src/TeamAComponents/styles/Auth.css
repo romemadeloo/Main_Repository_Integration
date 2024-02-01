@@ -1682,21 +1682,3 @@ color: gray;
   cursor: pointer;
 }
 
-.my-navigation a:hover {
-  color: #4D9349; 
-  transform:scale(1.1) ;
-  transition: transform 0.3s ease-in-out; 
-  cursor: pointer;
-}
-.popup-container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
-  /* Add any other styles you want for the pop-up */
-}
