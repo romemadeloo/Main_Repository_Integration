@@ -144,7 +144,7 @@ const Team_D_HeaderV2 = () => {
               >
                 <TbCertificate /> My Certificate
               </Dropdown.Item>
-              <Dropdown.Item as={NavLink} to="/landing" onClick={closeMobileNavbar}>
+              <Dropdown.Item as={NavLink} to="/" onClick={closeMobileNavbar}>
                 <FiLogOut /> Log Out
               </Dropdown.Item>
             </Dropdown.Menu>
