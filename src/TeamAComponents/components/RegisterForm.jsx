@@ -151,7 +151,7 @@ function RegisterForm() {
             Already have an account?
           </div>
         </Link>
-        <button className="TeamA-button" style={{ backgroundColor: '#126912' }}>Sign Up</button>
+        <button className="TeamA-button" >Sign Up</button>
       </form>
       <Footer />
     </>
