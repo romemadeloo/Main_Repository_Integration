@@ -1,12 +1,13 @@
 //* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from "./AuthContext";  
+import { useAuth } from "./AuthContext";
 import Footer from "./Footer";
 
 function TeamA_LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [passwordError, setPasswordError] = useState('');
   const [error, setError] = useState(null);
 
   // Use the useAuth hook to get the handleLogin and setLoggedIn functions
@@ -25,8 +26,9 @@ function TeamA_LoginForm() {
         // If the credentials are valid, redirect to the respective dashboards
         navigate(email === 'student@gmail.com' ? '/TeamCdashboard' : '/TeamBdashboard');
       } else {
-        alert("Invalid Username or Password")
-        // If email or password is incorrect, perform normal login
+        // If email or password is incorrect, set the password error and display a message
+        setPasswordError('Invalid Email or Password. Please try again.');
+        // Perform normal login
         await handleLogin({ email, password }, navigate);
       }
     } catch (error) {
@@ -37,7 +39,6 @@ function TeamA_LoginForm() {
 
   return (
     <>
-    
       <form onSubmit={handleSubmit} className="template-form">
         <h2 style={{ margin: '30px' }}>Sign In to Your Account and Be Part of the Success</h2>
         <input
@@ -52,10 +53,15 @@ function TeamA_LoginForm() {
           type="password"
           id="password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => {
+            setPassword(e.target.value);
+            // Clear password error when the user starts typing again
+            setPasswordError('');
+          }}
           placeholder="Password"
           required
         />
+        {passwordError && <div className="error-message" style={{ color: 'red' }}>{passwordError}</div>}
         <div className="remember-me">
           {/* Your remember me checkbox */}
         </div>
@@ -67,7 +73,7 @@ function TeamA_LoginForm() {
             Forgot your password?
           </div>
         </Link>
-        <button  className="TeamA-button">Sign in</button>
+        <button className="TeamA-button">Sign in</button>
         {error && <div className="error-message">{error}</div>}
       </form>
       <Footer />

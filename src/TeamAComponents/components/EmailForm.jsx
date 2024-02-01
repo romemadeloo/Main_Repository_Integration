@@ -31,7 +31,6 @@ function EmailForm({ onEmailForm }) {
         
         <p>Please enter Code</p>
         <label htmlFor="email">
-          <i className="fas fa-envelope"></i>
         </label>
         <div className="email-input-field">
           <input

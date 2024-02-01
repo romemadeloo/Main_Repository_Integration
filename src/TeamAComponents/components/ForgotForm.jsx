@@ -33,7 +33,6 @@ const handleForgot = (e) => {
           <h2 className="title">Forgot Password</h2>
           <p>Please enter your email address to reset your password.</p>
           <div className="email-input-field">
-            <i className="fas fa-envelope"></i>
             {/* Use setEmail to update the email state */}
             <input
               type="email"

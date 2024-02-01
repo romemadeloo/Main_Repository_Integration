@@ -16,7 +16,7 @@ function Register({ onNavigateHome }) {
         <img
            src="..\src\assets\TeamAassets\companyLogo.png"
           alt="Logo"
-          className="logo"
+          className="Qlogo"
         />
       </div>
       <div className="auth-navi">
