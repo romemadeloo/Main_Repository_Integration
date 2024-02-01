@@ -42,25 +42,29 @@ function TeamA_LoginForm() {
       <form onSubmit={handleSubmit} className="template-form">
         <h2 style={{ margin: '30px' }}>Sign In to Your Account and Be Part of the Success</h2>
         <input
-          type="email"
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email Address"
-          required
-        />
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => {
-            setPassword(e.target.value);
-            // Clear password error when the user starts typing again
-            setPasswordError('');
-          }}
-          placeholder="Password"
-          required
-        />
+  type="email"
+  id="email"
+  value={email}
+  onChange={(e) => setEmail(e.target.value)}
+  placeholder="Email Address"
+  required
+  style={{ borderColor: passwordError ? 'red' : 'initial' }}
+/>
+
+<input
+  type="password"
+  id="password"
+  value={password}
+  onChange={(e) => {
+    setPassword(e.target.value);
+    // Clear password error when the user starts typing again
+    setPasswordError('');
+  }}
+  placeholder="Password"
+  required
+  style={{ borderColor: passwordError ? 'red' : 'initial' }}
+/>
+
         {passwordError && <div className="error-message" style={{ color: 'red' }}>{passwordError}</div>}
         <div className="remember-me">
           {/* Your remember me checkbox */}
