@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../css/ffront.css';
 import { IoIosSearch } from 'react-icons/io';
+import Team_D_HeaderV2 from '../../TeamDComponents/Team_D_HeaderV2';
 
 
 const ForumF = () => {
@@ -128,6 +129,7 @@ const ForumF = () => {
 
   return (
     <>
+    <Team_D_HeaderV2 />
     <body className="ForumFSpace">
     <div className="container stretch-forum">
         <div className="row justify-content-center">

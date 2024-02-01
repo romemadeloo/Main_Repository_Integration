@@ -10,7 +10,7 @@ function TeamC_ChapterSvn() {
     <>
     <Team_D_HeaderV2/>
       <div className="container mt-5 mx-auto" style={{marginLeft: '5rem', marginRight: '5rem'}}>
-        <h2 className="text-center mb-4" style={{fontWeight: 'bold', fontSize: '2rem'}}>The Program Overview</h2>
+        <h2 className="text-center mb-4" style={{fontWeight: 'bold', fontSize: '2rem'}}>Program Overview</h2>
         <hr />
 
         {/* Chapter 1 */}
