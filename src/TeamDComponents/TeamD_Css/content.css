@@ -136,16 +136,18 @@
     width: 25px;
     height: 25px;
 }
-
+/* fixed button no color/affected by background-color: #e0f8d9 2/1/24 */
 .withSearchBar .input-group .btn {
+    background-color: #16A765;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.withSearchBar .input-group .btn {
     width: 55px;
 }
+/* transfered width above since the name is duplicated 2/1/24 */
+/* .withSearchBar .input-group .btn {
+    width: 55px;
+} */
 
 .withSearchBar .input-group .btn .icon {
     width: 20px;
