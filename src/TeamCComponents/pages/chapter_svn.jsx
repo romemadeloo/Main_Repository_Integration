@@ -12,7 +12,7 @@ function TeamC_ChapterSvn() {
         <Link to='/course' className="buttonReturn d-flex align-items-center c_chapter_returncontainer" style={{ textDecoration: 'none', color: 'black', width: 'fit-content',}}>
           <div className="d-flex align-items-center" style={{marginTop: '1rem'}}>
             <div>
-              <img src="/pics/return1.png" className="btnReturn c_chapter_return" alt="return-icon" style={{ transition: 'transform .1s', color: '#ffffff', 
+              <img src="../../src/assets/TeamCassets/green_button.png" className="btnReturn c_chapter_return" alt="return-icon" style={{ transition: 'transform .1s', color: '#ffffff', 
                     marginLeft:'1rem',width: '2rem', height: '2rem', }}/>
             </div>
             <span className="returnTitle c_chapter_returnText" style={{ marginLeft: '0.5rem', color: '#126912', fontSize: '1.5rem', marginTop: '0rem',}}>Back</span>
