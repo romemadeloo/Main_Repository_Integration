@@ -7,6 +7,7 @@ function TeamC_MainContent (){
     let layoutTitle = '';
     let subTitle = '';
     let descText = '';
+    let urlReturn = '';
     
     switch (pathname) {
        /* COURSE 1 */
@@ -14,68 +15,78 @@ function TeamC_MainContent (){
         layoutTitle = 'CHAPTER 1';
         subTitle = 'Introduction to SQL Query';
         descText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+        urlReturn = '/chapters_sql'
         break;
 
       case '/course1_svn':
         layoutTitle = 'CHAPTER 1';
         subTitle = 'Introduction to Subversion';
         descText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+        urlReturn = '/chapters_svn'
         break;
 
       case '/course1_hprog':
         layoutTitle = 'CHAPTER 1';
         subTitle = 'Introduction to HTML Programming';
         descText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+        urlReturn = '/chapters_hprog'
         break;
 
        /* COURSE 2 */
        case '/course2_sql':
         layoutTitle = 'CHAPTER 2';
-        subTitle = 'Introduction to SQL Query';
+        subTitle = 'History of SQL Query';
         descText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+        urlReturn = '/chapters_sql'
         break;
 
       case '/course2_svn':
         layoutTitle = 'CHAPTER 2';
-        subTitle = 'Introduction to Subversion';
+        subTitle = 'History of Subversion';
         descText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+        urlReturn = '/chapters_svn'
         break;
 
       case '/course2_hprog':
         layoutTitle = 'CHAPTER 2';
-        subTitle = 'Introduction to HTML Programming';
+        subTitle = 'History of HTML Programming';
         descText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+        urlReturn = '/chapters_hprog'
         break;
 
        /* COURSE 3 */
        case '/course3_sql':
         layoutTitle = 'CHAPTER 3';
-        subTitle = 'Introduction to SQL Query';
+        subTitle = 'Extra information about SQL Query';
         descText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+        urlReturn = '/chapters_sql'
         break;
 
       case '/course3_svn':
         layoutTitle = 'CHAPTER 3';
-        subTitle = 'Introduction to Subversion';
+        subTitle = 'Extra information about Subversion';
         descText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+        urlReturn = '/chapters_svn'
         break;
 
       case '/course3_hprog':
         layoutTitle = 'CHAPTER 3';
-        subTitle = 'Introduction to HTML Programming';
+        subTitle = 'Extra information about HTML Programming';
         descText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+        urlReturn = '/chapters_hprog'
         break;
         
       default:
         layoutTitle = '-NO TITLE-';
         subTitle = '-NO SUBTITLE-';
         descText = '-NO DESCTEXT-';
+        urlReturn = '-MISSING URL-'
         break;
     }
     
         return(
         <>
-        <Link to='/course' className="buttonReturn d-flex align-items-center c_chapter_returncontainer" style={{ textDecoration: 'none', color: 'black', width: 'fit-content',}}>
+        <Link to={urlReturn} className="buttonReturn d-flex align-items-center c_chapter_returncontainer" style={{ textDecoration: 'none', color: 'black', width: 'fit-content',}}>
             <div className="d-flex align-items-center" style={{marginTop: '1rem'}}>
                 <div>
                     <img src="../../src/assets/TeamCassets/green_button.png" className="btnReturn c_chapter_return" alt="return-icon" style={{ transition: 'transform .1s', color: '#ffffff', 

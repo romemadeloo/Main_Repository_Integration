@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import '../css/chapter_list.css';
 import Team_D_HeaderV2 from "../../TeamDComponents/Team_D_HeaderV2";
 
 function TeamC_ChapterHprog() {
