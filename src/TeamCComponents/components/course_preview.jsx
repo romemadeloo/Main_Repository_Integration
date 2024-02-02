@@ -21,11 +21,6 @@ function CoursePreview () {
       </p><br/>
       <div className="d-flex justify-content-center align-items-end mt-auto">
         <button
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            height: '30px',
-          }}
           className="btn btn-success"
           data-bs-toggle="modal"
           data-bs-target="#modalSql"
@@ -54,11 +49,6 @@ function CoursePreview () {
       </p><br/>
       <div className="d-flex justify-content-center align-items-end mt-auto">
         <button
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            height: '30px',
-          }}
           className="btn btn-success"
           data-bs-toggle="modal"
           data-bs-target="#modalSvn"
@@ -87,11 +77,6 @@ function CoursePreview () {
       </p><br/>
       <div className="d-flex justify-content-center align-items-end mt-auto">
         <button
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            height: '30px',
-          }}
           className="btn btn-success"
           data-bs-toggle="modal"
           data-bs-target="#modalHtml"
