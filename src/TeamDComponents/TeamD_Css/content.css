@@ -99,13 +99,11 @@
     cursor: pointer;
     width: 70px;
   }
-  
   .buttons .view {
     background-color: #3498db;
     color: #fff;
     border-radius: 15px;
     border: 1.5px solid #3498db;
-    text-align: center;
   }
   
   .buttons .download {
@@ -131,9 +129,9 @@
     width: 329px;
     height: 200px;
 }
-
+ /* fixed buttons affected in integration 2/2/24 adjusted width from 30px to 35px*/
 .TeamD_icon {
-    width: 25px;
+    width: 35px;
     height: 25px;
 }
 /* fixed button no color/affected by background-color: #e0f8d9 2/1/24 */
