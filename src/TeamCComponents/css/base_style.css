@@ -24,6 +24,7 @@
     flex-direction: row;
     justify-content: center;
     max-height: 100%;
+    box-sizing: border-box;
 }
 
 /* CARD SPACING */
@@ -80,18 +81,57 @@
     border-radius: 1rem;
 }
 
+#c_maincontent_maincontainer{
+    text-align: left;
+    align-items: left;
+    font-size: 2.5rem;
+    
+}
+
+#c_maincontent_textcontainer{
+    color: #0e3b03;
+    background-color: #D9FFCF;
+    text-align: center;
+    overflow: visible;
+    border: 2px solid;
+    border-color: #0e3b03;
+}
+
+#c_maincontent_textdesc{
+    font-size: 1.3rem;
+}
+
+#c_maincontent_mainlayout{
+    margin-top: 1.5rem; 
+    margin-left: 10rem; 
+    margin-right: 10rem;
+}
+
+#c_maincontent_buttoncontainer {
+    /* D-GRID */
+    display: grid;
+    gap: 0.5rem;
+    margin: 10px;
+    /* GAP-2 */
+    > * {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    /* D-MD-FLEX */
+    display: flex;
+
+    /* JUSTIFY-CONTENT-MD-END */
+    justify-content: flex-end;
+}
+
 
   /* LARGE DESKTOP */
-  @media only screen and (max-width: 1200px) {
-    #c_cardpreview_cardouter {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        max-height: 100%;
-    }
+  @media only screen and (max-width: 1024px) {
+    
     #c_course_cardbody{
-        background-color: '#126912';
-        border-radius: '1rem';
+        background-color: #126912;
+        border-radius: 1rem;
     }
     #c_course_tagtext,
     #c_course_cardbody {
@@ -101,7 +141,9 @@
         width: 7rem;
         height: 4rem;
     }
-    
+    #c_maincontent_textcontainer{
+        font-size: 18px;
+    }
   }
   
   /* TYPICAL LAPTOP */
@@ -113,12 +155,12 @@
         max-height: 100%;
     }
     #c_course_cardbody{
-        background-color: '#126912';
-        border-radius: '1rem';
+        background-color: #126912;
+        border-radius: 1rem;
     }
     #c_course_tagtext,
     #c_course_cardbody {
-    font-size: 1rem;
+    font-size: 1rem;    
     } 
     #c_course_tag{
         width: 7rem;
@@ -135,8 +177,8 @@
         max-height: 100%;
     }
     #c_course_cardbody{
-        background-color: '#126912';
-        border-radius: '1rem';
+        background-color: #126912;
+        border-radius: 1rem;
     }
     #c_course_tagtext,
     #c_course_cardbody {
@@ -147,6 +189,12 @@
         width: 7rem;
         height: 4rem;
     }
+    #c_maincontent_maincontainer{
+        text-align: center;
+        align-items: left;
+        font-size: 2.5rem;
+    }
+    
   }
   
   /* TYPICAL SMARTPHONE */
@@ -158,8 +206,8 @@
         max-height: 100%;
     }
     #c_course_cardbody{
-        background-color: '#126912';
-        border-radius: '1rem';
+        background-color: #126912;
+        border-radius: 1rem;
     }
     #c_course_tagtext,
     #c_course_cardbody {
@@ -169,6 +217,35 @@
     #c_course_tag{
         width: 4rem;
         height: 2rem;
+    }
+    #c_maincontent_textcontainer{
+        width: 20rem;
+    }
+    #c_maincontent_maincontainer{
+        text-align: left;
+        font-size: 1.5rem;
+    }
+    #c_maincontent_mainlayout{
+        margin-top: 1.5rem; 
+        margin-left: 0rem; 
+        margin-right: 0rem;
+    }
+    #c_maincontent_buttoncontainer {
+        /* D-GRID */
+        display: center;
+        gap: 0.5rem;
+        margin: 10px;
+        /* GAP-2 */
+        > * {
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+    
+        /* D-MD-FLEX */
+        display: flex;
+    
+        /* JUSTIFY-CONTENT-MD-END */
+        justify-content: flex-end;
     }
 
   }  
