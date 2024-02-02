@@ -23,7 +23,7 @@
   border: 1px solid #126912;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
 }
-.TeamA-button:hover {
+.TeamA-button:hover,.Prof2-Backbutton:hover,.login-button:hover {
   background-color: gray;
 }
 
@@ -39,10 +39,6 @@
   width: 5rem;
   height: 2rem;
 } 
-.login-button:hover {
-background-color: gray;
-}
-
 .home-container {
   text-align: center;
 }
@@ -287,11 +283,7 @@ background-color: gray;
   margin-top: 30px;
   text-decoration: underline;
 }
-.template-form .existing-account:hover {
-  color: #0056b3;
-}
-
-.template-form .forgot-password:hover {
+.template-form .existing-account:hover,.template-form .forgot-password:hover,.forgot-form .existing-account:hover ,.forgot-form .forgot-password:hover  {
   color: #0056b3;
 }
 
@@ -407,15 +399,6 @@ cursor: pointer;
 font-size: 14px;
 text-decoration: underline;
 }
-
-.forgot-form .forgot-password:hover {
-color: #0056b3;
-}
-
-.forgot-form .existing-account:hover {
-  color: #0056b3;
-  }
-
 .forgot-div {
 align-items: center;
 justify-content: center;
@@ -449,7 +432,6 @@ input::placeholder{
   align-items: center;
   flex-direction: column; /* Center align items vertically */
   margin-top: 50px;
-  
 }
 
 .email-sign-in-form {
@@ -508,13 +490,7 @@ input::placeholder{
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
     width: 110px;
     margin-left: 250px;
-    
-    
 }
-.email-button:hover {
-  background-color: gray
-}
-
 .email-panels-container {
   display: flex;
   position: relative;
@@ -522,7 +498,6 @@ input::placeholder{
   flex-direction: column; /* Stack the panels vertically */
   align-items: center; /* Center align panels */
 }
-
 .email-panel {
   position: relative;
   display: flex;
@@ -534,18 +509,15 @@ input::placeholder{
   color: #fff;
   margin-top: 20px; /* Add space between panels */
 }
-
 .email-image {
   width: 100%;
   max-width: 400px; /* Adjust the image max-width as needed */
   height: auto;
 }
-
 .email-center-text {
   text-align: center;
   margin-top: 10px; /* Add space between text and link */
 }
-
 .verification-forms-container {
   position: relative;
   width: 100%;
@@ -556,7 +528,6 @@ input::placeholder{
   margin-top: 50px;
   
 }
-
 .verification-sign-in-form {
   width: 600px;
   margin: 0 auto;
@@ -566,7 +537,6 @@ input::placeholder{
   display: flex;
   flex-direction: column;
 }
-
 .verification-title {
   font-size: 24px;
   font-weight: bold;
@@ -610,7 +580,9 @@ input::placeholder{
   text-align: center;
     
 }
-.verification-button:hover {
+.verification-button:hover,.email-button:hover,.Prof1-editButton:hover,.submit-button:hover,.Change-editButton:hover,.Change-Backbutton:hover,.Prof1-ChangeButton:hover,.save-button:hover,
+.cancel-button:hover,.Prof1-Editbuttons:hover,.qBackbutton:hover,.wBackbutton:hover, .Show-button:hover,.nav-LOGOUT-button:hover,.home-button:hover,.Confirm-button:hover,.nav-HOME-button:hover
+ {
   background-color: #999
 
 }
@@ -741,11 +713,6 @@ input::placeholder{
     right: 10px;
     transition: background-color 0.3s ease;
   }
-
-.Prof1-editButton:hover {
-  background-color: #999
-}
-
 .Prof1-right {
   width: 65%;
   padding: 30px 25px;
@@ -999,9 +966,7 @@ input::placeholder{
   
 }
 
-.submit-button:hover {
-  background-color:gray; /* Change background color on hover */
-}
+
 
 /*Prof1 edit and change password buttons */
 
@@ -1034,14 +999,7 @@ input::placeholder{
 .Prof1-Editbuttons {
   margin-right: 0; /* Remove the right margin for the Edit button */
 }
-
-.Prof1-ChangeButton:hover,
-.Prof1-Editbuttons:hover {
-  background-color: #999;
-}
-
 /*Change Password*/
-
 .Change-navbar {
   background-color: #D9FFCF;
   padding: 15px;
@@ -1119,11 +1077,6 @@ input::placeholder{
   margin-top: 10px;
   transition: background-color 0.3s ease;
 }
-
-.Change-editButton:hover {
-  background-color: #999;
-}
-
 .Change-right {
   width: 65%;
   padding: 25px 25px;
@@ -1189,10 +1142,6 @@ input::placeholder{
   margin-right: 10px; /* Adjust the right margin as needed */
   column-gap: 10px;
 }
-.Change-Backbutton:hover {
-  background-color: gray;
-}
-
 .save-button
 .cancel-button{
   background-color: #126912;
@@ -1208,12 +1157,6 @@ input::placeholder{
 }
 
 /* Change Password */
-.save-button:hover,
-.cancel-button:hover
-{
-  background-color: #999; /* Change background color on hover */
-}
-
 
 .Prof2-Backbutton {
   cursor: pointer;
@@ -1328,11 +1271,6 @@ input::placeholder{
   top: 10px;
   left: 10px;
 }
-
-.qBackbutton:hover {
-  background-color: gray;
-}
-
 /* Responsive styles for smaller screens */
 @media (max-width: 600px) {
   .qBackbutton {
@@ -1341,7 +1279,6 @@ input::placeholder{
     border-radius: 50px;
   }
 }
-
 .wBackbutton {
   cursor: pointer;
   display: inline-block;
@@ -1355,10 +1292,6 @@ input::placeholder{
   top: 10px;
   left: 10px;
 }
-.wBackbutton:hover{
-background-color: gray;
-}
-
 /* Responsive styles */
 @media only screen and (max-width: 600px) {
   .wBackbutton {
@@ -1584,9 +1517,7 @@ background-color: gray;
   justify-content: center;
   margin-top: 10px;
 }
-.home-button:hover {
-  background-color: gray;
-}
+
 .Confirm-button{
   margin: 10px 10px 10px;
   padding: 10px 20px;
@@ -1598,9 +1529,7 @@ background-color: gray;
   border: 1px solid #126912;
   margin-top: 50px;
 }
-.Confirm-button:hover{
-  background-color: gray;
-}
+
 .Show-button {
   margin: 10px 10px 10px;
   padding: 10px 20px;
@@ -1622,9 +1551,6 @@ background-color: gray;
   cursor: pointer;
   margin-right: 10px;
 }
-.nav-HOME-button:hover{
-  background-color: gray;
-}
 .nav-LOGOUT-button {
   background-color: #126912;
   color: #fff;
@@ -1633,10 +1559,6 @@ background-color: gray;
   border-radius: 5px;
   cursor: pointer;
 }
- .Show-button:hover,.nav-LOGOUT-button:hover  {
-color: gray;
-}
-
 .TeamA-courses {
   display: flex;
   justify-content: space-around; /* Center the squares */
@@ -1690,9 +1612,11 @@ color: gray;
 }
 
 .home-button:hover, .TeamA-button:hover, .qBackbutton:hover, .wBackbutton:hover,
-.Confirm-button:hover{
+.Confirm-button:hover,.Prof1-ChangeButton:hover, .Prof1-Editbuttons:hover, .submit-button:hover,.cancel-button:hover, .Change-Backbutton:hover, .login-button:hover, .Prof2-Backbutton:hover{
   transform: scale(1.1);
   transition: transform 0.3s ease-in-out; 
   cursor: pointer;
 }
+
+
 

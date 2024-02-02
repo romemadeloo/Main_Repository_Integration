@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import "../styles/Auth.css";
 
-import Navigation from './Navigation';
 import { useAuth } from "./AuthContext";
 
 
@@ -52,7 +51,14 @@ function Profile() {
 
   return (
     <>
-    <Navigation isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
+     <div className="home-header">
+        <img
+           src="..\src\assets\TeamAassets\companyLogo.png"
+          alt="Logo"
+          className="Qlogo"
+          
+        />
+      </div>
     <div className="Prof1-wrapper">
     <Link to="/">
         <button className="wBackbutton">
