@@ -8,6 +8,10 @@
     margin-top: 15px; 
     justify-content: space-between;
 }   
+/* background-image:none affects the close button fixed 2/2/24 */
+.modal-content .btn-close {
+    background-image: url('data:image/svg+xml,%3csvg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16"%3e%3cpath d="M4.293 4.293a1 1 0 0 1 1.414 0L8 6.586l2.293-2.293a1 1 0 1 1 1.414 1.414L9.414 8l2.293 2.293a1 1 0 0 1-1.414 1.414L8 9.414l-2.293 2.293a1 1 0 0 1-1.414-1.414L6.586 8 4.293 5.707a1 1 0 0 1 0-1.414z"/%3e%3c/svg%3e');
+}
 
 .withSearchBar {
     display: flex;
@@ -99,13 +103,11 @@
     cursor: pointer;
     width: 70px;
   }
-  
   .buttons .view {
     background-color: #3498db;
     color: #fff;
     border-radius: 15px;
     border: 1.5px solid #3498db;
-    text-align: center;
   }
   
   .buttons .download {
@@ -131,21 +133,23 @@
     width: 329px;
     height: 200px;
 }
-
+ /* fixed buttons affected in integration 2/2/24 adjusted width from 30px to 35px*/
 .TeamD_icon {
-    width: 25px;
+    width: 35px;
     height: 25px;
 }
-
+/* fixed button no color/affected by background-color: #e0f8d9 2/1/24 */
 .withSearchBar .input-group .btn {
+    background-color: #16A765;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.withSearchBar .input-group .btn {
     width: 55px;
 }
+/* transfered width above since the name is duplicated 2/1/24 */
+/* .withSearchBar .input-group .btn {
+    width: 55px;
+} */
 
 .withSearchBar .input-group .btn .icon {
     width: 20px;

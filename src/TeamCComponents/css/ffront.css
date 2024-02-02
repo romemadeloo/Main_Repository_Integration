@@ -108,9 +108,10 @@
   background-color: #a4bca7;
   color: white;
   font-style: italic;
+  
 }
 
-/* .form-control {
+.form-control {
   border-radius: 15%;
   background-color: #e0f8d9;
   color: black;
