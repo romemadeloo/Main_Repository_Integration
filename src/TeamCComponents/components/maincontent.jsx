@@ -96,32 +96,22 @@ function TeamC_MainContent (){
             </div>
         </Link>
         {/* Main layout */}
-        <main className="c_chapcourse_mainlayout" style={{marginTop: '1.5rem', marginLeft: '10rem', marginRight: '10rem'}}>
+        <main id="c_maincontent_mainlayout">
 
         {/* Start of Topic Container */}
-        <div id="topic0" className="c_chapcourse_hidden">
+        <div id="topic0" className="c_maincontent_parentcontainer">
 
-          <div className="container">
-            <p style={{fontWeight: 'bold', fontSize: '2.5rem'}}>{layoutTitle}</p>
-            <p style={{ fontSize: '2.5rem'}}>{subTitle}</p>
-            <br />
-            <div className="row gy-5" style={{ backgroundColor: "#EBFFE5" }}>
-              <div className="col-12">
+          <div className="container" id="c_maincontent_maincontainer" >
+            <p style={{fontWeight: 'bold'}}>{layoutTitle}</p>
+            <p>{subTitle}</p>
+            <div style={{ backgroundColor: '#EBFFE5'}}>
+              <div>
                 <div
-                  className="rounded-3"
-                  style={{
-                    fontSize: "18px",
-                    color: "#0e3b03",
-                    backgroundColor: "#D9FFCF",
-                    textAlign: "center",
-                    overflow: "visible",
-                    border: "2px solid",
-                    borderColor: "#0e3b03"
-                  }}
+                  id="c_maincontent_textcontainer"  
                 >
-                  <p className="lh-base" style={{fontSize: '1.3rem', marginTop: '1rem', marginLeft: '1rem', marginRight: '1rem', marginBottom: '1rem',}}>{descText}</p>
+                  <p className="lh-base" id="c_maincontent_textdesc" style={{marginTop: '1rem', marginLeft: '1rem', marginRight: '1rem', marginBottom: '1rem',}}>{descText}</p>
                 </div>
-                <div className="d-grid gap-2 d-md-flex justify-content-md-end" style={{margin: '10px'}}>
+                <div id="c_maincontent_buttoncontainer" >
                 <button className="btn courseButton" 
                 data-bs-toggle="modal" 
                 data-bs-target="#mainId" 
