@@ -16,7 +16,7 @@ function TeamC_QuizForm_Component (){
       case '/quizform':
         quizTitle = 'Quiz Title Goes Here';
         descText = 'Please keep your notes before taking the quiz. No cheating! Go anzen ni.';
-        urlReturn = '-MISSING URL-';        
+        urlReturn = '/course';        
         break;  
         
       default:
