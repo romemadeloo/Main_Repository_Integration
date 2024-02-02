@@ -29,8 +29,8 @@ function EmailForm({ onEmailForm }) {
               </svg>
             </button>
           </Link>
-          <h2 className="email-title">Code Verification</h2>
-          <p>Please enter Code</p>
+          <h2 className="title" style={{fontSize:'20px'}}>Code Verification</h2>
+          <p style={{marginTop:'10px'}}>Please enter Code</p>
           <label htmlFor="email"></label>
           <div className="email-input-field">
             <input

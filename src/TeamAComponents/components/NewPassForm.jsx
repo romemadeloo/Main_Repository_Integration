@@ -50,8 +50,8 @@ function NewPassForm() {
             </svg>
           </button>
         </Link>
-        <h2 className="email-title">Change Password</h2>
-        <p>Please Change Your Password Here</p>
+        <h2 className="title"style={{fontSize:'20px'}}>Change Password</h2>
+        <p style={{marginTop:'10px'}}>Please Change Your Password Here</p>
         <label htmlFor="newPassword">
           <i className="fas fa-envelope"></i>
         </label>

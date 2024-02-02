@@ -1316,7 +1316,7 @@ input::placeholder{
 
 .my-navigation {
   background-color: #D9FFCF;
-  padding:0.5em 0.5em;
+  padding:10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1329,9 +1329,9 @@ input::placeholder{
 }
 
 .my-navigation ul {
-  list-style: none;
+  
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   margin: 0;
   padding: 0;
 }
@@ -1563,6 +1563,7 @@ input::placeholder{
   display: flex;
   justify-content: space-around; /* Center the squares */
   margin-top: 20px;
+  margin-left: 50px;
 }
 
 .TeamA-square {
@@ -1612,11 +1613,27 @@ input::placeholder{
 }
 
 .home-button:hover, .TeamA-button:hover, .qBackbutton:hover, .wBackbutton:hover,
-.Confirm-button:hover,.Prof1-ChangeButton:hover, .Prof1-Editbuttons:hover, .submit-button:hover,.cancel-button:hover, .Change-Backbutton:hover, .login-button:hover, .Prof2-Backbutton:hover{
+.Confirm-button:hover,.Prof1-ChangeButton:hover, .Prof1-Editbuttons:hover, .submit-button:hover,.cancel-button:hover, .Change-Backbutton:hover, .login-button:hover, .Prof2-Backbutton:hover, .nav-HOME-button:hover {
   transform: scale(1.1);
   transition: transform 0.3s ease-in-out; 
   cursor: pointer;
 }
 
+.menu-hide {
+  list-style: none;
+  display: flex;
+  gap: 20px; /* Adjust the space between items as needed */
+}
 
+.menu-hide li a {
+  text-decoration: none;
+  color: #000; /* Set your desired text color */
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.testing {
+  display: flex;
+  gap: 10px; /* Adjust the space between buttons as needed */
+}
 
