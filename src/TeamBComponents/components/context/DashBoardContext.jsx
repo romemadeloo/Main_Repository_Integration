@@ -22,7 +22,7 @@ const DashBoardProvider = ({ children }) => {
         showDropDown,
         setShowDropDown,
       }}>
-      {children}  
+      {children}
     </DashBoardContext.Provider>
   );
 };
