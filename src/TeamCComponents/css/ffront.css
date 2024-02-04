@@ -108,6 +108,7 @@
   background-color: #a4bca7;
   color: white;
   font-style: italic;
+  
 }
 
 .form-control {
@@ -116,7 +117,7 @@
   color: black;
   resize: none;
   border-radius: 15px;
-}
+} */
 
 .form-control:focus {
   background-color: #EBFFE5;

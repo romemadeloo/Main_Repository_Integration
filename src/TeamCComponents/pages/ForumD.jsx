@@ -3,6 +3,7 @@ import '../css/fdiscussion.css';
 import { AiOutlineLike } from "react-icons/ai";
 import { AiOutlineDislike } from "react-icons/ai";
 import { MdOutlineReply } from "react-icons/md";
+import Team_D_HeaderV2 from '../../TeamDComponents/Team_D_HeaderV2';
 
 const ForumD = () => {
   const [likeCount, setLikeCount] = useState(0);
@@ -18,6 +19,7 @@ const ForumD = () => {
 
   return (
     <>
+    <Team_D_HeaderV2 />
     <body className='ForumDSpace'>{/*30/24*/}
       <div className="ForumC_ForumDcontainer">{/*30/24*/}
         <a href="FrontInterfaceForum.html" id="TeamCReturnButtonFf" className="btn btn-secondary">

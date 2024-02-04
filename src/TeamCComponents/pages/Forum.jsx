@@ -135,7 +135,8 @@ const TeamC_Forum = () => {
        <Team_D_HeaderV2/>
         <div className="container stretch-forum">
           <div className="row justify-content-center">
-            <div className="col-lg-9 mb-3">
+            {/* added padding top 1/31/24 -jake */}
+            <div className="col-lg-9 mb-3 pt-4">
               <div className="row text-left mb-5">
                 {/* <div className="col-lg-12 text-left mt-50">
                   <h1>FORUM</h1>
