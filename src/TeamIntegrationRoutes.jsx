@@ -199,6 +199,8 @@ function TeamIntegrationRoutes() {
           <Route path="/verification" element={<Team_D_Verification />} />
           <Route path="/verif_nonuser" element={<Team_D_Verif_nonuser />} />
           <Route path="/about" element={<About />} />
+          <Route path="*" element={<h1 style={{color: "red", textAlign: "center", marginTop: "20%", fontSize: "5rem"}}>404 - Page Not Found</h1>} />
+  
         </Routes>
       </Suspense>
     </>
