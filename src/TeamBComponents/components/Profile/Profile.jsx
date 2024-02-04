@@ -1,3 +1,5 @@
+//  1/30/2024 fix margin top for profile container
+
 import React, { useContext, useState } from "react";
 import PersonalInfo from "./PersonalInfo";
 import AccDetails from "./AccDetails";
@@ -7,9 +9,10 @@ import { IoArrowBackCircle } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import Footer from "../Footer";
 
-
 import { ProfileContext } from "../context/ProfileContext";
+import PersonalEdit from "./PersonalEdit";
 import Nav from "../NavBar/Nav";
+
 const Profile = () => {
   //use navigate to back
   const navigate = useNavigate();
@@ -17,15 +20,24 @@ const Profile = () => {
   const goBack = () => {
     navigate(-1);
   };
-
+  
   //destructure profile context
-  const { showPersonalInfo, showAccDetails, showPInfo, showADetails } =
-    useContext(ProfileContext);
+  const {
+    showPersonalInfo,
+    showAccDetails,
+    showPInfo,
+    showADetails,
+  } = useContext(ProfileContext);
+
 
   return (
     <>
+
+    
+  
     <Nav/>
-      <div className="h-[100vh] mt-[100px]">
+      <div className="h-[100vh] mt-[65px]">
+
         <div>
           {/* Use react icon instead of word back */}
           <div
@@ -70,20 +82,19 @@ const Profile = () => {
           </div>
           <div>
             {/* Place your Component here */}
-            {showPersonalInfo && <PersonalInfo />}
+            {showPersonalInfo && <PersonalInfo/>}
             {showAccDetails && <AccDetails />}
             {/* /* Place AccDetails Component here */}
             {/* <AccDetails/> */}
           </div>
         </div>
-        <div className="pt-5">
+        <div className="pt-20">
           <Footer />
         </div>
       </div>
     </>
   );
 };
-
 
 export default Profile;
 
