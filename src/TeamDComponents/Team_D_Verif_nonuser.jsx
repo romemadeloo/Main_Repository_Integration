@@ -93,20 +93,18 @@ const Team_D_Verif_nonuser = () => {
               placeholder="Enter Serial Number"
               value={code}
               onClick={() => {
-                // Append "B55-" when the input field is clicked
                 setCode("B55-");
-                setIsValidSerial(false); // Reset isValidSerial on input click
+                setIsValidSerial(false);
               }}
               onChange={(e) => {
                 const inputValue = e.target.value
                   .toUpperCase()
-                  .substring(0, 18); // Limit to 18 characters
+                  .substring(0, 18);
                 setCode(inputValue);
-                setIsValidSerial(false); // Reset isValidSerial on input change
+                setIsValidSerial(false);
               }}
               onKeyPress={(e) => {
                 if (e.key === "Enter") {
-                  // Handle the "Enter" key press, e.g., trigger the verification function
                   handleVerify();
                 }
               }}
@@ -116,12 +114,12 @@ const Team_D_Verif_nonuser = () => {
                   : errorMessage
                   ? "#ff0000"
                   : "#ced4da",
-                borderWidth: "1.5px", // Adjust the border width as needed
+                borderWidth: "1.5px",
                 color: isValidSerial
                   ? "#28a745"
                   : errorMessage
                   ? "#ff0000"
-                  : "inherit" // Set font color to green when certified
+                  : "inherit"
               }}
             />
             <Button
@@ -134,37 +132,40 @@ const Team_D_Verif_nonuser = () => {
             </Button>
           </div>
           <div className="right">
-            <div className="nameVerification">
-              <Form.Label>Name</Form.Label>
-              <Form.Control
-                size="sm"
-                type="text"
-                placeholder={verificationResult ? verificationResult[0].full_name : ""}
-                readOnly
-              />
-            </div>
-            <div className="serialVerification">
-              {/* used tailwind to realign icon 2/5/24 */}
-              <div className="flex gap-x-2">
-                Certificate Serial No.
-                <AiFillSafetyCertificate className="icon" />
-              </div>
-              <Form.Control
-                size="sm"
-                type="text"
-                placeholder={verificationResult ? verificationResult[0].serial_no : ""}
-                readOnly
-              />
-            </div>
-            <div className="serialVerification">
-              <Form.Label>Course Certified</Form.Label>
-              <Form.Control
-                size="sm"
-                type="text"
-                placeholder={verificationResult ? verificationResult[0].course_title : ""}
-                readOnly
-              />
-            </div>
+            {!loading && !errorMessage && (
+              <>
+                <div className="nameVerification">
+                  <Form.Label>Name</Form.Label>
+                  <Form.Control
+                    size="sm"
+                    type="text"
+                    placeholder={verificationResult ? verificationResult[0].full_name : ""}
+                    readOnly
+                  />
+                </div>
+                <div className="serialVerification">
+                  <div className="flex gap-x-2">
+                    Certificate Serial No.
+                    <AiFillSafetyCertificate className="icon" />
+                  </div>
+                  <Form.Control
+                    size="sm"
+                    type="text"
+                    placeholder={verificationResult ? verificationResult[0].serial_no : ""}
+                    readOnly
+                  />
+                </div>
+                <div className="serialVerification">
+                  <Form.Label>Course Certified</Form.Label>
+                  <Form.Control
+                    size="sm"
+                    type="text"
+                    placeholder={verificationResult ? verificationResult[0].course_title : ""}
+                    readOnly
+                  />
+                </div>
+              </>
+            )}
             {errorMessage && (
               <div className="error-message">
                 <img src={warningErr} alt="warningErr" />
