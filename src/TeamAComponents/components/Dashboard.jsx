@@ -13,7 +13,7 @@ const Dashboard = () => {
         <img src="..\src\assets\TeamAassets\companyLogo.png" alt="Logo" />
         <ul className="menu-hide">
           <li>
-            <a href="/verification">Verification</a>
+            <a href="/verif_nonuser">Verification</a>
           </li>
           <li>
             <a href="About">About us</a>
