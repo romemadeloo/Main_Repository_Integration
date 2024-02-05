@@ -12,8 +12,8 @@ const Dashboard = () => {
       <nav className="my-navigation">
         <img src="..\src\assets\TeamAassets\companyLogo.png" alt="Logo" />
         <ul className="menu-hide">
-          <li>
-            <a href="/verification">Verification</a>
+        <li>
+            <a href="/verif_nonuser">Verification</a>
           </li>
           <li>
             <a href="About">About us</a>
