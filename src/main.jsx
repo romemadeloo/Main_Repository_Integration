@@ -16,18 +16,23 @@ import NavBarProvider from "../src/TeamBComponents/components/context/NavBarCont
 //import ProfileProvider
 import ProfileProvider from "../src/TeamBComponents/components/context/ProfileContext.jsx";
 
+//import CourseProvider
+import CourseProvider from "./TeamBComponents/components/context/CourseContext.jsx";
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Router>
     <AuthProvider>
-      <ProfileProvider>
-        <NavBarProvider>
-          <DashBoardProvider>
-            <React.StrictMode>
-              <App />
-            </React.StrictMode>
-          </DashBoardProvider>
-        </NavBarProvider>
-      </ProfileProvider>
+      <CourseProvider>
+        <ProfileProvider>
+          <NavBarProvider>
+            <DashBoardProvider>
+              <React.StrictMode>
+                <App />
+              </React.StrictMode>
+            </DashBoardProvider>
+          </NavBarProvider>
+        </ProfileProvider>
+      </CourseProvider>
     </AuthProvider>
   </Router>
 );

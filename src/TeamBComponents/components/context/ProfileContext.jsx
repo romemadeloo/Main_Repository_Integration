@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 
-import React, { createContext, useContext, useState } from "react";
-import { NavBarContext } from "./NavBarContext";
+import React, { createContext, useState } from "react";
+
 
 export const ProfileContext = createContext();
 
