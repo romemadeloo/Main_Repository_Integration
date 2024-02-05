@@ -75,18 +75,18 @@ const CopyofCreateNewCourse = () => {
           <div className=" flex border-[.01rem] drop-shadow-2xl shadow-lg border-black rounded-lg m-auto bg-[#EBFFE5] lg:max-w-[550px] 2xl:max-h-[672px] 2xl:max-w-[724px] ">
             <form onSubmit={handleSubmit} className="w-[80%] m-auto py-2 ">
               <div className="flex items-center py-1 text-black lg:font-bold lg:text-3xl lg:py-0">
-                <p className=" lg:font-bold TeamB_text-shadow   text-[24px] mt-5">
+                <p className=" lg:font-bold TeamB_text-shadow   text-[24px] pb-2">
                   Create Course
                 </p>
               </div>
-              <div className="relative w-full py-5 ">
+              <div className="relative w-full ">
                 {/* COURSE TITLE INPUT */}
 
                 <input
                   maxLength={70}
                   required
                   type="text"
-                  className="bg-[#BCE8B1] placeholder-[#070101] shadow-lg placeholder:TeamB_text-shadow   placeholder:xl:text-[24px] rounded-lg opacity-50 w-full p-4 box-border"
+                  className="bg-[#BCE8B1] placeholder-[#070101] shadow-lg placeholder:TeamB_text-shadow   placeholder:xl:text-[24px] rounded-lg opacity-50 w-full py-3 pl-2 box-border"
                   placeholder="Course Title"
                   name="course_title"
                   value={course_title}
@@ -105,7 +105,7 @@ const CopyofCreateNewCourse = () => {
 
               {/* COURSE BRIEF DESCRIPTION TEXTAREA */}
 
-              <div className="relative w-full py-5 ">
+              <div className="relative w-full pt-3 ">
                 <textarea
                   maxLength={250}
                   required
@@ -119,7 +119,7 @@ const CopyofCreateNewCourse = () => {
                   onMouseLeave={() => setShowTooltipCourseDescription(false)}
                 />
                 {showTooltipCourseDescription && (
-                  <div className=" absolute top-[-3.5rem] right-0 bg-[#fff]  w-[50%] p-1 rounded-lg border-[1px] border-[#126912]">
+                  <div className=" absolute top-[-2.5rem] right-0 bg-[#fff]  w-[50%] p-1 rounded-lg border-[1px] border-[#126912]">
                     <p className="text-[.8rem] text-[#4D4141] text-opacity-[53%]">
                       Maximum of 500 alphanumeric and special characters.
                     </p>
