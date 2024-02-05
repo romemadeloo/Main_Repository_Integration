@@ -13,13 +13,19 @@ function ProfileEdit() {
 
   return (
     <div>
-      <Navigation isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
-      <div className="Prof2-content">
+     <div className="home-header">
+        <img
+           src="..\src\assets\TeamAassets\companyLogo.png"
+          alt="Logo"
+          className="Qlogo"
+          
+        />
+      </div>
         <div className="Prof2-sign">
           <ProfileEditForm/>
         </div>
       </div>
-    </div>
+ 
   );
 }
 

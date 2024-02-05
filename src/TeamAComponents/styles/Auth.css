@@ -4,14 +4,12 @@
 .app {
   text-align: center;
 }
-
 .app-header {
   background-color: #282c34;
   padding: 20px;
   color: white;
   margin: 0;
 }
-
 .TeamA-button {
   margin: 10px 10px 10px;
   padding: 10px 20px;
@@ -20,13 +18,12 @@
   color: #ffffff;
   border-radius: 150px;
   background-color: #126912;
-  border: 1px solid #126912;
+  border: 1.5px solid #126912;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
 }
-.TeamA-button:hover {
+.TeamA-button:hover,.Prof2-Backbutton:hover,.login-button:hover {
   background-color: gray;
-}
-
+} 
 
 .login-button
 {
@@ -39,10 +36,6 @@
   width: 5rem;
   height: 2rem;
 } 
-.login-button:hover {
-background-color: gray;
-}
-
 .home-container {
   text-align: center;
 }
@@ -75,11 +68,10 @@ background-color: gray;
   
 }
 
-.logo {
+.Qlogo {
   width: 170px;
   height: auto;
 }
-
 
 .home-header nav a {
   text-decoration: none;
@@ -109,7 +101,7 @@ background-color: gray;
 .japanese-message h1 {
   color: #F6F6F6;
   font-family: Inter;
-  font-size: 54px;
+  font-size: 35px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -128,7 +120,7 @@ background-color: gray;
 .english-message h1 {
   color: #587354;
   font-family: Inter;
-  font-size: 54px;
+  font-size: 35px;
   font-style: italic;
   font-weight: 700;
   margin-top:-65px;
@@ -205,9 +197,6 @@ background-color: gray;
 
 }
 
-
-/* Landing Page Nav-Bar */
-
 .landingPage_NavBar
 {
   background-color: #BCE8B1;
@@ -241,8 +230,6 @@ background-color: gray;
   margin: 0;
 }
 
-
-
 .template-form{
   width: 700px;
   margin: 0 auto;
@@ -275,8 +262,6 @@ background-color: gray;
   color: #4D4141;
 }
 
-
-
 .template-form .forgot-password {
   color: #4D4141;
   font-weight: 700px;
@@ -294,17 +279,10 @@ background-color: gray;
   margin-top: 30px;
   text-decoration: underline;
 }
-.template-form .existing-account:hover {
+.template-form .existing-account:hover,.template-form .forgot-password:hover,.forgot-form .existing-account:hover ,.forgot-form .forgot-password:hover  {
   color: #0056b3;
 }
 
-.template-form .forgot-password:hover {
-  color: #0056b3;
-}
-
-/* ... existing styles ... */
-
-/* New styles for Forgot.jsx form */
 .forgot-container {
 text-align: center; 
 }
@@ -367,9 +345,6 @@ text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 margin: 0;
 }
 
-
-
-
 .forgot-form {
 width: 600px;
 margin: 0 auto;
@@ -420,15 +395,6 @@ cursor: pointer;
 font-size: 14px;
 text-decoration: underline;
 }
-
-.forgot-form .forgot-password:hover {
-color: #0056b3;
-}
-
-.forgot-form .existing-account:hover {
-  color: #0056b3;
-  }
-
 .forgot-div {
 align-items: center;
 justify-content: center;
@@ -454,10 +420,6 @@ input::placeholder{
   height: 45px;
 }
 
-/* Email and Code Verifictaion */
-
-/* Updated styles for the EmailForm Component */
-
 .email-forms-container {
   position: relative;
   width: 100%;
@@ -466,7 +428,6 @@ input::placeholder{
   align-items: center;
   flex-direction: column; /* Center align items vertically */
   margin-top: 50px;
-  
 }
 
 .email-sign-in-form {
@@ -504,8 +465,6 @@ input::placeholder{
   margin-top: 20px;
 }
 
-
-
 .email-input-field input {
   width: 300px;
   margin-left:10px;
@@ -513,7 +472,7 @@ input::placeholder{
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
-  text-align: center;
+  text-align: left;
 }
 
 .email-button {
@@ -527,13 +486,7 @@ input::placeholder{
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
     width: 110px;
     margin-left: 250px;
-    
-    
 }
-.email-button:hover {
-  background-color: gray
-}
-
 .email-panels-container {
   display: flex;
   position: relative;
@@ -541,7 +494,6 @@ input::placeholder{
   flex-direction: column; /* Stack the panels vertically */
   align-items: center; /* Center align panels */
 }
-
 .email-panel {
   position: relative;
   display: flex;
@@ -553,20 +505,15 @@ input::placeholder{
   color: #fff;
   margin-top: 20px; /* Add space between panels */
 }
-
-
-
 .email-image {
   width: 100%;
   max-width: 400px; /* Adjust the image max-width as needed */
   height: auto;
 }
-
 .email-center-text {
   text-align: center;
   margin-top: 10px; /* Add space between text and link */
 }
-
 .verification-forms-container {
   position: relative;
   width: 100%;
@@ -577,7 +524,6 @@ input::placeholder{
   margin-top: 50px;
   
 }
-
 .verification-sign-in-form {
   width: 600px;
   margin: 0 auto;
@@ -587,7 +533,6 @@ input::placeholder{
   display: flex;
   flex-direction: column;
 }
-
 .verification-title {
   font-size: 24px;
   font-weight: bold;
@@ -631,7 +576,9 @@ input::placeholder{
   text-align: center;
     
 }
-.verification-button:hover {
+.verification-button:hover,.email-button:hover,.Prof1-editButton:hover,.submit-button:hover,.otp-button:hover,.Change-editButton:hover,.Change-Backbutton:hover,.Prof1-ChangeButton:hover,.save-button:hover,
+.cancel-button:hover,.Prof1-Editbuttons:hover,.qBackbutton:hover,.wBackbutton:hover, .Show-button:hover,.nav-LOGOUT-button:hover,.home-button:hover,.Confirm-button:hover,.nav-HOME-button:hover
+ {
   background-color: #999
 
 }
@@ -762,11 +709,6 @@ input::placeholder{
     right: 10px;
     transition: background-color 0.3s ease;
   }
-
-.Prof1-editButton:hover {
-  background-color: #999
-}
-
 .Prof1-right {
   width: 65%;
   padding: 30px 25px;
@@ -798,9 +740,6 @@ input::placeholder{
   margin-right: 10px;
   font-weight: bold;
 }
-
-
-
 
 .Prof1-data h4 {
   color: #0e3b03;
@@ -1023,9 +962,7 @@ input::placeholder{
   
 }
 
-.submit-button:hover {
-  background-color:gray; /* Change background color on hover */
-}
+
 
 /*Prof1 edit and change password buttons */
 
@@ -1058,14 +995,7 @@ input::placeholder{
 .Prof1-Editbuttons {
   margin-right: 0; /* Remove the right margin for the Edit button */
 }
-
-.Prof1-ChangeButton:hover,
-.Prof1-Editbuttons:hover {
-  background-color: #999;
-}
-
 /*Change Password*/
-
 .Change-navbar {
   background-color: #D9FFCF;
   padding: 15px;
@@ -1143,11 +1073,6 @@ input::placeholder{
   margin-top: 10px;
   transition: background-color 0.3s ease;
 }
-
-.Change-editButton:hover {
-  background-color: #999;
-}
-
 .Change-right {
   width: 65%;
   padding: 25px 25px;
@@ -1213,10 +1138,6 @@ input::placeholder{
   margin-right: 10px; /* Adjust the right margin as needed */
   column-gap: 10px;
 }
-.Change-Backbutton:hover {
-  background-color: gray;
-}
-
 .save-button
 .cancel-button{
   background-color: #126912;
@@ -1232,12 +1153,6 @@ input::placeholder{
 }
 
 /* Change Password */
-.save-button:hover,
-.cancel-button:hover
-{
-  background-color: #999; /* Change background color on hover */
-}
-
 
 .Prof2-Backbutton {
   cursor: pointer;
@@ -1352,11 +1267,6 @@ input::placeholder{
   top: 10px;
   left: 10px;
 }
-
-.qBackbutton:hover {
-  background-color: gray;
-}
-
 /* Responsive styles for smaller screens */
 @media (max-width: 600px) {
   .qBackbutton {
@@ -1365,9 +1275,6 @@ input::placeholder{
     border-radius: 50px;
   }
 }
-
-/* styles.css */
-
 .wBackbutton {
   cursor: pointer;
   display: inline-block;
@@ -1381,12 +1288,6 @@ input::placeholder{
   top: 10px;
   left: 10px;
 }
-.wBackbutton:hover{
-background-color: gray;
-}
-
-
-
 /* Responsive styles */
 @media only screen and (max-width: 600px) {
   .wBackbutton {
@@ -1411,7 +1312,7 @@ background-color: gray;
 
 .my-navigation {
   background-color: #D9FFCF;
-  padding:0.5em 0.5em;
+  padding:10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1424,9 +1325,9 @@ background-color: gray;
 }
 
 .my-navigation ul {
-  list-style: none;
+  
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   margin: 0;
   padding: 0;
 }
@@ -1441,7 +1342,6 @@ background-color: gray;
   font-weight: bold;
 }
 
-
 #register, #login {
   background-color: #126912;
   color: #fff;
@@ -1453,6 +1353,9 @@ background-color: gray;
 
 #register:hover, #login:hover {
   background-color: gray;
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out; 
+  cursor: pointer;
 
 }
 #register{
@@ -1474,28 +1377,6 @@ background-color: gray;
   margin-left: 100px;
   font-family: 'Inter, sans-serif';
 }
-
-/* .text-container h1 {
-  margin-bottom: 1em;
-  font-weight: 900;
-
-}
-
-.text-container h2 {
-  margin-bottom: 1em;
-  font-weight: 900;
-
-} */
-
-
-
-
-
-/* para hindi dumikit sa gilid */
-/* .image-container {
-  flex: 1;
-  text-align: right;
-} */
 
 .image-container img {
   width: 400px;
@@ -1521,18 +1402,12 @@ background-color: gray;
   margin-top: 10px;
 }
 
-
-
-
-
 .TeamA-card-container {
   display: flex;
   align-items: stretch;
   justify-content: center;
   width: 100%;
   gap: 20px;
-  
-
 }
 
 .TeamA-card {
@@ -1558,10 +1433,6 @@ background-color: gray;
   justify-content: center;
 }
 
-/* .All {
-  align-items:center;
-  margin-left: 325px;
-} */
 .photo-section {
   display: flex;
   justify-content: space-around; /* Adjust as needed */
@@ -1578,8 +1449,6 @@ background-color: gray;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  
-  
 }
 
 .photo-box svg {
@@ -1591,7 +1460,6 @@ background-color: gray;
 }
 
 /*about container*/
-
 .about-container {
   text-align: center !important;
   font-family: 'Times New Roman', Times, serif;
@@ -1617,12 +1485,10 @@ background-color: gray;
   gap: 20px;
   margin: 0 250px;
 }
-
 .about-container  p {
   width:75%;
   text-align: justify;
 }
-
 .about-container h1{
   text-align: center;
   font-family: 'Times New Roman', Times, serif;
@@ -1630,7 +1496,6 @@ background-color: gray;
   font-size: 2rem;
 
 }
-
 .home-button {
   cursor: pointer;
   color: #ffffff;
@@ -1646,10 +1511,9 @@ background-color: gray;
   text-align: center;
   align-items: center;
   justify-content: center;
+  margin-top: 10px;
 }
-.home-button:hover {
-  background-color: gray;
-}
+
 .Confirm-button{
   margin: 10px 10px 10px;
   padding: 10px 20px;
@@ -1661,9 +1525,7 @@ background-color: gray;
   border: 1px solid #126912;
   margin-top: 50px;
 }
-.Confirm-button:hover{
-  background-color: gray;
-}
+
 .Show-button {
   margin: 10px 10px 10px;
   padding: 10px 20px;
@@ -1685,9 +1547,6 @@ background-color: gray;
   cursor: pointer;
   margin-right: 10px;
 }
-.nav-HOME-button:hover{
-  background-color: gray;
-}
 .nav-LOGOUT-button {
   background-color: #126912;
   color: #fff;
@@ -1696,26 +1555,16 @@ background-color: gray;
   border-radius: 5px;
   cursor: pointer;
 }
- .Show-button:hover,.nav-LOGOUT-button:hover  {
-color: gray;
-}
-
-.TeamA-courses {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px; /* Adjust the margin as needed */
-}
-
 .TeamA-courses {
   display: flex;
   justify-content: space-around; /* Center the squares */
   margin-top: 20px;
-  overflow: hidden; /* Prevent any content overflow */
+  margin-left: 50px;
 }
 
 .TeamA-square {
   width: 300px;
-  height: 400px;
+  height: 300px;
   background-color: #BCE8B1;
   margin-right: 40px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -1743,6 +1592,75 @@ color: gray;
 
 .data-validation {
   display: flex;
-  height: 50px;
-  margin-top: 10px;
+  height: 20px;
+  margin:5px
 }
+.TeamA-square:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out; 
+  cursor: pointer;
+}
+
+.my-navigation a:hover, .my-navigation li:hover {
+  color: #4D9349; 
+  transform:scale(1.1) ;
+  transition: transform 0.3s ease-in-out; 
+  cursor: pointer;
+}
+
+.otp-button:hover,.home-button:hover, .TeamA-button:hover, .qBackbutton:hover, .wBackbutton:hover,
+.Confirm-button:hover,.Prof1-ChangeButton:hover, .Prof1-Editbuttons:hover, .submit-button:hover,.cancel-button:hover, .Change-Backbutton:hover, .login-button:hover, .Prof2-Backbutton:hover, .nav-HOME-button:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out; 
+  cursor: pointer;
+}
+
+.menu-hide {
+  list-style: none;
+  display: flex;
+  gap: 20px; /* Adjust the space between items as needed */
+}
+
+.menu-hide li a {
+  text-decoration: none;
+  color: #000; /* Set your desired text color */
+  font-weight: bold;
+  font-size: 20px;
+}
+.email-input-field {
+  position: relative;
+}
+
+.forgot-otp-input-container {
+  position: relative;
+}
+
+input[type="text"] {
+  padding-right: 40px; /* Adjust the value based on your button's width */
+}
+
+.forgot-otp-button {
+  position: absolute;
+  top: 40%;
+  right: 1px; /* Adjust the value based on your design */
+  transform: translateY(-50%);
+  background-color: #126912;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  color: white;
+  padding: 10px 10px;
+  margin-bottom: 100px;
+  padding-right: 10px;
+}
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #f0f0f0;
+}
+
+
+
