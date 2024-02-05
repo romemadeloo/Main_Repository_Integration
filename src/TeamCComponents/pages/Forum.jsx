@@ -1,5 +1,4 @@
 import React, {useState,useEffect} from 'react';
-import '../css/forum_styles.css';
 import TeamC_Dashboard from './dashboard';
 import Team_D_HeaderV2 from "../../TeamDComponents/Team_D_HeaderV2";
 

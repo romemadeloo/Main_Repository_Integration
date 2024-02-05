@@ -134,16 +134,15 @@ const ForumF = () => {
             <div className="c_forum_adjustm col-lg-12 mb-3">
               {/*30/24*/}
               <div className="row text-left mb-5">
-                <div className="col-lg-12 text-left">
-                  <h1 className="c_forum_big">FORUM</h1>
-                </div>
+                <br/>
                 <div className="c_forum_adjustm col-lg-9mx-auto">
                   {/*30/24*/}
                   <div className="row text-left mb-5">
                     <div className="col-lg-6">
                       <button
-                        className="c_forum_btngr btn btn-lg btn-success rounded-5 py-2 px-4 mb-3 bg-op-6 roboto-bold"
-                        onClick={toggleDiscussionForm}>
+                        className="c_forum_btngr btn btn-lg btn-success py-2 px-4 mb-3 bg-op-6 roboto-bold"
+                        onClick={toggleDiscussionForm}
+                        >
                         {/*30/24*/}
                         Add discussion
                       </button>
@@ -207,7 +206,7 @@ const ForumF = () => {
                             type="button"
                             className="c_forum_btngr btn btn-success"
                             onClick={hideFormHandle}
-                            style={{ marginTop: "10px", paddingLeft: "11px" }}>
+                            style={{ marginTop: "10px", paddingLeft: "11px", backgroundColor: '#0e3b03' }}>
                             Post
                           </button>
                         </div>
