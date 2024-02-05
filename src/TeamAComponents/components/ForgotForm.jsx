@@ -44,7 +44,7 @@ function ForgotForm({ onForgotPassword }) {
             />
           </div>
           <div className="email-input-field">
-  <div className="otp-input-container">
+  <div className="forgot-otp-input-container">
     <input
       type="text"
       id="OTP"
@@ -52,7 +52,7 @@ function ForgotForm({ onForgotPassword }) {
       value={otp}
       onChange={(e) => setOtp(e.target.value)}
     />
-    <button  className="otp-button">
+    <button  className="forgot-otp-button">
       Send
     </button>
   </div>

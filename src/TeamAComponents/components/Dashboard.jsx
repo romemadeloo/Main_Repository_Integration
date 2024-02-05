@@ -21,10 +21,6 @@ const Dashboard = () => {
           <li>
           <a href="https://www.tsukiden.com.ph">Contact us</a>
           </li>
-          <li>
-            <a href="/">Home</a>
-          </li>
-          <li></li>
         </ul>
         <div className="testing">
           <Link to="/register">

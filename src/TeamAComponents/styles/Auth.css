@@ -1631,7 +1631,7 @@ input::placeholder{
   position: relative;
 }
 
-.otp-input-container {
+.forgot-otp-input-container {
   position: relative;
 }
 
@@ -1639,7 +1639,7 @@ input[type="text"] {
   padding-right: 40px; /* Adjust the value based on your button's width */
 }
 
-.otp-button {
+.forgot-otp-button {
   position: absolute;
   top: 40%;
   right: 1px; /* Adjust the value based on your design */
@@ -1654,7 +1654,13 @@ input[type="text"] {
   margin-bottom: 100px;
   padding-right: 10px;
 }
-
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #f0f0f0;
+}
 
 
 
