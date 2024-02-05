@@ -14,6 +14,10 @@
     cursor: pointer;
 }
 
+#finalAnswersContainer ul li{
+    height: fit-content;
+}
+
 .quizItemList button {
     margin: auto;
     width: 2rem;
@@ -26,10 +30,7 @@
     cursor: pointer;
 }
 
-.quizItemList .correct {
-    background-color: green;
-}
-
-.quizItemList .wrong {
-    background-color: red;
+.quizItemList li.selected {
+    background-color: #0e3b03; 
+    color: #fff; 
 }

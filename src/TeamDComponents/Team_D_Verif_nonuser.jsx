@@ -39,7 +39,11 @@ const Team_D_Verif_nonuser = () => {
               />
             </div>
             <div className="serialVerification">
-              <Form.Label>Certificate Serial No. <AiFillSafetyCertificate className="icon"/></Form.Label>
+              {/* used tailwind to realign icon 2/5/24 */}
+              <div className="flex gap-x-2">
+                        Certificate Serial No.
+                        <AiFillSafetyCertificate className="icon" />
+                        </div>
               <Form.Control
                   size="sm"
                   type="text"

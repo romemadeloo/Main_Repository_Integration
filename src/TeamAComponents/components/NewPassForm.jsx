@@ -50,8 +50,8 @@ function NewPassForm() {
             </svg>
           </button>
         </Link>
-        <h2 className="email-title">Change Password</h2>
-        <p>Please Change Your Password Here</p>
+        <h2 className="title"style={{fontSize:'20px'}}>Change Password</h2>
+        <p style={{marginTop:'10px'}}>Please Change Your Password Here</p>
         <label htmlFor="newPassword">
           <i className="fas fa-envelope"></i>
         </label>
@@ -87,17 +87,17 @@ function NewPassForm() {
 
         <div className='passstat'>
           {newPassword === confirmPassword && newPassword.trim() !== '' && (
-            <span style={{ color: 'green', fontSize: '14px'}}>Passwords match</span>
+            <span style={{ color: 'green', fontSize: '14px'}}>Password match</span>
           )}
 
 
           {newPassword !== confirmPassword && confirmPassword.trim() !== '' && newPassword.trim() !== '' && (
-            <span style={{ color: 'red', fontSize: '14px'}}>{confirmPasswordError || 'Passwords do not match'}</span>
+            <span style={{ color: 'red', fontSize: '14px'}}>{confirmPasswordError || 'Password do not match'}</span>
           )}
         </div>
 
         <div style={{ marginTop: '-60px' }}>
-          <Link to="/dashboard">
+          <Link to="/login">
             <button className="Confirm-button">Confirm</button>
           </Link>
         </div>

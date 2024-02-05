@@ -169,7 +169,7 @@ width: 100%; /* Make the button full-width on small screens */
 #discussionForm {
 padding: 15px; /* Add padding to the discussion form on small screens */
 }
-
+/* this affects responsiveness in labels */
 .form-control {
 border-radius: 15px; /* Maintain border-radius for form controls on small screens */
 }
