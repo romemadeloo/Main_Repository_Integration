@@ -1,16 +1,13 @@
-import React from "react";
-// import Header from "./Header";
+import React, { useState } from "react";
 import "../TeamDComponents/TeamD_Css/verification.css";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { AiFillSafetyCertificate } from "react-icons/ai";
+import warningErr from "../TeamDComponents/TeamD_Assets/icons8-warning-96.png";
 import Team_D_HeaderLanding from "./Team_D_HeaderLanding";
 import Verification from './../TeamAComponents/components/Verification';
 import "../TeamAComponents/styles/Auth.css";
 import { Link } from "react-router-dom";
-
-
-
 
 const Team_D_Verif_nonuser = () => {
   const [code, setCode] = useState("");
@@ -22,6 +19,7 @@ const Team_D_Verif_nonuser = () => {
   const handleVerify = async () => {
     setLoading(true);
     try {
+      // Replace the URL with your actual API endpoint
       const response = await fetch(
         `http://localhost:8080/api/certifications/verifyCertificate/${code}`
       );
@@ -62,10 +60,10 @@ const Team_D_Verif_nonuser = () => {
       setLoading(false);
     }
   };
+
   return (
-   
     <div>
-       <div className="home-header">
+      <div className="home-header">
         <div className="logo-container">
           <img
             src="..\src\assets\TeamAassets\companyLogo.png"
@@ -81,16 +79,14 @@ const Team_D_Verif_nonuser = () => {
           </ul>
         </nav>
       </div>
-      
+
       <section className="verification_container">
         <div className="verification_title">
           <span></span>
         </div>
         <div className="verification_search">
           <div className="left">
-            <div className="font-bold text-[2rem]">
             <h2>Verify Course Certificate</h2>
-            </div>
             <Form.Control
               size="sm"
               type="text"
@@ -138,73 +134,42 @@ const Team_D_Verif_nonuser = () => {
             </Button>
           </div>
           <div className="right">
-            {!loading && (
-              <>
-                {/* Only render the first set of input boxes if verificationResult doesn't exist */}
-                {!verificationResult && !errorMessage && (
-                  <>
-                    <div className="nameVerification">
-                      <Form.Label>Name</Form.Label>
-                      <Form.Control size="sm" type="text" readOnly />
-                    </div>
-                    <div className="serialVerification">
-                      <Form.Label>
-                        {/* used tailwind to realign icon 2/5/24 */}
-                        <div className="flex gap-x-2">
-                        Certificate Serial No.
-                        <AiFillSafetyCertificate className="icon" />
-                        </div>
-                      </Form.Label>
-                      <Form.Control size="sm" type="text" readOnly />
-                    </div>
-                    <div className="serialVerification">
-                      <Form.Label>Course Certified</Form.Label>
-                      <Form.Control size="sm" type="text" readOnly />
-                    </div>
-                  </>
-                )}
-                {/* Render the second set of input boxes if verificationResult exists */}
-                {verificationResult && verificationResult.length > 0 && (
-                  <>
-                    <div className="nameVerification">
-                      <Form.Label>Name</Form.Label>
-                      <Form.Control
-                        size="sm"
-                        type="text"
-                        placeholder={verificationResult[0].full_name}
-                        readOnly
-                      />
-                    </div>
-                    <div className="serialVerification">
-                      <Form.Label>
-                        Certificate Serial No.{" "}
-                        <AiFillSafetyCertificate className="icon" />
-                      </Form.Label>
-                      <Form.Control
-                        size="sm"
-                        type="text"
-                        placeholder={verificationResult[0].serial_no}
-                        readOnly
-                      />
-                    </div>
-                    <div className="serialVerification">
-                      <Form.Label>Course Certified</Form.Label>
-                      <Form.Control
-                        size="sm"
-                        type="text"
-                        placeholder={verificationResult[0].course_title}
-                        readOnly
-                      />
-                    </div>
-                  </>
-                )}
-                {errorMessage && (
-                  <div className="error-message">
-                    <img src={warningErr} alt="warningErr" />
-                    {errorMessage}
-                  </div>
-                )}
-              </>
+            <div className="nameVerification">
+              <Form.Label>Name</Form.Label>
+              <Form.Control
+                size="sm"
+                type="text"
+                placeholder={verificationResult ? verificationResult[0].full_name : ""}
+                readOnly
+              />
+            </div>
+            <div className="serialVerification">
+              {/* used tailwind to realign icon 2/5/24 */}
+              <div className="flex gap-x-2">
+                Certificate Serial No.
+                <AiFillSafetyCertificate className="icon" />
+              </div>
+              <Form.Control
+                size="sm"
+                type="text"
+                placeholder={verificationResult ? verificationResult[0].serial_no : ""}
+                readOnly
+              />
+            </div>
+            <div className="serialVerification">
+              <Form.Label>Course Certified</Form.Label>
+              <Form.Control
+                size="sm"
+                type="text"
+                placeholder={verificationResult ? verificationResult[0].course_title : ""}
+                readOnly
+              />
+            </div>
+            {errorMessage && (
+              <div className="error-message">
+                <img src={warningErr} alt="warningErr" />
+                {errorMessage}
+              </div>
             )}
           </div>
         </div>
@@ -212,4 +177,5 @@ const Team_D_Verif_nonuser = () => {
     </div>
   );
 };
+
 export default Team_D_Verif_nonuser;
