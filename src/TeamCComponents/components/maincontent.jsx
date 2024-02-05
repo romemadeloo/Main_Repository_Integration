@@ -7,6 +7,7 @@ function TeamC_MainContent (){
     let layoutTitle = '';
     let subTitle = '';
     let descText = '';
+    let urlReturn = '';
     
     switch (pathname) {
        /* COURSE 1 */
@@ -14,69 +15,79 @@ function TeamC_MainContent (){
         layoutTitle = 'CHAPTER 1';
         subTitle = 'Introduction to SQL Query';
         descText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+        urlReturn = '/chapters_sql'
         break;
 
       case '/course1_svn':
         layoutTitle = 'CHAPTER 1';
         subTitle = 'Introduction to Subversion';
         descText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+        urlReturn = '/chapters_svn'
         break;
 
       case '/course1_hprog':
         layoutTitle = 'CHAPTER 1';
         subTitle = 'Introduction to HTML Programming';
         descText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+        urlReturn = '/chapters_hprog'
         break;
 
        /* COURSE 2 */
        case '/course2_sql':
         layoutTitle = 'CHAPTER 2';
-        subTitle = 'Introduction to SQL Query';
+        subTitle = 'History of SQL Query';
         descText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+        urlReturn = '/chapters_sql'
         break;
 
       case '/course2_svn':
         layoutTitle = 'CHAPTER 2';
-        subTitle = 'Introduction to Subversion';
+        subTitle = 'History of Subversion';
         descText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+        urlReturn = '/chapters_svn'
         break;
 
       case '/course2_hprog':
         layoutTitle = 'CHAPTER 2';
-        subTitle = 'Introduction to HTML Programming';
+        subTitle = 'History of HTML Programming';
         descText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+        urlReturn = '/chapters_hprog'
         break;
 
        /* COURSE 3 */
        case '/course3_sql':
         layoutTitle = 'CHAPTER 3';
-        subTitle = 'Introduction to SQL Query';
+        subTitle = 'Extra information about SQL Query';
         descText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+        urlReturn = '/chapters_sql'
         break;
 
       case '/course3_svn':
         layoutTitle = 'CHAPTER 3';
-        subTitle = 'Introduction to Subversion';
+        subTitle = 'Extra information about Subversion';
         descText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+        urlReturn = '/chapters_svn'
         break;
 
       case '/course3_hprog':
         layoutTitle = 'CHAPTER 3';
-        subTitle = 'Introduction to HTML Programming';
+        subTitle = 'Extra information about HTML Programming';
         descText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+        urlReturn = '/chapters_hprog'
         break;
         
       default:
         layoutTitle = '-NO TITLE-';
         subTitle = '-NO SUBTITLE-';
         descText = '-NO DESCTEXT-';
+        urlReturn = '-MISSING URL-'
         break;
     }
     
         return(
         <>
-        <Link to='/course' className="buttonReturn d-flex align-items-center c_chapter_returncontainer" style={{ textDecoration: 'none', color: 'black', width: 'fit-content',}}>
-            <div className="d-flex align-items-center">
+        <Link to={urlReturn} className="buttonReturn d-flex align-items-center c_chapter_returncontainer" style={{ textDecoration: 'none', color: 'black', width: 'fit-content',}}>
+            <div className="d-flex align-items-center" style={{marginTop: '1rem'}}>
                 <div>
                     <img src="../../src/assets/TeamCassets/green_button.png" className="btnReturn c_chapter_return" alt="return-icon" style={{ transition: 'transform .1s', color: '#ffffff', 
                     marginLeft:'1rem', width: '2rem', height: '2rem', }}/>
@@ -85,32 +96,22 @@ function TeamC_MainContent (){
             </div>
         </Link>
         {/* Main layout */}
-        <main className="c_chapcourse_mainlayout" style={{marginTop: '3.5rem', marginLeft: '10rem', marginRight: '10rem'}}>
+        <main id="c_maincontent_mainlayout">
 
         {/* Start of Topic Container */}
-        <div id="topic0" className="c_chapcourse_hidden">
+        <div id="topic0" className="c_maincontent_parentcontainer">
 
-          <div className="container">
-            <p style={{fontWeight: 'bold', fontSize: '2.5rem'}}>{layoutTitle}</p>
-            <p style={{ fontSize: '2.5rem'}}>{subTitle}</p>
-            <br />
-            <div className="row gy-5" style={{ backgroundColor: "#EBFFE5" }}>
-              <div className="col-12">
+          <div className="container" id="c_maincontent_maincontainer" >
+            <p style={{fontWeight: 'bold'}}>{layoutTitle}</p>
+            <p>{subTitle}</p>
+            <div style={{ backgroundColor: '#EBFFE5'}}>
+              <div>
                 <div
-                  className="rounded-3"
-                  style={{
-                    fontSize: "18px",
-                    color: "#0e3b03",
-                    backgroundColor: "#D9FFCF",
-                    textAlign: "center",
-                    overflow: "visible",
-                    border: "2px solid",
-                    borderColor: "#0e3b03"
-                  }}
+                  id="c_maincontent_textcontainer"  
                 >
-                  <p className="lh-base" style={{fontSize: '1.3rem', marginTop: '1rem', marginLeft: '1rem', marginRight: '1rem', marginBottom: '1rem',}}>{descText}</p>
+                  <p className="lh-base" id="c_maincontent_textdesc" style={{marginTop: '1rem', marginLeft: '1rem', marginRight: '1rem', marginBottom: '1rem',}}>{descText}</p>
                 </div>
-                <div className="d-grid gap-2 d-md-flex justify-content-md-end" style={{margin: '10px'}}>
+                <div id="c_maincontent_buttoncontainer" >
                 <button className="btn courseButton" 
                 data-bs-toggle="modal" 
                 data-bs-target="#mainId" 
