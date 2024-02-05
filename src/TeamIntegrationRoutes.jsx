@@ -17,6 +17,7 @@ import About from "../src/TeamAComponents/components/About";
 import Footer from "./TeamAComponents/components/Footer";
 import Email from "./TeamAComponents/components/Email";
 
+
 // TEAM B IMPORTS
 
 //2/4/2024 junite, routes integration, added code splitting for app optimization
