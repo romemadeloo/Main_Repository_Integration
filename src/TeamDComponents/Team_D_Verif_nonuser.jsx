@@ -1,17 +1,38 @@
 import React from "react";
 // import Header from "./Header";
 import "../TeamDComponents/TeamD_Css/verification.css";
-
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { AiFillSafetyCertificate } from "react-icons/ai";
 import Team_D_HeaderLanding from "./Team_D_HeaderLanding";
 import Verification from './../TeamAComponents/components/Verification';
+import "../TeamAComponents/styles/Auth.css";
+import { Link } from "react-router-dom";
+
+
+
 
 const Team_D_Verif_nonuser = () => {
   return (
+   
     <div>
-      <Team_D_HeaderLanding />
+       <div className="home-header">
+        <div className="logo-container">
+          <img
+            src="..\src\assets\TeamAassets\companyLogo.png"
+            alt="Logo"
+            className="logo"
+          />
+        </div>
+        <nav>
+          <ul>
+            <Link to="/">
+              <button className="nav-HOME-button">Home</button>
+            </Link>
+          </ul>
+        </nav>
+      </div>
+      
       <section className="verification_container">
         <div className="verification_title">
             <span></span>
