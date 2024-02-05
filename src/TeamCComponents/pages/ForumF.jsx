@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import '../css/ffront.css';
-import { IoIosSearch } from 'react-icons/io';
+import React, { useState, useEffect } from "react";
+import "../css/ffront.css";
+import { IoIosSearch } from "react-icons/io";
+import DiscussionPosts from "./DiscussionPosts";
 import Team_D_HeaderV2 from '../../TeamDComponents/Team_D_HeaderV2';
 
 
@@ -58,30 +59,6 @@ const ForumF = () => {
       return;
     }
 
-    // Create a new discussion card
-    var newDiscussionCard = document.createElement("div");
-    newDiscussionCard.className =
-      "card row-hover pos-relative py-3 px-3 mb-3 border-top-0 border-right-0 border-bottom-0 rounded-0 discussion-container";
-
-    var cardContent = `
-            <div class="row align-items-center ">
-                <div class="col-md-8 mb-3 mb-sm-0">
-                    <h5><a href="#" class="c_forum_decor text-success" id="discussionTitle_${Date.now()}">${discussionTitle}</a></h5>
-                    <p class="text-sm"><span class="op-6">Posted by</span> <a class="c_forum_decor text-black" href="#">Your Name</a></p>
-                </div>
-                <div class="col-md-4 op-7 d-flex justify-content-end align-items-center">
-                    <div class="row text-center op-3">
-                        <div class="col px-5"> 
-                            <a class="c_forum_btnicn ion-ios-chatboxes-outline icon-1x" href="#"></a> 
-                            <span class="d-block text-sm">0 replies</span> 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
-
-    newDiscussionCard.innerHTML = cardContent;
-
     // Add an event listener to the discussion title for redirection
     var discussionTitleElement = newDiscussionCard.querySelector(
       `#discussionTitle_${Date.now()}`
@@ -137,6 +114,16 @@ const ForumF = () => {
       searchInput.removeEventListener("input", toggleSearchButton);
     };
   }, []);
+
+  //hide and show submit form
+  const [showForm, setShowForm] = useState(false)
+  
+  //functionlity for hiding form when submit
+  const hideFormHandle = () => {
+    setShowForm(prev => !prev)
+     setShowDiscussionForm(false)
+  }
+
   
   return (
     <>
@@ -156,8 +143,7 @@ const ForumF = () => {
                     <div className="col-lg-6">
                       <button
                         className="c_forum_btngr btn btn-lg btn-success rounded-5 py-2 px-4 mb-3 bg-op-6 roboto-bold"
-                        onClick={toggleDiscussionForm}
-                      >
+                        onClick={toggleDiscussionForm}>
                         {/*30/24*/}
                         Add discussion
                       </button>
@@ -177,8 +163,7 @@ const ForumF = () => {
                           className="btn btn-success"
                           type="button"
                           onClick={searchDiscussions}
-                          disabled={isSearchButtonDisabled}
-                        >
+                          disabled={isSearchButtonDisabled}>
                           <IoIosSearch />
                           {/*30/24*/}
                         </button>
@@ -187,7 +172,7 @@ const ForumF = () => {
                   </div>
                   {showDiscussionForm && (
                     <div id="discussionForm">
-                      <form>
+                      <div>
                         <div className="form-group">
                           <label htmlFor="discussionTitle">
                             Discussion Title
@@ -221,39 +206,17 @@ const ForumF = () => {
                           <button
                             type="button"
                             className="c_forum_btngr btn btn-success"
-                            onClick={postDiscussion}
-                            style={{ marginTop: "10px", paddingLeft: "11px" }}
-                          >
+                            onClick={hideFormHandle}
+                            style={{ marginTop: "10px", paddingLeft: "11px" }}>
                             Post
                           </button>
                         </div>
-                      </form>
+                      </div>
                     </div>
                   )}
                 </div>
-                <div id="discussionPosts">
-                  {discussionPosts.map((post) => (
-                    <div
-                      key={post.id}
-                      style={{ display: post.display ? "block" : "none" }}
-                    >
-                      <h5>
-                        <a
-                          href={`/Discussion/${post.title}`}
-                          className="c_forum_decor text-primary"
-                        >
-                          {post.title}
-                        </a>
-                        {/*30/24*/}
-                      </h5>
-                      <p className="text-sm">
-                        <span className="op-6">Posted by</span>{" "}
-                        <a className="c_forum_decor text-black" href="#">
-                          Your Name
-                        </a>
-                      </p>
-                    </div>
-                  ))}
+                <div >
+                  {showForm && <DiscussionPosts />}
                 </div>
               </div>
             </div>
@@ -263,8 +226,7 @@ const ForumF = () => {
             id="niceModal"
             tabIndex="-1"
             aria-labelledby="niceModalLabel"
-            aria-hidden="true"
-          >
+            aria-hidden="true">
             <div className="modal-dialog">
               <div className="c_forum_modal modal-content">
                 <div className="c_forum_modbod modal-body">
@@ -274,31 +236,29 @@ const ForumF = () => {
             </div>
           </div>
           <div
-        className="modalSec modal fade"
-        id="discussionDetailModal"
-        tabindex="-1"
-        aria-labelledby="discussionDetailModalLabel"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog modal-lg">
-          <div className="modalCont modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="discussionDetailModalLabel">
-                Discussion Details
-              </h5>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div className="modal-body">
-              <div id="discussionDetailContent"></div>
+            className="modalSec modal fade"
+            id="discussionDetailModal"
+            tabindex="-1"
+            aria-labelledby="discussionDetailModalLabel"
+            aria-hidden="true">
+            <div className="modal-dialog modal-lg">
+              <div className="modalCont modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title" id="discussionDetailModalLabel">
+                    Discussion Details
+                  </h5>
+                  <button
+                    type="button"
+                    className="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+                </div>
+                <div className="modal-body">
+                  <div id="discussionDetailContent"></div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
         </div>
       </div>
     </>
