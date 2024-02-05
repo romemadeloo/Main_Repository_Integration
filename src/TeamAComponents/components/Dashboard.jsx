@@ -23,7 +23,7 @@ const Dashboard = () => {
           <a href="https://www.tsukiden.com.ph">Contact us</a>
           </li>
           <li>
-            <a href="/verification">Verification</a>
+            <a href="/verif_nonuser">Verification</a>
           </li>
           <li></li>
         </ul>
