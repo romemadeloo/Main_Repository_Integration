@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Footer from "./Footer";
 
 function ForgotForm({ onForgotPassword }) {
   const [email, setEmail] = useState('');
@@ -28,6 +29,7 @@ const handleForgot = (e) => {
           </svg>
         </button>
       </Link>
+   
           <h2 className="title">Forgot Password</h2>
           <p>Please enter your email address to reset your password.</p>
           <div className="email-input-field">
@@ -47,16 +49,16 @@ const handleForgot = (e) => {
           </div>
           </Link>
           <Link to="/Email">
-          <button>Send to Email</button>
+          <button className="TeamA-button">Send to Email</button>
           </Link>
         </form>
       </div>
-
       <div className="forgot-container">
         <div className="forgot left-panel">
           <div className="forgot-content"></div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

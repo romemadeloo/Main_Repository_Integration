@@ -52,9 +52,9 @@ function EmailForm({ onEmailForm }) {
           </Link>
           
        </p>
-        <Link to="/verify"> 
-          <button>Send to Email</button>
-          </Link>
+       <Link to="/new"> 
+          <button className="TeamA-button">Send Code</button>
+        </Link>
         
       </form>
 

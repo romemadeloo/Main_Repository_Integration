@@ -12,7 +12,7 @@ function Register({ onNavigateHome }) {
 
   return (
     <div>
-      <div className="auth-header">
+      <div className="home-header">
         <img
            src="..\src\assets\TeamAassets\companyLogo.png"
           alt="Logo"

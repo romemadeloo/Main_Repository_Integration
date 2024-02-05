@@ -8,7 +8,7 @@ function Login({ onNavigateHome, onForgotPassword }) {
 
   return (
     <div className="auth-container">
-      <div className="auth-header">
+      <div className="home-header">
         
         <img
           src="..\src\assets\TeamAassets\companyLogo.png" 
@@ -30,7 +30,7 @@ function Login({ onNavigateHome, onForgotPassword }) {
       <div style={{display: "flex", flexDirection: "column", alignItems: "start", }}>
       <div>
         <div className="auth-label">
-          <h1>SIGN IN</h1>
+          <h1>LOG IN</h1>
         </div>
       </div>
       <div className="auth-content">

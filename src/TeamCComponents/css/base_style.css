@@ -1,22 +1,58 @@
-/* MAIN BODY CANVAS */
-body {
-    background-color: #EBFFE5;
-    margin: 0;
-    padding: 0;
-}
 
-/* BODY STYLE OF THE HEADER SELECTED TITLES */
-.header {
-    background-color: #BCE8B1;
-}
-
-
-
-/* HOLD-CLICK EFFECT FOR VIEW COURSE ON HEADER SELECTED TITLES */
+/* HOLD-CLICK EFFECT FOR VIEW COURSE ON  SELECTED TITLES */
 .btn-view-course:hover {
     background-color: #145304;
 }
 
-@media (max-width: 600px) {
+#c_dashboard_header {
+    background-color: #BCE8B1;
 }
+
+.c_chapter_cardmain:hover {
+    filter: drop-shadow(0 0 1em #484848);
+  }
+
+  .buttonReturn:hover .c_chapter_return {
+    transform: scale(1.1);
+  }
+
+  .c_course_itemcontainer:hover {
+    filter: drop-shadow(0 0 1em #126912);
+  }
+  
+      /* CARD POSITIONING */
+#c_cardpreview_cardouter {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: left; 
+    max-height: 100%;
+}
+
+
+
+/* CARD SPACING */
+#c_cardpreview_cardcontainer {
+    margin: 10px;
+}
+
+#c_preview_headerTitle {
+    font-size: 2.5rem;
+}
+
+#c_preview_headerSub{
+    font-size: 2.3rem;
+}
+
+#c_preview_headerSub{
+    font-size: 1.5rem;
+}
+  
+  
+
+
+
+
+
+
 
