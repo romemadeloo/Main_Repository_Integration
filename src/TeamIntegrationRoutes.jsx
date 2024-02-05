@@ -52,6 +52,9 @@ import TeamC_ChapterHprog from "./TeamCComponents/pages/chapter_hprog";
 import TeamC_QuizForm from "./TeamCComponents/pages/quizForm";  
 import TeamA_NewPass from "./TeamAComponents/components/NewPass";
 import ForumF from "./TeamCComponents/pages/ForumF";  
+import TeamC_QuizHtml from "./TeamCComponents/pages/quiz/quiz_html";
+import TeamC_QuizSql from "./TeamCComponents/pages/quiz/quiz_sql";
+import TeamC_QuizSvn from "./TeamCComponents/pages/quiz/quiz_svn";
 
 // team D
 import Team_D_View from "./TeamDComponents/Team_D_View";
@@ -106,6 +109,9 @@ function TeamIntegrationRoutes() {
         <Route path="/course" element={<TeamC_Course />} />
         <Route path="/ForumF" element={<TeamC_Forum />} />
         <Route path="/quizform" element={<TeamC_QuizForm/>} />
+        <Route path="/quiz_sql" element={<TeamC_QuizSql />} />
+        <Route path="/quiz_svn" element={<TeamC_QuizSvn />} />
+        <Route path="/quiz_html" element={<TeamC_QuizHtml />} />
 
         {/* COURSE 1 */}
         <Route

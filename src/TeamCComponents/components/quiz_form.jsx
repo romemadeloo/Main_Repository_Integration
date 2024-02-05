@@ -12,17 +12,29 @@ function TeamC_QuizForm_Component (){
     let urlReturn = '';
     
     switch (pathname) {
-       /* COURSE 1 */
-      case '/quizform':
-        quizTitle = 'Quiz Title Goes Here';
+       /* QUIZ CHAPTER 1   */
+      case '/quiz_sql':
+        quizTitle = 'SQL Quiz';
+        descText = 'Please keep your notes before taking the quiz. No cheating! Go anzen ni.';
+        urlReturn = '/course';        
+        break;  
+               /* QUIZ CHAPTER 2 */
+      case '/quiz_svn':
+        quizTitle = 'Subversion Quiz';
+        descText = 'Please keep your notes before taking the quiz. No cheating! Go anzen ni.';
+        urlReturn = '/course';        
+        break;  
+               /* COURSE 1 */
+      case '/quiz_html':
+        quizTitle = 'HTML Programming Quiz';
         descText = 'Please keep your notes before taking the quiz. No cheating! Go anzen ni.';
         urlReturn = '/course';        
         break;  
         
       default:
-        quizTitle = '-NO SUBTITLE-';
-        descText = '-NO DESCTEXT-';
-        urlReturn = '-MISSING URL-';
+        quizTitle = 'Quiz Title Goes Here';
+        descText = 'Please keep your notes before taking the quiz. No cheating! Go anzen ni.';
+        urlReturn = '/course';
         break;
     }
     {/* FOR QUIZ QUESTIONS */}
@@ -41,38 +53,45 @@ function TeamC_QuizForm_Component (){
     {/* END FOR QUIZ QUESTIONS */}
     
     {/* VALIDATORS */}
-    const checkAns = (e,answer) => {
-        if(lock === false){
-            if( question.answer===answer){
-                e.target.classList.add("correct");
-                setLock(true);
-                setScore(prev=>prev+1);
-            }
-            else {
-                e.target.classList.add("wrong");
-                setLock(true);
-                option_array[question.answer-1].current.classList.add("correct");
-            }
-        }
-    }
+    const checkAns = (e, answer) => {
+      if (lock === false) {
+          // Remove previous styling from all options
+          option_array.map((option) => {
+              option.current.classList.remove("selected");
+              return null;
+          });
+  
+          // Add selected styling to the clicked option
+          e.target.classList.add("selected");
+  
+          if (question.answer === answer) {
+              setScore((prev) => prev + 1);
+          }
+      }
+  };
+  
+  const next = () => {
+    if (lock === false) {
+        // Check if there is a next question
+        if (index + 1 < data.length) {
+            // Update the question and set the lock
+            setIndex((prevIndex) => prevIndex + 1);
+            setQuestion(data[index + 1]);
+            setLock(false);
 
-    const next = () => {
-        if(lock === true){
-            if(index === data.length -1){
-                setResult(true);
-                return 0;
-
-            }
-            setIndex(++index);
-            setQuestion(data[index]);
-            setLock(false); 
-            option_array.map((option)=> {
-                option.current.classList.remove("wrong");
-                option.current.classList.remove("correct");
+            // Remove styling from all options
+            option_array.map((option) => {
+                option.current.classList.remove("selected");
                 return null;
-            })
+            });
+        } else {
+            // No more questions, set the result
+            setResult(true);
         }
     }
+}
+
+
 
     const reset = () => {
         window.location.reload();
@@ -143,17 +162,7 @@ function TeamC_QuizForm_Component (){
                 </div>
                 </div>
                 {/* END OF QUIZ QUESTION */}
-                <div className="d-grid gap-2 d-md-flex justify-content-md-end" style={{margin: '10px'}}>
-
-                <button className="btn courseButton" 
-                data-bs-toggle="modal" 
-                data-bs-target="#subId"
-                type="button"
-                style={{backgroundColor: '#0E3B03', 
-                color: 'white',
-                boxShadow: '0 2px 5px 0 rgb(0 0 0 / 25%), 0 5px 5px 0 rgb(0 0 0 / 30%)', 
-              }}
-                >SUBMIT</button>
+                <div className="d-grid footer" style={{margin: '10px'}}>
                </div>   
               </div>
             </div>
