@@ -1,4 +1,5 @@
 //february 3 modification of ui and functionalities -gem
+//2/5/2024 junite, fix UI spacing
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
@@ -70,23 +71,20 @@ const CourseOverviewById = () => {
 
   return (
     <>
-  
       <div className="w-full h-full ">
         <div className=" m-0 lg:max-w-[1080px] lg:flex lg:flex-col  lg:justify-center">
           {chapterlist.map((chapter, idx) => {
             // console.log(chapter.chapter.chapter_title);
             return (
               <div key={idx} className="relative m-0 lg:w-full">
-                <div className="flex items-center justify-center w-full gap-5 m-auto mb-5">
+                <div className="flex items-center justify-center w-full gap-5 pb-4 m-auto">
                   <div className="h-[1.5rem] w-[1.5rem] bg-[#126912] rounded-[100%]"></div>
                   {/* <div className="flex"> */}
 
                   <Link
-                  to='/teambtopicpage'
+                    to="/teambtopicpage"
                     className=" 2xl:rounded-[20px] w-full lg:flex lg:items-center lg:font-medium lg:text-[1rem] 2xl:text-[24px] bg-[#126912]  py-1 text-center text-[.8rem]  lg:p-5 text-white
-                      lg:h-[50px] lg:rounded-[1rem]  "
-                      
-                      >
+                      lg:h-[50px] lg:rounded-[1rem]  ">
                     <p className="text-shadow">CHAPTER {chapter.chapiId}:</p>
                     <p className="pl-2 lg:font-medium text-shadow">
                       {chapter.chapterTitle}
@@ -138,11 +136,11 @@ const CourseOverviewById = () => {
             </div>
           )}
 
-          <div className="w-full lg:w-[12rem] m-auto lg:flex lg:justify-center lg:items-center">
+          <div className="w-full lg:w-[12rem] m-auto lg:flex lg:justify-center lg:items-center pt-5">
             {/*add new chapter title */}
-            <div className="lg:rounded-[1rem] lg:h-[50px] 2xl:h-[65px] flex items-center justify-center w-[100%] lg:w-[100%] cursor-pointer bg-[#BCE8B1]">
+            <div className="lg:rounded-[1rem] lg:h-[50px] 2xl:h-[65px] flex items-center justify-center cursor-pointer bg-[#BCE8B1]">
               <button
-                className="flex items-center justify-center w-full"
+                className="flex items-center justify-center lg:w-[300px] gap-x-3 2xl:w-[481px]"
                 onClick={() => setShowChapModal((prev) => !prev)}>
                 <span className="pr-1">
                   <IoAdd className="text-[2rem] lg:text-[2.5rem] text-white" />

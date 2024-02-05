@@ -26,7 +26,10 @@
     width: 35% !important;
     height: 30px;
 }
-
+/* temporary fix until teamc fixed theirs */
+.withSearchBar .form-control:focus{
+    background-color: #fff;
+}
 .withSearchBar .form-control {
     height: 30px;
 }

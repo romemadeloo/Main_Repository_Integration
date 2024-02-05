@@ -111,14 +111,16 @@
   
 }
 
+/* commented this again since this affects verification forms 2/5/24
 .form-control {
   border-radius: 15%;
   background-color: #e0f8d9;
   color: black;
   resize: none;
   border-radius: 15px;
-} */
+}  */
 
+/* this affects the searchbar in group d 2/5/24 */
 .form-control:focus {
   background-color: #EBFFE5;
 }
