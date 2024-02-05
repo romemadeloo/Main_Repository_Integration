@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "../styles/Auth.css";
 import Navigation from './Navigation';
 import { useAuth } from "./AuthContext"; 
-import Footer from "./Footer";
 
 const Dashboard = () => {
   const { isLoggedIn, handleLogout } = useAuth();
@@ -12,9 +11,9 @@ const Dashboard = () => {
     <div>
       <nav className="my-navigation">
         <img src="..\src\assets\TeamAassets\companyLogo.png" alt="Logo" />
-        <ul className="menu hide">
+        <ul className="menu-hide">
           <li>
-            <a href="/">Home</a>
+            <a href="/verification">Verification</a>
           </li>
           <li>
             <a href="About">About us</a>
@@ -22,10 +21,6 @@ const Dashboard = () => {
           <li>
           <a href="https://www.tsukiden.com.ph">Contact us</a>
           </li>
-          <li>
-            <a href="/verification">Verification</a>
-          </li>
-          <li></li>
         </ul>
         <div className="testing">
           <Link to="/register">
@@ -73,7 +68,13 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-      <Footer/>
+      <div>
+      <footer className="flex justify-center p-9 fixed bottom-0 w-full ">
+        <div>
+          <p className="text-[#4D9349] font-medium">All Rights Reserved | Copyright 2024</p>
+        </div>
+      </footer>
+    </div>
     </div>
     
     

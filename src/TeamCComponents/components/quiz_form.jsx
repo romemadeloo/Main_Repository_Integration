@@ -12,17 +12,61 @@ function TeamC_QuizForm_Component (){
     let urlReturn = '';
     
     switch (pathname) {
-       /* COURSE 1 */
-      case '/quizform':
-        quizTitle = 'Quiz Title Goes Here';
+       /* QUIZ CHAPTER 1   */
+      case '/quiz_sql1':
+        quizTitle = 'Chapter 1: SQL Quiz';
         descText = 'Please keep your notes before taking the quiz. No cheating! Go anzen ni.';
-        urlReturn = '-MISSING URL-';        
+        urlReturn = '/course1_sql';        
+        break;  
+      case '/quiz_svn1':
+        quizTitle = 'Chapter 1: Subversion Quiz';
+        descText = 'Please keep your notes before taking the quiz. No cheating! Go anzen ni.';
+        urlReturn = '/course1_svn';        
+        break;  
+      case '/quiz_html1':
+        quizTitle = 'Chapter 1: HTML Programming Quiz';
+        descText = 'Please keep your notes before taking the quiz. No cheating! Go anzen ni.';
+        urlReturn = '/course1_hprog';        
+        break;  
+
+      /* QUIZ CHAPTER 2   */
+      case '/quiz_sql2':
+        quizTitle = 'Chapter 2: SQL Quiz';
+        descText = 'Please keep your notes before taking the quiz. No cheating! Go anzen ni.';
+        urlReturn = '/course2_sql';        
+        break;  
+      case '/quiz_svn2':
+        quizTitle = 'Chapter 2: Subversion Quiz';
+        descText = 'Please keep your notes before taking the quiz. No cheating! Go anzen ni.';
+        urlReturn = '/course2_svn';        
+        break;  
+      case '/quiz_html2':
+        quizTitle = 'Chapter 2: HTML Programming Quiz';
+        descText = 'Please keep your notes before taking the quiz. No cheating! Go anzen ni.';
+        urlReturn = '/course2_hprog';        
+        break;  
+
+      /* QUIZ CHAPTER 3   */
+      case '/quiz_sql3':
+        quizTitle = 'Chapter 3: SQL Quiz';
+        descText = 'Please keep your notes before taking the quiz. No cheating! Go anzen ni.';
+        urlReturn = '/course';        
+        break;  
+      case '/quiz_svn3':
+        quizTitle = 'Chapter 3: Subversion Quiz';
+        descText = 'Please keep your notes before taking the quiz. No cheating! Go anzen ni.';
+        urlReturn = '/course';        
+        break;  
+      case '/quiz_html3':
+        quizTitle = 'Chapter 3: HTML Programming Quiz';
+        descText = 'Please keep your notes before taking the quiz. No cheating! Go anzen ni.';
+        urlReturn = '/course3_hprog';        
         break;  
         
       default:
-        quizTitle = '-NO SUBTITLE-';
-        descText = '-NO DESCTEXT-';
-        urlReturn = '-MISSING URL-';
+        quizTitle = 'Quiz Title Goes Here';
+        descText = 'Please keep your notes before taking the quiz. No cheating! Go anzen ni.';
+        urlReturn = '/course';
         break;
     }
     {/* FOR QUIZ QUESTIONS */}
@@ -31,6 +75,7 @@ function TeamC_QuizForm_Component (){
     let [lock, setLock] = useState(false);
     let [score,setScore] = useState(0);
     let [result,setResult] = useState(false);
+    let [userAnswers, setUserAnswers] = useState([]);
 
     let option1 = useRef(null);
     let option2 = useRef(null);
@@ -41,38 +86,57 @@ function TeamC_QuizForm_Component (){
     {/* END FOR QUIZ QUESTIONS */}
     
     {/* VALIDATORS */}
-    const checkAns = (e,answer) => {
-        if(lock === false){
-            if( question.answer===answer){
-                e.target.classList.add("correct");
-                setLock(true);
-                setScore(prev=>prev+1);
-            }
-            else {
-                e.target.classList.add("wrong");
-                setLock(true);
-                option_array[question.answer-1].current.classList.add("correct");
-            }
+    const checkAns = (e, answer) => {
+      if (lock === false) {
+          // Remove previous styling from all options
+          option_array.map((option) => {
+              option.current.classList.remove("selected");
+              return null;
+          });
+  
+          // Add selected styling to the clicked option
+          e.target.classList.add("selected");
+  
+          // Update the user's choice in a temporary variable
+          const userChoice = { question: question.question, answer };
+  
+          // Check if the user has already answered this question
+          const answeredQuestionIndex = userAnswers.findIndex(
+              (userAnswer) => userAnswer.question === userChoice.question
+          );
+  
+          if (answeredQuestionIndex === -1) {
+              // If the user hasn't answered this question, update userAnswers
+              setUserAnswers((prevAnswers) => [...prevAnswers, userChoice]);
+          }
+      }
+  }
+  
+  const next = () => {
+    if (lock === false) {
+        // Check if the user's answer for the current question is correct and update the score
+        if (userAnswers[index]?.answer === question.answer) {
+            setScore((prev) => prev + 1);
         }
-    }
 
-    const next = () => {
-        if(lock === true){
-            if(index === data.length -1){
-                setResult(true);
-                return 0;
+        // Check if there is a next question
+        if (index + 1 < data.length) {
+            // Update the question and set the lock
+            setIndex((prevIndex) => prevIndex + 1);
+            setQuestion(data[index + 1]);
+            setLock(false);
 
-            }
-            setIndex(++index);
-            setQuestion(data[index]);
-            setLock(false); 
-            option_array.map((option)=> {
-                option.current.classList.remove("wrong");
-                option.current.classList.remove("correct");
+            // Remove styling from all options
+            option_array.map((option) => {
+                option.current.classList.remove("selected");
                 return null;
-            })
+            });
+        } else {
+            // No more questions, set the result
+            setResult(true);
         }
     }
+}
 
     const reset = () => {
         window.location.reload();
@@ -135,25 +199,43 @@ function TeamC_QuizForm_Component (){
                     <button onClick={next} className="btn-success" style={{width: '5rem', borderRadius: '0.5rem'}}>Next</button>
                     <div className="index">{index+1} of {data.length} questions.</div>
                     </>}
-                    {result?<><p>You scored {score} out of {data.length}</p>
-                    <button onClick={reset} className="btn-success" style={{width: '5rem', borderRadius: '0.5rem'}}>RESET</button>
-                    </> : <></>}
+                    {result ? (
+  <>
+    <p>You scored {score} out of {data.length}</p>
+    <div id="finalAnswersContainer">
+      <p>Answered Questions:</p>
+      <ul>
+        {userAnswers.map((userAnswer, index) => (
+          <li key={index}>
+            {index + 1}. {userAnswer.question} 
+            <br />
+            Your Answer: {userAnswer.answer !== undefined ? question[`option${userAnswer.answer}`] : 'Not answered'}
+            <br/>
+            Correct Answer: {question[`option${question.answer}`]}
+            <ul>
+              {userAnswer.choices && userAnswer.choices.map((choice, i) => (
+                <li key={i}>
+                  {choice} {userAnswer.answer === i + 1 ? '*' : ''}
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <button onClick={reset} className="btn-success" style={{ width: '5rem', borderRadius: '0.5rem' }}>
+      RESET
+    </button>
+  </>
+) : (<></>)}
+
+
                     
                 </div>
                 </div>
                 </div>
                 {/* END OF QUIZ QUESTION */}
-                <div className="d-grid gap-2 d-md-flex justify-content-md-end" style={{margin: '10px'}}>
-
-                <button className="btn courseButton" 
-                data-bs-toggle="modal" 
-                data-bs-target="#subId"
-                type="button"
-                style={{backgroundColor: '#0E3B03', 
-                color: 'white',
-                boxShadow: '0 2px 5px 0 rgb(0 0 0 / 25%), 0 5px 5px 0 rgb(0 0 0 / 30%)', 
-              }}
-                >SUBMIT</button>
+                <div className="d-grid footer" style={{margin: '10px'}}>
                </div>   
               </div>
             </div>
