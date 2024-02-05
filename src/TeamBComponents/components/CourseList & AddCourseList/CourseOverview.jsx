@@ -8,13 +8,14 @@ const CourseOverview = () => {
 
 
   return (
-    <div> 
+    <div className='h-full'> 
     <Nav/>
-      <div>
+      <div className='mt-[70px]'>
     {/* Use react icon instead of word back */}
    
-  </div>
+
       <CourseOverviewCard/>
+  </div>
     
     </div>
   )

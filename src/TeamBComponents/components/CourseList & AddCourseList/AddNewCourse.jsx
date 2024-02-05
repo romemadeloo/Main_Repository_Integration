@@ -1,12 +1,13 @@
 import React from 'react';
-import AddNewCourseCard from './AddNewCourseCard'
-import Nav from '../NavBar/Nav';
+
+import CopyofCreateNewCourse from './CopyofCreateNewCourse';
+
+
 
 const AddNewCourse = () => {
   return (
     <div>
-    <Nav/>
-     <AddNewCourseCard/>
+     <CopyofCreateNewCourse/>
     </div>
   );
 };
