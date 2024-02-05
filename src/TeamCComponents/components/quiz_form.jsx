@@ -13,22 +13,54 @@ function TeamC_QuizForm_Component (){
     
     switch (pathname) {
        /* QUIZ CHAPTER 1   */
-      case '/quiz_sql':
-        quizTitle = 'SQL Quiz';
+      case '/quiz_sql1':
+        quizTitle = 'Chapter 1: SQL Quiz';
+        descText = 'Please keep your notes before taking the quiz. No cheating! Go anzen ni.';
+        urlReturn = '/course1_sql';        
+        break;  
+      case '/quiz_svn1':
+        quizTitle = 'Chapter 1: Subversion Quiz';
+        descText = 'Please keep your notes before taking the quiz. No cheating! Go anzen ni.';
+        urlReturn = '/course1_svn';        
+        break;  
+      case '/quiz_html1':
+        quizTitle = 'Chapter 1: HTML Programming Quiz';
+        descText = 'Please keep your notes before taking the quiz. No cheating! Go anzen ni.';
+        urlReturn = '/course1_hprog';        
+        break;  
+
+      /* QUIZ CHAPTER 2   */
+      case '/quiz_sql2':
+        quizTitle = 'Chapter 2: SQL Quiz';
+        descText = 'Please keep your notes before taking the quiz. No cheating! Go anzen ni.';
+        urlReturn = '/course2_sql';        
+        break;  
+      case '/quiz_svn2':
+        quizTitle = 'Chapter 2: Subversion Quiz';
+        descText = 'Please keep your notes before taking the quiz. No cheating! Go anzen ni.';
+        urlReturn = '/course2_svn';        
+        break;  
+      case '/quiz_html2':
+        quizTitle = 'Chapter 2: HTML Programming Quiz';
+        descText = 'Please keep your notes before taking the quiz. No cheating! Go anzen ni.';
+        urlReturn = '/course2_hprog';        
+        break;  
+
+      /* QUIZ CHAPTER 3   */
+      case '/quiz_sql3':
+        quizTitle = 'Chapter 3: SQL Quiz';
         descText = 'Please keep your notes before taking the quiz. No cheating! Go anzen ni.';
         urlReturn = '/course';        
         break;  
-               /* QUIZ CHAPTER 2 */
-      case '/quiz_svn':
-        quizTitle = 'Subversion Quiz';
+      case '/quiz_svn3':
+        quizTitle = 'Chapter 3: Subversion Quiz';
         descText = 'Please keep your notes before taking the quiz. No cheating! Go anzen ni.';
         urlReturn = '/course';        
         break;  
-               /* COURSE 1 */
-      case '/quiz_html':
-        quizTitle = 'HTML Programming Quiz';
+      case '/quiz_html3':
+        quizTitle = 'Chapter 3: HTML Programming Quiz';
         descText = 'Please keep your notes before taking the quiz. No cheating! Go anzen ni.';
-        urlReturn = '/course';        
+        urlReturn = '/course3_hprog';        
         break;  
         
       default:
@@ -43,6 +75,7 @@ function TeamC_QuizForm_Component (){
     let [lock, setLock] = useState(false);
     let [score,setScore] = useState(0);
     let [result,setResult] = useState(false);
+    let [userAnswers, setUserAnswers] = useState([]);
 
     let option1 = useRef(null);
     let option2 = useRef(null);
@@ -64,14 +97,28 @@ function TeamC_QuizForm_Component (){
           // Add selected styling to the clicked option
           e.target.classList.add("selected");
   
-          if (question.answer === answer) {
-              setScore((prev) => prev + 1);
+          // Update the user's choice in a temporary variable
+          const userChoice = { question: question.question, answer };
+  
+          // Check if the user has already answered this question
+          const answeredQuestionIndex = userAnswers.findIndex(
+              (userAnswer) => userAnswer.question === userChoice.question
+          );
+  
+          if (answeredQuestionIndex === -1) {
+              // If the user hasn't answered this question, update userAnswers
+              setUserAnswers((prevAnswers) => [...prevAnswers, userChoice]);
           }
       }
-  };
+  }
   
   const next = () => {
     if (lock === false) {
+        // Check if the user's answer for the current question is correct and update the score
+        if (userAnswers[index]?.answer === question.answer) {
+            setScore((prev) => prev + 1);
+        }
+
         // Check if there is a next question
         if (index + 1 < data.length) {
             // Update the question and set the lock
@@ -90,8 +137,6 @@ function TeamC_QuizForm_Component (){
         }
     }
 }
-
-
 
     const reset = () => {
         window.location.reload();
@@ -154,9 +199,37 @@ function TeamC_QuizForm_Component (){
                     <button onClick={next} className="btn-success" style={{width: '5rem', borderRadius: '0.5rem'}}>Next</button>
                     <div className="index">{index+1} of {data.length} questions.</div>
                     </>}
-                    {result?<><p>You scored {score} out of {data.length}</p>
-                    <button onClick={reset} className="btn-success" style={{width: '5rem', borderRadius: '0.5rem'}}>RESET</button>
-                    </> : <></>}
+                    {result ? (
+  <>
+    <p>You scored {score} out of {data.length}</p>
+    <div id="finalAnswersContainer">
+      <p>Answered Questions:</p>
+      <ul>
+        {userAnswers.map((userAnswer, index) => (
+          <li key={index}>
+            {index + 1}. {userAnswer.question} 
+            <br />
+            Your Answer: {userAnswer.answer !== undefined ? question[`option${userAnswer.answer}`] : 'Not answered'}
+            <br/>
+            Correct Answer: {question[`option${question.answer}`]}
+            <ul>
+              {userAnswer.choices && userAnswer.choices.map((choice, i) => (
+                <li key={i}>
+                  {choice} {userAnswer.answer === i + 1 ? '*' : ''}
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <button onClick={reset} className="btn-success" style={{ width: '5rem', borderRadius: '0.5rem' }}>
+      RESET
+    </button>
+  </>
+) : (<></>)}
+
+
                     
                 </div>
                 </div>
