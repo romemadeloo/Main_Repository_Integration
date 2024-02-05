@@ -4,14 +4,12 @@
 .app {
   text-align: center;
 }
-
 .app-header {
   background-color: #282c34;
   padding: 20px;
   color: white;
   margin: 0;
 }
-
 .TeamA-button {
   margin: 10px 10px 10px;
   padding: 10px 20px;
@@ -20,13 +18,12 @@
   color: #ffffff;
   border-radius: 150px;
   background-color: #126912;
-  border: 1px solid #126912;
+  border: 1.5px solid #126912;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
 }
 .TeamA-button:hover,.Prof2-Backbutton:hover,.login-button:hover {
   background-color: gray;
-}
-
+} 
 
 .login-button
 {
@@ -75,7 +72,6 @@
   width: 170px;
   height: auto;
 }
-
 
 .home-header nav a {
   text-decoration: none;
@@ -580,7 +576,7 @@ input::placeholder{
   text-align: center;
     
 }
-.verification-button:hover,.email-button:hover,.Prof1-editButton:hover,.submit-button:hover,.Change-editButton:hover,.Change-Backbutton:hover,.Prof1-ChangeButton:hover,.save-button:hover,
+.verification-button:hover,.email-button:hover,.Prof1-editButton:hover,.submit-button:hover,.otp-button:hover,.Change-editButton:hover,.Change-Backbutton:hover,.Prof1-ChangeButton:hover,.save-button:hover,
 .cancel-button:hover,.Prof1-Editbuttons:hover,.qBackbutton:hover,.wBackbutton:hover, .Show-button:hover,.nav-LOGOUT-button:hover,.home-button:hover,.Confirm-button:hover,.nav-HOME-button:hover
  {
   background-color: #999
@@ -1612,7 +1608,7 @@ input::placeholder{
   cursor: pointer;
 }
 
-.home-button:hover, .TeamA-button:hover, .qBackbutton:hover, .wBackbutton:hover,
+.otp-button:hover,.home-button:hover, .TeamA-button:hover, .qBackbutton:hover, .wBackbutton:hover,
 .Confirm-button:hover,.Prof1-ChangeButton:hover, .Prof1-Editbuttons:hover, .submit-button:hover,.cancel-button:hover, .Change-Backbutton:hover, .login-button:hover, .Prof2-Backbutton:hover, .nav-HOME-button:hover {
   transform: scale(1.1);
   transition: transform 0.3s ease-in-out; 
@@ -1631,9 +1627,34 @@ input::placeholder{
   font-weight: bold;
   font-size: 20px;
 }
-
-.testing {
-  display: flex;
-  gap: 10px; /* Adjust the space between buttons as needed */
+.email-input-field {
+  position: relative;
 }
+
+.otp-input-container {
+  position: relative;
+}
+
+input[type="text"] {
+  padding-right: 40px; /* Adjust the value based on your button's width */
+}
+
+.otp-button {
+  position: absolute;
+  top: 40%;
+  right: 1px; /* Adjust the value based on your design */
+  transform: translateY(-50%);
+  background-color: #126912;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  color: white;
+  padding: 10px 10px;
+  margin-bottom: 100px;
+  padding-right: 10px;
+}
+
+
+
 

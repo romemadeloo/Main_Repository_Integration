@@ -22,7 +22,7 @@ function Register({ onNavigateHome }) {
       <div className="auth-navi">
         <div className="home-button">
           <Link to="/">
-            <button>Home</button>
+          <button className='login-button'>Home</button>
           </Link>
         </div>
       </div>

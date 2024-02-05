@@ -151,7 +151,9 @@ function RegisterForm() {
             Already have an account?
           </div>
         </Link>
+        <Link to='/Email'>
         <button className="TeamA-button" >Sign Up</button>
+        </Link>
       </form>
       <Footer />
     </>
