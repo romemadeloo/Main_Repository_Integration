@@ -9,12 +9,14 @@ function Login({ onNavigateHome, onForgotPassword }) {
   return (
     <div className="auth-container">
       <div className="home-header">
-        
+      <Link to='/'>  
         <img
           src="..\src\assets\TeamAassets\companyLogo.png" 
           alt="Logo"
           className="logo"
         />
+        </Link>
+      
       </div>
       
       <div className="auth-navi">

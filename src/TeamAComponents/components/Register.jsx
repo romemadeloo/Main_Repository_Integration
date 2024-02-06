@@ -13,11 +13,13 @@ function Register({ onNavigateHome }) {
   return (
     <div>
       <div className="home-header">
+        <Link to='/'>
         <img
            src="..\src\assets\TeamAassets\companyLogo.png"
           alt="Logo"
           className="Qlogo"
         />
+        </Link>
       </div>
       <div className="auth-navi">
         <div className="home-button">

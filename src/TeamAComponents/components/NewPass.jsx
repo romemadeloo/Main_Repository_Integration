@@ -8,12 +8,13 @@ function TeamA_NewPass({ onNewPassForm }) {
   return (
     <div className="email-container">
       <div className="home-header">
-        
+      <Link to='/'>
         <img
           src="..\src\assets\TeamAassets\companyLogo.png" 
           alt="Logo"
           className="logo"
         />
+        </Link>
       </div>
       <div className="email-navi">
        
