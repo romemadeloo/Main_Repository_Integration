@@ -1,3 +1,4 @@
+@media (max-width: 767px), (min-width: 768px) and (max-width: 1023px), (min-width: 1024px) {
 .ForumDSpace {
   background-color: #ebffe5;
   margin: 0;
@@ -141,7 +142,7 @@
   bottom: 15px;
   left: 15px;
   font-size: 24px;
-  width: 50px;
+  width: 55px;
   background-color: #165207;
-  border-radius: 100px;
+}
 }
