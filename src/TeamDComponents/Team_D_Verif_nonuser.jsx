@@ -86,7 +86,10 @@ const Team_D_Verif_nonuser = () => {
         </div>
         <div className="verification_search">
           <div className="left">
+            {/* added back text weight 2/6/24 */}
+          <div className="font-bold text-[2rem]">
             <h2>Verify Course Certificate</h2>
+            </div>
             <Form.Control
               size="sm"
               type="text"
