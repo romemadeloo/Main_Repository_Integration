@@ -20,24 +20,15 @@ const Profile = () => {
   const goBack = () => {
     navigate(-1);
   };
-  
-  //destructure profile context
-  const {
-    showPersonalInfo,
-    showAccDetails,
-    showPInfo,
-    showADetails,
-  } = useContext(ProfileContext);
 
+  //destructure profile context
+  const { showPersonalInfo, showAccDetails, showPInfo, showADetails } =
+    useContext(ProfileContext);
 
   return (
     <>
-
-    
-  
-    <Nav/>
+      <Nav />
       <div className="h-[100vh] mt-[65px]">
-
         <div>
           {/* Use react icon instead of word back */}
           <div
@@ -82,7 +73,7 @@ const Profile = () => {
           </div>
           <div>
             {/* Place your Component here */}
-            {showPersonalInfo && <PersonalInfo/>}
+            {showPersonalInfo && <PersonalInfo />}
             {showAccDetails && <AccDetails />}
             {/* /* Place AccDetails Component here */}
             {/* <AccDetails/> */}

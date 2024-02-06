@@ -125,6 +125,11 @@ const PersonalInfo = () => {
                       />
                     </div>
                     <div className="relative">
+                      <label
+                        htmlFor="Email"
+                        className=" text-[#4D4141] text-opacity-[53%] absolute   z-10 top-0 left-2 text-[.8rem] xl:text-[16px]">
+                        Contact Number <span className="text-[#FF2626]">*</span>
+                      </label>
                       {/* CONTACT NUMBER INPUT */}
 
                       <input
