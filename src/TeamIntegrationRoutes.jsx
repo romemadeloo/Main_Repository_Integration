@@ -39,7 +39,6 @@ const TeamB_TopicPage = lazy(() => import("./TeamBComponents/components/Topic/To
 import TeamC_Dashboard from "./TeamCComponents/pages/dashboard";
 import TeamC_Assessments from "./TeamCComponents/pages/assessment";
 import TeamC_Course from "./TeamCComponents/pages/course";
-import TeamC_Forum from "./TeamCComponents/pages/Forum";
 import TeamC_CourseSql1 from "./TeamCComponents/pages/course/course1_sql";
 import TeamC_CourseSvn1 from "./TeamCComponents/pages/course/course1_svn";
 import TeamC_CourseHprog1 from "./TeamCComponents/pages/course/course1_hprog";
@@ -64,6 +63,7 @@ import TeamC_QuizSql3 from "./TeamCComponents/pages/quiz/quiz_sql3";
 import TeamC_QuizSvn3 from "./TeamCComponents/pages/quiz/quiz_svn3";
 import TeamC_QuizHtml3 from "./TeamCComponents/pages/quiz/quiz_html3";
 import ForumF from "./TeamCComponents/pages/ForumF";
+import ForumD from "./TeamCComponents/pages/ForumD";
 
 
 // team D
@@ -120,8 +120,9 @@ function TeamIntegrationRoutes() {
         <Route path="/teamcdashboard" element={<TeamC_Dashboard />} />
         <Route path="/assessment" element={<TeamC_Assessments />} />
         <Route path="/course" element={<TeamC_Course />} />
-        <Route path="/ForumF" element={<TeamC_Forum />} />
+        <Route path="/ForumF" element={<ForumF />} />
         <Route path="/quizform" element={<TeamC_QuizForm/>} />
+        <Route path="/forum_discussion" element={<ForumD/>} />
 
           {/* COURSE 1 */}
           <Route

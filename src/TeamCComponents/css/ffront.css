@@ -121,7 +121,6 @@ a.c_forum_decor:hover {
   background-color: #a4bca7;
   color: white;
   font-style: italic;
-  
 }
 
 .TeamC_FormCon {
@@ -130,7 +129,7 @@ a.c_forum_decor:hover {
   color: black;
   resize: none;
   border-radius: 15px;
-}  */
+}
 
 .TeamC_FormCon:focus {
   background-color: #ebffe5;
@@ -181,7 +180,7 @@ a.c_forum_decor:hover {
     padding: 15px; /* Add padding to the discussion form on small screens */
   }
 
-  .form-control {
+  .fTeamC_FormCon {
     border-radius: 15px; /* Maintain border-radius for form controls on small screens */
   }
 
