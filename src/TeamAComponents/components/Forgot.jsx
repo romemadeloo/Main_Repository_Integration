@@ -11,12 +11,13 @@ function Forgot() {
   return (
     <div className="forgot-container">
       <div className="home-header">
-        
+      <Link to='/'>
         <img
           src="..\src\assets\TeamAassets\companyLogo.png" 
           alt="Logo"
           className="logo"
         />
+        </Link>
       </div>
       <div className="forgot-navi">
         <div className="home-button">
