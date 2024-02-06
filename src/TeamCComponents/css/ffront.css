@@ -1,6 +1,9 @@
+@media (max-width: 767px), (min-width: 768px) and (max-width: 1023px), (min-width: 1024px) {
+  /* Styles for different screen sizes */
 .ForumFSpace {
   background: #ebffe5;
   color: #708090;
+  margin-top: 20px;
 }
 
 .c_forum_btnicn {
@@ -147,6 +150,8 @@ a.c_forum_decor:hover {
   color: white;
   font-style: italic;
 }
+
+
 
 .TeamC_FormCon {
   border-radius: 15%;
