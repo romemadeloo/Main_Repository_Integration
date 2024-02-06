@@ -17,7 +17,7 @@ const About = () => {
         </Link>
         <ul className="menu-hide">
           <li>
-            <a href="/verification">Verification</a>
+            <a href="/verif_nonuser">Verification</a>
           </li>
           <li>
             <a href="About">About us</a>
