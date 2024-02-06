@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import "./TeamD_Css/navbar.css"
+import "./TeamD_Css/navbar.css";
 import TsukidenLogo from "./TeamD_Assets/TsukidenLogo.png";
 import Dropdown from "react-bootstrap/Dropdown";
 import { FaRegUserCircle } from "react-icons/fa";
 import { TbCertificate } from "react-icons/tb";
 import { FiLogOut } from "react-icons/fi";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import Profile from "./TeamD_Assets/profilepic.jpg"
+import Profile from "./TeamD_Assets/profilepic.jpg";
 
 const Team_D_HeaderV2 = () => {
   const [clicked, setClicked] = useState(false);
@@ -24,13 +24,13 @@ const Team_D_HeaderV2 = () => {
   // Add or remove the 'no-scroll' class based on the 'clicked' state
   useEffect(() => {
     if (clicked) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     }
 
     return () => {
-      document.body.style.overflow = ''; // Cleanup on component unmount
+      document.body.style.overflow = ""; // Cleanup on component unmount
     };
   }, [clicked]);
 
@@ -134,7 +134,11 @@ const Team_D_HeaderV2 = () => {
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-              <Dropdown.Item href="">
+              <Dropdown.Item
+                as={NavLink}
+                to="/profile"
+                onClick={closeMobileNavbar}
+              >
                 <FaRegUserCircle /> Profile
               </Dropdown.Item>
               <Dropdown.Item
