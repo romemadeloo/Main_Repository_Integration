@@ -8,14 +8,14 @@ import Team_D_HeaderV2 from "../../../TeamDComponents/Team_D_HeaderV2";
 import TeamC_MainContent from "../../components/maincontent";
 
 
-function TeamC_CourseSql1(){
+function TeamC_CourseSql1() {
 
-    return (
-        <Fragment>
-          <Team_D_HeaderV2/>
-          <TeamC_MainContent />
+  return (
+    <Fragment>
+      <Team_D_HeaderV2 />
+      <TeamC_MainContent />
 
-        </Fragment>
-      );
-    }
+    </Fragment>
+  );
+}
 export default TeamC_CourseSql1;
