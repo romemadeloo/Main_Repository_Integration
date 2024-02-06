@@ -2,11 +2,17 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import "../styles/Auth.css";
-
 import { useAuth } from "./AuthContext";
 
 
 function Profile() {
+
+  const navigate = useNavigate();
+
+
+  const goBack = () => {
+    navigate(-1);
+  };
 
   const { isLoggedIn, handleLogout } = useAuth();
   const [userData, setUserData] = useState({});
@@ -52,7 +58,7 @@ function Profile() {
   return (
     <>
      <div className="home-header">
-     <Link to='/'>
+     <Link onClick={goBack}>
         <img
            src="..\src\assets\TeamAassets\companyLogo.png"
           alt="Logo"
