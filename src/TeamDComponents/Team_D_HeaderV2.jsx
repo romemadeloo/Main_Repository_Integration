@@ -87,7 +87,7 @@ const Team_D_HeaderV2 = () => {
                 className="mycourse_dd"
               >
                 <NavDropdown.Item href="/course" activeClassName="active">
-                  Problem Overview
+                  Program Overview
                 </NavDropdown.Item>
                 <NavDropdown.Item href="/assessment" activeClassName="active">
                   Assessment
