@@ -3,6 +3,7 @@ import '../css/fdiscussion.css';
 import { AiOutlineLike } from "react-icons/ai";
 import { AiOutlineDislike } from "react-icons/ai";
 import { MdOutlineReply } from "react-icons/md";
+import { FaArrowLeft } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import Team_D_HeaderV2 from '../../TeamDComponents/Team_D_HeaderV2';
 
@@ -47,12 +48,10 @@ document.getElementById("discussionContent").innerText = content;
         {/*30/24*/}
         <div className="ForumC_ForumDcontainer">
           {/*02/05/24*/}
-          <Link to="/"
+          <Link to="/ForumF"
             id="TeamCReturnButtonFf"
             className="btn btn-secondary">
-            <i
-              className="TeamCarrow bx bx-arrow-back"
-              style={{ color: "white" }}></i>
+            <FaArrowLeft />
           </Link> {/*02/05/24*/}
           <div className="TeamCForumC_Forumcard">
             {/*30/24*/}
@@ -124,7 +123,7 @@ document.getElementById("discussionContent").innerText = content;
                 </a>
                 <a
                   href="#!"
-                  className="TeamCFlex  align-items-center me-3 reaction-button"
+                  className="TeamCFlex d-flex align-items-center me-3 reaction-button"
                   onClick={() => handleReaction("dislike")}>
                   <AiOutlineDislike />
                   {/*30/24*/}

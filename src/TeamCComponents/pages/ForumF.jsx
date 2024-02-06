@@ -206,7 +206,7 @@ const ForumF = () => {
                             type="button"
                             className="c_forum_btngr btn btn-success"
                             onClick={hideFormHandle}
-                            style={{ marginTop: "10px", paddingLeft: "11px", backgroundColor: '#0e3b03' }}>
+                            style={{ marginTop: "10px", paddingLeft: "11px", backgroundColor: '#165207' }}>
                             Post
                           </button>
                         </div>
