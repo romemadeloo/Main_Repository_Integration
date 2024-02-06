@@ -1,6 +1,9 @@
+@media (max-width: 767px), (min-width: 768px) and (max-width: 1023px), (min-width: 1024px) {
+  /* Styles for different screen sizes */
 .ForumFSpace {
   background: #ebffe5;
   color: #708090;
+  margin-top: 20px;
 }
 
 .c_forum_btnicn {
@@ -121,8 +124,9 @@ a.c_forum_decor:hover {
   background-color: #a4bca7;
   color: white;
   font-style: italic;
-  
 }
+
+
 
 .TeamC_FormCon {
   border-radius: 15%;
@@ -130,7 +134,7 @@ a.c_forum_decor:hover {
   color: black;
   resize: none;
   border-radius: 15px;
-}  */
+}
 
 .TeamC_FormCon:focus {
   background-color: #ebffe5;
@@ -181,7 +185,7 @@ a.c_forum_decor:hover {
     padding: 15px; /* Add padding to the discussion form on small screens */
   }
 
-  .form-control {
+  .fTeamC_FormCon {
     border-radius: 15px; /* Maintain border-radius for form controls on small screens */
   }
 
@@ -202,4 +206,5 @@ a.c_forum_decor:hover {
 
 .c_forum_modbod {
   padding: 5px; /* Add padding to the modal body */
+}
 }

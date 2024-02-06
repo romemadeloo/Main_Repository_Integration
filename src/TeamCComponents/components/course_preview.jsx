@@ -8,7 +8,7 @@ function CoursePreview () {
 <div id="c_cardpreview_cardouter">
 {/* SQL QUERY */}
 <div className="card-container" id="c_cardpreview_cardcontainer">
-  <div className="card border-success mt-3 mb-3 h-100" style={{ maxWidth: '235px', borderRadius: '10px' }}>
+  <div className="card border-success mt-3 mb-3 h-100" style={{ maxWidth: '225px', borderRadius: '10px'}}>
     <div className="card-header bg-transparent border-success"></div>
     <div className="text-success h-100" style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
   {/* Set the fixed height for the card body */}
