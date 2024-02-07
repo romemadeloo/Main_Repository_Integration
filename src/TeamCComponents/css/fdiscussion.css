@@ -4,14 +4,17 @@
   margin: 0;
   margin-bottom: 20px;
 }
+
 .nameUser,
 .TeamC_ForumD {
   color: black;
 }
+
 .TeamC_discSec {
   color: #165207;
   font-size: x-large;
 }
+
 .TeamCarrow {
   margin-top: 10px;
   margin-right: 10px;
@@ -77,7 +80,8 @@
 /* Card style */
 .TeamCForumC_Forumcard {
   width: 100%;
-  max-width: 600px; /* Adjust the maximum width as needed */
+  max-width: 600px;
+  /* Adjust the maximum width as needed */
   background-color: #f3f8f2;
   position:relative; /*2/7/24*/
   display: flex;/*2/7/24*/
@@ -91,7 +95,8 @@
 
 .TeamCCardBody {
   padding: 20px;
-  border-style: solid; /*Temporary change 2/5/24*/
+  border-style: solid;
+  /*Temporary change 2/5/24*/
 }
 
 /* 3-dots button style */
@@ -124,16 +129,22 @@
   background-color: #c3e6cb;
   border-radius: 8px;
   padding: 10px;
-  margin-bottom: 5px; /* Adjusted margin to create space between nested reply containers */
-  margin-left: 5px; /* Adjusted margin to create indentation for nested replies */
-  position: relative; /* Set position to relative for proper placement of absolute elements */
+  margin-bottom: 5px;
+  /* Adjusted margin to create space between nested reply containers */
+  margin-left: 5px;
+  /* Adjusted margin to create indentation for nested replies */
+  position: relative;
+  /* Set position to relative for proper placement of absolute elements */
 }
 
 /* Style for the additional reply container */
 .additional-reply-container {
-  position: relative; /* Set position to relative for proper placement of absolute elements */
-  margin-left: 15px; /* Adjusted left position to create indentation for additional replies */
-  display: none; /* Hide additional reply container by default */
+  position: relative;
+  /* Set position to relative for proper placement of absolute elements */
+  margin-left: 15px;
+  /* Adjusted left position to create indentation for additional replies */
+  display: none;
+  /* Hide additional reply container by default */
 }
 
 /* Like/Dislike/Reply button style for replies */
@@ -142,7 +153,8 @@
 .reply-button {
   cursor: pointer;
   color: #165207;
-  margin-right: 15px; /* Adjust spacing between buttons */
+  margin-right: 15px;
+  /* Adjust spacing between buttons */
 }
 
 .like-button:hover,
