@@ -1,129 +1,101 @@
+
 .navbar {
-    background-color: #D9FFCF;
-    -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Chrome, Safari, Opera */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: +100;
-}
-  
-.navbar-brand img {
-    height: 50px; 
+  background-color: #D9FFCF;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: +100;
 }
 
+.navbar-brand img {
+  height: 50px; 
+}
+
+
 .navbar-nav {
-    margin-left: auto;
+  margin-left: auto;
 }
 
 .nav-link {
-    text-decoration: none;
-    color: #333333;
-    font-weight: 500;
-    margin-right: 20px;
+  text-decoration: none;
+  color: #333333;
+  font-weight: 500;
+  margin-right: 20px;
 }
 
 .nav-link:hover {
-    color: #126912; 
+  color: #126912; 
 }
 
 .btns {
-    display: -webkit-box; /* Chrome, Safari, Opera */
-    display: -moz-box; /* Firefox */
-    display: -ms-flexbox; /* Internet Explorer */
-    display: flex;
-    -webkit-box-orient: horizontal; /* Chrome, Safari, Opera */
-    -moz-box-orient: horizontal; /* Firefox */
-    -webkit-box-direction: normal; /* Chrome, Safari, Opera */
-    -moz-box-direction: normal; /* Firefox */
-    -webkit-flex-direction: row; /* Chrome, Safari, Opera */
-    flex-direction: row;
-    -webkit-box-pack: center; /* Chrome, Safari, Opera */
-    -moz-box-pack: center; /* Firefox */
-    -ms-flex-pack: center; /* Internet Explorer */
-    justify-content: center;
-    gap: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
 }
 
-.login_btn {
-    background-color: #126912;
-    padding: 5px;
-    color: white;
-    border-radius: 10px;
+.login_btn{
+  background-color: #126912;
+  padding: 5px;
+  color: white;
+  border-radius: 10px;
 }
 
-.reg_btn {
-    background-color: #126912;
-    padding: 5px;
-    color: white;
-    border-radius: 10px;
+.reg_btn{
+  background-color: #126912;
+  padding: 5px;
+  color: white;
+  border-radius: 10px;
 }
 
-.login_btn:hover {
-    background-color:  #ffffff ;
-    color: #126912;
-    border-color: #126912;
+.login_btn:hover{
+background-color:  #ffffff ;
+color: #126912;
+border-color: #126912;
 }
 
-.reg_btn:hover {
-    background-color:  #ffffff ;
-    color: #126912;
-    border-color: #126912;
+.reg_btn:hover{
+  background-color:  #ffffff ;
+  color: #126912;
+  border-color: #126912;
 }
-  
+
 button {
-    margin-left: 20px;
-    padding: 8px 15px;
-    font-size: 14px;
+  margin-left: 20px;
+  padding: 8px 15px;
+  font-size: 14px;
 }
 
 @media (max-width: 768px) {
-    .navbar-nav {
-        display: -webkit-box; /* Chrome, Safari, Opera */
-        display: -moz-box; /* Firefox */
-        display: -ms-flexbox; /* Internet Explorer */
-        display: flex;
-        -webkit-box-orient: vertical; /* Chrome, Safari, Opera */
-        -moz-box-orient: vertical; /* Firefox */
-        -webkit-box-direction: normal; /* Chrome, Safari, Opera */
-        -moz-box-direction: normal; /* Firefox */
-        -webkit-flex-direction: column; /* Chrome, Safari, Opera */
-        flex-direction: column;
-        -webkit-box-align: center; /* Chrome, Safari, Opera */
-        -moz-box-align: center; /* Firefox */
-        -ms-flex-align: center; /* Internet Explorer */
-        align-items: center;
-        margin-top: 10px;
-    }
+  .navbar-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
     
-    .navbar-collapse {
-        background: rgba( 217, 255, 207, 0.65 );
-        -webkit-box-shadow: 0 8px 32px -5px rgba( 31, 38, 135, 0.37 ); /* Chrome, Safari, Opera */
-        box-shadow: 0 8px 32px -5px rgba( 31, 38, 135, 0.37 );
-        -webkit-backdrop-filter: blur( 9px ); /* Chrome, Safari, Opera */
-        backdrop-filter: blur( 9px );
-        border-bottom-left-radius: 25px;
-        border-bottom-right-radius: 25px;
-    }
+  }
+  
+  .navbar-collapse {
+    background: rgba( 217, 255, 207, 0.65 );
+    box-shadow: 0 8px 32px -5px rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 9px );
+    -webkit-backdrop-filter: blur( 9px );
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+  }
 
-    .navbar-nav .nav-link {
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
+  .navbar-nav .nav-link {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
 
-    .btns {
-        margin-top: 10px;
-        -webkit-box-pack: center; /* Chrome, Safari, Opera */
-        -moz-box-pack: center; /* Firefox */
-        -ms-flex-pack: center; /* Internet Explorer */
-        justify-content: center;
-        -webkit-box-orient: horizontal; /* Chrome, Safari, Opera */
-        -moz-box-orient: horizontal; /* Firefox */
-        -webkit-box-direction: normal; /* Chrome, Safari, Opera */
-        -moz-box-direction: normal; /* Firefox */
-        -webkit-flex-direction: row; /* Chrome, Safari, Opera */
-        flex-direction: row;
-        font-size: 14px;
-    }
+  .btns {
+    margin-top: 10px;
+    flex-direction: row;
+    font-size: 14px;
+  }
 
-    button {
-        margin-right: 10px;
-    }
+
+  button {
+      margin-right: 10px;
+  }
+
 }

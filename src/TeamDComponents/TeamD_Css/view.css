@@ -1,19 +1,7 @@
 .contentViewPdf {
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
     display: flex;
     padding: 0 75px;
-    -webkit-box-orient: vertical;
-    -moz-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -moz-box-direction: normal;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
     flex-direction: column;
-    -webkit-box-align: center;
-    -moz-box-align: center;
-    -ms-flex-align: center;
     align-items: center;
     background-color: #EBFFE5;
     margin-top: 15px;
@@ -21,24 +9,9 @@
 
 .headerView {
     width: 100%;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -moz-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -moz-box-direction: normal;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
     flex-direction: column;
-    -webkit-box-align: flex-start;
-    -moz-box-align: flex-start;
-    -ms-flex-align: flex-start;
     align-items: flex-start;
-    -webkit-box-pack: center;
-    -moz-box-pack: center;
-    -ms-flex-pack: center;
     justify-content: center;
 }
 
@@ -60,44 +33,20 @@
 
 .certificatesView {
     margin-top: 15px;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -moz-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -moz-box-direction: normal;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
     flex-direction: column;
     gap: 20px;
     background-color: #BCE8B1;
     border-radius: 15px;
     width: 100%;
-    -webkit-box-pack: center;
-    -moz-box-pack: center;
-    -ms-flex-pack: center;
     justify-content: center;
-    -webkit-box-align: center;
-    -moz-box-align: center;
-    -ms-flex-align: center;
     align-items: center;
 }
 
 .certificatesView .control_top {
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: end;
-    -moz-box-pack: end;
-    -ms-flex-pack: end;
-    justify-content: flex-end;
-    -webkit-box-align: center;
-    -moz-box-align: center;
-    -ms-flex-align: center;
     align-items: center;
+    justify-content: flex-end;
     width: 75%;
     margin-top: 10px;
 }
@@ -105,18 +54,9 @@
 .certificatesView .control_top button {
     background-color: transparent;
     border: none;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: center;
-    -moz-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -moz-box-align: center;
-    -ms-flex-align: center;
     align-items: center;
+    justify-content: center;
     font-size: 35px;
     color: #EBFFE5;
 }
@@ -128,17 +68,8 @@
 .certificatesView .control {
     margin-bottom: 10px;
     width: 75%;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: center;
-    -moz-box-pack: center;
-    -ms-flex-pack: center;
     justify-content: center;
-    -webkit-box-align: center;
-    -moz-box-align: center;
-    -ms-flex-align: center;
     align-items: center;
     gap: 50px;
 }
@@ -156,24 +87,16 @@
     text-align: center;
 }
 
-.certificatesView .control .TeamD_modal_btn {
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
+.certificatesView .control .TeamD_modal_btn{
     display: flex;
-    -webkit-box-pack: center;
-    -moz-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -moz-box-align: center;
-    -ms-flex-align: center;
     align-items: center;
+    justify-content: center;
 }
 
 .certificatesView .control .TeamD_modal_btn .modalBTN:hover {
     background-color: white;
     color: #006384;
+    /* border: 2px solid #006384; */
     outline: #006384 solid 2px;
 }
 
@@ -191,40 +114,24 @@
     outline: #16A765 solid 2px;
 }
 
-.certificatesView .filePdfView .react-pdf__Page .react-pdf__Page__canvas {
-    margin-top: 30px;
+
+.certificatesView .filePdfView .react-pdf__Page .react-pdf__Page__canvas{
+    margin-top: 30px;    
     width: 741px !important;
     height: 495px !important;
+    
 }
 
 .goBack_title {
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: center;
-    -moz-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -moz-box-align: center;
-    -ms-flex-align: center;
     align-items: center;
+    justify-content: center;
     gap: 30px;
 }
 
 .goBack_title .goBack {
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: center;
-    -moz-box-pack: center;
-    -ms-flex-pack: center;
     justify-content: center;
-    -webkit-box-align: center;
-    -moz-box-align: center;
-    -ms-flex-align: center;
     align-items: center;
     background-color: transparent;
     border-radius: 50px;
@@ -238,38 +145,20 @@
 }
 
 .download_View button {
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: center;
-    -moz-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -moz-box-align: center;
-    -ms-flex-align: center;
     align-items: center;
+    justify-content: center;
     font-size: 20px;
 }
 
 .TeamD_modal_btn button {
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: center;
-    -moz-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -moz-box-align: center;
-    -ms-flex-align: center;
     align-items: center;
+    justify-content: center;
     font-size: 20px;
 }
 
-@media only screen and (max-width: 1240px) {
+@media only screen and (max-width: 1240px){
     .certificatesView .filePdfView .react-pdf__Page .react-pdf__Page__canvas {
         width: 100% !important;
         height: auto !important;
@@ -278,56 +167,55 @@
     }
 }
 
-@media only screen and (max-width: 768px) and (min-width: 425px) {
+@media only screen and (max-width: 768px) and (min-width: 425px){
     .certificatesView .filePdfView .react-pdf__Page .react-pdf__Page__canvas {
         width: 100% !important;
         height: auto !important;
         max-width: 100% !important;
         max-height: 100% !important;
     }
+    
     .certificatesView {
         background-color: transparent;
     }
+
+    
     .contentViewPdf {
         padding: 20px;
     }
 }
 
-@media only screen and (max-width: 426px) and (min-width: 375px) {
+@media only screen and (max-width: 426px) and (min-width: 375px){
     .certificatesView .filePdfView .react-pdf__Page .react-pdf__Page__canvas {
         width: 100% !important;
-        height: auto !important;
-        max-width: 100% !important;
-        max-height: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
     }
+
     .certificatesView {
         background-color: transparent;
     }
+    
     .headerView h1 {
         font-size: 25px;
     }
     .goBack_title .goBack {
         padding: 5px;
     }
+
     .certificatesView .control button {
         height: 50px;
+        
     }
+
     .contentViewPdf {
         padding: 20px;
     }
 }
 
 .modalTitle {
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -moz-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -moz-box-direction: normal;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
     flex-direction: column;
     gap: 3px;
 }
@@ -337,37 +225,40 @@
 }
 
 .TeamD_mdl_hdr {
-    -webkit-box-align: flex-start !important;
-    -moz-box-align: flex-start !important;
-    -ms-flex-align: flex-start !important;
     align-items: flex-start !important;
     height: 120px !important;
 }
 
-@media only screen and (max-width: 376px) {
+@media only screen and (max-width: 376px){
     .certificatesView .filePdfView .react-pdf__Page .react-pdf__Page__canvas {
         width: 100% !important;
-        height: auto !important;
-        max-width: 100% !important;
-        max-height: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
     }
     .certificatesView .control_top button {
         padding: 8px;
         font-size: 20px;
     }
+
     .certificatesView .control button {
         font-size: 12px;
+        
     }
+
     .headerView h1 {
         font-size: 20px;
     }
     .goBack_title .goBack {
         padding: 2px;
     }
+
     .certificatesView .control button {
         height: 50px;
         width: 75px;
+        
     }
+
     .certificatesView .control {
         gap: 25px;
     }
@@ -379,7 +270,7 @@
     }
 }
 
-@media only screen and (max-width: 321px) {
+@media only screen and (max-width: 321px){
     .contentViewPdf {
         padding: 20px;
     }
@@ -393,29 +284,28 @@
         padding: 8px;
         font-size: 20px;
     }
+
     .certificatesView .control {
-        -webkit-box-pack: center;
-        -moz-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        -moz-box-align: center;
-        -ms-flex-align: center;
         align-items: center;
+        justify-content: center;
     }
     .certificatesView .control button {
         font-size: 11px;
+        
     }
+
     .headerView h1 {
         font-size: 18px;
     }
+
     .goBack_title {
         gap: 20px;
     }
     .certificatesView .control button {
         height: 35px;
-        width: 75px;
+        width: 75px;  
     }
+
     .certificatesView .control {
         gap: 5px;
     }
