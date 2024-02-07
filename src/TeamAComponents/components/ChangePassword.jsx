@@ -11,11 +11,13 @@ function ChangePassword() { // Corrected function name
     <div>
       <nav className="Change-navbar">
       <div className="home-header">
+        <Link to='/'>
         <img
            src="..\src\assets\TeamAassets\companyLogo.png"
           alt="Logo"
           className="Qlogo"
           />
+          </Link>
         </div>
         <ul className="Change-nav-list">
           <li>

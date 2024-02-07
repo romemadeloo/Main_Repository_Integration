@@ -63,30 +63,41 @@ const Team_D_Verif_nonuser = () => {
 
   return (
     <div>
-      <div className="home-header">
-        <div className="logo-container">
-          <img
-            src="..\src\assets\TeamAassets\companyLogo.png"
-            alt="Logo"
-            className="logo"
-          />
+      <nav className="my-navigation">
+        <Link to='/'>
+        <img src="..\src\assets\TeamAassets\companyLogo.png" alt="Logo" />
+        </Link>
+        <ul className="menu-hide">
+          <li>
+            <a href="/verif_nonuser">Verification</a>
+          </li>
+          <li>
+            <a href="About">About us</a>
+          </li>
+          <li>
+          <a href="https://www.tsukiden.com.ph">Contact us</a>
+          </li>
+        
+        </ul>
+        <div className="testing">
+          <Link to="/register">
+            <button id="register">Register</button>
+          </Link>
+          <Link to="/login">
+            <button id="login">Log In</button>
+          </Link>
         </div>
-        <nav>
-          <ul>
-            <Link to="/">
-              <button className="nav-HOME-button">Home</button>
-            </Link>
-          </ul>
-        </nav>
-      </div>
-
+      </nav>
       <section className="verification_container">
         <div className="verification_title">
           <span></span>
         </div>
         <div className="verification_search">
           <div className="left">
+            {/* added back text weight 2/6/24 */}
+          <div className="font-bold text-[2rem]">
             <h2>Verify Course Certificate</h2>
+            </div>
             <Form.Control
               size="sm"
               type="text"
