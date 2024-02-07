@@ -1,11 +1,26 @@
-.btns{
+.btns {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
     flex-direction: row;
     gap: 10px;
 }
 
 .navbar_TeamD {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     padding: 0 18.33px 0 18.33px;
     background-color: #D9FFCF;
@@ -13,18 +28,19 @@
     justify-content: space-between;
 }
 
-/* nav img {
-    width: 171.667px;
-    height: 50px; 
-} */
-
 #navbar {
     margin-bottom: 0;
-}
-
-#navbar {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
 }
 
@@ -53,6 +69,9 @@
 
 #mobile {
     display: None;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
 }
 
@@ -71,8 +90,17 @@
 }
 
 .button_profile {
+    display: -webkit-box !important;
+    display: -moz-box !important;
+    display: -ms-flexbox !important;
     display: flex !important;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     gap: 10px;
     background-color: white !important;
@@ -84,32 +112,42 @@
     background-color: #D9FFCF;
 }
 
-
 .dropdown-menu.show {
     font-size: 18px;
     font-style: normal;
     font-weight: 400 !important;
     line-height: normal;
     left: 0 !important;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
     transform: translateX(-50%);
 }
 
 .dropdown-menu.show .dropdown-item {
     text-align: start;
+    display: -webkit-box !important;
+    display: -moz-box !important;
+    display: -ms-flexbox !important;
     display: flex !important;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: start;
+    -moz-box-pack: start;
+    -ms-flex-pack: start;
     justify-content: flex-start;
     gap: 5px;
     margin-right: 50px;
 }
 
 .profile_side .dropdown-menu.show .dropdown-item:last-child {
-    color:#BF3131 !important;
+    color: #BF3131 !important;
 }
 
-.profile_side  .dropdown-menu.show .dropdown-item:last-child:hover,
-.profile_side  .dropdown-menu.show .dropdown-item:last-child:active {
-    color:#fd0f0f !important;
+.profile_side .dropdown-menu.show .dropdown-item:last-child:hover,
+.profile_side .dropdown-menu.show .dropdown-item:last-child:active {
+    color: #fd0f0f !important;
 }
 
 .dropdown-menu.show .dropdown-item:hover {
@@ -130,21 +168,35 @@
     display: none;
 }
 
-
 @media screen and (max-width: 769px) {
     .navbar_TeamD {
+        -webkit-box-pack: justify;
+        -moz-box-pack: justify;
+        -ms-flex-pack: justify;
         justify-content: space-between;
     }
     #navbar {
+        -webkit-box-orient: vertical;
+        -moz-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -moz-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
         flex-direction: column;
+        -webkit-box-align: flex-start;
+        -moz-box-align: flex-start;
+        -ms-flex-align: flex-start;
         align-items: flex-start;
+        -webkit-box-pack: flex-start;
+        -moz-box-pack: flex-start;
+        -ms-flex-pack: flex-start;
         justify-content: flex-start;
         position: fixed;
         top: 70px;
         right: -350px;
         width: 330px;
         height: 100vh;
-        padding: 40px 0  0 10px;
+        padding: 40px 0 0 10px;
         background: rgba( 217, 255, 207, 0.65 );
         box-shadow: 0 8px 32px -8px rgba( 31, 38, 135, 0.37 );
         backdrop-filter: blur( 9px );
@@ -201,6 +253,7 @@
         margin-bottom: 10px !important;
         text-shadow: transparent !important;
     }
+
     .profile_info img {
         border: 2px solid #126912;
         border-radius: 50px;
@@ -208,18 +261,42 @@
         height: 50px;
     }
 
-   .profile_info_con {
+    .profile_info_con {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-pack: center;
+        -moz-box-pack: center;
+        -ms-flex-pack: center;
         justify-content: center;
+        -webkit-box-align: center;
+        -moz-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
         gap: 20px;
     }
 
     .profile_info_name {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-orient: vertical;
+        -moz-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -moz-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
         flex-direction: column;
+        -webkit-box-pack: center;
+        -moz-box-pack: center;
+        -ms-flex-pack: center;
         justify-content: center;
-        align-items: flex-start;
+        -webkit-box-align: center;
+        -moz-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
         line-height: 5px;
         gap: 10px;
     }
@@ -238,20 +315,20 @@
 
     .profile_divider {
         height: 20px; /* Set the height of the divider as needed */
-        width: 1px;   /* Set the width of the divider as needed */
+        width: 1px; /* Set the width of the divider as needed */
         background-color: #126912; /* Set the color of the divider */
         margin: 0 10px; /* Adjust the margin as needed for spacing */
-      }
+    }
 
-      #navbar .divider {
+    #navbar .divider {
         height: 2px;
         background-color: #0e3b03; /* Adjust the color of the divider as needed */
         margin: 0 auto; /* Adjust the margin as needed for spacing */
         margin-bottom: 20px;
         width: 80%;
-      }
+    }
 
-      .profile_link {
+    .profile_link {
         display: block;
     }
 }
