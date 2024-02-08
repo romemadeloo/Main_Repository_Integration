@@ -1,24 +1,25 @@
-@media (max-width: 767px),
-  (min-width: 768px) and (max-width: 1023px),
-  (min-width: 1024px) {
-  .ForumDSpace {
-    background-color: #ebffe5;
-    margin: 0;
-    margin-bottom: 20px;
-  }
-  .nameUser,
-  .TeamC_ForumD {
-    color: black;
-  }
-  .TeamC_discSec {
-    color: #165207;
-    font-size: x-large;
-  }
-  .TeamCarrow {
-    margin-top: 10px;
-    margin-right: 10px;
-    color: #165207;
-  }
+@media (max-width: 767px), (min-width: 768px) and (max-width: 1023px), (min-width: 1024px) {
+.ForumDSpace {
+  background-color: #ebffe5;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.nameUser,
+.TeamC_ForumD {
+  color: black;
+}
+
+.TeamC_discSec {
+  color: #165207;
+  font-size: x-large;
+}
+
+.TeamCarrow {
+  margin-top: 10px;
+  margin-right: 10px;
+  color: #165207;
+}
 
   .TeamCdots {
     margin-top: 20px;
@@ -76,20 +77,21 @@
     /*margin: 20px; deleted: 2/5/24*/
   }
 
-  /* Card style */
-  .TeamCForumC_Forumcard {
-    width: 100%;
-    max-width: 600px; /* Adjust the maximum width as needed */
-    background-color: #f3f8f2;
-    position: relative; /*2/7/24*/
-    display: flex; /*2/7/24*/
-    flex-direction: column; /*2/7/24*/
-    min-width: 0; /*2/7/24*/
-    word-wrap: break-word; /*2/7/24*/
-    background-clip: border-box; /*2/7/24*/
-    border: 1px solid rgba(0, 0, 0, 0.125); /*2/7/24*/
-    border-radius: 0.25rem; /*2/7/24*/
-  }
+/* Card style */
+.TeamCForumC_Forumcard {
+  width: 100%;
+  max-width: 600px;
+  /* Adjust the maximum width as needed */
+  background-color: #f3f8f2;
+  position:relative; /*2/7/24*/
+  display: flex;/*2/7/24*/
+  flex-direction: column;/*2/7/24*/
+  min-width: 0;/*2/7/24*/
+  word-wrap: break-word;/*2/7/24*/
+  background-clip: border-box;/*2/7/24*/
+  border: 1px solid rgba(0, 0, 0, .125);/*2/7/24*/
+  border-radius: .25rem;/*2/7/24*/
+}
 
   .TeamCCardBody {
     padding: 20px;

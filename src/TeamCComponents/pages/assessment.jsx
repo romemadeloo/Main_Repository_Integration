@@ -6,9 +6,9 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 function TeamC_Assessments() {
   return (
     <Fragment>
-      <Team_D_HeaderV2/>
+      <Team_D_HeaderV2 />
       <div className="container mt-5 mx-auto">
-        <p className="text-left mb-4" style={{fontSize: '2rem'}}>ASSESSMENTS</p>
+        <p className="text-left mb-4" style={{ fontSize: '2rem' }}>ASSESSMENTS</p>
 
         <div className="card mb-3" style={{ borderRadius: '15px', backgroundColor: '#bce8b1' }}>
           <div className="card-body d-flex justify-content-between">
