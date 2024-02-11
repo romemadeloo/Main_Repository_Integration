@@ -2,8 +2,8 @@
     margin-top: 1rem;
 }
 
-.quizItemList ul li{
-    display:flex;
+.quizItemList ul li {
+    display: flex;
     align-items: center;
     height: 2.5rem;
     padding-left: 1rem;
@@ -14,7 +14,7 @@
     cursor: pointer;
 }
 
-#finalAnswersContainer ul li{
+#finalAnswersContainer ul li {
     height: fit-content;
 }
 
@@ -31,6 +31,6 @@
 }
 
 .quizItemList li.selected {
-    background-color: #0e3b03; 
-    color: #fff; 
+    background-color: #0e3b03;
+    color: #fff;
 }
