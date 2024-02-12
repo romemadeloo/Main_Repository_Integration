@@ -15,7 +15,7 @@ function TeamC_Assessments() {
         <Link to='/assessment_sql'>
         <div className="card mb-3" id="c_assessment_sql" style={{ borderRadius: '15px', backgroundColor: '#bce8b1' }}>
           <div className="card-body d-flex justify-content-between" >
-            <p style={{ color: '#0e3b03' }} className="h4"><b>C Language Programming</b></p>
+            <p style={{ color: '#0e3b03' }} className="h4"><b>The SQL Programming</b></p>
             <small id="subText" style={{ fontStyle: 'italic', alignSelf: 'center', color: '#0e3b03' }}>-STATUS-</small>
           </div>
         </div>
