@@ -1,4 +1,4 @@
-package com.teamcid.teamcdatabase.model;
+package com.teamcid.teamcartifactid.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -6,22 +6,20 @@ import jakarta.persistence.Id;
 
 @Entity
 public class User {
-
+    
     @Id
     @GeneratedValue
-    private Long UserID;
+    private Long id;
     private String name;
     private String username;
     private String email;
-    private Short score;
-    
 
-    public Long getUserID() {
-        return this.UserID;
+    public Long getId() {
+        return this.id;
     }
 
-    public void setUserID(Long UserID) {
-        this.UserID = UserID;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -48,13 +46,4 @@ public class User {
         this.email = email;
     }
 
-    public Short getScore() {
-        return this.score;
-    }
-
-    public void setScore(Short score) {
-        this.score = score;
-    }
-
-    
 }
