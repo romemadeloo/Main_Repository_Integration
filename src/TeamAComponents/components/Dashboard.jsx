@@ -69,9 +69,9 @@ const Dashboard = () => {
         </div>
       </div>
       <div>
-      <footer className="flex justify-center p-9 fixed bottom-0 w-full ">
+      <footer className="flex justify-center pt-[2rem]  fixed bottom-0 w-full ">
         <div>
-          <p className="text-[#4D9349] font-medium">All Rights Reserved | Copyright 2024</p>
+          <p className="text-[#4D9349] font-medium pb-3">All Rights Reserved | Copyright 2024</p>
         </div>
       </footer>
     </div>
