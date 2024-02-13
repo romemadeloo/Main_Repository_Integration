@@ -29,11 +29,19 @@ const ForumD = () => {
   // Function to update the post time dynamically
   useEffect(() => {
     const updatePostTime = () => {
-      var postTimeElement = document.getElementById('post-time');
+      var postTimeElement = document.getElementById("post-time");
       var currentDate = new Date();
-      var formattedDate = currentDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-      var formattedTime = currentDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
-      var updatedTime = formattedDate + ' - ' + formattedTime;
+      var formattedDate = currentDate.toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      });
+      var formattedTime = currentDate.toLocaleTimeString("en-US", {
+        hour: "numeric",
+        minute: "numeric",
+        hour12: true,
+      });
+      var updatedTime = formattedDate + " - " + formattedTime;
       postTimeElement.innerText = updatedTime;
     };
 
@@ -127,7 +135,11 @@ const ForumD = () => {
       <Team_D_HeaderV2 />
       <div className="ForumDSpace">
         <div className="ForumC_ForumDcontainer">
-          <Link to="/ForumF" id="TeamCReturnButtonFf" className="btn btn-secondary">
+          <Link
+            to="/ForumF"
+            id="TeamCReturnButtonFf"
+            className="btn btn-secondary"
+          >
             <FaArrowLeft />
           </Link>
           <div className="TeamCForumC_Forumcard">
@@ -135,7 +147,10 @@ const ForumD = () => {
               <div className="TeamCFlex d-flex justify-content-between align-items-center mb-2">
                 <div>
                   <h6 className="nameUSerfw-bold text-success mb-1">@Luigi</h6>
-                  <p id="post-time" className="TeamC_ForumD text-muted small mb-0">
+                  <p
+                    id="post-time"
+                    className="TeamC_ForumD text-muted small mb-0"
+                  >
                     {new Date().toLocaleString()}
                   </p>
                 </div>
@@ -152,12 +167,20 @@ const ForumD = () => {
                     aria-labelledby="dropdownMenuLink"
                   >
                     <li>
-                      <Link to="#" className="dropdown-item" onClick={handleEditClick}>
+                      <Link
+                        to="#"
+                        className="dropdown-item"
+                        onClick={handleEditClick}
+                      >
                         Edit
                       </Link>
                     </li>
                     <li>
-                      <Link to="#" className="dropdown-item" onClick={handleDeleteClick}>
+                      <Link
+                        to="#"
+                        className="dropdown-item"
+                        onClick={handleDeleteClick}
+                      >
                         Delete
                       </Link>
                     </li>
@@ -168,7 +191,8 @@ const ForumD = () => {
                 Tsukiden Upcoming Events
               </h2>
               <p id="discussionContent" className="TeamC_ForumD mb-4 pb-2">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+                quam velit, vulputate eu pharetra nec, mattis ac neque.
               </p>
               <div className="TeamCFlex d-flex justify-content-start">
                 <a
@@ -187,7 +211,11 @@ const ForumD = () => {
                   <AiOutlineDislike />
                   <span className="reaction-counter">{dislikeCount}</span>
                 </a>
-                <a href="#!" className="TeamCFlex d-flex align-items-center me-3 reply-button" onClick={handleReplyClick}>
+                <a
+                  href="#!"
+                  className="TeamCFlex d-flex align-items-center me-3 reply-button"
+                  onClick={handleReplyClick}
+                >
                   <MdOutlineReply />
                   Reply
                 </a>
@@ -212,84 +240,111 @@ const ForumD = () => {
               )}
               <div id="commentsSection" className="mt-3">
                 {replies.map((reply) => (
-  <div key={reply.id} className="TeamCForumC_Forumcard">
-    <div className="TeamCCardBody">
-      <div className="TeamCFlex d-flex justify-content-between align-items-center mb-2">
-        <div>
-          <h6 className="nameUSerfw-bold text-success mb-1">@User</h6>
-          <p className="TeamC_ForumD text-muted small mb-0">{reply.time}</p>
-        </div>
-        <div className="TeamForum_Drop dropdown position-absolute top-0 end-0 three-dots">
-          <button
-            className="TeamC_forum_link link-muted"
-            onClick={() => handleDropdownClick(reply.id)} // Pass reply.id to handleDropdownClick
-            aria-expanded={dropdownOpen === reply.id ? "true" : "false"} // Check if dropdownOpen matches reply.id
-          >
-            <BsThreeDots className="TeamCdots bx bx-dots-horizontal-rounded" />
-          </button>
-          {/* Dropdown menu for each reply */}
-          <ul
-            className={`dropdown-menu${dropdownOpen === reply.id ? " show" : ""}`} // Show dropdown if dropdownOpen matches reply.id
-            aria-labelledby="dropdownMenuLink"
-          >
-            <li>
-              <Link to="#" className="dropdown-item" onClick={() => handleEditClick(reply.id)}> {/* Pass reply.id to handleEditClick */}
-                Edit
-              </Link>
-            </li>
-            <li>
-              <Link to="#" className="dropdown-item" onClick={() => handleDeleteClick(reply.id)}> {/* Pass reply.id to handleDeleteClick */}
-                Delete
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <p className="TeamC_ForumD mb-4 pb-2">{reply.content}</p>
-      {/* Reaction buttons for each reply */}
-      <div className="TeamCFlex d-flex justify-content-start">
-        <a
-          href="#!"
-          className="TeamCFlex d-flex align-items-center me-3 reaction-button"
-          onClick={() => handleReaction("like")}
-        >
-          <AiOutlineLike />
-          <span className="reaction-counter">{likeCount}</span>
-        </a>
-        <a
-          href="#!"
-          className="TeamCFlex d-flex align-items-center me-3 reaction-button"
-          onClick={() => handleReaction("dislike")}
-        >
-          <AiOutlineDislike />
-          <span className="reaction-counter">{dislikeCount}</span>
-        </a>
-        <a href="#!" className="TeamCFlex d-flex align-items-center me-3 reply-button" onClick={() => handleReplyClick(reply.id)}> {/* Pass reply.id to handleReplyClick */}
-          <MdOutlineReply />
-          Reply
-        </a>
-      </div>
-      {/* Reply section for each reply */}
-      <div className="mt-3">
-        <textarea
-          id={`replyTextArea_${reply.id}`}
-          className="TeamC_controlForm form-control"
-          rows="3"
-          placeholder="Write your reply..."
-          value={replyContent[reply.id] || ""}
-          onChange={(e) => handleReplyContentChange(reply.id, e)}
-        ></textarea>
-        <button
-          className="TeamCForumBtnPrime btn btn-primary mt-2"
-          onClick={() => handlePostReply(reply.id)} // Pass reply.id to handlePostReply
-        >
-          Post
-        </button>
-      </div>
-    </div>
-  </div>
-))}
-
+                  <div key={reply.id} className="TeamCForumC_Forumcard">
+                    <div className="TeamCCardBody">
+                      <div className="TeamCFlex d-flex justify-content-between align-items-center mb-2">
+                        <div>
+                          <h6 className="nameUSerfw-bold text-success mb-1">
+                            @User
+                          </h6>
+                          <p className="TeamC_ForumD text-muted small mb-0">
+                            {reply.time}
+                          </p>
+                        </div>
+                        <div className="TeamForum_Drop dropdown position-absolute top-0 end-0 three-dots">
+                          <button
+                            className="TeamC_forum_link link-muted"
+                            onClick={() => handleDropdownClick(reply.id)} // Pass reply.id to handleDropdownClick
+                            aria-expanded={
+                              dropdownOpen === reply.id ? "true" : "false"
+                            } // Check if dropdownOpen matches reply.id
+                          >
+                            <BsThreeDots className="TeamCdots bx bx-dots-horizontal-rounded" />
+                          </button>
+                          {/* Dropdown menu for each reply */}
+                          <ul
+                            className={`dropdown-menu${dropdownOpen === reply.id ? " show" : ""}`} // Show dropdown if dropdownOpen matches reply.id
+                            aria-labelledby="dropdownMenuLink"
+                          >
+                            <li>
+                              <Link
+                                to="#"
+                                className="dropdown-item"
+                                onClick={() => handleEditClick(reply.id)}
+                              >
+                                {" "}
+                                {/* Pass reply.id to handleEditClick */}
+                                Edit
+                              </Link>
+                            </li>
+                            <li>
+                              <Link
+                                to="#"
+                                className="dropdown-item"
+                                onClick={() => handleDeleteClick(reply.id)}
+                              >
+                                {" "}
+                                {/* Pass reply.id to handleDeleteClick */}
+                                Delete
+                              </Link>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <p className="TeamC_ForumD mb-4 pb-2">{reply.content}</p>
+                      {/* Reaction buttons for each reply */}
+                      <div className="TeamCFlex d-flex justify-content-start">
+                        <a
+                          href="#!"
+                          className="TeamCFlex d-flex align-items-center me-3 reaction-button"
+                          onClick={() => handleReaction("like")}
+                        >
+                          <AiOutlineLike />
+                          <span className="reaction-counter">{likeCount}</span>
+                        </a>
+                        <a
+                          href="#!"
+                          className="TeamCFlex d-flex align-items-center me-3 reaction-button"
+                          onClick={() => handleReaction("dislike")}
+                        >
+                          <AiOutlineDislike />
+                          <span className="reaction-counter">
+                            {dislikeCount}
+                          </span>
+                        </a>
+                        <a
+                          href="#!"
+                          className="TeamCFlex d-flex align-items-center me-3 reply-button"
+                          onClick={() => handleReplyClick(reply.id)}
+                        >
+                          {" "}
+                          {/* Pass reply.id to handleReplyClick */}
+                          <MdOutlineReply />
+                          Reply
+                        </a>
+                      </div>
+                      {/* Reply section for each reply */}
+                      <div className="mt-3">
+                        <textarea
+                          id={`replyTextArea_${reply.id}`}
+                          className="TeamC_controlForm form-control"
+                          rows="3"
+                          placeholder="Write your reply..."
+                          value={replyContent[reply.id] || ""}
+                          onChange={(e) =>
+                            handleReplyContentChange(reply.id, e)
+                          }
+                        ></textarea>
+                        <button
+                          className="TeamCForumBtnPrime btn btn-primary mt-2"
+                          onClick={() => handlePostReply(reply.id)} // Pass reply.id to handlePostReply
+                        >
+                          Post
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
