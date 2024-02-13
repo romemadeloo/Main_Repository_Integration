@@ -6,13 +6,16 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Team_D_HeaderV2 from "../../TeamDComponents/Team_D_HeaderV2";
 import ChapterList from "../components/chapter_list";
 
+// This function represents the component for displaying SQL query chapters.
 function TeamC_ChapterSql() {
   return (
     <>
+      {/* Render the Team_D_HeaderV2 component */}
       <Team_D_HeaderV2 />
       <ChapterList />
     </>
   )
 }
+
 
 export default TeamC_ChapterSql;
