@@ -33,7 +33,6 @@ function TeamC_ChapterHprog() {
             <Link to="/course1_hprog" className="h4 text-white text-decoration-none c_chapter_cardtext">
               <div className="card-body d-flex c_chapter_cardbody" style={{
                 backgroundColor: '#126912', borderRadius: '1rem',
-                backgroundColor: '#126912', borderRadius: '10px'
               }}>
                 CHAPTER 1: TITLE OF THE CHAPTER
               </div>
@@ -59,7 +58,6 @@ function TeamC_ChapterHprog() {
             <Link to="/course2_hprog" className="h4 text-white text-decoration-none c_chapter_cardtext">
               <div className="card-body d-flex c_chapter_cardbody" style={{
                 backgroundColor: '#126912', borderRadius: '1rem',
-                backgroundColor: '#126912', borderRadius: '10px'
               }}>
                 CHAPTER 2: TITLE OF THE CHAPTER
               </div>
@@ -84,7 +82,6 @@ function TeamC_ChapterHprog() {
             <Link to="/course3_hprog" className="h4 text-white text-decoration-none c_chapter_cardtext">
               <div className="card-body d-flex c_chapter_cardbody" style={{
                 backgroundColor: '#126912', borderRadius: '1rem',
-                backgroundColor: '#126912', borderRadius: '10px'
               }}>
                 CHAPTER 3: TITLE OF THE CHAPTER
               </div>
