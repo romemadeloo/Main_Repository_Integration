@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '../css/base_style.css';
 
+{/* This function is to see the title of the assessment and the status of it.*/}
 function TeamC_Assessments() {
   return (
     <Fragment>
