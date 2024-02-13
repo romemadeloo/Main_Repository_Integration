@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Team_D_HeaderV2 from "../../TeamDComponents/Team_D_HeaderV2";
 
+import axios from "axios";
 function TeamC_ChapterHprog() {
+  const [chapter, setChapter] = useState([])
+
+  useEffect(() => {
+
+    const loadChapter = async () => {
+      const result = await axios.get("http://localhost:8080/chapter");
+      setChapter(result.data);
+    }
+    loadChapter()
+  }, [])
+  console.log(chapter)
+
   return (
     <>
       <Team_D_HeaderV2 />
@@ -21,9 +34,24 @@ function TeamC_ChapterHprog() {
         </div>
       </Link>
       <div className="container mt-4 mx-auto">
-        <h2 className="text-left mb-4" style={{ fontWeight: 'bold', fontSize: '2rem' }}>HTML Programming Chapters</h2>
-        <hr />
 
+      {
+          chapter.map((chapterData, idx) => {
+            const rowIndex = 1; // Index of the desired row
+
+            if (idx === rowIndex) {
+              return (
+                <div key={idx}>
+                  <h2 className="text-left mb-4" style={{ fontWeight: 'bold', fontSize: '2rem' }}>{chapterData.chapterTitle}</h2>
+                </div>
+              );
+            }
+            return null; // Return null for other rows if not needed
+          })
+        }
+
+
+        <hr />
         {/* Chapter 1 */}
         <div className="d-flex align-items-center">
           <div className="c_chapter_cardmain card flex-grow-1" style={{
@@ -43,7 +71,20 @@ function TeamC_ChapterHprog() {
               backgroundColor: '#126912', width: '4rem',
               height: '4rem', borderRadius: '10px',
             }}>
-              <span>-$-</span>
+              {
+          chapter.map((chapterData, idx) => {
+            const rowIndex = 1; // Index of the desired row
+
+            if (idx === rowIndex) {
+              return (
+                <div key={idx}>
+                  <span>{chapterData.chapterId}</span>
+                </div>
+              );
+            }
+            return null; // Return null for other rows if not needed
+          })
+        }
             </div>
           </div>
 
