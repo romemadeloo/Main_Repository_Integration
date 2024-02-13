@@ -2,8 +2,16 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 function ChangePasswordForm() {
+  const navigate = useNavigate();
+
+
+  const goBack = () => {
+    navigate(-1);
+  };
+  
     const [email, setEmail] = useState('');
     const [oldPassword, setOldPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
@@ -37,7 +45,7 @@ function ChangePasswordForm() {
     
       return (
         <div className="Change-wrapper">
-           <Link to="/profile">
+           <Link onClick={goBack}>
         <button className="Change-Backbutton">
           <svg
             xmlns="http://www.w3.org/2000/svg"

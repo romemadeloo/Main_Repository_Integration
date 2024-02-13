@@ -1,4 +1,6 @@
 import Footer from "../Footer";
+import { Link } from 'react-router-dom';
+
 
 const AccDetails = () => {
   return (
@@ -16,7 +18,9 @@ const AccDetails = () => {
             </p>
             <p
               className="cursor-pointer mr-auto lg:w-[130px] xl:ml-3 text-center lg:h-[30px] font-semibold xl:w-[159px] xl:h-[36px]   bg-[#D1DFCD] lg:text-[.8rem] 2xl:text-[16px] lg:rounded-lg 2xl:rounder-[5px] text-[#4D4141] text-opacity-[53%] shadow-lg  flex justify-center items-center  ">
+              <Link to = "/change">          
               <span className="">Change Password</span>
+              </Link>
             </p>
           </div>
         </div>

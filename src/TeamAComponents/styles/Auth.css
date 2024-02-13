@@ -58,6 +58,8 @@ background-color: gray;
   margin: 0;
 }
 
+Modal .
+
 .left-container {
   display: flex;
   align-items: center;
@@ -180,7 +182,6 @@ background-color: gray;
 
 .label-container {
  display: flex;
- padding-bottom: 4rem;
  justify-content: center;
 
 } 
@@ -554,7 +555,9 @@ input::placeholder{
   margin-top: 20px; /* Add space between panels */
 }
 
-
+.Profile-picture {
+  width: 200px;
+}
 
 .email-image {
   width: 100%;
@@ -782,6 +785,7 @@ input::placeholder{
   color: #0e3b03;
   text-transform: uppercase;
   letter-spacing: 5px;
+  font-weight: 700;
 }
 .Prof1-info_data {
   display: flex;
@@ -800,7 +804,10 @@ input::placeholder{
 }
 
 
-
+.Prof1-info h4 {
+  color: #0e3b03;
+  font-weight: 700;
+}
 
 .Prof1-data h4 {
   color: #0e3b03;
@@ -1442,7 +1449,18 @@ background-color: gray;
 }
 
 
-#register, #login {
+#register, #login, #logout, #profile {
+  background-color: #126912;
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#register, #login, #logout, #profile {
   background-color: #126912;
   color: #fff;
   padding: 5px 10px;
@@ -1451,7 +1469,7 @@ background-color: gray;
   cursor: pointer;
 }
 
-#register:hover, #login:hover {
+#register:hover, #login:hover, #logout:hover, #profile:hover {
   background-color: gray;
 
 }
@@ -1716,13 +1734,14 @@ color: gray;
 .TeamA-square {
   width: 300px;
   height: 400px;
+
   background-color: #BCE8B1;
-  margin-right: 40px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
   display: flex;
   flex-direction: column;
   align-items: center; /* Center the content inside the square */
+  text-align: center;
 }
 
 .TeamA-square svg {
@@ -1746,3 +1765,27 @@ color: gray;
   height: 50px;
   margin-top: 10px;
 }
+
+
+.teamDimg {
+  height: 50px;
+  width: auto;
+}
+
+@media only screen and (max-width: 900px) 
+{
+    #root
+    {
+      height: 100vh;
+    }    
+
+   .TeamA-courses
+   {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly; 
+    align-items: center;
+
+   }
+}
+

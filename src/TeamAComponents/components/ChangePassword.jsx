@@ -10,17 +10,19 @@ function ChangePassword() { // Corrected function name
   return (
     <div>
       <nav className="Change-navbar">
-        <div className="Change-nav-logo">
-          <img
-            src="../../assets/TeamAassets/companyLogo.png"
-            alt="Logo"
-            className="logo"
+      <div className="home-header">
+        <Link to='/'>
+        <img
+           src="..\src\assets\TeamAassets\companyLogo.png"
+          alt="Logo"
+          className="Qlogo"
           />
+          </Link>
         </div>
         <ul className="Change-nav-list">
           <li>
             <Link to="/">
-              <button>Home</button>
+            <button className='login-button'>Home</button>
             </Link>
           </li>
         </ul>

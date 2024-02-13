@@ -1,43 +1,45 @@
-//* eslint-disable no-unused-vars */
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from "./AuthContext";  
-import Footer from "./Footer";
+import { useAuth } from "./AuthContext";
+import Footer from './Footer';
 
-function TeamA_LoginForm() {
+function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
 
   // Use the useAuth hook to get the handleLogin and setLoggedIn functions
-  const { handleLogin } = useAuth();
+  const { handleLogin } = useAuth(); 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     try {
-      // Hardcoded logic to check email and password
-      if (
-        (email === 'student@gmail.com' && password === 'admin123') ||
-        (email === 'faculty@gmail.com' && password === 'admin123')
-      ) {
-        // If the credentials are valid, redirect to the respective dashboards
-        navigate(email === 'student@gmail.com' ? '/TeamCdashboard' : '/TeamBdashboard');
+      console.log('Form submitted'); // Add this line for debugging
+  
+      const result = await handleLogin({ email, password });
+      
+      if (result.success) {
+        console.log('Login successful'); // Add this line for debugging
+        navigate('/dashboard');
       } else {
-        alert("Invalid Username or Password")
-        // If email or password is incorrect, perform normal login
-        await handleLogin({ email, password }, navigate);
+        setError('Invalid email or password. Please try again.');
       }
     } catch (error) {
-      setError('Invalid email or password. Please try again.');
+      setError('An unexpected error occurred. Please try again later.');
       console.error('Login failed:', error);
+    }
+  };
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleSubmit(e);
     }
   };
 
   return (
     <>
-    
       <form onSubmit={handleSubmit} className="template-form">
         <h2 style={{ margin: '30px' }}>Sign In to Your Account and Be Part of the Success</h2>
         <input
@@ -53,6 +55,7 @@ function TeamA_LoginForm() {
           id="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          onKeyPress={handleKeyPress} 
           placeholder="Password"
           required
         />
@@ -70,9 +73,9 @@ function TeamA_LoginForm() {
         <button  className="TeamA-button">Sign in</button>
         {error && <div className="error-message">{error}</div>}
       </form>
-      <Footer />
     </>
   );
 }
 
-export default TeamA_LoginForm;
+
+export default LoginForm;

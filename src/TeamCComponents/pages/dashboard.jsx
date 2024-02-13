@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { enroll } from "../js/script";
 import CoursePreview from "../components/course_preview";
 import Team_D_HeaderV2 from "../../TeamDComponents/Team_D_HeaderV2";
+import ModalSeeMore from "../components/modal_course_seemore";
 
 import "../css/base_style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -35,6 +36,7 @@ function TeamC_Dashboard() {
 
       {/* Courses */}
       <CoursePreview />
+      <ModalSeeMore />
       {/* End of Courses */}
 
       {/* Modals */}

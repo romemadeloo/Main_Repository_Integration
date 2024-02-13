@@ -26,7 +26,10 @@
     width: 35% !important;
     height: 30px;
 }
-
+/* temporary fix until teamc fixed theirs */
+.withSearchBar .form-control:focus{
+    background-color: #fff;
+}
 .withSearchBar .form-control {
     height: 30px;
 }
@@ -181,6 +184,9 @@
         gap: 0;
         margin-bottom: 25px;
     }
+    #viewTooltip, #downloadTooltip{
+        display: none;
+    }
 }
 
 @media only screen and (max-width: 600px) {
@@ -215,6 +221,9 @@
         width: 100% !important;
         height: 25px;
     }
+    #viewTooltip, #downloadTooltip{
+        display: none;
+    }
 }
 
 @media only screen and (max-width: 390px) {
@@ -230,5 +239,7 @@
         width: 100% !important;
         height: 25px;
     }
-    
+    #viewTooltip, #downloadTooltip{
+        display: none;
+    }
 }

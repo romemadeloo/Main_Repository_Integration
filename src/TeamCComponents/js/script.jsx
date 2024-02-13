@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { data } from "../data/quiz_content_data";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Function to show the next topic
@@ -56,8 +57,24 @@ const useToggleChoices = (initialChoices) => {
   };
 };
 
+// getOptionText function
+const getOptionText = (index, question) => {
+  switch (index) {
+    case 1:
+      return question.option1;
+    case 2:
+      return question.option2;
+    case 3:
+      return question.option3;
+    case 4:
+      return question.option4;
+    default:
+      return "";
+  }
+};
+
 
 
 
 // Exporting all functions and hooks
-export { showNextTopic, hideAllTopics, enroll, redirectToGoogle, useToggleChoices };
+export { showNextTopic, hideAllTopics, enroll, redirectToGoogle, useToggleChoices, getOptionText };
