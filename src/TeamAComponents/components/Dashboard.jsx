@@ -242,6 +242,7 @@
             </div>
           </div>
         </div>
+
         <div
           className="footerContainer d-flex flex-column align-items-center"
           style={{ color: "#0e3b03", minHeight: "1vh" }}
@@ -249,6 +250,7 @@
           <div className="flex-grow-1"></div>
           <p className="footerText text-center">
           </p>
+
         </div>
   
         {/* End of Modals */}
