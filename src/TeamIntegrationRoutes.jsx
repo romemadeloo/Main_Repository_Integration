@@ -114,7 +114,7 @@ function TeamIntegrationRoutes() {
             path="/teambcreatenewchaptertitle"
             element={<TeamB_CreateNewChapterTitle />}
           />
-          <Route path="/teambtopicpage" element={<TeamB_TopicPage />} />
+          <Route path="/teambtopicpage/:id" element={<TeamB_TopicPage />} />
           <Route
             path="teambcreatenewcoursecopy"
             element={<TeamB_CreateNewCourseCopy />}
