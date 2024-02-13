@@ -120,9 +120,12 @@ const Team_D_View = () => {
   const downloadTooltip = (
     <Tooltip id="downloadTooltip">Download Certificate</Tooltip>
   );
-  const criteriaTooltip = <Tooltip id="criteriaTooltip">Certificate Criteria</Tooltip>;
+  const criteriaTooltip = (
+    <Tooltip id="criteriaTooltip">Certificate Criteria</Tooltip>
+  );
 
   return (
+    //for certificate view and download
     <div>
       {/* <Header /> */}
       <Team_D_HeaderV2 />
@@ -162,6 +165,7 @@ const Team_D_View = () => {
                 </Button>
               </OverlayTrigger>
             </div>
+            {/* download certificate */}
             <div className="download_View">
               <OverlayTrigger placement="top" overlay={downloadTooltip}>
                 <Button
@@ -174,7 +178,7 @@ const Team_D_View = () => {
                 </Button>
               </OverlayTrigger>
             </div>
-
+            {/* criteria view for certificate */}
             <Modal show={show} onHide={handleClose}>
               <Modal.Header closeButton className="TeamD_mdl_hdr">
                 <Modal.Title>

@@ -57,6 +57,7 @@ const Team_D_Verification = () => {
     }
   };
   return (
+    //verification for users
     <div>
       <Team_D_HeaderV2 />
       <section className="verification_container">

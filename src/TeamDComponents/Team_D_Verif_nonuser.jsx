@@ -62,6 +62,7 @@ const Team_D_Verif_nonuser = () => {
   };
 
   return (
+    // verification for 3rd party users
     <div>
       <nav className="my-navigation">
         <Link to='/'>
