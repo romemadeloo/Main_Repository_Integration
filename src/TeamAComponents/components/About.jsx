@@ -45,10 +45,10 @@ const About = () => {
             </h1>
             <p className="p-[.5rem] justify-center">
               Tsukiden Global Solutions, Inc.<b>YOUR RELIABLE IT PARTNER</b>{" "}
-              That's who <b>WE</b> are. For more than 30 years now, Team Tsukiden has
-              always been the trusted reliable IT partner of its clients for
-              various projects in Japan, Philippines, Malaysia, Hong Kong,
-              Singapore, Taiwan, United Kingdom, and the United States of
+              That's who <b>WE</b> are. For more than 30 years now, Team
+              Tsukiden has always been the trusted reliable IT partner of its
+              clients for various projects in Japan, Philippines, Malaysia, Hong
+              Kong, Singapore, Taiwan, United Kingdom, and the United States of
               America.
             </p>
             <p className="p-[.5rem] justify-center">
@@ -84,7 +84,8 @@ const About = () => {
                 Vision
               </h1>
               <div className="justify-center">
-              <b>TGSI</b> is committed to be <b>THE PREMIER GLOBAL I.T. BUSINESS PARTNER </b>
+                <b>TGSI</b> is committed to be{" "}
+                <b>THE PREMIER GLOBAL I.T. BUSINESS PARTNER </b>
                 driven by passion for innovation
               </div>
             </div>
