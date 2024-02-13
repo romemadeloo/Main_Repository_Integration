@@ -33,7 +33,7 @@ const CourseDescription = () => {
   return (
     <>
       {/* add topic title */}
-      <div className="h-[100vh] w-full pt-2">
+      <div className="h-[100vh] w-[100%] pt-2">
         <div className="flex items-center justify-end w-full ">
           <div
             className="flex items-center gap-2 pr-5 cursor-pointer"
@@ -48,7 +48,7 @@ const CourseDescription = () => {
           <span className="lg:text-[2rem] 2xl:text-[48px] font-semibold ">
             Course Description
           </span>
-      
+
           <textarea
             name=""
             id=""

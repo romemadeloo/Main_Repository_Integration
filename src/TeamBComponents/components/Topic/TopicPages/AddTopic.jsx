@@ -1,5 +1,6 @@
-//2/3/2024 junite, create AddTopic UI, completed
+/* eslint-disable react/prop-types */
 
+//2/3/2024 junite, create AddTopic UI, completed
 
 import React, { useState } from "react";
 import { FaSave } from "react-icons/fa";
@@ -10,13 +11,14 @@ import quizLink from "../../../../assets/TeamBassests/quizLink.svg";
 //import toastify react
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
 //remove close button
 const CloseButton = ({ closeToast }) => (
   <i className="material-icons" onClick={closeToast}></i>
 );
 
-const AddTopic = () => {
+const AddTopic = ({ chapterId, courseTitle }) => {
   const [videoInputValue, setVideoInputValue] = useState("");
   const [quizInputValue, setQuizInputValue] = useState("");
   const [isVideoPopupOpen, setVideoPopupOpen] = useState(false);
@@ -74,10 +76,37 @@ const AddTopic = () => {
       closeButton: CloseButton,
     });
   };
+
+  //state for topics
+  const [topics, setTopics] = useState({
+    topic_title: "",
+    topic_description: "",
+    topic_file: "",
+    topic_link: "",
+  });
+
+  const handleInputChange = (e) => {
+    setTopics({ ...topics, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    // Assuming your API call is successful, update the state to indicate form submission
+    try {
+      await axios.post(
+        `http://localhost:8080/api/chapters/${chapterId}/topics`,
+        topics
+      );
+      // showModal(false);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      // Handle error if the API call fails
+    }
+  };
+
   return (
     <>
       {/* add topic title */}
-      <div className="h-[100vh] w-full pt-2">
+      <div className="h-[100vh] w-[100%] pt-2">
         <div className="flex items-center justify-end w-full ">
           <div
             className="flex items-center gap-2 pr-5 cursor-pointer"
@@ -90,7 +119,7 @@ const AddTopic = () => {
         </div>
         <div className="w-[90%] m-auto mb-5">
           <span className="lg:text-[2rem] 2xl:text-[48px] font-semibold ">
-            Course Title
+            <p>Course Title: {courseTitle}</p>
           </span>
           <div className="flex items-center ">
             <span className="lg:text-[1.5rem] 2xl:text-[36px] pr-2 text-[#070101] text-opacity-[55%]">

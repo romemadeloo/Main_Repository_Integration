@@ -34,9 +34,7 @@ const TopicPage = () => {
 
   const loadChapters = async () => {
     try {
-      const result = await axios.get(
-       `http://localhost:8080/api/courses/${id}`
-      );
+      const result = await axios.get(`http://localhost:8080/api/courses/${id}`);
 
       // Ensure that result.data is always an array by converting it
       const coursesArray = Array.isArray(result.data)
@@ -47,7 +45,6 @@ const TopicPage = () => {
       console.error("Error loading chapters:", error);
     }
   };
-
 
   //delete modal state
   const [deleteModalVisible, setDeleteModalVisible] = useState(false);
@@ -110,7 +107,7 @@ const TopicPage = () => {
                   <div key={idx}>
                     {chapter.map((chap, idx) => {
                       const { topic } = chap;
-                      console.log(topic)
+                      console.log(chap);
                       return (
                         <div key={idx}>
                           {topic.map((tops, idx) => {
@@ -165,9 +162,39 @@ const TopicPage = () => {
             </div>
           </div>
         )}
-        {showCourseDescription && <CourseDescription />}
-        {showAddTopic && <AddTopic />}
-        {showEditTopic && <EditTopic />}
+        <div className="w-[100%]">
+          <div className="">
+            {showCourseDescription && (
+              <div className="">
+                <CourseDescription />
+              </div>
+            )}
+          </div>
+          <div className="">
+            {showAddTopic && (
+              <div className="">
+                {courses.map((course, idx) => {
+                  const { chapter, course_title } = course;
+                  console.log(course_title);
+                  return (
+                    <div key={idx}>
+                      {chapter.map((chap, idx) => {
+                        const { chapter_id } = chap;
+                        console.log(chap);
+                        return (
+                          <div key={idx}>
+                            <AddTopic chapterId={chapter_id} courseTitle={course_title}/>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+          {showEditTopic && <EditTopic />}
+        </div>
       </div>
     </>
   );
