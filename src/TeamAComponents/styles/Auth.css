@@ -107,6 +107,7 @@
   line-height: normal;
   margin: 55px;
   margin-top:20px;
+  text-align: center;
 }
 
 .japanese-message {
@@ -125,6 +126,7 @@
   font-weight: 700;
   margin-top:-65px;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .english-message {
