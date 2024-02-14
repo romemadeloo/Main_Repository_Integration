@@ -15,7 +15,7 @@ const CloseButton = ({ closeToast }) => (
   <i className="material-icons" onClick={closeToast}></i>
 );
 
-const CourseDescription = () => {
+const CourseDescription = ({ courseDesc }) => {
   //toast
   const addToCartNotify = () => {
     toast.success("Course Description, Successfully Saved!", {
@@ -54,7 +54,8 @@ const CourseDescription = () => {
             id=""
             cols="30"
             rows="10"
-            placeholder=" Lorem ipsum dolor sit amet. Ut labore facere aut dolorem deleniti cum repudiandae delectus aut quam beatae aut aliquam omnis sed harum odio. Eos consectetur placeat sit itaque ipsum qui laudantium autem. Et voluptatum optio At odio amet cum enim dicta sed deleniti adipisci ut maiores perspiciatis. Aut dicta soluta qui sapiente quibusdam ut tempore facilis et ducimus provident. Hic voluptate."
+            defaultValue={courseDesc}
+           placeholder="Course Description"
             className="bg-[#BCE8B1] TeamB_text-shadow resize-none lg:min-w-[100%] 2xl:h-[504px] 2xl:max-w-[1342px] lg:h-[50vh] placeholder:font-medium placeholder:text-justify placeholder:p-10
               outline-none rounded-lg placeholder:text-[#070101] placeholder:text-opacity-[55%] mt-5 p-2 "
           />
