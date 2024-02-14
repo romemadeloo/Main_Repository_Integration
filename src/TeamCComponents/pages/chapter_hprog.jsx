@@ -7,7 +7,7 @@ import Team_D_HeaderV2 from "../../TeamDComponents/Team_D_HeaderV2";
 function TeamC_ChapterHprog() {
   return (
     <>
-      {/*Header Component*/}
+      {/*Navbar Component*/}
       <Team_D_HeaderV2 />
 
       {/* Back button */}
@@ -113,11 +113,14 @@ function TeamC_ChapterHprog() {
               </div>
             </Link>
           </div>
+          {/*Chapter 3 Score Container */}
           <div className="small-box-container c_chapter_scoremain" style={{ marginTop: '0.6rem', marginLeft: '0.99rem', }}>
+             {/*Chapter 3 Score Box */}
             <div className="small-box c_chapter_scoresub d-flex align-items-center justify-content-center text-white" style={{
               backgroundColor: '#126912', width: '4rem',
               height: '4rem', borderRadius: '10px',
             }}>
+               {/*Chapter 3 Score Placeholder */}
               <span>-$-</span>
             </div>
           </div>

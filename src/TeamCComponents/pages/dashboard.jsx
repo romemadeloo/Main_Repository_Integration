@@ -11,7 +11,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function TeamC_Dashboard() {
   return (
     <Fragment>
-      {/* Header title */}
+      {/*Navbar Component*/}
       <Team_D_HeaderV2/>
       <div className="header p-3 h-50 d-flex align-items-center justify-content-center" id="c_dashboard_header">
         <div className="c_dashboard_title title p-3 text-center">

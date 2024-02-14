@@ -7,6 +7,7 @@ import Team_D_HeaderV2 from "../../TeamDComponents/Team_D_HeaderV2";
 function TeamC_ChapterSql() {
   return (
     <>
+    {/*Navbar Component*/}
       <Team_D_HeaderV2 />
       {/* Back button */}
       <Link to='/course' className="buttonReturn d-flex align-items-center c_chapter_returncontainer" style={{ textDecoration: 'none', color: 'black', width: 'fit-content', }}>

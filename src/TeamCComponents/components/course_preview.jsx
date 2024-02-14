@@ -16,6 +16,7 @@ function CoursePreview() {
 
           <div className="card-body bg-transparent border-success d-flex flex-column">
             <p className=" mt-4" style={{ textAlign: 'left' }}>
+             {/* Explanation of the course content */}
             In a SQL querying workshop, participants delve into fundamental concepts such as syntax, database design, and optimization, empowering them with practical skills to write efficient queries.
             </p> <a className='stretched-link ms-auto fw-bold' id='c_course_seemoretext' data-bs-toggle="modal" data-bs-target="#modal_seemoresql">See more..</a><br />
             <div className="d-flex justify-content-center align-items-end mt-auto">
@@ -43,6 +44,7 @@ function CoursePreview() {
           </div><hr />
           <div className="card-body bg-transparent border-success d-flex flex-column">
             <p className=" mt-4" style={{ textAlign: 'left' }}>
+              {/* Explanation of the course content */}
               Apache Subversion (SVN) is a centralized version control system, facilitating collaborative
               software development through version tracking, allowing multiple developers to work on projects
               concurrently.
@@ -72,6 +74,7 @@ function CoursePreview() {
 
           <div className="card-body bg-transparent border-success d-flex flex-column">
             <p className="mt-4" style={{ textAlign: 'left' }}>
+              {/* Explanation of the course content */}
               HTML (Hypertext Markup Language) is the standard language for creating web pages, defining the
               structure and content using tags, ensuring compatibility and accessibility across various browsers.
             </p><a className='stretched-link ms-auto fw-bold' id='c_course_seemoretext' data-bs-toggle="modal" data-bs-target="#modal_seemorehtml">See more..</a><br />

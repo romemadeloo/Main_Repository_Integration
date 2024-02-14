@@ -3,6 +3,7 @@ import '../css/forum_styles.css'
 import Team_D_HeaderV2 from "../../TeamDComponents/Team_D_HeaderV2";
 
 const TeamC_Forum = () => {
+  // State variables using React Hooks
   const [discussionTitle, setDiscussionTitle] = useState('');
   const [discussionContent, setDiscussionContent] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
@@ -10,7 +11,9 @@ const TeamC_Forum = () => {
   const [showDiscussionForm, setShowDiscussionForm] = useState(false);
   const [discussionPosts, setDiscussionPosts] = useState([]);
 
+  // Function to toggle the visibility of the discussion form
   const toggleDiscussionForm = () => {
+     // Retrieving input elements
     setShowDiscussionForm(!showDiscussionForm);
   };
   
