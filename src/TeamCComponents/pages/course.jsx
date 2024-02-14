@@ -28,7 +28,7 @@ function TeamC_ChapterSvn() {
             {/* Chapter 1 Link */}
             <Link to="/chapters_sql" className="h4 text-white text-decoration-none c_chapter_cardtext">
               {/* Chapter 1 Card Body */}
-              <div className="card-body d-flex" id="c_course_cardbody" style={{ backgroundColor: '#126912', borderRadius: '10px', borderRadius: '1rem', }}>
+              <div className="card-body d-flex" id="c_course_cardbody" style={{ backgroundColor: '#126912', borderRadius: '1rem', }}>
                 The SQL Query
               </div>
             </Link>
@@ -49,7 +49,7 @@ function TeamC_ChapterSvn() {
             {/* Chapter 2 Link */}
             <Link to="/chapters_svn" className="h4 text-white text-decoration-none c_chapter_cardtext">
               {/* Chapter 2 Card Body */}
-              <div className="card-body d-flex" id="c_course_cardbody" style={{ backgroundColor: '#126912', borderRadius: '10px', borderRadium: '1rem', }}>
+              <div className="card-body d-flex" id="c_course_cardbody" style={{ backgroundColor: '#126912', borderRadium: '1rem', }}>
                 Version Control: Subversion
               </div>
             </Link>
@@ -69,7 +69,7 @@ function TeamC_ChapterSvn() {
             {/* Chapter 3 Link */}
             <Link to="/chapters_hprog" className="h4 text-white text-decoration-none c_chapter_cardtext">
               {/* Chapter 3 Card Body */}
-              <div className="card-body d-flex" id="c_course_cardbody" style={{ backgroundColor: '#126912', borderRadius: '10px', borderRadius: '1rem', }}>
+              <div className="card-body d-flex" id="c_course_cardbody" style={{ backgroundColor: '#126912', borderRadius: '1rem', }}>
                 HTML Programming Language
               </div>
             </Link>

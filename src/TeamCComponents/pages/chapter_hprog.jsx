@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Team_D_HeaderV2 from "../../TeamDComponents/Team_D_HeaderV2";
 
+import axios from "axios";
 function TeamC_ChapterHprog() {
+  const [chapter, setChapter] = useState([])
+
+  useEffect(() => {
+
+    const loadChapter = async () => {
+      const result = await axios.get("http://localhost:8080/chapter");
+      setChapter(result.data);
+    }
+    loadChapter()
+  }, [])
+  console.log(chapter)
+
   return (
     <>
       {/*Navbar Component*/}
@@ -28,10 +41,24 @@ function TeamC_ChapterHprog() {
 
       {/*Main Content Container*/}
       <div className="container mt-4 mx-auto">
-        {/*Main Title*/}
-        <h2 className="text-left mb-4" style={{ fontWeight: 'bold', fontSize: '2rem' }}>HTML Programming Chapters</h2>
-        <hr />
 
+      {
+          chapter.map((chapterData, idx) => {
+            const rowIndex = 1; // Index of the desired row
+
+            if (idx === rowIndex) {
+              return (
+                <div key={idx}>
+                  <h2 className="text-left mb-4" style={{ fontWeight: 'bold', fontSize: '2rem' }}>{chapterData.chapterTitle}</h2>
+                </div>
+              );
+            }
+            return null; // Return null for other rows if not needed
+          })
+        }
+
+
+        <hr />
         {/* Chapter 1 */}
         <div className="d-flex align-items-center">
           {/*Chapter 1 Card*/}
@@ -44,7 +71,6 @@ function TeamC_ChapterHprog() {
               {/*Chapter 1 Card Body*/}
               <div className="card-body d-flex c_chapter_cardbody" style={{
                 backgroundColor: '#126912', borderRadius: '1rem',
-                backgroundColor: '#126912', borderRadius: '10px'
               }}>
                 CHAPTER 1: TITLE OF THE CHAPTER
               </div>
@@ -58,7 +84,20 @@ function TeamC_ChapterHprog() {
               height: '4rem', borderRadius: '10px',
             }}>
               {/*Chapter 1 Score Placeholder*/}
-              <span>-$-</span>
+              {
+          chapter.map((chapterData, idx) => {
+            const rowIndex = 1; // Index of the desired row
+
+            if (idx === rowIndex) {
+              return (
+                <div key={idx}>
+                  <span>{chapterData.chapterId}</span>
+                </div>
+              );
+            }
+            return null; // Return null for other rows if not needed
+          })
+        }
             </div>
           </div>
 
@@ -76,7 +115,6 @@ function TeamC_ChapterHprog() {
               {/*Chapter 2 Card Body*/}
               <div className="card-body d-flex c_chapter_cardbody" style={{
                 backgroundColor: '#126912', borderRadius: '1rem',
-                backgroundColor: '#126912', borderRadius: '10px'
               }}>
                 CHAPTER 2: TITLE OF THE CHAPTER
               </div>
@@ -107,7 +145,6 @@ function TeamC_ChapterHprog() {
               {/* Chapter 3 Card Body */}
               <div className="card-body d-flex c_chapter_cardbody" style={{
                 backgroundColor: '#126912', borderRadius: '1rem',
-                backgroundColor: '#126912', borderRadius: '10px'
               }}>
                 CHAPTER 3: TITLE OF THE CHAPTER
               </div>
