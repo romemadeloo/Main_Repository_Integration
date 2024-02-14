@@ -9,13 +9,16 @@ import { FiLogOut } from "react-icons/fi";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Profile from "./TeamD_Assets/profilepic.jpg";
 
+// Team_D_HeaderV2 component represents the header section of the website
 const Team_D_HeaderV2 = () => {
   const [clicked, setClicked] = useState(false);
 
+  // Function to handle the click event to toggle mobile navbar
   const handleClick = () => {
     setClicked(!clicked);
   };
 
+  // Function to close the mobile navbar
   const closeMobileNavbar = () => {
     setClicked(false);
     setMyCourseActive(false);
@@ -41,6 +44,7 @@ const Team_D_HeaderV2 = () => {
           <img src={TsukidenLogo} alt="Logo" />
         </NavLink>
         <div>
+          {/* Navbar links */}
           <ul id="navbar" className={clicked ? "active" : ""}>
             <li className="profile_info">
               <span className="profile_info_con">
@@ -51,6 +55,7 @@ const Team_D_HeaderV2 = () => {
                 </span>
               </span>
             </li>
+            {/* Profile link */}
             <li className="profile_link">
               <NavLink
                 to="/profile"
@@ -60,6 +65,7 @@ const Team_D_HeaderV2 = () => {
                 Profile
               </NavLink>
             </li>
+            {/* Certificate link */}
             <li className="profile_link">
               <NavLink
                 to="/certificate"
@@ -70,6 +76,7 @@ const Team_D_HeaderV2 = () => {
               </NavLink>
             </li>
             <li className="divider"></li>
+            {/* Dashboard link */}
             <li>
               <NavLink
                 to="/TeamCdashboard"
@@ -78,6 +85,7 @@ const Team_D_HeaderV2 = () => {
               >
                 Dashboard
               </NavLink>
+              {/* My Course dropdown */}
             </li>
             <li>
               <NavDropdown
@@ -94,6 +102,7 @@ const Team_D_HeaderV2 = () => {
                 </NavDropdown.Item>
               </NavDropdown>
             </li>
+            {/* Forums link */}
             <li>
               {/* this is the forum */}
               <NavLink
@@ -104,6 +113,7 @@ const Team_D_HeaderV2 = () => {
                 Forums
               </NavLink>
             </li>
+            {/* Verification link */}
             <li>
               <NavLink
                 to="/verification"
@@ -115,6 +125,7 @@ const Team_D_HeaderV2 = () => {
             </li>
           </ul>
         </div>
+        {/* Mobile toggle */}
         <div id="mobile" onClick={handleClick}>
           {clicked ? (
             <i className="fas fa-times"></i>
@@ -122,6 +133,7 @@ const Team_D_HeaderV2 = () => {
             <img src={Profile} alt="Logo" className="mobile_profile" />
           )}
         </div>
+        {/* Profile dropdown */}
         <div className="profile_side">
           <Dropdown>
             <Dropdown.Toggle
@@ -159,4 +171,4 @@ const Team_D_HeaderV2 = () => {
   );
 };
 
-export default Team_D_HeaderV2;
+export default Team_D_HeaderV2; // Export the Team_D_HeaderV2 component
