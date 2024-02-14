@@ -65,10 +65,10 @@ const CourseOverviewCard = () => {
               <div
                 className="flex items-center cursor-pointer w-[10%] absolute left-0 top-[-.3rem] pb-4"
                 onClick={goBack}>
-                <span className="text-[2.5rem]">
+                <span className="text-[2.5rem] px-5">
                   <IoArrowBackCircle />
                 </span>
-                <span className="text-[1rem] pl-1">Back</span>
+               
               </div>
               <div className="lg:font-bold lg:text-[2rem] w-full flex justify-center">
                 <p className="lg:font-bold TeamB_text-shadow">
@@ -83,6 +83,7 @@ const CourseOverviewCard = () => {
                 <div className="relative  flex items-center lg:max-w-[300px] 2xl:w-[544px] h-[35px] 2xl:h-[53px]  bg-white outline-none rounded-md border-b-[.1rem] border-black">
                   <input
                     type="text"
+                    placeholder="Search"
                     className="outline-none font-normal pl-2 text-[1.3rem] lg:w-[300px] 2xl:w-[544px] h-[35px] 2xl:h-[53px] rounded-md"
                     name=""
                     id=""
