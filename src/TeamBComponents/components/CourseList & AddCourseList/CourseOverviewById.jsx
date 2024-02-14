@@ -80,13 +80,13 @@ const CourseOverviewById = () => {
                   const { chapter_id, chapter_title } = chap;
                   return (
                     <div key={idx} className="relative m-0 lg:w-full">
-                      <div className="flex items-center justify-center w-full gap-5 pb-4 m-auto">
+                      <div className="flex items-center justify-center w-full gap-4 pb-4 m-auto">
                         <div className="h-[1.5rem] w-[1.5rem] bg-[#126912] rounded-[100%]"></div>
                         {/* <div className="flex"> */}
 
                         <Link
                           to={`/teambtopicpage/${chapter_id}`}
-                          className=" 2xl:rounded-[20px] w-full lg:flex lg:items-center lg:font-medium lg:text-[1rem] 2xl:text-[24px] bg-[#126912]  py-1 text-center text-[.8rem]  lg:p-5 text-white
+                          className=" 2xl:rounded-[20px] w-full lg:flex lg:items-center lg:font-medium lg:text-[1rem] 2xl:text-[24px] bg-[#126912]  py-1 text-left px-3  text-[.8rem]  lg:p-5 text-white
                       lg:h-[50px] lg:rounded-[1rem]  ">
                           <p className="text-shadow">CHAPTER {chapter_id}:</p>
                           <p className="pl-2 lg:font-medium text-shadow">
