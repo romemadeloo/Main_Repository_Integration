@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const ChapterModal = ({ chapterId }) => {
+const ChapterModal = ({ chapterId, editTitle }) => {
   //state for topics
   const [chapters, setChapters] = useState({
     chapter_title: "",
@@ -31,15 +31,19 @@ const ChapterModal = ({ chapterId }) => {
       console.error("Error submitting form:", error);
       // Handle error if the API call fails
     }
- 
   };
 
-   const loadChapters = async () => {
-     const result = await axios.get(
-       `http://localhost:8080/api/chapters/${chapterId}`
-     );
-     setChapters(result.data);
-   };
+  const loadChapters = async () => {
+    const result = await axios.get(
+      `http://localhost:8080/api/chapters/${chapterId}`
+    );
+    setChapters(result.data);
+  };
+
+  const handleCancel = () => {
+    // Implement your cancel logic here
+    editTitle((prev) => !prev);
+  };
 
   return (
     <>
@@ -61,7 +65,9 @@ const ChapterModal = ({ chapterId }) => {
             />
             <div className="pt-8 lg:w-full lg:flex lg:justify-end">
               <div className="flex gap-x-5">
-                <button className="xl:text-[24px]  lg:text-[1rem]" onClick="">
+                <button
+                  className="xl:text-[24px]  lg:text-[1rem]"
+                  onClick={handleCancel}>
                   Cancel
                 </button>
 

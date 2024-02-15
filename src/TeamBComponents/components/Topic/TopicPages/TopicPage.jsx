@@ -180,10 +180,12 @@ const TopicPage = () => {
               {showCourseDescription && (
                 <div className="">
                   {courses.map((course, idx) => {
-                    const { course_description } = course;
+                    const { course_id } = course;
                     return (
                       <div key={idx}>
-                        <CourseDescription courseDesc={course_description} />
+                        <CourseDescription
+                          courseId={course_id}
+                        />
                       </div>
                     );
                   })}
@@ -200,13 +202,14 @@ const TopicPage = () => {
                   return (
                     <div key={idx}>
                       {chapter.map((chap, idx) => {
-                        const { chapter_id } = chap;
+                        const { chapter_id, chapter_title } = chap;
                         console.log(chap);
                         return (
                           <div key={idx}>
                             <AddTopic
                               chapterId={chapter_id}
                               courseTitle={course_title}
+                              chapterTitle={chapter_title}
                             />
                           </div>
                         );
@@ -241,6 +244,8 @@ const TopicPage = () => {
                                     editTopicId === topic_id && (
                                       <EditTopic
                                         topicId={topic_id}
+                                        courseTitle={course_title}
+                                        chapterTitle={chapter_title}
                                       />
                                     )}
                                 </div>

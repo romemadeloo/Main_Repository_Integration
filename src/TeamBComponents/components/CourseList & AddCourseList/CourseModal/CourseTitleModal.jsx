@@ -4,10 +4,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-const CourseTitleModal = ({ courseId }) => {
+const CourseTitleModal = ({ courseId, editTitle }) => {
   //state for topics
   const [courses, setCourses] = useState({
-   course_title: ""
+    course_title: "",
   });
 
   const { course_title } = courses;
@@ -19,26 +19,30 @@ const CourseTitleModal = ({ courseId }) => {
     loadCourses();
   }, []);
 
-  const handleSubmit = async (e) => {
-    // Assuming your API call is successful, update the state to indicate form submission
+ const handleSubmit = async (e) => {
+   // Assuming your API call is successful, update the state to indicate form submission
 
-    try {
-      await axios.put(`http://localhost:8080/api/courses/${courseId}`, courses);
-      // showModal(false);
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      // Handle error if the API call fails
-    }
-
-  };
-
+   try {
+     await axios.put(`http://localhost:8080/api/courses/${courseId}`, courses);
+     // showModal(false);
+   } catch (error) {
+     console.error("Error submitting form:", error);
+     // Handle error if the API call fails
+   }
+ };
   const loadCourses = async () => {
-    const result = await axios.get(`http://localhost:8080/api/courses/${courseId}`);
+    const result = await axios.get(
+      `http://localhost:8080/api/courses/${courseId}`
+    );
     setCourses(result.data);
   };
 
- 
-   return (
+  const handleCancel = () => {
+    // Implement your cancel logic here
+    editTitle(prev => !prev)
+  };
+
+  return (
     <>
       <div className="w-[100%] h-[100vh] pt-[11.8rem]  2xl:pt-[20rem] backdrop-blur-[.1rem]">
         <div className="  flex m-auto w-[100%]  border-[.01rem] drop-shadow-2xl shadow-lg border-black rounded-lg bg-[#EBFFE5] lg:max-w-[550px] 2xl:max-h-[672px] 2xl:max-w-[724px] ">
@@ -58,7 +62,9 @@ const CourseTitleModal = ({ courseId }) => {
             />
             <div className="pt-8 lg:w-full lg:flex lg:justify-end">
               <div className="flex gap-x-5">
-                <button className="xl:text-[24px]  lg:text-[1rem]" onClick="">
+                <button
+                  className="xl:text-[24px]  lg:text-[1rem]"
+                  onClick={handleCancel}>
                   Cancel
                 </button>
 

@@ -20,9 +20,7 @@ const CloseButton = ({ closeToast }) => (
   <i className="material-icons" onClick={closeToast}></i>
 );
 
-const EditTopic = ({
-  topicId,
-}) => {
+const EditTopic = ({ topicId, courseTitle, chapterTitle }) => {
   const [videoInputValue, setVideoInputValue] = useState("");
   const [quizInputValue, setQuizInputValue] = useState("");
   const [isVideoPopupOpen, setVideoPopupOpen] = useState(false);
@@ -118,8 +116,6 @@ const EditTopic = ({
     setTopics(result.data);
   };
 
-   
-
   return (
     <>
       {/* add topic title */}
@@ -137,11 +133,11 @@ const EditTopic = ({
         </div>
         <div className="w-[90%] m-auto mb-5">
           <span className="lg:text-[2rem] 2xl:text-[48px] font-semibold ">
-            Course Title
+            {courseTitle}
           </span>
           <div className="flex items-center ">
             <span className="lg:text-[1.5rem] 2xl:text-[36px] pr-2 text-[#070101] text-opacity-[55%]">
-              Chapter Title:
+              {chapterTitle}:
             </span>
             <input
               type="text"

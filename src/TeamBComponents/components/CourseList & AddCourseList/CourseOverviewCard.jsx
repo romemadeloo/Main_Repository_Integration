@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 //2/3/2024 junite, fix course title and search bar width
 //2/13/2024 junite, API Functionalities
 
@@ -12,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 
 import { IoArrowBackCircle } from "react-icons/io5";
 
-const CourseOverviewCard = () => {
+const CourseOverviewCard = ({ courseTitle }) => {
   const [chapter, setChapter] = useState({
     // chapter_id: "",
     chapter_title: "",
@@ -78,7 +79,7 @@ const CourseOverviewCard = () => {
             </div>
             <div className="w-full lg:max-w-[800px]">
               <div className="text-black  w-full lg:font-bold text-[.8rem]  lg:py-0 lg:text-[2rem]  flex justify-between items-center">
-                <p className="lg:font-bold TeamB_text-shadow">HTML And CSS</p>
+                <p className="lg:font-bold TeamB_text-shadow">{courseTitle}</p>
 
                 <div className="relative  flex items-center lg:max-w-[300px] 2xl:w-[544px] h-[35px] 2xl:h-[53px]  bg-white outline-none rounded-md border-b-[.1rem] border-black">
                   <input

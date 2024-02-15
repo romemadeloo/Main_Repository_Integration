@@ -135,8 +135,7 @@ const CourseOverviewById = () => {
                           <div key={idx}>
                             <ChapterModal
                            
-                              onClose={() => setEditModalVisible(false)}
-                              onSaved={() => setEditModalVisible(false)}
+                              editTitle={setEditModalVisible}
                               chapterId={chapter_id}
                             />
                           </div>
