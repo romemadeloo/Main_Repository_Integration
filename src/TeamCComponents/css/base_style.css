@@ -27,13 +27,6 @@
     box-sizing: border-box; /* Includes border and padding in the element's total width and height */
 }
 
-/* CARD SPACING */
-#c_cardview_sql,
-#c_cardview_svn,
-#c_cardview_html {
-    margin: 10px; /* Sets margin for SQL, SVN, and HTML cards */
-}
-
 
 #c_preview_headerTitle {
     font-size: 2.5rem; /* Sets the font size of the header title */

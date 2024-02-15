@@ -34,27 +34,26 @@ function CoursePreview() {
   }
 
   return (
-    <div id="c_cardpreview_cardouter">
+    <div>
       <div className="card-container" id="c_cardview_sql" data-card="course_sql">
-        <div className="row" >
+        <div className="row" id="c_cardpreview_cardouter">
           {chapters.map((chapterData, index) => {
             const buttonId = `enrollButton${index + 1}`;
             const modalId = `modal${index + 1}`;
 
             return (
-              <div key={index} className="col-md-4">
-                <div className="card border-success" style={{ maxWidth: '20rem', borderRadius: '10px' }}>
-                  <div className="card-header bg-transparent border-success"></div>
+              <div key={index} className="col-md-3 mt-3 ml-1">
+                <div className="card border-success h-100" style={{ maxWidth: '20rem', borderRadius: '10px' }}>
+                  <div className="card-header bg-transparent border-success "></div>
                   <div className="card mb-4">
-                    <div className="card-body">
-                      <h5 className="card-title fw-bold text-center h-100 text-success" style={{ fontSize: '1.7rem' }}>{chapterData.chapterTitle}</h5>
+                    <div className="card-body ">
+                      <h5 className="card-title fw-bold text-center text-success" style={{ fontSize: '1.7rem' }}>{chapterData.chapterTitle}</h5>
                       <hr/>
                       <p className="card-body bg-transparent border-success d-flex flex-column text-justify">{chapterData.chapterDescription}</p>
-                      <a className='stretched-link ms-auto fw-bold' id='c_course_seemoretext' data-bs-toggle="modal" data-bs-target={`#modal_seemore${index + 1}`} onClick={{incrementCounterAndAttributes}}>See more..</a><br />
-                      <div className="d-flex justify-content-center align-items-end mt-auto">
-                      </div>
+                      <p className="fw-bold text-end" id='c_course_seemoretext' data-bs-toggle="modal" data-bs-target={`#modal_seemore${index + 1}`} onClick={incrementCounterAndAttributes}>See more..</p>
+                      <div ><br /></div>
                       <button
-                        className="btn btn-success d-grid gap-2 col-6 mx-auto d-flex"
+                        className="btn btn-success d-grid gap-2 col-6 mx-auto d-flex badge text-wrap"
                         data-bs-toggle="modal"
                         data-bs-target={`#${modalId}`}
                         id={buttonId}

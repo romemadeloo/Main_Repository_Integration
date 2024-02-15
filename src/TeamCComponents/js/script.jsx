@@ -78,18 +78,26 @@ let buttonCounter = 1;
 let modalCounter = 1;
 
 function incrementAttributes() {
-  buttonCounter++;
-  modalCounter++;
-  let newButtonId = "enrollButton" + buttonCounter;
-  let newModalId = "modal_seemore" + modalCounter;
-  let newButtonTarget = "#modal" + buttonCounter;
+  const newButtonId = `enrollButton${buttonCounter}`;
+  const newModalId = `modal_seemore${modalCounter}`;
+  const newButtonTarget = `#modal${buttonCounter}`;
 
   // Update enroll button attributes
-  document.getElementById("enrollButton").id = newButtonId;
-  document.getElementById(newButtonId).setAttribute("data-bs-target", newButtonTarget);
+  const enrollButton = document.getElementById("enrollButton");
+  if (enrollButton) {
+    enrollButton.id = newButtonId;
+    enrollButton.setAttribute("data-bs-target", newButtonTarget);
+  }
 
   // Update modal see more attributes
-  document.getElementById("modal_seemore").id = newModalId;
+  const modalSeeMore = document.getElementById("modal_seemore");
+  if (modalSeeMore) {
+    modalSeeMore.id = newModalId;
+  }
+
+  // Increment counters
+  buttonCounter++;
+  modalCounter++;
 }
 
 
