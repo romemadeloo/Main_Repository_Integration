@@ -22,6 +22,7 @@ const Team_D_HeaderLanding = () => {
   };
 
   return (
+    // navigation bar for users
     <Navbar expand="lg">
       {/* Logo with link to "/TeamCdashboard" */}
       <Navbar.Brand as={Link} to="/TeamCdashboard" onClick={closeNavbar}>

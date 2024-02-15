@@ -18,7 +18,7 @@ const CloseButton = ({ closeToast }) => (
   <i className="material-icons" onClick={closeToast}></i>
 );
 
-const AddTopic = ({ chapterId, courseTitle }) => {
+const AddTopic = ({ chapterId, courseTitle, chapterTitle }) => {
   const [videoInputValue, setVideoInputValue] = useState("");
   const [quizInputValue, setQuizInputValue] = useState("");
   const [isVideoPopupOpen, setVideoPopupOpen] = useState(false);
@@ -103,7 +103,7 @@ const AddTopic = ({ chapterId, courseTitle }) => {
       console.error("Error submitting form:", error);
       // Handle error if the API call fails
     }
-   addToCartNotify();
+    addToCartNotify();
   };
 
   return (
@@ -122,11 +122,11 @@ const AddTopic = ({ chapterId, courseTitle }) => {
         </div>
         <div className="w-[90%] m-auto mb-5">
           <span className="lg:text-[2rem] 2xl:text-[48px] font-semibold ">
-            <p>Course Title: {courseTitle}</p>
+            <p>{courseTitle}</p>
           </span>
           <div className="flex items-center ">
             <span className="lg:text-[1.5rem] 2xl:text-[36px] pr-2 text-[#070101] text-opacity-[55%]">
-              Chapter Title:
+              {chapterTitle}:
             </span>
             <input
               required
