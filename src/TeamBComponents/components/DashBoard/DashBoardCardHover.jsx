@@ -12,8 +12,8 @@ const DashBoardCardHover = () => {
 
   return (
     <div className="">
-      <div className="flex items-center justify-center w-[98vw] pt-[5vh]  backdrop-blur-[.1rem]">
-        <div className="h-[85vh] w-[60vw]  bg-[#BCE8B1] rounded-lg">
+      <div className="flex justify-center backdrop-blur-[.1rem]">
+        <div className="h-[85vh] md:w-[500px] lg:w-[550px] 2xl:w-h-[672px] 2xl:w-[724px]  bg-[#BCE8B1] rounded-lg">
           <div
             className="w-[100%] flex items-end justify-end relative"
             onClick={() => setDashBoardHover((prev) => !prev)}>
@@ -28,7 +28,7 @@ const DashBoardCardHover = () => {
 
           <div className="flex flex-col items-center justify-center w-full">
             <p className="text-[2rem] font-bold">SQL</p>
-            <div className="p-10">
+            <div className="p-10 ">
               <p className="bg-[#87D275] p-5 rounded-lg text-justify">
                 In a Structured Query Language (SQL) querying workshop,
                 participants delve into fundamental concepts such as syntax,
