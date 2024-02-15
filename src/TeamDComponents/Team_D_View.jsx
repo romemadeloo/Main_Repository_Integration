@@ -18,11 +18,13 @@ import Team_D_HeaderV2 from "./Team_D_HeaderV2";
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 const Team_D_View = () => {
+  // Get the location object and extract the data from the state
   const location = useLocation();
   const { data } = location.state;
+  // Construct the PDF URL based on the data received
   const pdfURL = `/PDF/${data.pdfName}`;
   console.log(location, "Props Location");
-
+  // Tooltip components for UI elements
   const [show, setShow] = useState(false);
   const [showNotification, setShowNotification] = useState(null);
   const [disableDownloadButton, setDisableDownloadButton] = useState(false);
