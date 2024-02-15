@@ -98,9 +98,6 @@ background-color: gray;
   color: rgb(26, 87, 42); /* Color for links on hover */
 }
 
-  margin: 0;
-}
-
 
 
 .japanese-message h1 {
@@ -1605,18 +1602,6 @@ background-color: gray;
   margin-bottom: 10px; /* Adjust as needed */
 }
 
-
-.about-mv{
-  text-align: center !important;
-  font-family: 'Times New Roman', Times, serif;
-  width: fit-content;
-  font-size:medium;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 20px;
-  margin: 0 250px;
 
 .home-button {
   cursor: pointer;
