@@ -40,12 +40,80 @@ function TeamC_Dashboard() {
       {/* End of Courses */}
 
       {/* Modals */}
-      {/* MODAL SQL */}
+
+      {/* MODAL HTML PROGRAMMING */}
       <div
-        className="modal-sql modal fade" // Class names for styling and behavior
-        id="modalSql" // Unique identifier for the modal
+        className="modal fade"
+        id="modal1"
         tabIndex="-1"
-        aria-labelledby="modalSql"
+        aria-labelledby="modal1"
+        aria-hidden="true"
+       >
+        {/* Modal dialog */}
+        <div className="modal-dialog">
+          {/* Modal content */}
+          <div className="modal-content" style={{ backgroundColor: "#D9FFCF" }}>
+            {/* Modal header */}
+            <div className="modal-header">
+              {/* Title of the modal */}
+              <h5 className="modal-title" id="modal1">
+                HTML Programming Course
+              </h5>
+              {/* Close button */}
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            {/* Modal body */}
+            <div className="modal-body">
+              {/* Text informing the user about enrollment */}
+              <p>You will be enrolled in this course.</p>
+            </div>
+            {/* Modal footer */}
+            <div className="modal-footer">
+              {/* Enroll button */}
+              <button
+                type="button"
+                className="btn"
+                style={{
+                  backgroundColor: "#0e3b03",
+                  color: "#ffffff",
+                  borderRadius: "20px",
+                  fontSize: "15px",
+                }}
+                data-bs-dismiss="modal"
+                onClick={() => enroll(3)} // onClick event to enroll in the course
+               >
+                Enroll
+              </button>
+              {/* Close button */}
+              <button
+                type="button"
+                className="btn"
+                style={{
+                  backgroundColor: "#0e3b03",
+                  color: "#ffffff",
+                  borderRadius: "20px",
+                  fontSize: "15px",
+                }}
+                data-bs-dismiss="modal"
+               >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+            {/* MODAL SQL */}
+            <div
+        className="modal-sql modal fade" // Class names for styling and behavior
+        id="modal2" // Unique identifier for the modal
+        tabIndex="-1"
+        aria-labelledby="modal2"
         aria-hidden="true"
         >
         {/* Modal dialog */}
@@ -55,7 +123,7 @@ function TeamC_Dashboard() {
             {/* Modal header */}
             <div className="modal-header">
               {/* Title of the modal */}
-              <h5 className="modal-title" id="modalSql">
+              <h5 className="modal-title" id="modal2">
                 The SQL Query Course
               </h5>
               {/* Close button */}
@@ -111,9 +179,9 @@ function TeamC_Dashboard() {
       {/* MODAL SUBVERSION */}
       <div
         className="modal fade"
-        id="modalHtml"
+        id="modal3"
         tabIndex="-1"
-        aria-labelledby="exampleModalLabel3"
+        aria-labelledby="modal3"
         aria-hidden="true"
         >
         {/* Modal dialog */}
@@ -123,8 +191,8 @@ function TeamC_Dashboard() {
             {/* Modal header */}
             <div className="modal-header">
               {/* Title of the modal */}
-              <h5 className="modal-title" id="modalHtml">
-                HTML Programming Course
+              <h5 className="modal-title" id="modal3">
+                The Version Control: Subversion
               </h5>
               {/* Close button */}
               <button
@@ -168,74 +236,6 @@ function TeamC_Dashboard() {
                 }}
                 data-bs-dismiss="modal"
               >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
- 
-
-      {/* MODAL HTML PROGRAMMING */}
-      <div
-        className="modal fade"
-        id="modalHtml"
-        tabIndex="-1"
-        aria-labelledby="exampleModalLabel3"
-        aria-hidden="true"
-       >
-        {/* Modal dialog */}
-        <div className="modal-dialog">
-          {/* Modal content */}
-          <div className="modal-content" style={{ backgroundColor: "#D9FFCF" }}>
-            {/* Modal header */}
-            <div className="modal-header">
-              {/* Title of the modal */}
-              <h5 className="modal-title" id="modalHtml">
-                HTML Programming Course
-              </h5>
-              {/* Close button */}
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            {/* Modal body */}
-            <div className="modal-body">
-              {/* Text informing the user about enrollment */}
-              <p>You will be enrolled in this course.</p>
-            </div>
-            {/* Modal footer */}
-            <div className="modal-footer">
-              {/* Enroll button */}
-              <button
-                type="button"
-                className="btn"
-                style={{
-                  backgroundColor: "#0e3b03",
-                  color: "#ffffff",
-                  borderRadius: "20px",
-                  fontSize: "15px",
-                }}
-                data-bs-dismiss="modal"
-                onClick={() => enroll(3)} // onClick event to enroll in the course
-               >
-                Enroll
-              </button>
-              {/* Close button */}
-              <button
-                type="button"
-                className="btn"
-                style={{
-                  backgroundColor: "#0e3b03",
-                  color: "#ffffff",
-                  borderRadius: "20px",
-                  fontSize: "15px",
-                }}
-                data-bs-dismiss="modal"
-               >
                 Close
               </button>
             </div>
