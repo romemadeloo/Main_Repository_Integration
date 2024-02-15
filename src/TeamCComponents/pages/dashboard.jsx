@@ -84,18 +84,23 @@ function TeamC_Dashboard() {
       {/* Modals */}
       {/* MODAL SQL */}
       <div
-        className="modal-sql modal fade"
-        id="modalSql"
+        className="modal-sql modal fade" // Class names for styling and behavior
+        id="modalSql" // Unique identifier for the modal
         tabIndex="-1"
         aria-labelledby="modalSql"
         aria-hidden="true"
-      >
+        >
+        {/* Modal dialog */}
         <div className="modal-dialog">
+          {/* Modal content */}
           <div className="modal-content" style={{ backgroundColor: "#D9FFCF" }}>
+            {/* Modal header */}
             <div className="modal-header">
+              {/* Title of the modal */}
               <h5 className="modal-title" id="modalSql">
                 The SQL Query Course
               </h5>
+              {/* Close button */}
               <button
                 type="button"
                 className="btn-close"
@@ -103,10 +108,14 @@ function TeamC_Dashboard() {
                 aria-label="Close"
               ></button>
             </div>
+            {/* Modal body */}
             <div className="modal-body">
+              {/* Text informing the user about enrollment */}
               <p>You will be enrolled in this course.</p>
             </div>
+            {/* Modal footer */}
             <div className="modal-footer">
+              {/* Enroll button */}
               <button
                 type="button"
                 className="btn"
@@ -117,10 +126,11 @@ function TeamC_Dashboard() {
                   fontSize: "15px",
                 }}
                 data-bs-dismiss="modal"
-                onClick={() => enroll(1)}
+                onClick={() => enroll(1)} // onClick event to enroll in the course
               >
                 Enroll
               </button>
+              {/* Close button */}
               <button
                 type="button"
                 className="btn"
@@ -139,20 +149,26 @@ function TeamC_Dashboard() {
         </div>
       </div>
 
+
       {/* MODAL SUBVERSION */}
       <div
         className="modal fade"
-        id="modalSvn"
+        id="modalHtml"
         tabIndex="-1"
-        aria-labelledby="exampleModalLabel2"
+        aria-labelledby="exampleModalLabel3"
         aria-hidden="true"
-      >
+        >
+        {/* Modal dialog */}
         <div className="modal-dialog">
+          {/* Modal content */}
           <div className="modal-content" style={{ backgroundColor: "#D9FFCF" }}>
+            {/* Modal header */}
             <div className="modal-header">
-              <h5 className="modal-title" id="modalSvn">
-                The Subversion Course
+              {/* Title of the modal */}
+              <h5 className="modal-title" id="modalHtml">
+                HTML Programming Course
               </h5>
+              {/* Close button */}
               <button
                 type="button"
                 className="btn-close"
@@ -160,10 +176,14 @@ function TeamC_Dashboard() {
                 aria-label="Close"
               ></button>
             </div>
+            {/* Modal body */}
             <div className="modal-body">
+              {/* Text informing the user about enrollment */}
               <p>You will be enrolled in this course.</p>
             </div>
+            {/* Modal footer */}
             <div className="modal-footer">
+              {/* Enroll button */}
               <button
                 type="button"
                 className="btn"
@@ -174,10 +194,11 @@ function TeamC_Dashboard() {
                   fontSize: "15px",
                 }}
                 data-bs-dismiss="modal"
-                onClick={() => enroll(2)}
+                onClick={() => enroll(3)} // onClick event to enroll in the course
               >
                 Enroll
               </button>
+              {/* Close button */}
               <button
                 type="button"
                 className="btn"
@@ -195,6 +216,7 @@ function TeamC_Dashboard() {
           </div>
         </div>
       </div>
+ 
 
       {/* MODAL HTML PROGRAMMING */}
       <div
@@ -203,13 +225,18 @@ function TeamC_Dashboard() {
         tabIndex="-1"
         aria-labelledby="exampleModalLabel3"
         aria-hidden="true"
-      >
+       >
+        {/* Modal dialog */}
         <div className="modal-dialog">
+          {/* Modal content */}
           <div className="modal-content" style={{ backgroundColor: "#D9FFCF" }}>
+            {/* Modal header */}
             <div className="modal-header">
+              {/* Title of the modal */}
               <h5 className="modal-title" id="modalHtml">
                 HTML Programming Course
               </h5>
+              {/* Close button */}
               <button
                 type="button"
                 className="btn-close"
@@ -217,10 +244,14 @@ function TeamC_Dashboard() {
                 aria-label="Close"
               ></button>
             </div>
+            {/* Modal body */}
             <div className="modal-body">
+              {/* Text informing the user about enrollment */}
               <p>You will be enrolled in this course.</p>
             </div>
+            {/* Modal footer */}
             <div className="modal-footer">
+              {/* Enroll button */}
               <button
                 type="button"
                 className="btn"
@@ -231,10 +262,11 @@ function TeamC_Dashboard() {
                   fontSize: "15px",
                 }}
                 data-bs-dismiss="modal"
-                onClick={() => enroll(3)}
-              >
+                onClick={() => enroll(3)} // onClick event to enroll in the course
+               >
                 Enroll
               </button>
+              {/* Close button */}
               <button
                 type="button"
                 className="btn"
@@ -245,13 +277,14 @@ function TeamC_Dashboard() {
                   fontSize: "15px",
                 }}
                 data-bs-dismiss="modal"
-              >
+               >
                 Close
               </button>
             </div>
           </div>
         </div>
       </div>
+
       <div
         className="footerContainer d-flex flex-column align-items-center"
         style={{ color: "#0e3b03", minHeight: "1vh" }}

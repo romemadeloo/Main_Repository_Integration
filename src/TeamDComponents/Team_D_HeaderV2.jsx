@@ -38,10 +38,12 @@ const Team_D_HeaderV2 = ({ onUserDataFetched, openModal }) => { //TeamA added { 
   const [userData, setUserData] = useState({});
   const { isLoggedIn, handleLogout } = useAuth();
 
+  // Function to handle the click event to toggle mobile navbar
   const handleClick = () => {
     setClicked(!clicked);
   };
 
+  // Function to close the mobile navbar
   const closeMobileNavbar = () => {
     setClicked(false);
     setMyCourseActive(false);
@@ -124,6 +126,7 @@ const Team_D_HeaderV2 = ({ onUserDataFetched, openModal }) => { //TeamA added { 
           <img src={TsukidenLogo} alt="Logo" />
         </NavLink>
         <div>
+          {/* Navbar links */}
           <ul id="navbar" className={clicked ? "active" : ""}>
           {/*Added connection to fetch profile picture from TeamA*/}
           <li className="profile_info">
@@ -134,6 +137,7 @@ const Team_D_HeaderV2 = ({ onUserDataFetched, openModal }) => { //TeamA added { 
                 </span>
               </span>
             </li>
+            {/* Profile link */}
             <li className="profile_link">
             <NavLink
                 to="/profile"
@@ -143,6 +147,7 @@ const Team_D_HeaderV2 = ({ onUserDataFetched, openModal }) => { //TeamA added { 
                 Profile
               </NavLink>
             </li>
+            {/* Certificate link */}
             <li className="profile_link">
               <NavLink
                 to="/certificate"
@@ -153,6 +158,7 @@ const Team_D_HeaderV2 = ({ onUserDataFetched, openModal }) => { //TeamA added { 
               </NavLink>
             </li>
             <li className="divider"></li>
+            {/* Dashboard link */}
             <li>
               <NavLink
                 to="/TeamCdashboard"
@@ -161,6 +167,7 @@ const Team_D_HeaderV2 = ({ onUserDataFetched, openModal }) => { //TeamA added { 
               >
                 Dashboard
               </NavLink>
+              {/* My Course dropdown */}
             </li>
             <li>
               <NavDropdown
@@ -177,6 +184,7 @@ const Team_D_HeaderV2 = ({ onUserDataFetched, openModal }) => { //TeamA added { 
                 </NavDropdown.Item>
               </NavDropdown>
             </li>
+            {/* Forums link */}
             <li>
               {/* this is the forum */}
               <NavLink
@@ -187,6 +195,7 @@ const Team_D_HeaderV2 = ({ onUserDataFetched, openModal }) => { //TeamA added { 
                 Forums
               </NavLink>
             </li>
+            {/* Verification link */}
             <li>
               <NavLink
                 to="/verification"
@@ -198,6 +207,7 @@ const Team_D_HeaderV2 = ({ onUserDataFetched, openModal }) => { //TeamA added { 
             </li>
           </ul>
         </div>
+        {/* Mobile toggle */}
         <div id="mobile" onClick={handleClick}>
           {clicked ? (
             <i className="fas fa-times"></i>
@@ -210,6 +220,7 @@ const Team_D_HeaderV2 = ({ onUserDataFetched, openModal }) => { //TeamA added { 
           />
           )}
         </div>
+        {/* Profile dropdown */}
         <div className="profile_side">
           <Dropdown>
             {/*Added snippet to fetch profile picture*/}
@@ -254,4 +265,4 @@ const Team_D_HeaderV2 = ({ onUserDataFetched, openModal }) => { //TeamA added { 
   );
 };
 
-export default Team_D_HeaderV2;
+export default Team_D_HeaderV2; // Export the Team_D_HeaderV2 component
