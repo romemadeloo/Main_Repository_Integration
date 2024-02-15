@@ -78,6 +78,14 @@ const TopicPage = () => {
   };
 
   const [editTopicId, setEditTopicId] = useState(null);
+
+   const deleteTopic = async (topic_id) => {
+     await axios.delete(`http://localhost:8080/api/topics/${topic_id}`);
+     loadChapters();
+   };
+   
+   
+   
   return (
     <>
       <Nav />
@@ -127,9 +135,11 @@ const TopicPage = () => {
                                   </p>
                                   <span
                                     className="text-[1.5rem] text-white cursor-pointer"
-                                    onClick={() =>
+                                    onClick={() =>{
+                                      
                                       setDeleteModalVisible((prev) => !prev)
-                                    }>
+                                      deleteTopic(topic_id)
+                                    }}>
                                     <MdDelete />
                                   </span>
                                 </div>
@@ -214,29 +224,22 @@ const TopicPage = () => {
                   const { chapter, course_title } = course;
                   console.log(course_title);
                   return (
-                    <div key={course_title}>
+                    <div key={idx}>
                       {chapter.map((chap, idx) => {
-                        const { topic, chapter_title } = chap;
+                        const { topic, chapter_title, chapter_id } = chap;
                         return (
-                          <div key={chapter_title}>
-                            {topic.map((topic) => {
+                          <div key={idx}>
+                            {topic.map((topic, idx) => {
                               const {
-                                topic_title,
                                 topic_description,
-                                topic_file,
-                                topic_link,
                                 topic_id,
                               } = topic;
                               console.log(topic_description);
                               return (
-                                <div key={topic_title}>
+                                <div key={idx}>
                                   {showEditTopic &&
                                     editTopicId === topic_id && (
                                       <EditTopic
-                                        topicTitle={topic_title}
-                                        topicDesc={topic_description}
-                                        topicFile={topic_file}
-                                        topicLink={topic_link}
                                         topicId={topic_id}
                                       />
                                     )}
