@@ -1,22 +1,22 @@
 // Import React and necessary hooks and components
 import React, { useState, useEffect } from "react";
-import "./TeamD_Css/content.css"; // Import CSS styles
-import { pdfjs } from "react-pdf"; // Import pdfjs from react-pdf library
-import { Alert } from "react-bootstrap"; // Import Alert component from React Bootstrap
-import Button from "react-bootstrap/Button"; // Import Button component from React Bootstrap
-import Form from "react-bootstrap/Form"; // Import Form component from React Bootstrap
-import InputGroup from "react-bootstrap/InputGroup"; // Import InputGroup component from React Bootstrap
-import { BiFileFind } from "react-icons/bi"; // Import BiFileFind icon from react-icons
-import { MdOutlineFileDownload } from "react-icons/md"; // Import MdOutlineFileDownload icon from react-icons
-import { FiSearch } from "react-icons/fi"; // Import FiSearch icon from react-icons
-import { Link } from "react-router-dom"; // Import Link component from react-router-dom
-import OverlayTrigger from "react-bootstrap/OverlayTrigger"; // Import OverlayTrigger component from React Bootstrap
-import Tooltip from "react-bootstrap/Tooltip"; // Import Tooltip component from React Bootstrap
-import { FaArrowUp } from "react-icons/fa"; // Import FaArrowUp icon from react-icons
 
-import Team_D_HeaderV2 from "./Team_D_HeaderV2"; // Importing Team_D_HeaderV2 component
+import "./TeamD_Css/content.css";
+import { pdfjs } from "react-pdf";
+import { Alert } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
+import { BiFileFind } from "react-icons/bi";
+import { MdOutlineFileDownload } from "react-icons/md";
+import { FiSearch } from "react-icons/fi";
+import { Link } from "react-router-dom";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
+import { FaArrowUp } from "react-icons/fa";
+import Team_D_HeaderV2 from "./Team_D_HeaderV2";
 
-// Setting up the worker source for pdfjs
+
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 // Defining the Team_D_Content component

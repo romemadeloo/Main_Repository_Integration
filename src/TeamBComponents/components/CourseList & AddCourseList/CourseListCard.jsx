@@ -81,6 +81,13 @@ const CourseListCard = () => {
     left: "50%",
   });
 
+  const [searchQuery, setSearchQuery] = useState("");
+
+  //Search
+  const filteredCourses = currentCourse.filter((course) =>
+    course.course_title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <>
       {/* 1/12/2024 UI development and Mobile responsiveness */}
@@ -97,10 +104,13 @@ const CourseListCard = () => {
               <div className="relative  flex items-center lg:w-[300px] 2xl:w-[544px] h-[35px] 2xl:h-[53px]  bg-white outline-none rounded-md border-b-[.1rem] border-black">
                 <input
                   type="text"
+
+
+                  className="outline-none placeholder:font-thin placeholder:text-[1.2rem] font-normal pl-2 text-[1rem] lg:w-[300px] 2xl:w-[544px] h-[35px] 2xl:h-[53px] rounded-md"
                   placeholder="Search"
-                  className="outline-none font-normal pl-2 text-[1.3rem] lg:w-[300px] 2xl:w-[544px] h-[35px] 2xl:h-[53px] rounded-md"
-                  name=""
-                  id=""
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+
                 />
                 <div className="absolute top-1 right-2">
                   <IoSearchSharp className="text-[1.5rem]" />
@@ -109,7 +119,7 @@ const CourseListCard = () => {
             </div>
             <div className="flex flex-col h-full gap-y-5">
               {/* change to currentCourse for API connection */}
-              {currentCourse.map((course, idx) => {
+              {filteredCourses.map((course, idx) => {
                 return (
                   <div key={idx} className="w-[60vw] rounded-md shadow-md">
                     <div className=" relative flex px-0 py-0 rounded-md xl:h-[115px]  ">
@@ -142,7 +152,8 @@ const CourseListCard = () => {
                             <CourseTitleModal
                               //  past courseTitle as props to set the value of input in CourseTitleModal
 
-                              courseTitle={course.course_title}
+                              editTitle={setShowEditTitle}
+                              courseId={course.course_id}
                             />
                           </div>
                         </div>
@@ -153,9 +164,7 @@ const CourseListCard = () => {
               })}
             </div>
 
-            {courses.length < 4 ? (
-              <></>
-            ) : (
+            {searchQuery === "" || filteredCourses.length >= 4 ? (
               <Stack spacing={2} className="">
                 <Pagination
                   count={npage}
@@ -163,7 +172,7 @@ const CourseListCard = () => {
                   onChange={handleChange}
                 />
               </Stack>
-            )}
+            ) : null}
             {/* onClick={() => setShowCreateCourse((prev) => !prev)} */}
             <div className=" w-[100%]">
               <div className=" h-[8vh]  flex w-[50%] m-auto lg:w-[80%]   items-center justify-center">
