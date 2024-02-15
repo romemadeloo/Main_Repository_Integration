@@ -68,7 +68,6 @@ const CourseOverviewCard = ({ courseTitle }) => {
 
 
 
-
               <div className="flex items-center justify-center">
                 <CourseOverviewById />
               </div>
