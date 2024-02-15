@@ -5,8 +5,6 @@ import React from "react";
 import "../styles/Auth.css";
 import { Link } from "react-router-dom";
 import "../styles/Auth.css";
-import pagong from "../../assets/pagong.gif";
-import daga from "../../assets/daga.gif";
 import card1 from "../../assets/card 1.svg";
 import card2 from "../../assets/card 2.svg";
 const About = () => {
@@ -37,27 +35,9 @@ const About = () => {
         </div>
       </nav>
       {/* Main Content Section */}
-      {/* className="home-content" old css */}
-     <div className="flex"> 
-              <marquee behavior="scroll" direction="right" scrollamount="11" className="absolute">
-                <img src={pagong} alt="" width={30} height={10} />
-              </marquee>
-              <marquee behavior="scroll" direction="right" scrollamount="12" className="absolute">
-                <img src={pagong} alt="" width={30} height={10} />
-              </marquee>
-              <marquee behavior="scroll" direction="right" scrollamount="13" className="absolute">
-                <img src={pagong} alt="" width={30} height={10} />
-              </marquee>
-              <marquee behavior="scroll" direction="right" scrollamount="14" className="absolute">
-                <img src={pagong} alt="" width={30} height={10} />
-              </marquee>
-              <marquee behavior="scroll" direction="right" scrollamount="15" className="absolute">
-                <img src={daga} alt="" width={80} height={10} />
-              </marquee>
-            </div>
+      {/* className="home-content" old css */}   
       <div className="flex flex-col TeamB_text-shadow">
-        <div className="flex flex-col">
-          <section className="pr-[6rem] pl-[6rem] pt-[2rem] pb-[2rem] p leading-6">
+        <div className="flex flex-col pr-[6rem] pl-[6rem] pt-[2rem] pb-[2rem] p leading-6">
             {/* className="about-container" old css */}
             <h1 className="mt-[15px] text-center font-bold text-[2rem]">
               About Tsukiden{" "}
@@ -80,11 +60,9 @@ const About = () => {
               needed at a cost that fits the development budget.
             </p>
             {/* Include the PhotoSection component here */}
-          </section>
         </div>
         {/* className="about-mv" old css classname*/}
-        <div>
-          <section className=" flex flex-row leading-6">
+        <div className=" flex flex-row leading-6">
             <div className="border w-[50%] text-center pl-[6rem] pr-[1rem]">
               <h1 className=" font-bold text-[2rem] ">Mission</h1>
               We aim to... provide excellent quality service to our{" "}
@@ -106,7 +84,6 @@ const About = () => {
                 driven by passion for innovation
               </div>
             </div>
-          </section>
         </div>
       </div>
       <div>
