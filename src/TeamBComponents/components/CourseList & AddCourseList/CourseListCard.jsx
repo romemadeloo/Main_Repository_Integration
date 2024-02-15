@@ -106,10 +106,12 @@ const CourseListCard = () => {
                   type="text"
 
 
+
                   className="outline-none placeholder:font-thin placeholder:text-[1.2rem] font-normal pl-2 text-[1rem] lg:w-[300px] 2xl:w-[544px] h-[35px] 2xl:h-[53px] rounded-md"
                   placeholder="Search"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
+
 
                 />
                 <div className="absolute top-1 right-2">
