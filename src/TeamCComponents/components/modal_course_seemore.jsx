@@ -37,14 +37,14 @@ function ModalSeeMore() {
                                 <p>{chapterData.chapterDescription}</p>
                             </div>
                             <div className="modal-footer">
-                                
+
                                 <button
                                     type="button"
                                     className="btn btn-secondary"
                                     data-bs-dismiss="modal"
                                     style={{ backgroundColor: "#0e3b03", color: "#ffffff", borderRadius: "20px", fontSize: "15px" }}
-                                    onClick={() => enroll(index + 1)}>
-                                    Enroll
+                                >
+                                    Close
                                 </button>
 
                             </div>
@@ -55,5 +55,4 @@ function ModalSeeMore() {
         </>
     )
 }
-
 export default ModalSeeMore;

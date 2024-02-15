@@ -50,11 +50,11 @@ function CoursePreview() {
                       <h5 className="card-title fw-bold text-center h-100 text-success" style={{ fontSize: '1.7rem' }}>{chapterData.chapterTitle}</h5>
                       <hr/>
                       <p className="card-body bg-transparent border-success d-flex flex-column text-justify">{chapterData.chapterDescription}</p>
-                      <a className='stretched-link ms-auto fw-bold' id='c_course_seemoretext' data-bs-toggle="modal" data-bs-target={`#modal_seemore${buttonCounter}`} onClick={{incrementCounterAndAttributes}}>See more..</a><br />
+                      <a className='stretched-link ms-auto fw-bold' id='c_course_seemoretext' data-bs-toggle="modal" data-bs-target={`#modal_seemore${index + 1}`} onClick={{incrementCounterAndAttributes}}>See more..</a><br />
                       <div className="d-flex justify-content-center align-items-end mt-auto">
                       </div>
                       <button
-                        className="btn btn-success d-grid gap-2 col-6 mx-auto"
+                        className="btn btn-success d-grid gap-2 col-6 mx-auto d-flex"
                         data-bs-toggle="modal"
                         data-bs-target={`#${modalId}`}
                         id={buttonId}

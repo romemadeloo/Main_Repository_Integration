@@ -85,11 +85,11 @@ function incrementAttributes() {
   let newButtonTarget = "#modal" + buttonCounter;
 
   // Update enroll button attributes
-  document.getElementById("enrollButton1").id = newButtonId;
+  document.getElementById("enrollButton").id = newButtonId;
   document.getElementById(newButtonId).setAttribute("data-bs-target", newButtonTarget);
 
   // Update modal see more attributes
-  document.getElementById("modal_seemore1").id = newModalId;
+  document.getElementById("modal_seemore").id = newModalId;
 }
 
 
