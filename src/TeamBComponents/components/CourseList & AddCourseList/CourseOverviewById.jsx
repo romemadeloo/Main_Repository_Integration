@@ -117,6 +117,7 @@ const filteredChapter = loadByChapter.filter((chap) =>
                 {courses.map((course) => {
                   const { chapter, idx } = course;
                   return (
+
                     <div key={idx}>
                       {filteredChapter.map((chap, idx) => {
                         const { chapter_id, chapter_title } = chap;
@@ -129,6 +130,7 @@ const filteredChapter = loadByChapter.filter((chap) =>
                               <Link
                                 to={`/teambtopicpage/${chapter_id}`}
                                 className=" 2xl:rounded-[20px] w-full lg:flex lg:items-center lg:font-medium lg:text-[1rem] 2xl:text-[24px] bg-[#126912]  py-1 text-center text-[.8rem]  lg:p-5 text-white
+
                       lg:h-[50px] lg:rounded-[1rem]  ">
                                 <p className="text-shadow">
                                   CHAPTER {chapter_id}:

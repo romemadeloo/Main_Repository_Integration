@@ -104,10 +104,13 @@ const CourseListCard = () => {
               <div className="relative  flex items-center lg:w-[300px] 2xl:w-[544px] h-[35px] 2xl:h-[53px]  bg-white outline-none rounded-md border-b-[.1rem] border-black">
                 <input
                   type="text"
+
+
                   className="outline-none placeholder:font-thin placeholder:text-[1.2rem] font-normal pl-2 text-[1rem] lg:w-[300px] 2xl:w-[544px] h-[35px] 2xl:h-[53px] rounded-md"
                   placeholder="Search"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
+
                 />
                 <div className="absolute top-1 right-2">
                   <IoSearchSharp className="text-[1.5rem]" />
@@ -129,7 +132,7 @@ const CourseListCard = () => {
 
                       <Link
                         to={`/teambcourseoverview/${course.course_id}`}
-                        className="text-white TeamB_text-shadow  lg:font-bold text-[.8rem] py-1 lg:py-0 lg:text-[1.2rem] w-full flex justify-center items-center
+                        className="text-white TeamB_text-shadow lg:font-bold text-[.8rem] py-1 lg:py-0 lg:text-[1.2rem] w-full flex justify-left px-3 items-center
                             rounded-r-sm lg:rounded-r-md 	bg-[#126912]  ">
                         {/* change to course_title for api connection */}
                         {course.course_title}
