@@ -4,6 +4,7 @@
 //2/1/2024 junite, UI modifications and functionalities, mockdata inserted and used for UI test
 //2/2/2024 junite, UI modifications add background color for edit modal
 //2/5/2024 junite, fixed UI spacing
+//2/13/2024 junite, API Functionalities
 
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { IoAdd } from "react-icons/io5";
@@ -138,10 +139,10 @@ const CourseListCard = () => {
                         <div className="fixed top-0 left-0 z-10 h-full lg:w-full">
                           <div className="w-[100%]">
                             <CourseTitleModal
-                              courseId={editCourseId}
                               //  past courseTitle as props to set the value of input in CourseTitleModal
 
-                              courseTitle={course.course_title}
+                              editTitle={setShowEditTitle}
+                              courseId={course.course_id}
                             />
                           </div>
                         </div>

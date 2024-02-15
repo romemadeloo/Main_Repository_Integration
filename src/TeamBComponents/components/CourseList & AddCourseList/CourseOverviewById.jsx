@@ -1,5 +1,7 @@
 //february 3 modification of ui and functionalities -gem
 //2/5/2024 junite, fix UI spacing
+//2/13/2024 junite, API Functionalities
+
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
@@ -122,11 +124,27 @@ const CourseOverviewById = () => {
           {editModalVisible && (
             <div className="fixed w-full h-full pl-10 top-9 left-20">
               <div className="lg:w-[1080px] ">
-                <ChapterModal
-                  chapterId={selectedChapterId}
-                  onClose={() => setEditModalVisible(false)}
-                  onSaved={() => setEditModalVisible(false)}
-                />
+                {courses.map((course, idx) => {
+                  const { chapter, course_title } = course;
+                  console.log(course_title);
+                  return (
+                    <div key={idx}>
+                      {chapter.map((chap, idx) => {
+                        const { topic, chapter_title, chapter_id } = chap;
+                        return (
+                          <div key={idx}>
+                            <ChapterModal
+                           
+                              editTitle={setEditModalVisible}
+                              chapterId={chapter_id}
+                            />
+                          </div>
+                        );
+                      })}
+                    </div>
+                  );
+                })}
+             
               </div>
             </div>
           )}
@@ -164,7 +182,10 @@ const CourseOverviewById = () => {
                       const { course_id } = course;
                       return (
                         <div key={idx}>
-                          <CopyofCreateChapterTitle courseId={course_id} showModal={setShowChapModal}/>
+                          <CopyofCreateChapterTitle
+                            courseId={course_id}
+                            showModal={setShowChapModal}
+                          />
                         </div>
                       );
                     })}
