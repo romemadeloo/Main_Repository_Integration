@@ -32,7 +32,7 @@ const ForumF = () => {
     setDiscussionPosts(updatedDiscussionPosts);
   };
 
-  // function postDiscussion() {
+  // function postDiscussion() { 2/14/24
   //   var discussionTitleInput = document.getElementById("discussionTitle");
   //   var discussionContentInput = document.getElementById("discussionContent");
 

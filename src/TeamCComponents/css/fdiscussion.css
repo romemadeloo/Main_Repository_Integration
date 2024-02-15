@@ -26,6 +26,11 @@
     margin-right: 15px;
     color: #165207;
   }
+  .TeamCdotstwo{
+    margin-top: 20px;
+    margin-right: 15px;
+    color: #165207;
+  }
 
   .TeamCFlex {
     color: #165207;
@@ -37,6 +42,14 @@
 
   /* Adjusted color for buttons on hover */
   .TeamForum_Drop:hover .TeamC_forum_link {
+    color: #5c974e;
+  }
+
+  .TeamForum_Droptwo{
+    color: #5c974e;
+  }
+
+  .TeamC_forum_linktwo{
     color: #5c974e;
   }
 
@@ -69,10 +82,12 @@
 
   /* Center-aligned container */
   .ForumC_ForumDcontainer {
+    position: sticky;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    padding:10px;
     height: 100vh;
     /*margin: 20px; deleted: 2/5/24*/
   }
@@ -167,11 +182,14 @@
 
   /* Style for the return button */
   #TeamCReturnButtonFf {
-    position: fixed;
-    bottom: 15px;
-    left: 15px;
+    position: relative;
+    margin-top: 10px;
+    margin-left:5px;
     font-size: 24px;
     width: 55px;
     background-color: #165207;
   }
+
+
 }
+
