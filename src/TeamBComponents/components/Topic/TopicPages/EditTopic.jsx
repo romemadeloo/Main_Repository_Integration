@@ -1,8 +1,9 @@
+/* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 
 //2/3/2024 junite, create EditTopic UI, completed
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaSave } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
 import Footer from "../../Footer";
@@ -19,7 +20,7 @@ const CloseButton = ({ closeToast }) => (
   <i className="material-icons" onClick={closeToast}></i>
 );
 
-const EditTopic = ({topicTitle, topicDesc, topicFile, topicLink, topicId}) => {
+const EditTopic = ({ topicId, courseTitle, chapterTitle }) => {
   const [videoInputValue, setVideoInputValue] = useState("");
   const [quizInputValue, setQuizInputValue] = useState("");
   const [isVideoPopupOpen, setVideoPopupOpen] = useState(false);
@@ -91,6 +92,10 @@ const EditTopic = ({topicTitle, topicDesc, topicFile, topicLink, topicId}) => {
     setTopics({ ...topics, [e.target.name]: e.target.value });
   };
 
+  useEffect(() => {
+    loadTopics();
+  }, []);
+
   const handleSubmit = async (e) => {
     // Assuming your API call is successful, update the state to indicate form submission
 
@@ -102,6 +107,13 @@ const EditTopic = ({topicTitle, topicDesc, topicFile, topicLink, topicId}) => {
       // Handle error if the API call fails
     }
     addToCartNotify();
+  };
+
+  const loadTopics = async () => {
+    const result = await axios.get(
+      `http://localhost:8080/api/topics/${topicId}`
+    );
+    setTopics(result.data);
   };
 
   return (
@@ -121,17 +133,16 @@ const EditTopic = ({topicTitle, topicDesc, topicFile, topicLink, topicId}) => {
         </div>
         <div className="w-[90%] m-auto mb-5">
           <span className="lg:text-[2rem] 2xl:text-[48px] font-semibold ">
-            Course Title
+            {courseTitle}
           </span>
           <div className="flex items-center ">
             <span className="lg:text-[1.5rem] 2xl:text-[36px] pr-2 text-[#070101] text-opacity-[55%]">
-              Chapter Title:
+              {chapterTitle}:
             </span>
             <input
               type="text"
               name="topic_title"
-              defaultValue={topicTitle}
-           
+              value={topic_title}
               onChange={(e) => handleInputChange(e)}
               id=""
               placeholder="Topic Title"
@@ -142,9 +153,8 @@ const EditTopic = ({topicTitle, topicDesc, topicFile, topicLink, topicId}) => {
             id=""
             cols="30"
             rows="10"
-            defaultValue={topicDesc}
+            value={topic_description}
             name="topic_description"
-   
             onChange={(e) => handleInputChange(e)}
             placeholder="Topic Description"
             className="bg-[#BCE8B1] TeamB_text-shadow resize-none lg:min-w-[100%] 2xl:h-[264px] 2xl:max-w-[1342px] lg:h-[25vh] placeholder:font-medium placeholder:text-center placeholder:p-6
@@ -177,9 +187,9 @@ const EditTopic = ({topicTitle, topicDesc, topicFile, topicLink, topicId}) => {
               <p className="mb-4 text-lg font-semibold">Edit Topic Link</p>
               <input
                 type="text"
-                value={videoInputValue}
-                onChange={handleVideoInputChange}
-                defaultValue={topicFile}
+                name="topic_file"
+                value={topic_file}
+                onChange={(e) => handleInputChange(e)}
                 className="w-[724px] bg-[#BCE8B1] p-2 border border-gray-300 rounded-md mb-4"
                 placeholder="https://www"
               />
@@ -206,9 +216,9 @@ const EditTopic = ({topicTitle, topicDesc, topicFile, topicLink, topicId}) => {
               <p className="mb-4 text-lg font-semibold">Edit Quiz Link</p>
               <input
                 type="text"
-                value={quizInputValue}
-                onChange={handleQuizInputChange}
-                defaultValue={topicLink}
+                name="topic_link"
+                value={topic_link}
+                onChange={(e) => handleInputChange(e)}
                 className="w-[724px] bg-[#BCE8B1] p-2 border border-gray-300 rounded-md mb-4"
                 placeholder="https://www"
               />
