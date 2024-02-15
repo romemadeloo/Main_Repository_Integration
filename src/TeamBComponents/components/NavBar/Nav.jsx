@@ -18,6 +18,8 @@ import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 import { NavBarContext } from "../context/NavBarContext";
 
+
+
 const Nav = () => {
   const {
     header,
@@ -55,7 +57,7 @@ const Nav = () => {
             />
             {/* January 30, 2024 - Cedrick - Fixed the style of the nav bar according to the design of team D */}
           </Link>
-          <div className="hidden lg:flex lg:items-end xl:w-[300px] lg:pl-10 lg:min-w-[280px] lg:justify-between">
+          <div className="hidden lg:flex lg:items-end xl:w-[300px] lg:pl-10 lg:min-w-[280px] lg:justify-between gap-5">
             {/* 1/11/2024 */}
             <Link to="/teambdashboard" onClick={showDashBoard}>
               <ul
@@ -66,6 +68,7 @@ const Nav = () => {
                 }>
                 Dashboard
               </ul>
+          
             </Link>
             <Link to="/teambcourselist" onClick={showCourseList}>
               <ul
@@ -75,6 +78,17 @@ const Nav = () => {
                     : "font-bold TeamB_text-shadow   p-1  hover:text-[#116211] hover:bg-opacity-[50%] hover:font-semibold transition-all"
                 }>
                 Course List
+              </ul>
+           
+            </Link>
+            <Link to="/ForumF">
+              <ul
+                className={
+                  dashBoardShow
+                    ? "font-semibold text-[#116211] text-center p-1 TeamB_text-shadow   transition-all"
+                    : "font-bold TeamB_text-shadow   p-1  hover:text-[#116211] transition-all hover:bg-opacity-[50%] hover:font-semibold "
+                }>
+                Forums
               </ul>
             </Link>
           </div>
