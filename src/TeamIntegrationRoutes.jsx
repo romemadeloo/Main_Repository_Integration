@@ -32,7 +32,7 @@ const TeamB_EditChapterTitle = lazy(() => import("./TeamBComponents/components/C
 const TeamB_CreateNewChapterTitle = lazy(() => import("./TeamBComponents/components/CourseList & AddCourseList/CreateNewChapterTitle"));
 const TeamB_CreateNewCourseCopy = lazy(() => import("./TeamBComponents/components/CourseList & AddCourseList/CreateCourse/CreateNewCourse"));
 const TeamB_TopicPage = lazy(() => import("./TeamBComponents/components/Topic/TopicPages/TopicPage"));
-
+import TeamB_EditTopic from "./TeamBComponents/components/Topic/TopicPages/EditTopic";
 
 // TEAM C IMPORT
 
@@ -74,6 +74,7 @@ import Team_D_View from "./TeamDComponents/Team_D_View";
 import Team_D_Verification from "./TeamDComponents/Team_D_Verification";
 import Team_D_Verif_nonuser from "./TeamDComponents/Team_D_Verif_nonuser";
 import Team_D_Content from "./TeamDComponents/Team_D_Content";
+import Home from "./TeamAComponents/components/Home";
 
 
 function TeamIntegrationRoutes() {
@@ -85,7 +86,6 @@ function TeamIntegrationRoutes() {
           <Route path="/" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/forgot" element={<Forgot />} />
           <Route path="/verify" element={<Verification />} />
           <Route path="/profile" element={<Profile />} />
@@ -113,11 +113,12 @@ function TeamIntegrationRoutes() {
             path="/teambcreatenewchaptertitle"
             element={<TeamB_CreateNewChapterTitle />}
           />
-          <Route path="/teambtopicpage" element={<TeamB_TopicPage />} />
+          <Route path="/teambtopicpage/:id" element={<TeamB_TopicPage />} />
           <Route
             path="teambcreatenewcoursecopy"
             element={<TeamB_CreateNewCourseCopy />}
           />
+          <Route path="teambtopicedit/:id" element={<TeamB_EditTopic/>}/>
 
         {/* TEAM C */}
         <Route path="/teamcdashboard" element={<TeamC_Dashboard />} />
