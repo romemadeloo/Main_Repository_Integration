@@ -79,13 +79,11 @@ const TopicPage = () => {
 
   const [editTopicId, setEditTopicId] = useState(null);
 
-   const deleteTopic = async (topic_id) => {
-     await axios.delete(`http://localhost:8080/api/topics/${topic_id}`);
-     loadChapters();
-   };
-   
-   
-   
+  const deleteTopic = async (topic_id) => {
+    await axios.delete(`http://localhost:8080/api/topics/${topic_id}`);
+    loadChapters();
+  };
+
   return (
     <>
       <Nav />
@@ -126,7 +124,7 @@ const TopicPage = () => {
                               <div key={idx}>
                                 <div className="flex items-center justify-between">
                                   <p
-                                    className=" line-clamp-2 cursor-pointer py-2 font-light text-white TeamB_text-shadow text-[1.2rem] 2xl:text-[32px]"
+                                    className=" line-clamp-1 cursor-pointer py-1 font-light text-white TeamB_text-shadow  text-[1.2rem] 2xl:text-[32px]"
                                     onClick={() => {
                                       showEditHandle();
                                       setEditTopicId(topic_id);
@@ -135,10 +133,9 @@ const TopicPage = () => {
                                   </p>
                                   <span
                                     className="text-[1.5rem] text-white cursor-pointer"
-                                    onClick={() =>{
-                                      
-                                      setDeleteModalVisible((prev) => !prev)
-                                      deleteTopic(topic_id)
+                                    onClick={() => {
+                                      setDeleteModalVisible((prev) => !prev);
+                                      deleteTopic(topic_id);
                                     }}>
                                     <MdDelete />
                                   </span>
@@ -183,9 +180,7 @@ const TopicPage = () => {
                     const { course_id } = course;
                     return (
                       <div key={idx}>
-                        <CourseDescription
-                          courseId={course_id}
-                        />
+                        <CourseDescription courseId={course_id} />
                       </div>
                     );
                   })}
@@ -233,10 +228,7 @@ const TopicPage = () => {
                         return (
                           <div key={idx}>
                             {topic.map((topic, idx) => {
-                              const {
-                                topic_description,
-                                topic_id,
-                              } = topic;
+                              const { topic_description, topic_id } = topic;
                               console.log(topic_description);
                               return (
                                 <div key={idx}>
