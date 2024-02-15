@@ -141,7 +141,8 @@ const CourseListCard = () => {
                             <CourseTitleModal
                               //  past courseTitle as props to set the value of input in CourseTitleModal
 
-                              courseTitle={course.course_title}
+                              editTitle={setShowEditTitle}
+                              courseId={course.course_id}
                             />
                           </div>
                         </div>
