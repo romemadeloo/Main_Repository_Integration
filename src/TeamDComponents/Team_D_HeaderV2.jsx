@@ -94,10 +94,10 @@ const Team_D_HeaderV2 = () => {
                 menuVariant="dark"
                 className="mycourse_dd"
               >
-                <NavDropdown.Item href="#action/3.1" activeClassName="active">
+                <NavDropdown.Item href="course" activeClassName="active">
                   Program Overview
                 </NavDropdown.Item>
-                <NavDropdown.Item href="/certGen" activeClassName="active">
+                <NavDropdown.Item href="assessment" activeClassName="active">
                   Assessment
                 </NavDropdown.Item>
               </NavDropdown>
