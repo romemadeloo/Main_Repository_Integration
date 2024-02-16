@@ -8,6 +8,7 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { TbCertificate } from "react-icons/tb";
 import { FiLogOut } from "react-icons/fi";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import ForumF from './../TeamCComponents/pages/ForumF';
 
 const Team_D_HeaderV2 = () => {
   const [clicked, setClicked] = useState(false);
@@ -19,6 +20,10 @@ const Team_D_HeaderV2 = () => {
   const closeMobileNavbar = () => {
     setClicked(false);
     setMyCourseActive(false);
+  };
+
+  const reloadPage = () => {
+    window.location.reload();
   };
 
   // Add or remove the 'no-scroll' class based on the 'clicked' state
@@ -37,7 +42,7 @@ const Team_D_HeaderV2 = () => {
   return (
     <>
       <nav className="navbar_TeamD">
-        <NavLink to="/" onClick={closeMobileNavbar}>
+        <NavLink  onClick={() => { closeMobileNavbar(); reloadPage(); }}>
           <img src={TsukidenLogo} alt="Logo" />
         </NavLink>
         <div>
@@ -75,7 +80,7 @@ const Team_D_HeaderV2 = () => {
             {/* Navigation Links */}
             <li>
               <NavLink
-                to="/"
+                to="/TeamCDashboard"
                 activeClassName="active"
                 onClick={closeMobileNavbar}
               >
@@ -99,7 +104,7 @@ const Team_D_HeaderV2 = () => {
             </li>
             <li>
               <NavLink
-                to="/forums"
+                to="/ForumF"
                 activeClassName="active"
                 onClick={closeMobileNavbar}
               >
