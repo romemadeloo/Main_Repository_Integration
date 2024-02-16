@@ -161,7 +161,7 @@ const Team_D_HeaderV2 = () => {
               </Dropdown.Item>
               <Dropdown.Item
                 as={NavLink}
-                to="/landing"
+                to="/"
                 onClick={closeMobileNavbar}
               >
                 <FiLogOut /> Log Out
