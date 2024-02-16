@@ -1,18 +1,59 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import { enroll } from "../js/script";
 import CoursePreview from "../components/course_preview";
 import Team_D_HeaderV2 from "../../TeamDComponents/Team_D_HeaderV2";
 import ModalSeeMore from "../components/modal_course_seemore";
+import ProfileModal from "../../TeamAComponents/components/ProfileModal";
 
 import "../css/base_style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+import { useAuth } from "../../TeamAComponents/components/AuthContext";
+
+  //Added code for profile modal
+
 function TeamC_Dashboard() {
+
+  const { isLoggedIn, handleLogout } = useAuth();
+  const [showModal, setShowModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+
+  const handleOpenModal = () => {
+    setShowModal(true);
+    setShowEditModal(false); // Ensure that Edit Modal is closed when Profile Modal is opened
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setShowEditModal(false); // Ensure that Edit Modal is closed when Profile Modal is closed
+  };
+
+  const handleOpenEditModal = () => {
+    setShowEditModal(true);
+    setShowModal(false); // Ensure that Profile Modal is closed when Edit Modal is opened
+  };
+
+  const handleCloseEditModal = () => {
+    setShowEditModal(false);
+  };
+ 
   return (
     <Fragment>
       {/* Header title */}
-      <Team_D_HeaderV2/>
+      <Team_D_HeaderV2
+        openModal={handleOpenModal}
+        openEditModal={handleOpenEditModal} // Pass the openEditModal function
+        isLoggedIn={isLoggedIn}
+        handleLogout={handleLogout}
+      />
+      <div className="header p-3 h-50 d-flex align-items-center justify-content-center" id="c_dashboard_header">
+        <ProfileModal
+          showModal={showModal}
+          handleClose={handleCloseModal}
+          showEditModal={showEditModal} // Pass showEditModal to ProfileModal
+          handleEditClose={handleCloseEditModal} // Pass handleEditClose to ProfileModal
+      />
       <div className="header p-3 h-50 d-flex align-items-center justify-content-center" id="c_dashboard_header">
         <div className="c_dashboard_title title p-3 text-center">
           <div className="c_dashboard_japchar jap-char">
@@ -24,6 +65,7 @@ function TeamC_Dashboard() {
             <h4 id="c_preview_headerSub fw-bold">Learn your way at Tsukiden.</h4>
           </div>
         </div>
+      </div>
       </div>
       {/* End of Header title */}
 
