@@ -67,6 +67,7 @@ const CourseOverviewCard = ({ courseTitle }) => {
             <div className="w-full lg:max-w-[800px]">
 
 
+
               <div className="flex items-center justify-center">
                 <CourseOverviewById />
               </div>

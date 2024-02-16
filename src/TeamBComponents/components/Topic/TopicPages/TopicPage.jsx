@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 //2/2/2024 junite, develop edit page
 //2/3/2024 junite, continuation of development, completed
+//2/13-15/2024 junite, API Functionalities
 
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -81,7 +82,6 @@ const TopicPage = () => {
 
   const deleteTopic = async (topic_id) => {
     await axios.delete(`http://localhost:8080/api/topics/${topic_id}`);
-    loadChapters();
   };
 
   return (
@@ -131,12 +131,14 @@ const TopicPage = () => {
                                     }}>
                                     {topic_title}
                                   </p>
+                                 
                                   <span
                                     className="text-[1.5rem] text-white cursor-pointer"
                                     onClick={() => {
-                                      setDeleteModalVisible((prev) => !prev);
+                                    //  setDeleteModalVisible((prev) => !prev);
                                       deleteTopic(topic_id);
                                     }}>
+                                    
                                     <MdDelete />
                                   </span>
                                 </div>
