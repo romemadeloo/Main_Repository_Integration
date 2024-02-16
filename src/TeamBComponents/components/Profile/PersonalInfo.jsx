@@ -70,7 +70,7 @@ const PersonalInfo = () => {
                   <label
                     htmlFor="firstName"
                     className=" text-[#4D4141] text-opacity-[53%] absolute z-10 top-0 left-2 text-[.8rem] xl:text-[16px]  ">
-                    First Name <span className="text-[#FF2626]">*</span>
+                    First Name 
                   </label>
 
                   {/* FIRSTNAME INPUT */}
@@ -90,7 +90,7 @@ const PersonalInfo = () => {
                   <label
                     htmlFor="lastName"
                     className=" text-[#4D4141] text-opacity-[53%] absolute z-10 top-0 left-2 text-[.8rem] xl:text-[16px] ">
-                    Last Name <span className="text-[#FF2626]">*</span>
+                    Last Name 
                   </label>
 
                   {/* LASTNAME INPUT */}
@@ -128,7 +128,7 @@ const PersonalInfo = () => {
                       <label
                         htmlFor="Email"
                         className=" text-[#4D4141] text-opacity-[53%] absolute   z-10 top-0 left-2 text-[.8rem] xl:text-[16px]">
-                        Contact Number <span className="text-[#FF2626]">*</span>
+                        Contact Number  
                       </label>
                       {/* CONTACT NUMBER INPUT */}
 
