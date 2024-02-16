@@ -1,4 +1,5 @@
-import React, { Fragment } from "react";
+
+import React, { Fragment, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { enroll } from "../js/script";
 import CoursePreview from "../components/course_preview";
@@ -223,5 +224,4 @@ function TeamC_Dashboard() {
     </Fragment>
   );
 }
-
 export default TeamC_Dashboard;
