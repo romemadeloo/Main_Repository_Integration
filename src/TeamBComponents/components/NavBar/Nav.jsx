@@ -138,7 +138,7 @@ const Nav = () => {
                   </p>
                 </Link>
                 <Link
-                  to="/dashboard"
+                  to="/"
                   src="CgProfile"
                   onClick={showLogout}
                   className="w-full text-center ">
@@ -166,4 +166,4 @@ const Nav = () => {
 };
 
 export default Nav;
-//1/24/2024
+
