@@ -4,7 +4,7 @@
 //2/1/2024 junite, UI modifications and functionalities, mockdata inserted and used for UI test
 //2/2/2024 junite, UI modifications add background color for edit modal
 //2/5/2024 junite, fixed UI spacing
-//2/13/2024 junite, API Functionalities
+//2/13-15/2024 junite, API Functionalities
 
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { IoAdd } from "react-icons/io5";
@@ -105,7 +105,6 @@ const CourseListCard = () => {
                 <input
                   type="text"
 
-
                   className="outline-none placeholder:font-thin placeholder:text-[1.2rem] font-normal pl-2 text-[1rem] lg:w-[300px] 2xl:w-[544px] h-[35px] 2xl:h-[53px] rounded-md"
                   placeholder="Search"
                   value={searchQuery}
@@ -163,8 +162,7 @@ const CourseListCard = () => {
                 );
               })}
             </div>
-
-            {searchQuery === "" || filteredCourses.length >= 4 ? (
+            {filteredCourses.length > 0 && searchQuery === "" && (
               <Stack spacing={2} className="">
                 <Pagination
                   count={npage}
@@ -172,7 +170,7 @@ const CourseListCard = () => {
                   onChange={handleChange}
                 />
               </Stack>
-            ) : null}
+            )}
             {/* onClick={() => setShowCreateCourse((prev) => !prev)} */}
             <div className=" w-[100%]">
               <div className=" h-[8vh]  flex w-[50%] m-auto lg:w-[80%]   items-center justify-center">

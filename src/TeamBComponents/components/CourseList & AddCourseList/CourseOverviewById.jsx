@@ -1,6 +1,6 @@
 //february 3 modification of ui and functionalities -gem
 //2/5/2024 junite, fix UI spacing
-//2/13/2024 junite, API Functionalities
+//2/13-15/2024 junite, API Functionalities
 
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
@@ -117,6 +117,7 @@ const filteredChapter = loadByChapter.filter((chap) =>
                 {courses.map((course) => {
                   const { chapter, idx } = course;
                   return (
+
 
                     <div key={idx}>
                       {filteredChapter.map((chap, idx) => {
