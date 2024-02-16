@@ -40,6 +40,8 @@ const DashboardCard = () => {
   //react hook for dashboardhover
   const { dashBoardHover, setDashBoardHover } = useContext(DashBoardContext);
 
+  //state for modal by id
+  const [editCourseId, setEditCourseId] = useState(null);
   return (
     <div className="w-full h-[120vh] relative  ">
       {/* change bg color to provided img */}
@@ -78,7 +80,10 @@ const DashboardCard = () => {
                 </p>
                 <button
                   className="text-[#1E6C0B] font-bold TeamB_text-shadow  absolute bottom-2"
-                  onClick={() => setDashBoardHover((prev) => !prev)}>
+                  onClick={() => {
+                    setDashBoardHover((prev) => !prev);
+                    setEditCourseId(course.course_id);
+                  }}>
                   See more
                 </button>
               </div>
@@ -91,7 +96,21 @@ const DashboardCard = () => {
       </div>
 
       <div className="absolute transform -translate-x-1/2 -translate-y-1/2 top-[45%] left-1/2 ">
-        {dashBoardHover && <DashboardCardHover />}
+        <div>
+          {courses.map((course, idx) => {
+            const { course_id } = course;
+            return (
+              <div key={idx}>
+                {dashBoardHover && editCourseId === course_id && (
+                  <DashboardCardHover
+                    courseId={course_id}
+                    closeDashHover={setDashBoardHover}
+                  />
+                )}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
