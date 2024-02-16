@@ -13,6 +13,7 @@ function ProfileEdit() {
 
   return (
     <div>
+      {/* Home header with the company logo */}
      <div className="home-header">
         <img
            src="..\src\assets\TeamAassets\companyLogo.png"
@@ -22,6 +23,7 @@ function ProfileEdit() {
         />
       </div>
         <div className="Prof2-sign">
+          {/* Render the profile edit form */}
           <ProfileEditForm/>
         </div>
       </div>
