@@ -1,7 +1,7 @@
 //  1/31/2024 junite, adjust mt for course list
 
 import React, { useContext } from "react";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 //import mock data json file
@@ -10,26 +10,23 @@ import Footer from "../Footer";
 import DashboardCardHover from "./DashBoardCardHover";
 import { DashBoardContext } from "../context/DashBoardContext";
 
-
 const DashboardCard = () => {
   // *NOTE
   //if data is coming from db use useState hook to store the data
-  //sample: 
-  const [courses, setCourses] = useState([])
+  //sample:
+  const [courses, setCourses] = useState([]);
 
   //*NOTE
   //use GET function of axios and use useEffect hook
-  //sample: 
+  //sample:
   useEffect(() => {
-  loadCourses();
-
+    loadCourses();
   }, []);
-  
-    const loadCourses = async () => {
+
+  const loadCourses = async () => {
     const result = await axios.get("http://localhost:8080/api/courses");
     setCourses(result.data);
-    }
-    
+  };
 
   //after getting the data display it using map
   //get your react hook where you store the data coming from db
@@ -60,7 +57,7 @@ const DashboardCard = () => {
       <div
         className=" xl:h-[330px] 2xl:w-[1519px]  flex flex-col lg:flex-row lg:w-[90vw] 
       lg:m-auto lg:justify-center lg:mt-[2rem] items-center gap-5 mt-[180px] ">
-        {courses.slice(0,3).map((course, idx) => {
+        {courses.slice(0, 3).map((course, idx) => {
           return (
             // 1/11/2024
 
@@ -76,7 +73,7 @@ const DashboardCard = () => {
                 </p>
               </div>
               <div className="relative pt-4 pb-10  px-4 text-justify lg:h-[65%] rounded-b-[2rem] rounded-t-[1rem] bg-[#87D275]">
-                <p className=" line-clamp-6  xl:line-clamp-6">
+                <p className=" line-clamp-6 xl:line-clamp-6">
                   {course.course_description}
                 </p>
                 <button
