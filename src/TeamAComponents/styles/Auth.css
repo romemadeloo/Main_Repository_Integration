@@ -1227,7 +1227,8 @@ input::placeholder{
   background-color: gray;
 }
 
-.save-button
+.save-button,
+.submit-button
 .cancel-button{
   background-color: #126912;
   color:#F6F6F6;
