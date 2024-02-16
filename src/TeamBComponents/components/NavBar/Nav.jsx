@@ -35,6 +35,9 @@ const Nav = () => {
     showDashBoard,
     showProfile,
     showCourseList,
+    showForum,
+            forumShow,
+            setForumShow,
   } = useContext(NavBarContext);
 
   return (
@@ -81,10 +84,10 @@ const Nav = () => {
               </ul>
            
             </Link>
-            <Link to="/ForumF">
+            <Link to="/ForumF"  onClick={showForum}>
               <ul
                 className={
-                  dashBoardShow
+                  forumShow
                     ? "font-semibold text-[#116211] text-center p-1 TeamB_text-shadow   transition-all"
                     : "font-bold TeamB_text-shadow   p-1  hover:text-[#116211] transition-all hover:bg-opacity-[50%] hover:font-semibold "
                 }>
