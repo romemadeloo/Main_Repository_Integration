@@ -91,11 +91,11 @@ const DashboardCard = () => {
           );
         })}
       </div>
-      <div className="mt-10">
+      <div className="mt-10 ">
         <Footer />
       </div>
 
-      <div className="absolute transform -translate-x-1/2 -translate-y-1/2 top-[45%] left-1/2 ">
+      <div className="transform -translate-x-1/2 -translate-y-1/2 top-[45%] left-1/2 fixed inset-0 flex justify-center items-center">
         <div>
           {courses.map((course, idx) => {
             const { course_id } = course;

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 /* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 
@@ -15,6 +16,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
+import { IoEyeSharp } from "react-icons/io5";
 //remove close button
 const CloseButton = ({ closeToast }) => (
   <i className="material-icons" onClick={closeToast}></i>
@@ -116,6 +118,18 @@ const EditTopic = ({ topicId, courseTitle, chapterTitle }) => {
     setTopics(result.data);
   };
 
+  //store url in a variable
+  const docs = [
+    {
+      uri: "https://rb.gy/wjgxf3",
+      fileType: "pptx",
+    }, // Remote file
+    // { uri: require("./example-files/pdf.pdf") }, // Local File
+  ];
+
+  const linkToPPTFile =
+    "https://onedrive.live.com/embed?resid=45112E029C22DBF%21345&authkey=!APHTfuIo5T7hg4w&em=2";
+
   return (
     <>
       {/* add topic title */}
@@ -165,10 +179,21 @@ const EditTopic = ({ topicId, courseTitle, chapterTitle }) => {
           <div
             className="relative 2xl:w-[491px] 2xl:h-[282px] lg:w-[20vw] lg:h-[20vh] rounded-lg flex items-center justify-center cursor-pointer"
             onClick={toggleVideoPopup}>
-            <img src={EditTopiclink} alt="" className="" />
-            <span className="absolute ">
-              <FaEdit className="lg:w-[30px] lg:h-[30px] 2xl:w-[59px] 2xl:h-[59px] opacity-[80%]" />
-            </span>
+            {/* <img src={EditTopiclink} alt="" className="" /> */}
+            <iframe
+              src={linkToPPTFile}
+              frameborder="0"
+              scrolling="no"
+              className="blur-[.05rem]"></iframe>
+
+            <div className="absolute flex gap-x-5">
+              <span className="">
+                <FaEdit className="lg:w-[30px] lg:h-[30px] 2xl:w-[59px] 2xl:h-[59px] " />
+              </span>
+              <span className="">
+                <IoEyeSharp className="lg:w-[30px] lg:h-[30px] 2xl:w-[59px] 2xl:h-[59px] " />
+              </span>
+            </div>
           </div>
           <div
             className="relative 2xl:w-[491px] 2xl:h-[282px] lg:w-[20vw] lg:h-[20vh] rounded-lg flex items-center justify-center cursor-pointer"
