@@ -84,7 +84,7 @@ const Nav = () => {
               </ul>
            
             </Link>
-            <Link to="/ForumF"  onClick={showForum}>
+            <Link to="/ForumInstructor"  onClick={showForum}>
               <ul
                 className={
                   forumShow
