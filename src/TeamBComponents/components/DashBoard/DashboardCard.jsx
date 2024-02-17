@@ -95,8 +95,8 @@ const DashboardCard = () => {
         <Footer />
       </div>
 
-      <div className="transform -translate-x-1/2 -translate-y-1/2 top-[45%] left-1/2 fixed inset-0 flex justify-center items-center">
-        <div>
+      <div className="absolute transform -translate-x-1/2 -translate-y-1/2 top-[45%] left-1/2">
+        <div className="fixed inset-0 flex justify-center items-center">
           {courses.map((course, idx) => {
             const { course_id } = course;
             return (
