@@ -4,73 +4,84 @@
 .app {
   text-align: center;
 }
+/* Styles for the header of the application */
 .app-header {
-  background-color: #282c34;
-  padding: 20px;
-  color: white;
-  margin: 0;
+  background-color: #282c34; /* Background color */
+  padding: 20px; /* Padding around the header content */
+  color: white; /* Text color */
+  margin: 0; /* Remove any default margin */
 }
+/* Styles for the TeamA button */
 .TeamA-button {
-  margin: 10px 10px 10px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  color: #ffffff;
-  border-radius: 150px;
-  background-color: #126912;
-  border: 1.5px solid #126912;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
+  margin: 10px 10px 10px; /* Margin on all sides */
+  padding: 10px 20px; /* Padding inside the button */
+  font-size: 16px; /* Font size */
+  cursor: pointer; /* Cursor style */
+  color: #ffffff; /* Text color */
+  border-radius: 150px; /* Border radius to make it circular */
+  background-color: #126912; /* Background color */
+  border: 1.5px solid #126912; /* Border color and width */
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5); /* Box shadow for a raised effect */
 }
 .TeamA-button:hover,.Prof2-Backbutton:hover,.login-button:hover {
   background-color: gray;
 } 
 
+/* Styles for the login button */
 .login-button
 {
-  cursor: pointer;
-  color: #ffff;
-  border-radius: 100px;
-  background-color: #126912;
-  border: 1px solid #126912;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
-  width: 5rem;
-  height: 2rem;
+  cursor: pointer; /* Cursor style */
+  color: #ffff; /* Text color */
+  border-radius: 100px; /* Border radius to make it circular */
+  background-color: #126912; /* Background color */
+  border: 1px solid #126912; /* Border color and width */
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5); /* Box shadow for a raised effect */
+  width: 5rem; /* Width of the button */
+  height: 2rem;/* Height of the button */
+}
 } 
+
+/* Styles for the home container */
 .home-container {
-  text-align: center;
+  text-align: center; /* Center align content */
 }
 
+/* Styles for the home header */
 .home-header {
-  background-color: #D9FFCF;
-  padding: 10px;
-  height: 70px;
-  text-align: center;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0;
+  background-color: #D9FFCF; /* Background color */
+  padding: 10px; /* Padding around the header */
+  height: 70px;  /* Height of the header */
+  text-align: center;  /* Center align text */
+  display: flex; /* Use flexbox for layout */
+  justify-content: space-between;  /* Space evenly between items */
+  align-items: center; /* Center align items vertically */
+  margin: 0; /* Remove margin */
 }
 
+/* Styles for the left container */
 .left-container {
-  display: flex;
-  align-items: center;
-  margin-left: 20px;
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Align items vertically */
+  margin-left: 20px; /* Add margin to the left */
 }
 
+/* Styles for buttons inside the right container */
 .right-container button{
-  align-items: center;
-  margin-right: 20px;
+  align-items: center;  /* Align items vertically */
+  margin-right: 20px; /* Add margin to the right */
 } 
 
+/* Styles for the logo container */
 .logo-container {
-  display: flex;
-  align-items: center;
+  display: flex; /* Display as flex */
+  align-items: center; /* Align items vertically */
   
 }
 
+/* Styles for the logo image */
 .Qlogo {
-  width: 170px;
-  height: auto;
+  width: 170px; /* Set width */
+  height: auto; /* Automatically adjust height */
 }
 
 .home-header nav a {
@@ -78,7 +89,7 @@
 }
 
 .home-header nav a {
-  text-decoration: none;
+  text-decoration: none;  /* Remove underline */
   color: #000; /* Default link color */
 }
 
@@ -91,44 +102,48 @@
 }
 
 .home-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+   display: flex; /* Display items as a flex container */
+  flex-direction: column; /* Arrange items vertically */
+  align-items: center; /* Center items along the cross-axis (vertical centering) */
+  justify-content: center; /* Center items along the main-axis (horizontal centering) */
 }
 
 
+/* Styles for the Japanese message heading */
 .japanese-message h1 {
-  color: #F6F6F6;
-  font-family: Inter;
-  font-size: 35px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  margin: 55px;
-  margin-top:20px;
+  color: #F6F6F6; /* Text color */
+  font-family: Inter; /* Font family */
+  font-size: 35px; /* Font size */
+  font-style: normal; /* Font style */
+  font-weight: 700; /* Font weight (bold) */
+  line-height: normal; /* Line height */
+  margin: 55px; /* Margin for all sides */
+  margin-top: 20px; /* Margin top */
 }
 
+/* Styles for the Japanese message container with text shadow */
 .japanese-message {
   text-shadow:
-    -2px -2px 2px #009545, 
-    2px -2px 2px #009545, 
-    -2px 2px 2px #009545, 
-    2px 2px 2px #009545;
+    -2px -2px 2px #009545,  /* Shadow on the top left */
+    2px -2px 2px #009545,  /* Shadow on the top right */
+    -2px 2px 2px #009545,  /* Shadow on the bottom left */
+    2px 2px 2px #009545;  /* Shadow on the bottom right */
 }
 
+/* Styles for the English message heading */
 .english-message h1 {
-  color: #587354;
-  font-family: Inter;
-  font-size: 35px;
-  font-style: italic;
-  font-weight: 700;
-  margin-top:-65px;
-  margin-bottom: 10px;
+  color: #587354;         /* Text color */    
+  font-family: Inter;      /* Font family */
+   font-size: 35px;        /* Font size */
+  font-style: italic;     /* Italic font style */
+  font-weight: 700;       /* Font weight */
+  margin-top: -65px;      /* Top margin */
+  margin-bottom: 10px;    /* Bottom margin */
 }
 
+/* Text shadow for the English message */
 .english-message {
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);  /* Text shadow */
 }
 
 .courses {
@@ -150,26 +165,31 @@
   text-align: center;
 }
 
+/* Styles for the authentication header */
 .auth-header {
-  background-color: #BCE8B1;
-  padding: 10px;
-  text-align: center;
-  height: 70px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
+  background-color: #BCE8B1; /* Background color */
+  padding: 10px; /* Padding */
+  text-align: center; /* Text alignment */
+  height: 70px; /* Height */
+  display: flex; /* Flex container */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  margin: 0;  /* Margin */
 }
+}
+/* Styles for the logo */
 .logo {
   width: 170px; 
-  height: auto;
+  height: auto; /* Maintain aspect ratio */
 }
 
+/* Styles for the authentication content */
 .auth-content {
   text-align: center;
   margin-top: 0px;
 }
 
+/* Styles for the label container */
 .label-container {
  display: flex;
  padding-bottom: 4rem;
@@ -177,36 +197,39 @@
 
 } 
 
+/* Styles for the container under */
 .container-under
 {
   display: flex;
-  flex-direction: column;
-  align-items: start;
+  flex-direction: column; /* Arrange items in a column */
+  align-items: start; /* Align items to the start of the cross axis */
 
 }
 
+/* Styles for the authentication label */
 .auth-label {
-  height: 60px;
-  width: 400px;
-  border-radius: 5px 5px 0px 0px;
-  background-color: #126912;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 60px; /* Set the height */
+  width: 400px; /* Set the width */
+  border-radius: 5px 5px 0px 0px; /* Apply border radius */
+  background-color: #126912; /* Set the background color */
+  display: flex; /* Use flexbox */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
 
 
 }
 
+/* Styles for the landing page navigation bar */
 .landingPage_NavBar
 {
   background-color: #BCE8B1;
   padding: 1em 2em;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Distribute items evenly along the main axis */
   align-items: center;
 }
 
-
+/* Styles for the authentication navigation */
 .auth-navi {
   padding-top: 20px;
   padding-bottom: 20px;
@@ -218,27 +241,31 @@
   margin: 0;
 }
 
+/* Styles for the heading within the authentication content */
 .auth-content h2 {
   font-size: 20px;
 }
 
+/* Styles for the heading within the authentication label */
 .auth-label h1 {
   font-size: 24px;
   font-weight: 400; 
   color: #ffff;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  margin: 0;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); /* Add text shadow */
+  margin: 0; /* Remove default margin */
 }
 
+/* Styles for the template form */
 .template-form{
   width: 700px;
-  margin: 0 auto;
+  margin: 0 auto; /* Center the form horizontally */
   background-color: #BCE8B1;
   padding: 20px;
-  border-radius: 5px;
-  position: relative;
+  border-radius: 5px; /* Add border radius */
+  position: relative; /* Set position to relative */
 }
 
+/* Styles for input fields inside the template form */
 .template-form input {
   width: 400px;
   padding: 20px;
@@ -247,21 +274,25 @@
   font-size: 16px;
   border: 1px solid #ccc; /* Input border color */
   border-radius: 5px;  
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.05); /* Add box shadow */
   text-align: left;
 }
 
+/* Styles for h2 elements inside the template form */
 .template-form h2 {
   color: #4D4141;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); /* Add text shadow */
+}
 }
 
+/* Styles for h3 elements inside the template form */
 .template-form h3 {
   font-size: 12px;
   font-weight: 400px;
   color: #4D4141;
 }
 
+/* Styles for the forgot password link inside the template form */
 .template-form .forgot-password {
   color: #4D4141;
   font-weight: 700px;
@@ -271,6 +302,7 @@
   margin-top: 10px;
 }
 
+/* Styles for the existing account link inside the template form */
 .template-form .existing-account  {
   color: #4D4141;
   font-weight: 700px;
@@ -279,18 +311,23 @@
   margin-top: 30px;
   text-decoration: underline;
 }
+
+/* Styles for the hover effect on the existing account and forgot password links */
 .template-form .existing-account:hover,.template-form .forgot-password:hover,.forgot-form .existing-account:hover ,.forgot-form .forgot-password:hover  {
-  color: #0056b3;
+  color: #0056b3; /* Change text color on hover */
 }
 
+/* Styles for the forgot container */
 .forgot-container {
 text-align: center; 
 }
 
+/* Styles for the margin of the forgot text */
 .forgottext{
   margin-top: 50px;
 }
 
+/* Styles for the forgot header */
 .forgot-header  {
 background-color: #BCE8B1;
 padding: 10px;
@@ -302,41 +339,47 @@ align-items: center;
 margin: 0;
 }
 
+/* Styles for the email logo inside the forgot logo container */
 .forgot-logo .Email-logo{
 width: 170px;
 height: auto;
 }
 
+/* Styles for the content inside the forgot container */
 .forgot-content {
 text-align: center;
 margin-top: 0px;
 }
 
+/* Styles for the forgot label */
 .forgot-label {
-height: 60px;
-width: 400px;
-border-radius: 5px 5px 0px 0px;
-background-color: #126912;
-display: flex;
-justify-content: center;
-align-items: center;
+height: 60px; /* Set the height */
+width: 400px; /* Set the width */
+border-radius: 5px 5px 0px 0px; /* Apply border radius */
+background-color: #126912; /* Set the background color */
+display: flex; /* Use flexbox for alignment */
+justify-content: center; /* Center horizontally */
+align-items: center; /* Center vertically */
 }
 
+/* Styles for the forgot navigation */
 .forgot-navi {
-padding-top: 20px;
-padding-bottom: 20px;
-height: 50px;
-justify-content: center;
-text-align: center;
-align-items: center;
-color: white;
-margin: 0;
+padding-top: 20px;/* Add padding to the top */
+padding-bottom: 20px; /* Add padding to the bottom */
+height: 50px; /* Set the height */
+justify-content: center; /* Center content horizontally */
+text-align: center; /* Center text */
+align-items: center; /* Center items vertically */
+color: white; /* Set the text color */
+margin: 0; /* Reset margin */
 }
 
+/* Styles for the forgot content heading */
 .forgot-content h2 {
-font-size: 20px;
+font-size: 20px; /* Set the font size */
 }
 
+/* Styles for the forgot label heading */
 .forgot-label h1 {
 font-size: 24px;
 font-weight: 400;
@@ -345,6 +388,7 @@ text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 margin: 0;
 }
 
+/* Styles for the forgot form */
 .forgot-form {
 width: 600px;
 margin: 0 auto;
@@ -353,40 +397,46 @@ padding: 50px;
 border-radius: 15px;
 }
 
+/* Styles for inputs within the forgot form */
 .forgot-form input {
-width: 400px;
-height: 30px;
-padding: 12px;
-margin-bottom: 15px;
-font-size: 16px;
-border: 1px solid #ccc;
-border-radius: 5px;
-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.05);
+width: 400px; /* Set the width */
+height: 30px; /* Set the height */
+padding: 12px; /* Add padding */
+margin-bottom: 15px; /* Add bottom margin */
+font-size: 16px; /* Set the font size */
+border: 1px solid #ccc; /* Set the border */
+border-radius: 5px; /* Add border radius */
+box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.05); /* Add box shadow */
 }
 
+/* Styles for h2 within the forgot form */
 .forgot-form h2 {
-color: #4D4141;
-text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+color: #4D4141; /* Set the text color */
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); /* Add text shadow */
 }
 
+/* Styles for h3 within the forgot form */
 .forgot-form h3 {
-font-size: 12px;
-font-weight: 400px;
-color: #4D4141;
+font-size: 12px; /* Set the font size */
+font-weight: 400px; /* Set the font weight */
+color: #4D4141; /* Set the text color */
 }
 
+/* Styles for button within the forgot form */
 .forgot-form button {
-margin: 20px;
-}
+margin: 20px; /* Set margin */
+} 
 
+/* Styles for .forgot-password within the forgot form */
 .forgot-form .forgot-password {
-color: #4D4141;
-font-weight: 700px;
-cursor: pointer;
-font-size: 14px;
-text-decoration: underline;
+color: #4D4141; /* Set the text color */
+font-weight: 700px; /* Set the font weight */
+cursor: pointer; /* Set cursor style */
+font-size: 14px; /* Set the font size */
+text-decoration: underline; /* Add underline */
 }
 
+/* Styles for .existing-account within the forgot form */
 .forgot-form .existing-account {
 color: #4D4141;
 font-weight: 700px;
@@ -395,20 +445,24 @@ cursor: pointer;
 font-size: 14px;
 text-decoration: underline;
 }
+
+/* Styles for .forgot-div */
 .forgot-div {
 align-items: center;
 justify-content: center;
 }
 
+/* Styles for placeholder text alignment */
 input::placeholder{
-  text-align: left;
+  text-align: left; /* Align placeholder text to the left *
 }
 
+  /* Styles for .group_input */
 .group_input  {
-  width: 400px;
-  display: flex;
-  flex-direction: row;
-  margin-top: 20px;
+  width: 400px; /* Set the width */
+  display: flex; /* Use flexbox */
+  flex-direction: row; /* Arrange elements in a row */
+  margin-top: 20px; /* Add top margin */
 
 }
 
