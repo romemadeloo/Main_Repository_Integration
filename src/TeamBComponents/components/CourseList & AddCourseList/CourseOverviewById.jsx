@@ -3,7 +3,7 @@
 //2/13-15/2024 junite, API Functionalities
 
 import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import { IoAdd } from "react-icons/io5";
@@ -20,6 +20,9 @@ import { CourseContext } from "../context/CourseContext";
 //import search icon
 import { IoSearchSharp } from "react-icons/io5";
 
+//close icon
+import { IoMdClose } from "react-icons/io";
+
 const CourseOverviewById = () => {
   const { courses, setCourses } = useContext(CourseContext);
 
@@ -34,7 +37,7 @@ const CourseOverviewById = () => {
 
   useEffect(() => {
     loadChapters();
-    loadChapter()
+    loadChapter();
   }, [id]);
 
   const loadChapters = async () => {
@@ -51,12 +54,11 @@ const CourseOverviewById = () => {
     }
   };
 
-  const [loadByChapter, setLoadByChapter] = useState([])
-    const loadChapter = async () => {
-       const result = await axios.get("http://localhost:8080/api/chapters");
+  const [loadByChapter, setLoadByChapter] = useState([]);
+  const loadChapter = async () => {
+    const result = await axios.get("http://localhost:8080/api/chapters");
     setLoadByChapter(result.data);
-   
-    };
+  };
   // console.log(courses);
 
   const [createModalVisible, setCreateModalVisible] = useState(false);
@@ -75,13 +77,36 @@ const CourseOverviewById = () => {
     setDeleteModalVisible(true);
   };
 
-const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
 
-//Search
-const filteredChapter = loadByChapter.filter((chap) =>
-  chap.chapter_title.toLowerCase().includes(searchQuery.toLowerCase())
-);
+  // Search
+  const filteredChapter = loadByChapter.filter((chap) =>
+    chap.chapter_title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
+  const [hideSearch, setHideSearch] = useState(false);
+
+  // Ref for the search container
+  const searchContainerRef = useRef(null);
+
+  // Other state variables...
+
+  // Hide search container when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        searchContainerRef.current &&
+        !searchContainerRef.current.contains(event.target)
+      ) {
+        setHideSearch(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [searchContainerRef]);
 
   return (
     <>
@@ -99,12 +124,51 @@ const filteredChapter = loadByChapter.filter((chap) =>
                     placeholder="Search"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    name=""
-                    id=""
+                    onClick={() => setHideSearch(true)}
                   />
                   <div className="absolute top-1 right-2">
                     <IoSearchSharp className="text-[1.5rem]" />
                   </div>
+                  {hideSearch && (
+                    <div
+                      ref={searchContainerRef}
+                      className="h-[20vh] w-[100%] absolute bg-[#fff] top-10 z-10 shadow-lg rounded-md pt-2">
+                      <div className="flex justify-end w-full cursor-pointer">
+                        <IoMdClose
+                          onClick={() => setHideSearch(false)}
+                          className="text-[1rem] mr-2"
+                        />
+                      </div>
+                      <div className="h-[80%] overflow-auto TeamB_no-scrollbar mr-3">
+                        {filteredChapter.length === 0 ? (
+                          <div className="mt-4 text-center text-gray-600 text-[1rem]">
+                            No results found
+                          </div>
+                        ) : (
+                          courses.map((course, idx) => {
+                            const { chapter } = course;
+                            return (
+                              <div key={idx} className="">
+                                {filteredChapter.map((chapter, idx) => {
+                                  const { chapter_title, chapter_id } = chapter;
+                                  return (
+                                    <div key={idx}>
+                                      <Link
+                                        to={`/teambtopicpage/${chapter_id}`}>
+                                        <p className="text-[.9rem] pl-2 font-light TeamB_text-shadow cursor-pointer">
+                                          {chapter_title}
+                                        </p>
+                                      </Link>
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                            );
+                          })
+                        )}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
               <div className="lg:max-w-[1000px] bg-[#BCE8B1] h-[2vh] items-center lg:rounded-lg">
@@ -117,15 +181,13 @@ const filteredChapter = loadByChapter.filter((chap) =>
                 {courses.map((course) => {
                   const { chapter, idx } = course;
                   return (
-
-
                     <div key={idx}>
-                      {filteredChapter.map((chap, idx) => {
+                      {chapter.map((chap, idx) => {
                         const { chapter_id, chapter_title } = chap;
                         return (
                           <div key={idx} className="relative m-0 lg:w-full">
-                            <div className="flex items-center justify-center w-full gap-5 pb-4 m-auto">
-                              <div className="h-[1.5rem] w-[1.5rem] bg-[#126912] rounded-[100%]"></div>
+                            <div className="flex items-center justify-center w-full gap-4 pb-4 m-auto">
+                              <div className="h-[1.3rem] w-[1.3rem] bg-[#126912] rounded-[100%]"></div>
                               {/* <div className="flex"> */}
 
                               <Link
@@ -206,7 +268,7 @@ const filteredChapter = loadByChapter.filter((chap) =>
             </div>
           )}
 
-          <div className="w-full lg:w-[12rem] m-auto lg:flex lg:justify-center lg:items-center pt-5">
+          <div className="w-full lg:w-[12rem] m-auto lg:flex lg:justify-center lg:items-center pt-3">
             {/*add new chapter title */}
             <div className="lg:rounded-[1rem] lg:h-[50px] 2xl:h-[65px] flex items-center justify-center cursor-pointer bg-[#BCE8B1]">
               <button
