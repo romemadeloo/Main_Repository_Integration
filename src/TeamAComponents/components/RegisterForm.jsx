@@ -29,24 +29,29 @@ function RegisterForm() {
     return isValid;
   };
 
+  // Function to handle changes in the user type selection
   const handleUserTypeChange = (e) => {
     setUserType(e.target.value);
   };
 
+  // Function to handle changes in the password input
   const handlePasswordChange = (e) => {
     const newPassword = e.target.value;
     setPassword(newPassword);
-    validatePassword(newPassword);
+    validatePassword(newPassword); // Validate the new password
   };
 
+  // Function to handle focus on the password input
   const handlePasswordFocus = () => {
     setShowError(true);
   };
 
+  // Function to handle blur on the password input
   const handlePasswordBlur = () => {
     setShowError(false);
   };
 
+  // Function to handle form submission for registration
   const handleRegister = async (e) => {
     e.preventDefault();
 
@@ -67,6 +72,7 @@ function RegisterForm() {
         setError('Registration failed. Please try again.');
       }
     } catch (error) {
+      // If an error occurs during registration, log the error and set an error message
       console.error('Error during registration:', error);
       setError('Registration failed. Please try again.');
     }
@@ -75,6 +81,7 @@ function RegisterForm() {
   return (
     <>
       <form onSubmit={handleRegister} className="template-form">
+        {/* Link to navigate back to the home page */}
         <Link to="/">
           <div className="qBackbutton">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-left" viewBox="0 0 16 16">
@@ -82,10 +89,13 @@ function RegisterForm() {
             </svg>
           </div>
         </Link>
+        {/* Heading for signing up an account */}
         <h2>Sign up an account.</h2>
+        {/* Heading for being part of the success */}
         <h2>Be part of the success.</h2>
 
         <div className="group_input">
+          {/* Input field for username */}
           <input
             type="text"
             id="username"
@@ -99,12 +109,14 @@ function RegisterForm() {
             value={userType}
             onChange={handleUserTypeChange}
           >
+            {/* Options for user types */}
             <option value="Student">Student</option>
             <option value="Instructor">Instructor</option>
           </select>
         </div>
 
         <input
+          {/* Input field for the first name */}
           type="text"
           id="FirstName"
           value={firstName}
@@ -112,6 +124,7 @@ function RegisterForm() {
           placeholder="First Name"
         />
         <input
+          {/* Input field for the first name */}
           type="text"
           id="lastName"
           value={lastName}
@@ -119,12 +132,14 @@ function RegisterForm() {
           placeholder="Last Name"
         />
         <input
+          /* Input field for the email address */}
           type="email"
           id="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Email Address"
         />
+        {/* Input field for the password */}
         <input
           type="password"
           id="password"
@@ -135,23 +150,29 @@ function RegisterForm() {
           placeholder="Password"
         />
         <div className="data-validation">
+          {/* Conditionally render the error label if showError state is true */}
           {showError && (
             <label style={{ color: 'red', fontSize: '15px', fontWeight: '700', transition: 'color 0.3s' }}>
-              {error}
+              {error} {/* Display the error message */}
             </label>
           )}
         </div>
 
         <div>
+          {/* Display the agreement text */}
           <h3 style={{ fontSize: '15px', marginTop: '20px' }}>By clicking Sign up you agree to our Terms of Use and our Privacy Policy.</h3>
         </div>
-
+        
+        {/* Link to the login page */}
         <Link to="/login">
+          {/* Display text for existing account */}
           <div className="existing-account">
             Already have an account?
           </div>
         </Link>
+        {/* Link to the email page */}
         <Link to='/Email'>
+          {/* Sign up button */}
         <button className="TeamA-button" >Sign Up</button>
         </Link>
       </form>
