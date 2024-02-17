@@ -71,7 +71,7 @@ const PersonalInfo = ({ intructorName }) => {
                   <label
                     htmlFor="firstName"
                     className=" text-[#4D4141] text-opacity-[53%] absolute z-10 top-0 left-2 text-[.8rem] xl:text-[16px]  ">
-                    First Name 
+                    First Name
                   </label>
 
                   {/* FIRSTNAME INPUT */}
@@ -160,7 +160,7 @@ const PersonalInfo = ({ intructorName }) => {
           </div>
         </div>
       )}
-      {updatePersonalInfo && <PersonalEdit />}
+      {updatePersonalInfo && <PersonalEdit hideUpdatePersonalInfo={showEdit} />}
     </>
   );
 };

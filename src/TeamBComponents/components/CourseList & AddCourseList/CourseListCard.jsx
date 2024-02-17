@@ -113,6 +113,8 @@ const CourseListCard = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [searchContainerRef]);
+  // Initialize a count for chapters within this course
+  let courseCount = 0;
   return (
     <>
       {/* 1/12/2024 UI development and Mobile responsiveness */}
@@ -176,13 +178,14 @@ const CourseListCard = () => {
             <div className="flex flex-col h-full gap-y-5">
               {/* change to currentCourse for API connection */}
               {currentCourse.map((course, idx) => {
+                courseCount++;
                 return (
                   <div key={idx} className="w-[60vw] rounded-md shadow-md">
                     <div className=" relative flex px-0 py-0 rounded-md xl:h-[115px]  ">
                       <div className="bg-[#BCE8B1] flex py-1 item-center justify-center text-center text-[.8rem] lg:text-[1rem] w-[30%] lg:w-[20%] lg:p-5 rounded-l-sm lg:rounded-l-md">
                         <p className="lg:font-medium TeamB_text-shadow h-[8vh] flex items-center  ">
                           {/* change to course_id for api connection */}
-                          PL00{course.course_id}
+                          PL00{courseCount}
                         </p>
                       </div>
 

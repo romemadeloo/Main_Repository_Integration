@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 //february 3 modification of ui and functionalities -gem
 //2/5/2024 junite, fix UI spacing
 //2/13-15/2024 junite, API Functionalities
@@ -23,7 +24,7 @@ import { IoSearchSharp } from "react-icons/io5";
 //close icon
 import { IoMdClose } from "react-icons/io";
 
-const CourseOverviewById = () => {
+const CourseOverviewById = ({ courseTitle }) => {
   const { courses, setCourses } = useContext(CourseContext);
 
   const [showChapModal, setShowChapModal] = useState(false);
@@ -79,9 +80,15 @@ const CourseOverviewById = () => {
 
   const [searchQuery, setSearchQuery] = useState("");
 
-  // Search
-  const filteredChapter = loadByChapter.filter((chap) =>
-    chap.chapter_title.toLowerCase().includes(searchQuery.toLowerCase())
+  // // Search
+  // const filteredChapter = loadByChapter.filter((chap) =>
+  //   chap.chapter_title.toLowerCase().includes(searchQuery.toLowerCase())
+  // );
+
+  const filteredChapter = loadByChapter.filter(
+    (chap) =>
+      typeof chap.chapter_title === "string" &&
+      chap.chapter_title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   const [hideSearch, setHideSearch] = useState(false);
@@ -115,7 +122,7 @@ const CourseOverviewById = () => {
           <div className="h-full">
             <div className="w-full lg:max-w-[800px]">
               <div className="text-black  w-full lg:font-bold text-[.8rem]  lg:py-0 lg:text-[2rem]  flex justify-between items-center">
-                <p className="lg:font-bold TeamB_text-shadow">HTML</p>
+                <p className="lg:font-bold TeamB_text-shadow">{courseTitle}</p>
 
                 <div className="relative  flex items-center lg:max-w-[300px] 2xl:w-[544px] h-[35px] 2xl:h-[53px]  bg-white outline-none rounded-md border-b-[.1rem] border-black">
                   <input
@@ -182,46 +189,57 @@ const CourseOverviewById = () => {
                   const { chapter, idx } = course;
                   return (
                     <div key={idx}>
-                      {chapter.map((chap, idx) => {
-                        const { chapter_id, chapter_title } = chap;
+                      {courses.map((course) => {
+                        const { chapter, idx, course_id } = course;
+                        // Initialize a count for chapters within this course
+                        let chapterCount = 0;
                         return (
-                          <div key={idx} className="relative m-0 lg:w-full">
-                            <div className="flex items-center justify-center w-full gap-4 pb-4 m-auto">
-                              <div className="h-[1.3rem] w-[1.3rem] bg-[#126912] rounded-[100%]"></div>
-                              {/* <div className="flex"> */}
+                          <div key={idx}>
+                            {chapter.map((chap, idx) => {
+                              const { chapter_id, chapter_title } = chap;
+                              // Increment the chapter count for each chapter
+                              chapterCount++;
+                              return (
+                                <div
+                                  key={idx}
+                                  className="relative m-0 lg:w-full">
+                                  <div className="flex items-center justify-center w-full gap-4 pb-4 m-auto">
+                                    <div className="h-[1.3rem] w-[1.3rem] bg-[#126912] rounded-[100%]"></div>
 
-                              <Link
-                                to={`/teambtopicpage/${chapter_id}`}
-                                className=" 2xl:rounded-[20px] w-full lg:flex lg:items-center lg:font-medium lg:text-[1rem] 2xl:text-[24px] bg-[#126912]  py-1 text-center text-[.8rem]  lg:p-5 text-white
+                                    <Link
+                                      to={`/teambtopicpage/${chapter_id}`}
+                                      className="2xl:rounded-[20px] w-full lg:flex lg:items-center lg:font-medium lg:text-[1rem] 2xl:text-[24px] bg-[#126912] py-1 text-center text-[.8rem]  lg:p-5 text-white lg:h-[50px] lg:rounded-[1rem]  ">
+                                      <p className="text-shadow">
+                                        CHAPTER {chapterCount}:
+                                      </p>
+                                      <p className="pl-2 lg:font-medium text-shadow">
+                                        {chapter_title}
+                                      </p>
+                                    </Link>
 
-                      lg:h-[50px] lg:rounded-[1rem]  ">
-                                <p className="text-shadow">
-                                  CHAPTER {chapter_id}:
-                                </p>
-                                <p className="pl-2 lg:font-medium text-shadow">
-                                  {chapter_title}
-                                </p>
+                                    <Link className="absolute flex right-2 ">
+                                      <div className="flex items-center gap-2 cursor-pointer pl-2- ">
+                                        <div
+                                          className="text-[1.3rem] 2xl:text-[2rem]  text-white"
+                                          onClick={() =>
+                                            handleEditClick(chapter_id)
+                                          }>
+                                          <FaEdit />
+                                        </div>
 
-                                {/* 
-                  </div> */}
-                              </Link>
-
-                              <Link className="absolute flex right-2 ">
-                                <div className="flex items-center gap-2 cursor-pointer pl-2- ">
-                                  <div
-                                    className="text-[1.3rem] 2xl:text-[2rem]  text-white"
-                                    onClick={() => handleEditClick()}>
-                                    <FaEdit />
-                                  </div>
-
-                                  <div
-                                    className="text-[1.3rem] 2xl:text-[2rem]  text-white"
-                                    onClick={() => handleDeleteChapter()}>
-                                    <RiDeleteBinLine />
+                                        <div
+                                          className="text-[1.3rem] 2xl:text-[2rem]  text-white"
+                                          onClick={() =>
+                                            handleDeleteChapter(chapter_id)
+                                          }>
+                                          <RiDeleteBinLine />
+                                        </div>
+                                      </div>
+                                    </Link>
                                   </div>
                                 </div>
-                              </Link>
-                            </div>
+                              );
+                            })}
                           </div>
                         );
                       })}

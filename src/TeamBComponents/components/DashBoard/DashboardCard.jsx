@@ -57,8 +57,8 @@ const DashboardCard = () => {
         </p>
       </div>
       <div
-        className=" xl:h-[330px] 2xl:w-[1519px]  flex flex-col lg:flex-row lg:w-[90vw] 
-      lg:m-auto lg:justify-center lg:mt-[2rem] items-center gap-5 mt-[180px] ">
+        className="xl:h-[330px] 2xl:w-[1519px] flex flex-col lg:flex-row lg:w-[90vw] 
+      lg:m-auto lg:justify-center lg:mt-[2rem] items-center gap-[4rem] mt-[5rem] ">
         {courses.slice(0, 3).map((course, idx) => {
           return (
             // 1/11/2024
@@ -66,7 +66,7 @@ const DashboardCard = () => {
             <div
               key={idx}
               className="w-[95%] h-[300px] lg:max-w-[270px] shadow-sm rounded-[2rem] 2xl:w-[271px] xl:h-[330px]  bg-[#BCE8B1]">
-              <div className="flex flex-col rounded-t-[2rem] p-4 lg:p-5 2xl:px-2 lg:h-[35%] justify-center ">
+              <div className="flex flex-col h-fit rounded-t-[2rem]  p-4  lg:p-5 2xl:px-2 lg:h-[35%] justify-center ">
                 <p className="text-[#278510] TeamB_text-shadow ">
                   Course {course.course_id}:
                 </p>
@@ -74,7 +74,7 @@ const DashboardCard = () => {
                   {course.course_title}
                 </p>
               </div>
-              <div className="relative pt-4 pb-10  px-4 text-justify lg:h-[65%] rounded-b-[2rem] rounded-t-[1rem] bg-[#87D275]">
+              <div className="relative pt-4 pb-10  px-4 text-justify h-[80%] lg:h-[65%] rounded-b-[2rem] rounded-t-[1rem] bg-[#87D275]">
                 <p className=" line-clamp-6 xl:line-clamp-6">
                   {course.course_description}
                 </p>
@@ -91,12 +91,12 @@ const DashboardCard = () => {
           );
         })}
       </div>
-      <div className="mt-10">
+      <div className="mt-10 ">
         <Footer />
       </div>
 
-      <div className="absolute transform -translate-x-1/2 -translate-y-1/2 top-[45%] left-1/2 ">
-        <div>
+      <div className="absolute transform -translate-x-1/2 -translate-y-1/2 top-[45%] left-1/2">
+        <div className="fixed inset-0 flex justify-center items-center">
           {courses.map((course, idx) => {
             const { course_id } = course;
             return (
