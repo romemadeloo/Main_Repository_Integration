@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 //february 3 modification of ui and functionalities -gem
 //2/5/2024 junite, fix UI spacing
 //2/13-15/2024 junite, API Functionalities
@@ -23,7 +24,7 @@ import { IoSearchSharp } from "react-icons/io5";
 //close icon
 import { IoMdClose } from "react-icons/io";
 
-const CourseOverviewById = () => {
+const CourseOverviewById = ({ courseTitle }) => {
   const { courses, setCourses } = useContext(CourseContext);
 
   const [showChapModal, setShowChapModal] = useState(false);
@@ -79,9 +80,15 @@ const CourseOverviewById = () => {
 
   const [searchQuery, setSearchQuery] = useState("");
 
-  // Search
-  const filteredChapter = loadByChapter.filter((chap) =>
-    chap.chapter_title.toLowerCase().includes(searchQuery.toLowerCase())
+  // // Search
+  // const filteredChapter = loadByChapter.filter((chap) =>
+  //   chap.chapter_title.toLowerCase().includes(searchQuery.toLowerCase())
+  // );
+
+  const filteredChapter = loadByChapter.filter(
+    (chap) =>
+      typeof chap.chapter_title === "string" &&
+      chap.chapter_title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   const [hideSearch, setHideSearch] = useState(false);
@@ -115,7 +122,7 @@ const CourseOverviewById = () => {
           <div className="h-full">
             <div className="w-full lg:max-w-[800px]">
               <div className="text-black  w-full lg:font-bold text-[.8rem]  lg:py-0 lg:text-[2rem]  flex justify-between items-center">
-                <p className="lg:font-bold TeamB_text-shadow">HTML</p>
+                <p className="lg:font-bold TeamB_text-shadow">{courseTitle}</p>
 
                 <div className="relative  flex items-center lg:max-w-[300px] 2xl:w-[544px] h-[35px] 2xl:h-[53px]  bg-white outline-none rounded-md border-b-[.1rem] border-black">
                   <input
