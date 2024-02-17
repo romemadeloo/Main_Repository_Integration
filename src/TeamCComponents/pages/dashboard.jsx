@@ -31,51 +31,13 @@ function TeamC_Dashboard() {
 
     fetchChapters();
   }, []);
-
-  return (
-    <Fragment>
-      {/*Navbar Component*/}
-      <Team_D_HeaderV2 />
-
-  const { isLoggedIn, handleLogout } = useAuth();
-  const [showModal, setShowModal] = useState(false);
-  const [showEditModal, setShowEditModal] = useState(false);
-
-  const handleOpenModal = () => {
-    setShowModal(true);
-    setShowEditModal(false); // Ensure that Edit Modal is closed when Profile Modal is opened
-  };
-
-  const handleCloseModal = () => {
-    setShowModal(false);
-    setShowEditModal(false); // Ensure that Edit Modal is closed when Profile Modal is closed
-  };
-
-  const handleOpenEditModal = () => {
-    setShowEditModal(true);
-    setShowModal(false); // Ensure that Profile Modal is closed when Edit Modal is opened
-  };
-
-  const handleCloseEditModal = () => {
-    setShowEditModal(false);
-  };
  
   return (
     <Fragment>
       {/* Header title */}
-      <Team_D_HeaderV2
-        openModal={handleOpenModal}
-        openEditModal={handleOpenEditModal} // Pass the openEditModal function
-        isLoggedIn={isLoggedIn}
-        handleLogout={handleLogout}
-      />
+      <Team_D_HeaderV2 />
       <div className="header p-3 h-50 d-flex align-items-center justify-content-center" id="c_dashboard_header">
-        <ProfileModal
-          showModal={showModal}
-          handleClose={handleCloseModal}
-          showEditModal={showEditModal} // Pass showEditModal to ProfileModal
-          handleEditClose={handleCloseEditModal} // Pass handleEditClose to ProfileModal
-      />
+       
       <div className="header p-3 h-50 d-flex align-items-center justify-content-center" id="c_dashboard_header">
         <div className="c_dashboard_title title p-3 text-center">
           <div className="c_dashboard_japchar jap-char">
@@ -174,4 +136,5 @@ function TeamC_Dashboard() {
     </Fragment>
   );
 }
+
 export default TeamC_Dashboard;
