@@ -14,7 +14,7 @@ const DiscussionPosts = ({ discussionTitle, authorName }) => {
         <div className="col-md-8 mb-3 mb-sm-0">
           {/* Discussion title with a link to the forum discussion */}
           <h5>
-            <Link to="/forum_discussion" className="c_forum_decor text-success">
+            <Link to="/forum_discussion_instructor" className="c_forum_decor text-success">
               Tsukiden Upcoming Events
             </Link>
           </h5>
