@@ -149,19 +149,25 @@ const CourseListCard = () => {
                       />
                     </div>
                     <div className="h-[80%] overflow-auto TeamB_no-scrollbar mr-3">
-                      {filteredCourses.map((course, idx) => {
-                        const { course_title } = course;
-                        return (
-                          <div key={idx} className="">
-                            <Link
-                              to={`/teambcourseoverview/${course.course_id}`}>
-                              <p className="text-[.9rem] pl-2 font-light TeamB_text-shadow cursor-pointer">
-                                {course_title}
-                              </p>
-                            </Link>
-                          </div>
-                        );
-                      })}
+                      {filteredCourses.length === 0 ? (
+                        <div className="mt-4 text-center text-gray-600 text-[1rem]">
+                          No results found
+                        </div>
+                      ) : (
+                        filteredCourses.map((course, idx) => {
+                          const { course_title } = course;
+                          return (
+                            <div key={idx} className="">
+                              <Link
+                                to={`/teambcourseoverview/${course.course_id}`}>
+                                <p className="text-[.9rem] pl-2 font-light TeamB_text-shadow cursor-pointer">
+                                  {course_title}
+                                </p>
+                              </Link>
+                            </div>
+                          );
+                        })
+                      )}
                     </div>
                   </div>
                 )}

@@ -20,6 +20,8 @@ const Profile = () => {
   const goBack = () => {
     navigate(-1);
   };
+  
+  
 
   //destructure profile context
   const { showPersonalInfo, showAccDetails, showPInfo, showADetails } =
