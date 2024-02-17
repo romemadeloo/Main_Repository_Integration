@@ -140,25 +140,32 @@ const CourseOverviewById = () => {
                         />
                       </div>
                       <div className="h-[80%] overflow-auto TeamB_no-scrollbar mr-3">
-                        {courses.map((course, idx) => {
-                          const { chapter } = course;
-                          return (
-                            <div key={idx} className="">
-                              {filteredChapter.map((chapter, idx) => {
-                                const { chapter_title, chapter_id } = chapter;
-                                return (
-                                  <div key={idx}>
-                                    <Link to={`/teambtopicpage/${chapter_id}`}>
-                                      <p className="text-[.9rem] pl-2 font-light TeamB_text-shadow cursor-pointer">
-                                        {chapter_title}
-                                      </p>
-                                    </Link>
-                                  </div>
-                                );
-                              })}
-                            </div>
-                          );
-                        })}
+                        {filteredChapter.length === 0 ? (
+                          <div className="mt-4 text-center text-gray-600 text-[1rem]">
+                            No results found
+                          </div>
+                        ) : (
+                          courses.map((course, idx) => {
+                            const { chapter } = course;
+                            return (
+                              <div key={idx} className="">
+                                {filteredChapter.map((chapter, idx) => {
+                                  const { chapter_title, chapter_id } = chapter;
+                                  return (
+                                    <div key={idx}>
+                                      <Link
+                                        to={`/teambtopicpage/${chapter_id}`}>
+                                        <p className="text-[.9rem] pl-2 font-light TeamB_text-shadow cursor-pointer">
+                                          {chapter_title}
+                                        </p>
+                                      </Link>
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                            );
+                          })
+                        )}
                       </div>
                     </div>
                   )}
@@ -179,8 +186,8 @@ const CourseOverviewById = () => {
                         const { chapter_id, chapter_title } = chap;
                         return (
                           <div key={idx} className="relative m-0 lg:w-full">
-                            <div className="flex items-center justify-center w-full gap-5 pb-4 m-auto">
-                              <div className="h-[1.5rem] w-[1.5rem] bg-[#126912] rounded-[100%]"></div>
+                            <div className="flex items-center justify-center w-full gap-4 pb-4 m-auto">
+                              <div className="h-[1.3rem] w-[1.3rem] bg-[#126912] rounded-[100%]"></div>
                               {/* <div className="flex"> */}
 
                               <Link
@@ -261,7 +268,7 @@ const CourseOverviewById = () => {
             </div>
           )}
 
-          <div className="w-full lg:w-[12rem] m-auto lg:flex lg:justify-center lg:items-center pt-5">
+          <div className="w-full lg:w-[12rem] m-auto lg:flex lg:justify-center lg:items-center pt-3">
             {/*add new chapter title */}
             <div className="lg:rounded-[1rem] lg:h-[50px] 2xl:h-[65px] flex items-center justify-center cursor-pointer bg-[#BCE8B1]">
               <button
