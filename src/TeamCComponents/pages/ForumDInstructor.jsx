@@ -176,8 +176,8 @@ const ForumDInstructor = () => {
       <div className="ForumDSpace">
         <div className="ForumC_ForumDcontainer">
           <Link
-            to="/ForumF"
-            id="TeamCReturnButtonFf"
+            to="/ForumFInstructor"
+            id="TeamBReturnButtonFf"
             className="btn btn-secondary"
           >
             <FaArrowLeft />
