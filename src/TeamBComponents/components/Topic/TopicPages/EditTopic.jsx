@@ -15,6 +15,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
+//import DocViewer
+import DocViewer, { DocViewerRenderers } from "@cyntler/react-doc-viewer";
 //remove close button
 const CloseButton = ({ closeToast }) => (
   <i className="material-icons" onClick={closeToast}></i>
@@ -116,6 +118,15 @@ const EditTopic = ({ topicId, courseTitle, chapterTitle }) => {
     setTopics(result.data);
   };
 
+  //store url in a variable
+  const docs = [
+    {
+      uri: "https://1drv.ms/p/s!Ar8twingElEEglnb9CvlhdSO7K_5?e=CXu06t",
+      fileType: "pptx",
+    }, // Remote file
+    // { uri: require("./example-files/pdf.pdf") }, // Local File
+  ];
+
   return (
     <>
       {/* add topic title */}
@@ -165,7 +176,8 @@ const EditTopic = ({ topicId, courseTitle, chapterTitle }) => {
           <div
             className="relative 2xl:w-[491px] 2xl:h-[282px] lg:w-[20vw] lg:h-[20vh] rounded-lg flex items-center justify-center cursor-pointer"
             onClick={toggleVideoPopup}>
-            <img src={EditTopiclink} alt="" className="" />
+            {/* <img src={EditTopiclink} alt="" className="" /> */}
+            <DocViewer documents={docs} pluginRenderers={DocViewerRenderers} />
             <span className="absolute ">
               <FaEdit className="lg:w-[30px] lg:h-[30px] 2xl:w-[59px] 2xl:h-[59px] opacity-[80%]" />
             </span>
