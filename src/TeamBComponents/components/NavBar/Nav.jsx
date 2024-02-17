@@ -48,7 +48,7 @@ const Nav = () => {
           }>
           <Link to="/teambdashboard">
             <img
-              className="  ml-10 xl:w-[171.67px] xl:h-[50px] lg:h-[5rem] xl:ml-[95px] py-3 xl:py-1"
+              className="m-auto xl:w-[171.67px] xl:h-[50px] lg:h-[5rem] xl:ml-[95px] py-3 xl:py-1"
               src={logo}
               alt="tsukidenLogo"
               width={171.67}
@@ -138,7 +138,7 @@ const Nav = () => {
                   </p>
                 </Link>
                 <Link
-                  to="/dashboard"
+                  to="/"
                   src="CgProfile"
                   onClick={showLogout}
                   className="w-full text-center ">
@@ -166,4 +166,4 @@ const Nav = () => {
 };
 
 export default Nav;
-//1/24/2024
+
