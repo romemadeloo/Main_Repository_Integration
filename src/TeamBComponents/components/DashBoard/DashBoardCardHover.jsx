@@ -46,19 +46,19 @@ const DashBoardCardHover = ({ courseId, closeDashHover }) => {
 
   return (
     <div className="">
-      <div className="flex justify-center backdrop-blur-[.1rem] w-[90vw] h-full">
-        <div className="h-[85vh] md:w-[500px] lg:w-[550px] 2xl:w-h-[672px] 2xl:w-[724px]  bg-[#BCE8B1] rounded-2xl shadow-2xl">
-          <div className="flex flex-col w-full h-full ">
-            <div className="py-2 mb-16 ">
+      <div className="flex justify-center items-center backdrop-blur-[.3rem] w-[100vw] h-[150vh]  mt-7">
+        <div className="h-[70vh] md:w-[500px] lg:w-[800px] 2xl:h-[500px] 2xl:w-[1000px]  bg-[#BCE8B1] rounded-2xl shadow-2xl mt-7"> {/*light green */}
+          <div className="flex flex-col w-full h-full px-10 pb-10">
+            <div className="pt-2 h-[50%]">
               <div
                 onClick={handleCancel}
                 className="flex justify-end w-full pt-2 pr-2 cursor-pointer">
                 <IoMdClose className="text-[1.5rem]" />
               </div>
-              <p className="text-[2rem] font-bold pl-5">{course_title}</p>
+              <p className="flex text-[2rem] font-bold pl-5 justify-center items-center">{course_title}</p>
             </div>
-            <div className="w-[100%] bg-[#87D275] h-full rounded-2xl">
-              <p className="py-3 pl-5 text-justify rounded-lg ">
+            <div className="w-[100%] bg-[#87D275] h-[50vh] overflow-auto rounded-2xl "> {/**dark green */}
+              <p className="py-3  px-3 text-justify rounded-lg ">
                 {course_description}
               </p>
             </div>
