@@ -49,10 +49,13 @@ const ForumF = () => {
   //hide and show submit form
   const [showForm, setShowForm] = useState(false);
 
-  //functionlity for hiding form when submit
+  // Functionality for hiding form when submit 2.19.24 Change the modal into 
   const hideFormHandle = () => {
     setShowForm((prev) => !prev);
     setShowDiscussionForm(false);
+    setTimeout(() => {
+      alert("Discussion posted!"); // Show alert when form is submitted
+    }, 300); // Display alert for prefer time   
   };
 
   return (
@@ -151,21 +154,6 @@ const ForumF = () => {
                   )}
                 </div>
                 <div>{showForm && <DiscussionPosts />}</div>
-              </div>
-            </div>
-          </div>
-          <div
-            className="modal fade top-right"
-            id="niceModal"
-            tabIndex="-1"
-            aria-labelledby="niceModalLabel"
-            aria-hidden="true"
-          >
-            <div className="modal-dialog">
-              <div className="c_forum_modal modal-content">
-                <div className="c_forum_modbod modal-body">
-                  Discussion posted!
-                </div>
               </div>
             </div>
           </div>
