@@ -4,7 +4,7 @@
 //2/1/2024 junite, UI modifications and functionalities, mockdata inserted and used for UI test
 //2/2/2024 junite, UI modifications add background color for edit modal
 //2/5/2024 junite, fixed UI spacing
-//2/13/2024 junite, API Functionalities
+//2/13-15/2024 junite, API Functionalities
 
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { IoAdd } from "react-icons/io5";
@@ -27,6 +27,9 @@ import { CourseContext } from "../context/CourseContext";
 //edit icon
 import { FaEdit } from "react-icons/fa";
 import CourseTitleModal from "./CourseModal/CourseTitleModal";
+
+//close icon
+import { IoMdClose } from "react-icons/io";
 
 const CourseListCard = () => {
   // *NOTE
@@ -84,10 +87,34 @@ const CourseListCard = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   //Search
-  const filteredCourses = currentCourse.filter((course) =>
+  const filteredCourses = courses.filter((course) =>
     course.course_title.toLowerCase().includes(searchQuery.toLowerCase())
   );
+  const [hideSearch, setHideSearch] = useState(false);
 
+  // Ref for the search container
+  const searchContainerRef = useRef(null);
+
+  // Other state variables...
+
+  // Hide search container when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        searchContainerRef.current &&
+        !searchContainerRef.current.contains(event.target)
+      ) {
+        setHideSearch(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [searchContainerRef]);
+  // Initialize a count for chapters within this course
+  let courseCount = 0;
   return (
     <>
       {/* 1/12/2024 UI development and Mobile responsiveness */}
@@ -101,32 +128,64 @@ const CourseListCard = () => {
               <p className=" 2xl:text-[48px] lg:font-bold TeamB_text-shadow   ">
                 Course List
               </p>
-              <div className="relative  flex items-center lg:w-[300px] 2xl:w-[544px] h-[35px] 2xl:h-[53px]  bg-white outline-none rounded-md border-b-[.1rem] border-black">
+              <div className="relative flex items-center h-full lg:w-[300px] 2xl:w-[544px] 2xl:h-[53px]  bg-white outline-none rounded-md border-b-[.1rem] border-black">
                 <input
                   type="text"
-
-
                   className="outline-none placeholder:font-thin placeholder:text-[1.2rem] font-normal pl-2 text-[1rem] lg:w-[300px] 2xl:w-[544px] h-[35px] 2xl:h-[53px] rounded-md"
                   placeholder="Search"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-
+                  onClick={() => setHideSearch(true)}
                 />
                 <div className="absolute top-1 right-2">
                   <IoSearchSharp className="text-[1.5rem]" />
                 </div>
+                {hideSearch && (
+                  <div
+                    ref={searchContainerRef}
+                    className="h-[20vh] w-[100%] absolute bg-[#fff] top-10 z-10 shadow-lg rounded-md pt-2">
+                    <div className="flex justify-end w-full cursor-pointer">
+                      <IoMdClose
+                        onClick={() => setHideSearch(false)}
+                        className="text-[1rem] mr-2"
+                      />
+                    </div>
+                    <div className="h-[80%] overflow-auto TeamB_no-scrollbar mr-3">
+                      {filteredCourses.length === 0 ? (
+                        <div className="mt-4 text-center text-gray-600 text-[1rem]">
+                          No results found
+                        </div>
+                      ) : (
+                        filteredCourses.map((course, idx) => {
+                          const { course_title } = course;
+                          return (
+                            <div key={idx} className="">
+                              <Link
+                                to={`/teambcourseoverview/${course.course_id}`}>
+                                <p className="text-[.9rem] pl-2 font-light TeamB_text-shadow cursor-pointer">
+                                  {course_title}
+                                </p>
+                              </Link>
+                            </div>
+                          );
+                        })
+                      )}
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
             <div className="flex flex-col h-full gap-y-5">
               {/* change to currentCourse for API connection */}
-              {filteredCourses.map((course, idx) => {
+              {currentCourse.map((course, idx) => {
+                courseCount++;
                 return (
                   <div key={idx} className="w-[60vw] rounded-md shadow-md">
                     <div className=" relative flex px-0 py-0 rounded-md xl:h-[115px]  ">
                       <div className="bg-[#BCE8B1] flex py-1 item-center justify-center text-center text-[.8rem] lg:text-[1rem] w-[30%] lg:w-[20%] lg:p-5 rounded-l-sm lg:rounded-l-md">
                         <p className="lg:font-medium TeamB_text-shadow h-[8vh] flex items-center  ">
                           {/* change to course_id for api connection */}
-                          PL00{course.course_id}
+                          PL00{courseCount}
                         </p>
                       </div>
 
@@ -163,8 +222,9 @@ const CourseListCard = () => {
                 );
               })}
             </div>
-
-            {searchQuery === "" || filteredCourses.length >= 4 ? (
+            {courses.length < 4 ? (
+              <></>
+            ) : (
               <Stack spacing={2} className="">
                 <Pagination
                   count={npage}
@@ -172,7 +232,7 @@ const CourseListCard = () => {
                   onChange={handleChange}
                 />
               </Stack>
-            ) : null}
+            )}
             {/* onClick={() => setShowCreateCourse((prev) => !prev)} */}
             <div className=" w-[100%]">
               <div className=" h-[8vh]  flex w-[50%] m-auto lg:w-[80%]   items-center justify-center">

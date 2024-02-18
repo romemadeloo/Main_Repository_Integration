@@ -27,7 +27,9 @@ function LoginForm() {
       
       if (result.success) {
         console.log('Login successful'); // Add this line for debugging
+
         navigate('/dashboard'); // Redirecting to the dashboard on successful login
+
       } else {
         setError('Invalid email or password. Please try again.');
       }
