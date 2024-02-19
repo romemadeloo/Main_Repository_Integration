@@ -183,7 +183,7 @@ const EditTopic = ({ topicId, courseTitle, chapterTitle }) => {
           <div className="relative 2xl:w-[491px] 2xl:h-[282px] lg:w-[20vw] lg:h-[20vh] rounded-lg flex items-center justify-center cursor-pointer ">
             {/* <img src={EditTopiclink} alt="" className="" /> */}
             <iframe
-              src={linkToPPTFile}
+              src={topic_file}
               frameborder="0"
               scrolling="no"
               className="blur-[.05rem]"></iframe>
@@ -277,7 +277,7 @@ const EditTopic = ({ topicId, courseTitle, chapterTitle }) => {
                 <IoMdClose className="text-[1.5rem]" />
               </div>
               <iframe
-                src={linkToPPTFile}
+                src={topic_file}
                 frameborder="0"
                 scrolling="no"
                 className="blur-[.01rem] lg:w-[680px] lg:h-[450px] rounded-lg"></iframe>
