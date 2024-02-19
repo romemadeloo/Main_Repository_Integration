@@ -3,6 +3,7 @@ import "../css/ffront.css";
 import { IoIosSearch } from "react-icons/io";
 import DiscussionPosts from "./DiscussionPosts";
 import Nav from "../../TeamBComponents/components/NavBar/Nav";;
+import DiscussionPostsInstructor from './DiscussionPostsInstructor';
 
 const ForumFInstructor = () => {
   const [isSearchButtonDisabled, setIsSearchButtonDisabled] = useState(true);
@@ -219,7 +220,7 @@ const ForumFInstructor = () => {
                     </div>
                   )}
                 </div>
-                <div>{showForm && <DiscussionPosts />}</div>
+                <div>{showForm && <DiscussionPostsInstructor />}</div>
               </div>
             </div>
           </div>
