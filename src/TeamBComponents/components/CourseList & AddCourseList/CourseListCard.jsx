@@ -87,8 +87,14 @@ const CourseListCard = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   //Search
-  const filteredCourses = courses.filter((course) =>
-    course.course_title.toLowerCase().includes(searchQuery.toLowerCase())
+  // const filteredCourses = courses.filter((course) =>
+  //   course.course_title.toLowerCase().includes(searchQuery.toLowerCase())
+  // );
+
+  const filteredCourses = courses.filter(
+    (course) =>
+      typeof course.course_title === "string" &&
+      course.course_title.toLowerCase().includes(searchQuery.toLowerCase())
   );
   const [hideSearch, setHideSearch] = useState(false);
 
