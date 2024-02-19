@@ -233,9 +233,10 @@ const CourseOverviewById = ({ courseTitle }) => {
 
                                         <div
                                           className="text-[1.3rem] 2xl:text-[2rem]  text-white"
-                                          onClick={() =>
-                                            handleDeleteChapter(chapter_id)
-                                          }>
+                                          // onClick={() =>
+                                          //   handleDeleteChapter(chapter_id)
+                                          // }
+                                          >
                                           <RiDeleteBinLine />
                                         </div>
                                       </div>
