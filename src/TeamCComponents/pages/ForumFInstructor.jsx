@@ -267,7 +267,7 @@ const ForumFInstructor = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
 export default ForumFInstructor;
