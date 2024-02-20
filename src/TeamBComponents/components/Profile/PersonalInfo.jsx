@@ -58,7 +58,7 @@ const PersonalInfo = ({ intructorName }) => {
       {editPersonalInfo && (
         <div className=" flex flex-col h-full gap-y-5 w-[90%] lg:h-[380px]  lg:w-[680px]  xl:h-[655px] xl:w-[948px] bg-[#BCE8B1] rounded shadow-md">
           <div className="lg:w-[95%] lg:m-auto ">
-            <div className="lg:flex lg:w-[100%] relative lg:gap-x-5 h-[100vh] lg:h-[350px] xl:h-[655px]">
+            <div className="lg:flex lg:w-[100%] relative lg:gap-x-5 h-[500px] lg:h-[350px] xl:h-[655px]">
               <div className="lg:w-[30%] flex justify-center lg:justify-start">
                 <img
                   src={profilePic}

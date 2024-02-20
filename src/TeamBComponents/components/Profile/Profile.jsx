@@ -74,7 +74,7 @@ const Profile = () => {
         </div>
         {/* 1/11/2024 fix nav */}
         <div className="flex flex-col lg:flex-row lg:justify-center lg:gap-5 lg:mt-1 ">
-          <div className=" lg:w-[20%] xl:w-[449px] xl:h-[440px] lg:h-[35vh] lg:shadow-lg lg:bg-[#BCE8B1] lg:flex lg:items-center lg:flex-col lg:rounded-md">
+          <div className=" lg:w-[20%] xl:w-[449px] xl:h-[440px] lg:h-[200px] lg:shadow-lg lg:bg-[#BCE8B1] lg:flex lg:items-center lg:flex-col lg:rounded-md">
             <p className="lg:p-5 text-[2rem] lg:text-[1.2rem] xl:text-[32px] font-bold text-[#4D4141] opacity-[80%] text-center lg:text-start">
               Profile Management
             </p>
