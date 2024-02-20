@@ -1,15 +1,14 @@
-import React from 'react'; // Importing React library
-import DashboardCard from './DashboardCard'; // Importing DashboardCard component from './DashboardCard' file
-import Nav from '../NavBar/Nav'; // Importing Nav component from '../NavBar/Nav' file
+import React from 'react';
+import DashboardCard from './DashboardCard';
+import Nav from '../NavBar/Nav';
 
-const Dashboard = () => { // Defining Dashboard functional component
-  return ( // Returning JSX
+const Dashboard = () => {
+  return (
     <div>
     <Nav/>
-     <DashboardCard/> {/* Rendering Nav component */}
+     <DashboardCard/>
     </div>
   );
 };
 
-export default Dashboard; // Exporting Dashboard component as default
-//comments by: Judes 02-19-24
+export default Dashboard;
