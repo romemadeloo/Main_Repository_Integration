@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import '../styles/Auth.css'; // Import your CSS file
-import Footer from "./Footer";
 
 function RegisterForm() {
   const [email, setEmail] = useState('');
@@ -9,76 +7,102 @@ function RegisterForm() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [userName, setUserName] = useState('');
-  const [userType, setUserType] = useState(''); // Default to 'User'
+  const [role, setRole] = useState('');
   const [error, setError] = useState('');
-  const [showError, setShowError] = useState(false); // State to control visibility of the error message
+  const [showError, setShowError] = useState(false);
+  const [verificationCodeSent, setVerificationCodeSent] = useState(false);
   const navigate = useNavigate();
+  const [passwordFocused, setPasswordFocused] = useState(false); // Track if the password field is focused
 
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
 
-  const validatePassword = (inputPassword) => {
-    const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{8,}$/;
-    const isValid = passwordRegex.test(inputPassword);
-
-    setError(isValid ? '' : 'Password must be at least 8 characters with at least 1 uppercase, 1 numeric, and 1 symbol.');
-    setShowError(!isValid); // Set to true if the password is NOT valid
-
-    return isValid;
+  const validatePassword = (password) => {
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{8,20}$/;
+    return passwordRegex.test(password);
   };
+
 
   // Function to handle changes in the user type selection
   const handleUserTypeChange = (e) => {
     setUserType(e.target.value);
+
   };
 
   // Function to handle changes in the password input
   const handlePasswordChange = (e) => {
+
     const newPassword = e.target.value;
     setPassword(newPassword);
     validatePassword(newPassword); // Validate the new password
+
   };
 
   // Function to handle focus on the password input
   const handlePasswordFocus = () => {
-    setShowError(true);
+    setPasswordFocused(true);
   };
 
   // Function to handle blur on the password input
   const handlePasswordBlur = () => {
-    setShowError(false);
+    setPasswordFocused(false);
   };
 
   // Function to handle form submission for registration
   const handleRegister = async (e) => {
     e.preventDefault();
 
-    if (!validateEmail(email) || !validatePassword(password)) {
+    if (!validateEmail(email)) {
+      setError('Please enter a valid email address.');
+      setShowError(true);
+      return;
+    }
+
+    if (!validatePassword(password)) {
+      setError('Password must be 8 to 20 characters long with at least 1 uppercase, 1 numeric, and 1 symbol.');
+      setShowError(true);
       return;
     }
 
     try {
-      // Rest of the registration logic...
+      const mappedRole = role === 'INSTRUCTOR' ? 'INSTRUCTOR' : 'STUDENT';
+      const response = await fetch('http://localhost:8085/api/v1/auth/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password, firstName, lastName, userName, role: mappedRole }),
+      });
 
       if (response.ok) {
-        // Registration successful, you can redirect or perform other actions
-        console.log('Registration successful');
-        navigate('/dashboard');
+        localStorage.setItem('email', email);
+        setVerificationCodeSent(true);
+        navigate('/verify');
       } else {
-        // Registration failed, handle errors
-        console.error('Registration failed');
-        setError('Registration failed. Please try again.');
+        const data = response.headers.get('Content-Type')?.includes('application/json') ? await response.json() : null;
+        if (response.status === 409) {
+          setError('User with this email or username already exists. Please use different credentials.');
+        } else {
+          setError(data?.message || 'Registration failed. Please try again.');
+        }
+        setShowError(true);
       }
     } catch (error) {
+
       // If an error occurs during registration, log the error and set an error message
       console.error('Error during registration:', error);
+
       setError('Registration failed. Please try again.');
+      setShowError(true);
     }
   };
 
+  const isPasswordValid = validatePassword(password);
+
   return (
+
     <>
       <form onSubmit={handleRegister} className="template-form">
         {/* Link to navigate back to the home page */}
@@ -115,14 +139,18 @@ function RegisterForm() {
           </select>
         </div>
 
+
+      <div className="group_input">
         <input
           {/* Input field for the first name */}
           type="text"
-          id="FirstName"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-          placeholder="First Name"
+          id="username"
+          value={userName}
+          onChange={(e) => setUserName(e.target.value)}
+          placeholder={`Username (${role === 'Admin' ? 'Admin' : role})`}
+          required
         />
+
         <input
           {/* Input field for the first name */}
           type="text"
@@ -178,6 +206,7 @@ function RegisterForm() {
       </form>
       <Footer />
     </>
+
   );
 }
 

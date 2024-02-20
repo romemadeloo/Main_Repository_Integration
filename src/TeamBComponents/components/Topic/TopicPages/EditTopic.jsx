@@ -1,8 +1,10 @@
+/* eslint-disable react/no-unknown-property */
+/* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 
 //2/3/2024 junite, create EditTopic UI, completed
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaSave } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
 import Footer from "../../Footer";
@@ -12,13 +14,16 @@ import EditQuizLink from "../../../../assets/TeamBassests/EditQuizLink.svg";
 //import toastify react
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
-//remove close button
+import { IoEyeSharp } from "react-icons/io5";
+//import close button icon
+import { IoMdClose } from "react-icons/io";
 const CloseButton = ({ closeToast }) => (
   <i className="material-icons" onClick={closeToast}></i>
 );
 
-const EditTopic = () => {
+const EditTopic = ({ topicId, courseTitle, chapterTitle }) => {
   const [videoInputValue, setVideoInputValue] = useState("");
   const [quizInputValue, setQuizInputValue] = useState("");
   const [isVideoPopupOpen, setVideoPopupOpen] = useState(false);
@@ -76,57 +81,127 @@ const EditTopic = () => {
       closeButton: CloseButton,
     });
   };
+
+  //state for topics
+  const [topics, setTopics] = useState({
+    topic_title: "",
+    topic_description: "",
+    topic_file: "",
+    topic_link: "",
+  });
+
+  const { topic_title, topic_description, topic_file, topic_link } = topics;
+  const handleInputChange = (e) => {
+    setTopics({ ...topics, [e.target.name]: e.target.value });
+  };
+
+  useEffect(() => {
+    loadTopics();
+  }, []);
+
+  const handleSubmit = async (e) => {
+    // Assuming your API call is successful, update the state to indicate form submission
+
+    try {
+      await axios.put(`http://localhost:8080/api/topics/${topicId}`, topics);
+      // showModal(false);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      // Handle error if the API call fails
+    }
+    addToCartNotify();
+  };
+
+  const loadTopics = async () => {
+    const result = await axios.get(
+      `http://localhost:8080/api/topics/${topicId}`
+    );
+    setTopics(result.data);
+  };
+
+  //store url in a variable
+  // const docs = [
+  //   {
+  //     uri: "https://rb.gy/wjgxf3",
+  //     fileType: "pptx",
+  //   }, // Remote file
+  //   // { uri: require("./example-files/pdf.pdf") }, // Local File
+  // ];
+
+  // const linkToPPTFile =
+  //   "https://onedrive.live.com/embed?resid=45112E029C22DBF%21345&authkey=!APHTfuIo5T7hg4w&em=2";
+
+  const [showEmbedded, setShowEmbedded] = useState(false);
+
   return (
     <>
       {/* add topic title */}
-      <div className="h-[100vh] w-full pt-2">
+      <form onSubmit={handleSubmit} className="h-[100vh] relative w-full pt-2">
         <div className="flex items-center justify-end w-full ">
-          <div
+          <button
+            type="submit"
             className="flex items-center gap-2 pr-5 cursor-pointer"
             onClick={() => addToCartNotify()}>
             <div className="text-[#4c604c] text-[1.5rem]">
               <FaSave />
             </div>
             <span className="text-[#126912] font-semibold">Save</span>
-          </div>
+          </button>
         </div>
         <div className="w-[90%] m-auto mb-5">
           <span className="lg:text-[2rem] 2xl:text-[48px] font-semibold ">
-            Course Title
+            {courseTitle}
           </span>
           <div className="flex items-center ">
             <span className="lg:text-[1.5rem] 2xl:text-[36px] pr-2 text-[#070101] text-opacity-[55%]">
-              Chapter Title:
+              {chapterTitle}:
             </span>
             <input
               type="text"
-              name=""
+              name="topic_title"
+              value={topic_title}
+              onChange={(e) => handleInputChange(e)}
               id=""
               placeholder="Topic Title"
               className="bg-[#BCE8B1] rounded-lg placeholder:text-[#626262] placeholder:pl-2 outline-none pl-2"
             />
           </div>
           <textarea
-            name=""
             id=""
             cols="30"
             rows="10"
-            placeholder=" Lorem ipsum dolor sit amet. Ut labore facere aut dolorem deleniti cum repudiandae delectus aut quam beatae aut aliquam omnis sed harum odio. Eos consectetur placeat sit itaque ipsum qui laudantium autem. Et voluptatum optio At odio amet cum enim dicta sed deleniti adipisci ut maiores perspiciatis. Aut dicta soluta qui sapiente quibusdam ut tempore facilis et ducimus provident. Hic voluptate."
+            value={topic_description}
+            name="topic_description"
+            onChange={(e) => handleInputChange(e)}
+            placeholder="Topic Description"
             className="bg-[#BCE8B1] TeamB_text-shadow resize-none lg:min-w-[100%] 2xl:h-[264px] 2xl:max-w-[1342px] lg:h-[25vh] placeholder:font-medium placeholder:text-center placeholder:p-6
               outline-none rounded-lg placeholder:text-[#070101] placeholder:text-opacity-[55%] mt-5 pl-5"
           />
         </div>
+
         <div className="relative flex w-[90%] m-auto items-center justify-center lg:gap-x-[5rem] lg:mt-[3rem]">
-          <div
-            className="relative 2xl:w-[491px] 2xl:h-[282px] lg:w-[20vw] lg:h-[20vh] rounded-lg flex items-center justify-center cursor-pointer"
-            onClick={toggleVideoPopup}>
-            <img src={EditTopiclink} alt="" className="" />
-            <span className="absolute ">
-              <FaEdit className="lg:w-[30px] lg:h-[30px] 2xl:w-[59px] 2xl:h-[59px] opacity-[80%]" />
-            </span>
+          <div className="relative 2xl:w-[491px] 2xl:h-[282px] lg:w-[20vw] lg:h-[20vh] rounded-lg flex items-center justify-center cursor-pointer bg-white">
+            {/* <img src={EditTopiclink} alt="" className="" /> */}
+            <iframe
+              src={topic_file}
+              frameborder="0"
+              scrolling="no"
+              className="blur-[.05rem]"></iframe>
+
+            <div className="absolute flex gap-x-5">
+              <span className="" onClick={toggleVideoPopup}>
+                <FaEdit className="lg:w-[30px] lg:h-[30px] 2xl:w-[59px] 2xl:h-[59px] " />
+              </span>
+              <span
+                className=""
+                onClick={() => setShowEmbedded((prev) => !prev)}>
+                <IoEyeSharp className="lg:w-[30px] lg:h-[30px] 2xl:w-[59px] 2xl:h-[59px] " />
+              </span>
+            </div>
           </div>
+
           <div
-            className="relative 2xl:w-[491px] 2xl:h-[282px] lg:w-[20vw] lg:h-[20vh] rounded-lg flex items-center justify-center cursor-pointer"
+            className="relative 2xl:w-[491px] 2xl:h-[282px] lg:w-[20vw] lg:h-[20vh] rounded-lg flex items-center justify-center cursor-pointer bg-white"
             onClick={toggleQuizPopup}>
             <img src={EditQuizLink} alt="" className="" />
             <span className="absolute ">
@@ -142,8 +217,9 @@ const EditTopic = () => {
               <p className="mb-4 text-lg font-semibold">Edit Topic Link</p>
               <input
                 type="text"
-                value={videoInputValue}
-                onChange={handleVideoInputChange}
+                name="topic_file"
+                value={topic_file}
+                onChange={(e) => handleInputChange(e)}
                 className="w-[724px] bg-[#BCE8B1] p-2 border border-gray-300 rounded-md mb-4"
                 placeholder="https://www"
               />
@@ -170,8 +246,9 @@ const EditTopic = () => {
               <p className="mb-4 text-lg font-semibold">Edit Quiz Link</p>
               <input
                 type="text"
-                value={quizInputValue}
-                onChange={handleQuizInputChange}
+                name="topic_link"
+                value={topic_link}
+                onChange={(e) => handleInputChange(e)}
                 className="w-[724px] bg-[#BCE8B1] p-2 border border-gray-300 rounded-md mb-4"
                 placeholder="https://www"
               />
@@ -190,11 +267,28 @@ const EditTopic = () => {
             </div>
           </div>
         )}
+
+        {showEmbedded && (
+          <div className="absolute top-0 z-10 w-[100%] h-full flex justify-center backdrop-blur-[.3rem]">
+            <div className="lg:w-[750px] lg:h-[520px] bg-[#BCE8B1] flex flex-col justify-center items-center rounded-lg">
+              <div
+                className="flex justify-end w-full pb-3 pr-2 cursor-pointer"
+                onClick={() => setShowEmbedded(false)}>
+                <IoMdClose className="text-[1.5rem]" />
+              </div>
+              <iframe
+                src={topic_file}
+                frameborder="0"
+                scrolling="no"
+                className="blur-[.01rem] lg:w-[680px] lg:h-[450px] rounded-lg"></iframe>
+            </div>
+          </div>
+        )}
         <ToastContainer className="tcenter" closeButton={CloseButton} />
         <div className="">
           <Footer />
         </div>
-      </div>
+      </form>
     </>
   );
 };

@@ -1,20 +1,124 @@
-import React, { useState } from "react";
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from './AuthContext';
 import "../styles/Auth.css";
 
 
-function ProfileEditForm() {
-  const [email, setEmail] = useState('');
-  const [username, setUserName] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-
+function ProfileEditForm({ handleClose }) {
   const navigate = useNavigate();
+  const { handleLogout } = useAuth();
+  const [imagePreview, setImagePreview] = useState(null);
+  const [userData, setUserData] = useState(null);
+  const fileInputRef = useRef(null);
+  const [updateData, setUpdateData] = useState({
+    firstName: '',
+    lastName: '',
+    userName: '',
+    profilePicture: null, // Add profilePicture to state
+  });
 
-  const handleUpdate = async (e) => {
-    e.preventDefault();
+  useEffect(() => {
+    // Fetch user data from your backend API
+    const fetchUserData = async () => {
+        try {
+            // Get user ID from local storage
+            const userId = localStorage.getItem('userId');
 
+            if (!userId) {
+                console.error('User ID not found in local storage');
+                // Handle this case, for example, redirect the user to login
+                return;
+            }
+
+            const response = await fetch(`http://localhost:8085/api/v1/auth/users/${userId}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (response.ok) {
+                const userData = await response.json();
+                setUserData(userData);
+
+                // Set the initial state of updateData with the existing user data
+                setUpdateData({
+                    firstName: userData.firstName,
+                    lastName: userData.lastName,
+                    userName: userData.userName,
+                    // Add more fields as needed
+                    profilePicture: userData.profilePicture,
+                });
+
+                // If the profile picture is in binary format, convert it to a data URL
+                if (userData.profilePicture) {
+                    const base64 = btoa(String.fromCharCode(...new Uint8Array(userData.profilePicture)));
+                    const dataUrl = `data:image/avif;base64,${base64}`;
+                    setUpdateData((prevData) => ({
+                        ...prevData,
+                        profilePicture: dataUrl,
+                    }));
+                }
+            } else {
+                console.error('Failed to fetch user data', response.status, response.statusText);
+                // Handle this error as needed
+            }
+        } catch (error) {
+            console.error('Unexpected error during user data fetch', error);
+            // Handle unexpected errors
+        }
+    };
+
+    fetchUserData();
+}, []);
+
+
+const handleInputChange = (e, isFile = false) => {
+  const { name, value, files } = e.target;
+
+  if (isFile) {
+      const selectedFile = files[0];
+
+      // Check if the selected file size exceeds the allowed limit (5 MB)
+      const maxFileSize = 5 * 1024 * 1024; // 5 MB in bytes
+
+      if (selectedFile && selectedFile.size > maxFileSize) {
+          // Show an error message or handle it as needed
+          console.error('File size exceeds the allowed limit (5 MB)');
+          return;
+      }
+
+      // Update the profile picture state
+      setUpdateData((prevData) => ({
+          ...prevData,
+          [name]: selectedFile,
+      }));
+
+      // Generate image preview
+      const reader = new FileReader();
+      reader.onloadend = () => {
+          setImagePreview(reader.result);
+      };
+
+      if (selectedFile) {
+          reader.readAsDataURL(selectedFile);
+      } else {
+          setImagePreview(null);
+      }
+  } else {
+      setUpdateData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+  }
+};
+  
+
+  const handleProfilePictureUpload = async () => {
     try {
+
       const response = await fetch(`http://localhost:8085/api/v1/update/${email}`, {
         method: 'PUT', // Using the PUT method for updating data
         headers: {
@@ -76,6 +180,7 @@ if (response.ok) {
           {/* Form for updating profile data */}
             <form onSubmit={handleUpdate} className="Prof2-info_data">
              {/* Container for each data field */}
+
               <div className="Prof2-data">
                 {/* Label for the first name input field */}
                 <label htmlFor="firstName">First Name</label>
@@ -84,12 +189,13 @@ if (response.ok) {
                   type="text"
                   id="firstName"
                   name="firstName"
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
+                  value={updateData.firstName}
+                  onChange={handleInputChange}
                   placeholder="Enter your first name"
                 />
                 {/* Label for the email input field */}
                 <label htmlFor="email">Email</label>
+
                 {/* Input field for entering the email */}
                 <input
                   type="email"
@@ -99,6 +205,7 @@ if (response.ok) {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
                 />
+
               </div>
               <div className="Prof2-data">
                 {/* Label for the last name input field */}
@@ -108,8 +215,8 @@ if (response.ok) {
                   type="text"
                   id="lastName"
                   name="lastName"
-                  value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
+                  value={updateData.lastName}
+                  onChange={handleInputChange}
                   placeholder="Enter your last name"
                 />
                 {/* Label for the username input field */}
@@ -117,30 +224,32 @@ if (response.ok) {
                 {/* Input field for entering the username */}
                 <input
                   type="text"
+
                   id="username"
                   name="usermame"  {/* Name attribute for the username */}
                   value={username}
                   onChange={(e) => setUserName(e.target.value)} {/* Update the username state */}
+
                   placeholder="Enter your username"
                 />
-                
-              
+              </div>
+              {/* Update and Cancel buttons */}
+              <div className="Prof2-buttons">
+                <button className="submit-button">
+                  Update
+                </button>
+                <Link to="#">
+                  <button onClick={handleCancel} className="cancel-button">Cancel</button>
+                </Link>
               </div>
             </form>
           </div>
-          {/* Update and Cancel buttons */}
-          <div className="Prof2-buttons">
-          <button className="submit-button" onClick={handleUpdate}>
-              Update
-            </button>
-            <Link to="/profile">
-            <button className="cancel-button">Cancel</button>
-            </Link>
-          </div>
-        </div>
+        )}
       </div>
+
     );
   }
   
   export default ProfileEditForm;
   
+

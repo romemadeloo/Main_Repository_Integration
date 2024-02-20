@@ -1,6 +1,6 @@
 //  1/30/2024 fix margin top for profile container
 
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import PersonalInfo from "./PersonalInfo";
 import AccDetails from "./AccDetails";
 
@@ -12,6 +12,7 @@ import Footer from "../Footer";
 import { ProfileContext } from "../context/ProfileContext";
 import PersonalEdit from "./PersonalEdit";
 import Nav from "../NavBar/Nav";
+import axios from "axios";
 
 const Profile = () => {
   //use navigate to back
@@ -21,10 +22,44 @@ const Profile = () => {
     navigate(-1);
   };
 
+  //2-17-24
+  const [instructors, setInstructors] = useState([]);
+
+  const [instructor, setInstructor] = useState({
+    instructor_first_name: "",
+    instructor_last_name: "",
+    instructor_contact_number: "",
+    instructor_email: "",
+  });
+
+  useEffect(() => {
+    const loadInstructors = async () => {
+      const result = await axios.get("http://localhost:8080/api/instructors");
+      setInstructors(result.data);
+    };
+
+    loadInstructors();
+  }, []);
+  console.log(instructors);
+
+  // const handleInputChange = (e) => {
+  //   setInstructor({ ...instructor, [e.target.name]: e.target.value });
+  // };
+
+  // const {
+  //   instructor_first_name,
+  //   instructor_last_name,
+  //   instructor_email,
+  //   instructor_contact_number,
+  // } = instructor;
+
+  //2-17-24
+  
+  
+
   //destructure profile context
   const { showPersonalInfo, showAccDetails, showPInfo, showADetails } =
     useContext(ProfileContext);
-
   return (
     <>
       <Nav />
@@ -32,12 +67,12 @@ const Profile = () => {
         <div>
           {/* Use react icon instead of word back */}
           <div
-            className="flex items-center mt-3 cursor-pointer w-[10%]"
+            className="flex items-center mt-3 cursor-pointer px-5 w-[10%]"
             onClick={goBack}>
             <span className="text-[2.5rem]">
               <IoArrowBackCircle />
             </span>
-            <span className="text-[1rem] pl-1">Back</span>
+           
           </div>
         </div>
         {/* 1/11/2024 fix nav */}
@@ -73,7 +108,16 @@ const Profile = () => {
           </div>
           <div>
             {/* Place your Component here */}
-            {showPersonalInfo && <PersonalInfo />}
+            {showPersonalInfo && <PersonalInfo /> /* 2-17-24<div>
+              {instructor.map((inst, idx) => {
+                const {instructor_name} = inst
+                return (
+                  <div key={idx}>
+                    <PersonalInfo instructorName={instructor_name} />
+                  </div>
+                );
+              })}
+            </div> 2-17-24*/}
             {showAccDetails && <AccDetails />}
             {/* /* Place AccDetails Component here */}
             {/* <AccDetails/> */}

@@ -1,29 +1,47 @@
 /* eslint-disable react/no-unknown-property */
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useNavigation} from 'react-router-dom';
 import "../styles/Auth.css";
 import { useAuth } from "./AuthContext";
+import { Modal } from 'react-bootstrap';
+import ProfileEditForm from './ProfileEditForm';
 
 
-function Profile() {
+// Function to get user image type
+function getUserImageType(profilePicture) {
+  // Check if profilePicture is defined and not null
+  if (profilePicture && profilePicture.startsWith) {
+    // Check the image type based on the data
+    const isPNG = profilePicture.startsWith('data:image/png;base64,');
+    const isJPEG = profilePicture.startsWith('data:image/jpeg;base64,');
+    
+    if (isPNG) {
+      return 'png';
+    } else if (isJPEG) {
+      return 'jpeg';
+    } else {
+      // Return a default type or handle accordingly
+      return 'unknown'; // You can change this to 'jpeg' or handle as needed
+    }
+  } else {
+    // Return a default type or handle accordingly
+    return 'unknown'; // You can change this to 'jpeg' or handle as needed
+  }
+}
 
-  const navigate = useNavigate();
 
-
-  const goBack = () => {
-    navigate(-1);
-  };
+const Profile  = ({ handleClose, handleEditClick, handlePasswordChangeClick }) => {
 
   const { isLoggedIn, handleLogout } = useAuth();
   const [userData, setUserData] = useState({});
-  const [email, setEmail] = useState('');
-  const [userName, setUserName] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+  const [updateData, setUpdateData] = useState({});
+  const navigate = useNavigate(); //
+
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
+
         // Introduce a delay to ensure asynchronous operations have completed
         setTimeout(async () => {
           const authToken = localStorage.getItem('yourAuthTokenKey');
@@ -50,19 +68,26 @@ function Profile() {
           } else {
             // Log an error message if fetching user data fails
             console.error('Failed to fetch user data');
+
           }
-        }, 100); // Adjust the delay as needed
+        } else {
+          console.error('Failed to fetch user data', response.status, response.statusText);
+        }
       } catch (error) {
+
          // Log an error message if an unexpected error occurs during the fetch operation
         console.error('Error during user data fetch:', error);
+
       }
     };
-
+  
     fetchUserData();
   }, []);
 
+    
   return (
     <>
+
     <div className="home-header">
   {/* Link component wraps the logo image and triggers goBack function when clicked */}
   <Link onClick={goBack}>
@@ -113,12 +138,13 @@ function Profile() {
           {/* Display email */}
           <h4>Email:</h4>
           <p>{userData.email}</p>
+
             </div>
           </div>
-        </div>
-        <div className="Pro1-data">
+          <div className="Pro1-data">
           {/* Add content for earned badges */}
         </div>
+
         <div className="Prof1-buttons">
           {/* Button to navigate to the update profile page */}
           <Link to="/update">
@@ -128,11 +154,11 @@ function Profile() {
           <Link to="/change">
             <button className="Prof1-ChangeButton">Change Password</button>
           </Link>
+
         </div>
       </div>
-    </div>
-  </>
-);
+    </>
+  );
 }
 
 export default Profile;

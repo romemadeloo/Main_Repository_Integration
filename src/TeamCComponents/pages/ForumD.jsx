@@ -8,32 +8,81 @@ import { Link } from "react-router-dom";
 import Team_D_HeaderV2 from "../../TeamDComponents/Team_D_HeaderV2";
 
 const ForumD = () => {
-  const [likeCount, setLikeCount] = useState(0);
-  const [dislikeCount, setDislikeCount] = useState(0);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [replying, setReplying] = useState(false);
-  const [replyContent, setReplyContent] = useState("");
-  const [replies, setReplies] = useState([]);
+  // const [likeCount, setLikeCount] = useState(0);
+  // const [dislikeCount, setDislikeCount] = useState(0);
+  const [likeCount, setLikeCount] = useState(0); //2.12.24
+  const [dislikeCount, setDislikeCount] = useState(0); //2.12.24
+  const [liked, setLiked] = useState(false); //2.12.24
+  const [disliked, setDisliked] = useState(false); //2.12.24
+  const [replying, setReplying] = useState(false); //2.8.24
+  const [replyContent, setReplyContent] = useState(""); //2.8.24
+  const [replies, setReplies] = useState([]); //2.8.24
+  // State variables for managing dropdowns in reply containers 2.15.24
+  const [dropdownOpen, setDropdownOpen] = useState({});
+  const [replyDropdownOpen, setReplyDropdownOpen] = useState({});
   //const [editing, setEditing] = useState(false);
   //const [editedContent, setEditedContent] = useState("");
   //const [textareaRows, setTextareaRows] = useState(3); // Adjust the number of rows based on content length
 
-  const handleReaction = (type) => {
-    if (type === "like") {
-      setLikeCount((prevLikeCount) => prevLikeCount + 1);
-    } else if (type === "dislike") {
-      setDislikeCount((prevDislikeCount) => prevDislikeCount + 1);
+  // const handleReaction = (type) => {
+  //   if (type === "like") {
+  //     setLikeCount((prevLikeCount) => prevLikeCount + 1);
+  //   } else if (type === "dislike") {
+  //     setDislikeCount((prevDislikeCount) => prevDislikeCount + 1);
+  //   }
+  // };
+
+  //try
+
+  const handleLike = () => {
+    if (!liked) {
+      setLikeCount(likeCount + 1);
+      setLiked(true);
+
+      // If the dislike button was previously clicked, reset its counter and remove the 'disliked' state
+      if (disliked) {
+        setDisliked(false);
+        setDislikeCount(0);
+      }
+    } else {
+      setLikeCount(likeCount - 1);
+      setLiked(false);
     }
   };
+
+  const handleDislike = () => {
+    if (!disliked) {
+      setDislikeCount(dislikeCount + 1);
+      setDisliked(true);
+
+      // If the like button was previously clicked, reset its counter and remove the 'liked' state
+      if (liked) {
+        setLiked(false);
+        setLikeCount(0);
+      }
+    } else {
+      setDislikeCount(dislikeCount - 1);
+      setDisliked(false);
+    }
+  };
+  //try
 
   // Function to update the post time dynamically
   useEffect(() => {
     const updatePostTime = () => {
-      var postTimeElement = document.getElementById('post-time');
+      var postTimeElement = document.getElementById("post-time");
       var currentDate = new Date();
-      var formattedDate = currentDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-      var formattedTime = currentDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
-      var updatedTime = formattedDate + ' - ' + formattedTime;
+      var formattedDate = currentDate.toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      });
+      var formattedTime = currentDate.toLocaleTimeString("en-US", {
+        hour: "numeric",
+        minute: "numeric",
+        hour12: true,
+      });
+      var updatedTime = formattedDate + " - " + formattedTime;
       postTimeElement.innerText = updatedTime;
     };
 
@@ -49,10 +98,6 @@ const ForumD = () => {
     //document.getElementById("discussionTitle").innerText = title;
     //document.getElementById("discussionContent").innerText = content;
   }, []);
-
-  const toggleDropdown = () => {
-    setDropdownOpen(!dropdownOpen);
-  }; //2.7.24
 
   const handleEditClick = () => {
     // Close the dropdown
@@ -102,12 +147,19 @@ const ForumD = () => {
     }
   }; //2.7.24
 
+  const handleDeleteClicktwo = (replyId) => {
+    // Filter out the reply with the matching id
+    const updatedReplies = replies.filter((reply) => reply.id !== replyId);
+    // Update the state with the filtered replies
+    setReplies(updatedReplies);
+  };
+
   const handleReplyClick = () => {
     setReplying(!replying);
   };
   const handleReplyContentChange = (e) => {
     setReplyContent(e.target.value);
-  };
+  }; //2.8.24
 
   const handlePostReply = () => {
     if (replyContent.trim() !== "") {
@@ -120,24 +172,48 @@ const ForumD = () => {
       setReplyContent("");
       setReplying(false);
     }
+  }; //2.8.24
+
+  // Function to toggle dropdown in main post
+  const toggleDropdown = () => {
+    setDropdownOpen((prevState) => !prevState);
   };
+
+  // Function to toggle dropdown in reply container
+  const toggleReplyDropdown = (replyId) => {
+    setReplyDropdownOpen((prevState) => ({
+      ...prevState,
+      [replyId]: !prevState[replyId],
+    }));
+  };
+
+  useEffect(() => {
+    // Set dropdowns to closed initially
+    setDropdownOpen(false);
+    setReplyDropdownOpen({});
+  }, []);
 
   return (
     <>
       <Team_D_HeaderV2 />
       <div className="ForumDSpace">
+        <Link
+          to="/ForumF"
+          id="TeamCReturnButtonFf"
+          className="btn btn-secondary"
+        >
+          <FaArrowLeft />
+        </Link>
         <div className="ForumC_ForumDcontainer">
-          <Link to="/ForumF" id="TeamCReturnButtonFf" className="btn btn-secondary">
-            <FaArrowLeft />
-          </Link>
           <div className="TeamCForumC_Forumcard">
             <div className="TeamCCardBody">
               <div className="TeamCFlex d-flex justify-content-between align-items-center mb-2">
                 <div>
                   <h6 className="nameUSerfw-bold text-success mb-1">@Luigi</h6>
-                  <p id="post-time" className="TeamC_ForumD text-muted small mb-0">
-                    {new Date().toLocaleString()}
-                  </p>
+                  <p
+                    id="post-time"
+                    className="TeamC_ForumD text-muted small mb-0"
+                  ></p>
                 </div>
                 <div className="TeamForum_Drop dropdown position-absolute top-0 end-0 three-dots">
                   <button
@@ -152,12 +228,20 @@ const ForumD = () => {
                     aria-labelledby="dropdownMenuLink"
                   >
                     <li>
-                      <Link to="#" className="dropdown-item" onClick={handleEditClick}>
+                      <Link
+                        to="#"
+                        className="dropdown-item"
+                        onClick={handleEditClick}
+                      >
                         Edit
                       </Link>
                     </li>
                     <li>
-                      <Link to="#" className="dropdown-item" onClick={handleDeleteClick}>
+                      <Link
+                        to="#"
+                        className="dropdown-item"
+                        onClick={handleDeleteClick}
+                      >
                         Delete
                       </Link>
                     </li>
@@ -168,26 +252,29 @@ const ForumD = () => {
                 Tsukiden Upcoming Events
               </h2>
               <p id="discussionContent" className="TeamC_ForumD mb-4 pb-2">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+                quam velit, vulputate eu pharetra nec, mattis ac neque.
               </p>
               <div className="TeamCFlex d-flex justify-content-start">
-                <a
-                  href="#!"
-                  className="TeamCFlex d-flex align-items-center me-3 reaction-button"
-                  onClick={() => handleReaction("like")}
+                <div
+                  onClick={handleLike}
+                  className="TeamCFlex d-flex align-items-center me-3"
                 >
                   <AiOutlineLike />
-                  <span className="reaction-counter">{likeCount}</span>
-                </a>
-                <a
-                  href="#!"
-                  className="TeamCFlex d-flex align-items-center me-3 reaction-button"
-                  onClick={() => handleReaction("dislike")}
+                  <div className="like-counter">{likeCount}</div>
+                </div>
+                <div
+                  onClick={handleDislike}
+                  className="TeamCFlex d-flex align-items-center me-3"
                 >
                   <AiOutlineDislike />
-                  <span className="reaction-counter">{dislikeCount}</span>
-                </a>
-                <a href="#!" className="TeamCFlex d-flex align-items-center me-3 reply-button" onClick={handleReplyClick}>
+                  <div className="dislike-counter">{dislikeCount}</div>
+                </div>
+                <a
+                  href="#!"
+                  className="TeamCFlex d-flex align-items-center me-3 reply-button"
+                  onClick={handleReplyClick}
+                >
                   <MdOutlineReply />
                   Reply
                 </a>
@@ -212,84 +299,50 @@ const ForumD = () => {
               )}
               <div id="commentsSection" className="mt-3">
                 {replies.map((reply) => (
-  <div key={reply.id} className="TeamCForumC_Forumcard">
-    <div className="TeamCCardBody">
-      <div className="TeamCFlex d-flex justify-content-between align-items-center mb-2">
-        <div>
-          <h6 className="nameUSerfw-bold text-success mb-1">@User</h6>
-          <p className="TeamC_ForumD text-muted small mb-0">{reply.time}</p>
-        </div>
-        <div className="TeamForum_Drop dropdown position-absolute top-0 end-0 three-dots">
-          <button
-            className="TeamC_forum_link link-muted"
-            onClick={() => handleDropdownClick(reply.id)} // Pass reply.id to handleDropdownClick
-            aria-expanded={dropdownOpen === reply.id ? "true" : "false"} // Check if dropdownOpen matches reply.id
-          >
-            <BsThreeDots className="TeamCdots bx bx-dots-horizontal-rounded" />
-          </button>
-          {/* Dropdown menu for each reply */}
-          <ul
-            className={`dropdown-menu${dropdownOpen === reply.id ? " show" : ""}`} // Show dropdown if dropdownOpen matches reply.id
-            aria-labelledby="dropdownMenuLink"
-          >
-            <li>
-              <Link to="#" className="dropdown-item" onClick={() => handleEditClick(reply.id)}> {/* Pass reply.id to handleEditClick */}
-                Edit
-              </Link>
-            </li>
-            <li>
-              <Link to="#" className="dropdown-item" onClick={() => handleDeleteClick(reply.id)}> {/* Pass reply.id to handleDeleteClick */}
-                Delete
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <p className="TeamC_ForumD mb-4 pb-2">{reply.content}</p>
-      {/* Reaction buttons for each reply */}
-      <div className="TeamCFlex d-flex justify-content-start">
-        <a
-          href="#!"
-          className="TeamCFlex d-flex align-items-center me-3 reaction-button"
-          onClick={() => handleReaction("like")}
-        >
-          <AiOutlineLike />
-          <span className="reaction-counter">{likeCount}</span>
-        </a>
-        <a
-          href="#!"
-          className="TeamCFlex d-flex align-items-center me-3 reaction-button"
-          onClick={() => handleReaction("dislike")}
-        >
-          <AiOutlineDislike />
-          <span className="reaction-counter">{dislikeCount}</span>
-        </a>
-        <a href="#!" className="TeamCFlex d-flex align-items-center me-3 reply-button" onClick={() => handleReplyClick(reply.id)}> {/* Pass reply.id to handleReplyClick */}
-          <MdOutlineReply />
-          Reply
-        </a>
-      </div>
-      {/* Reply section for each reply */}
-      <div className="mt-3">
-        <textarea
-          id={`replyTextArea_${reply.id}`}
-          className="TeamC_controlForm form-control"
-          rows="3"
-          placeholder="Write your reply..."
-          value={replyContent[reply.id] || ""}
-          onChange={(e) => handleReplyContentChange(reply.id, e)}
-        ></textarea>
-        <button
-          className="TeamCForumBtnPrime btn btn-primary mt-2"
-          onClick={() => handlePostReply(reply.id)} // Pass reply.id to handlePostReply
-        >
-          Post
-        </button>
-      </div>
-    </div>
-  </div>
-))}
+                  <div key={reply.id} className="reply-container">
+                    <div className="TeamC_inside">
+                      <div className="TeamForum_Droptwo dropdown position-absolute top-0 end-0 three-dots">
+                        <button
+                          className="TeamC_forum_linktwo"
+                          onClick={() => toggleReplyDropdown(reply.id)}
+                          aria-expanded={
+                            replyDropdownOpen[reply.id] ? "true" : "false"
+                          }
+                        >
+                          <BsThreeDots className="TeamCdotstwo bx bx-dots-horizontal-rounded" />
+                        </button>
+                        <ul
+                          className={`dropdown-menu${
+                            replyDropdownOpen[reply.id] ? " show" : ""
+                          }`}
+                          aria-labelledby="dropdownMenuLink"
+                        >
+                          <li>
+                            <Link
+                              to="#"
+                              className="dropdown-item"
+                              onClick={() => handleDeleteClicktwo(reply.id)}
+                            >
+                              Delete
+                            </Link>
+                          </li>
+                        </ul>
+                      </div>
+                      <div className="TeamCFlex d-flex justify-content-between align-items-center mb-2">
+                        <div>
+                          <h6 className="nameUSerfw-bold text-success mb-1">
+                            @User
+                          </h6>
 
+                          <p className="TeamC_ForumD text-muted small mb-0">
+                            {reply.time}
+                          </p>
+                        </div>
+                      </div>
+                      <p className="TeamC_ForumD mb-0 pb-1">{reply.content}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

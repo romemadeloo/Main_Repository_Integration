@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/no-unknown-property */
 //january 12 2024
 import axios from "axios";
@@ -9,7 +10,7 @@ import profilePic from "../../../assets/TeamBassests/Registration.png";
 import Footer from "../Footer";
 import PersonalEdit from "./PersonalEdit";
 
-const PersonalInfo = () => {
+const PersonalInfo = ({ intructorName }) => {
   const [instructors, setInstructors] = useState([]);
 
   const [instructor, setInstructor] = useState({
@@ -21,7 +22,7 @@ const PersonalInfo = () => {
 
   useEffect(() => {
     const loadInstructors = async () => {
-      const result = await axios.get("http://localhost:8080/instructors");
+      const result = await axios.get("http://localhost:8080/api/instructors");
       setInstructors(result.data);
     };
 
@@ -70,7 +71,7 @@ const PersonalInfo = () => {
                   <label
                     htmlFor="firstName"
                     className=" text-[#4D4141] text-opacity-[53%] absolute z-10 top-0 left-2 text-[.8rem] xl:text-[16px]  ">
-                    First Name <span className="text-[#FF2626]">*</span>
+                    First Name
                   </label>
 
                   {/* FIRSTNAME INPUT */}
@@ -81,8 +82,7 @@ const PersonalInfo = () => {
                     type="text"
                     name="instructor_first_name" //should be edited
                     value={instructor_first_name}
-                    onChange={(e) => handleInputChange(e)}
-                    maxLength={50}
+
                     disabled
                   />
                 </div>
@@ -90,7 +90,7 @@ const PersonalInfo = () => {
                   <label
                     htmlFor="lastName"
                     className=" text-[#4D4141] text-opacity-[53%] absolute z-10 top-0 left-2 text-[.8rem] xl:text-[16px] ">
-                    Last Name <span className="text-[#FF2626]">*</span>
+                    Last Name
                   </label>
 
                   {/* LASTNAME INPUT */}
@@ -101,7 +101,6 @@ const PersonalInfo = () => {
                     type="text"
                     name="instructor_last_name" //edit
                     value={instructor_last_name}
-                    onChange={(e) => handleInputChange(e)}
                     disabled
                   />
                   <div className="mt-3 lg:flex lg:gap-y-7 lg:flex-col xl:gap-y-10">
@@ -120,7 +119,6 @@ const PersonalInfo = () => {
                         type="number"
                         name="instructor_username" //edit
                         value={instructor_email}
-                        onChange={(e) => handleInputChange(e)}
                         disabled
                       />
                     </div>
@@ -128,7 +126,7 @@ const PersonalInfo = () => {
                       <label
                         htmlFor="Email"
                         className=" text-[#4D4141] text-opacity-[53%] absolute   z-10 top-0 left-2 text-[.8rem] xl:text-[16px]">
-                        Contact Number <span className="text-[#FF2626]">*</span>
+                        Contact Number
                       </label>
                       {/* CONTACT NUMBER INPUT */}
 
@@ -139,7 +137,6 @@ const PersonalInfo = () => {
                         id="ContactNumber"
                         name="instructor_contact_number" //edit
                         value={instructor_contact_number}
-                        onChange={(e) => handleInputChange(e)}
                         disabled
                       />
                       <div />
@@ -159,7 +156,7 @@ const PersonalInfo = () => {
           </div>
         </div>
       )}
-      {updatePersonalInfo && <PersonalEdit />}
+      {updatePersonalInfo && <PersonalEdit hideUpdatePersonalInfo={showEdit} />}
     </>
   );
 };
@@ -167,3 +164,4 @@ const PersonalInfo = () => {
 export default PersonalInfo;
 
 //1/19/2024
+

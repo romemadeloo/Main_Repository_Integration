@@ -1,12 +1,22 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import "../styles/Auth.css";
-// Import a CSS file for styling
+
 
 function VerificationForm({ onVerificationForm }) {
   // State for storing the verification code
+
   const [verification, setVerification] = useState('');
+  const [verificationStatus, setVerificationStatus] = useState(null);
+  const [resendStatus, setResendStatus] = useState(null);
+  const [showResendButton, setShowResendButton] = useState(true);
+  const [emailFromRegistration, setEmailFromRegistration] = useState('');
+  const [resending, setResending] = useState(false);
+  const [codeExpired, setCodeExpired] = useState(false);
+  const [isVerified, setIsVerified] = useState(false);
+  const [timeDifference, setTimeDifference] = useState(null);
+
 
   // Function to handle form submission
   const handleFormSubmit = (e) => {
@@ -16,10 +26,12 @@ function VerificationForm({ onVerificationForm }) {
     // Log the verification code for debugging purposes
     console.log('Verification code submitted:', verification);
     // You can add further logic or redirection if needed
+
   };
 
   return (
     <div className="verification-forms-container">
+
        {/* Form for entering the verification code */}
       <form className="template-form" onSubmit={handleFormSubmit}>
          {/* Link to navigate back */}
@@ -54,8 +66,10 @@ function VerificationForm({ onVerificationForm }) {
         </div>
       </form>
 
+
       <div className="verification-panels-container">
-        {/* Any additional content you want to include */}
+        {verificationStatus && <p>{verificationStatus}</p>}
+        {showResendButton && resendStatus && <p>{resendStatus}</p>}
       </div>
     </div>
   );
