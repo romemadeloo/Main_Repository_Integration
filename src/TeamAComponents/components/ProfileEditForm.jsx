@@ -279,7 +279,7 @@ const handleInputChange = (e, isFile = false) => {
               </div>
               {/* Update and Cancel buttons */}
               <div className="Prof2-buttons">
-                <button className="submit-button" type="submit">
+                <button className="submit-button">
                   Update
                 </button>
                 <Link to="#">
