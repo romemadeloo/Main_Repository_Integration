@@ -1,21 +1,29 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-
 import axios from "axios";
 
 function ChapterList() {
     const [chapters, setChapters] = useState([]);
+    const { id } = useParams(); // Destructure id from useParams
 
     useEffect(() => {
         const loadChapters = async () => {
-            const result = await axios.get("http://localhost:8080/chapter");
-            setChapters(result.data);
+            try {
+                const result = await axios.get(`http://localhost:8080/chapter/${id}`);
+                setChapters(result.data);
+            } catch (error) {
+                console.error("Error loading chapters:", error);
+                // Handle error (e.g., set an error state or display an error message)
+            }
         }
-        loadChapters();
-    }, []);
-
+        if (id) { // Check if id is defined before calling loadChapters
+            loadChapters();
+        }
+    }, [id]);
+    
+console.log(chapters)
     return (
         <>
             {/* Back button */}
@@ -33,7 +41,7 @@ function ChapterList() {
             <div className="container mt-4 mx-auto">
                 <h2 className="text-left mb-4" style={{ fontWeight: 'bold', fontSize: '2rem' }}>TITLE GOES HERE</h2>
                 <hr />
-                {chapters.map((chapter, index) => (
+                {Array.isArray(chapters) && chapters.map((chapter, index) => (
                     <div className="d-flex align-items-center" key={index}>
                         <div className="c_chapter_cardmain card flex-grow-1" style={{
                             willChange: 'filter',
@@ -43,7 +51,7 @@ function ChapterList() {
                                 <div className="card-body d-flex c_chapter_cardbody" style={{
                                     backgroundColor: '#126912', borderRadius: '1rem',
                                 }}>
-                                    {chapter.chapterTitle}
+                                    {chapter.courseTitle}
                                 </div>
                             </Link>
                         </div>

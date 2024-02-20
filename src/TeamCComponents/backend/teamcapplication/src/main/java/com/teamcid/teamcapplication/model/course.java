@@ -7,20 +7,20 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="chapter")
-public class chapter {
+@Table(name="course")
+public class course {
 
     @Id
     @GeneratedValue
 
-    @Column(name = "chapterid")     
+    @Column(name = "course_id")     
     private int chapterId;
 
-    @Column(name = "chapter_title")
+    @Column(name = "course_title")
     private String chapterTitle;
 
-    @Column(name = "course_id")
-    private String courseId;
+    @Column(name = "course_description")
+    private String chapterDescription;
 
     public int getChapterId() {
         return this.chapterId;
@@ -38,12 +38,13 @@ public class chapter {
         this.chapterTitle = chapterTitle;
     }
 
-    public String getCourseId() {
-        return this.courseId;
+    public String getChapterDescription() {
+        return this.chapterDescription;
     }
 
-    public void setCourseId(String courseId) {
-        this.courseId = courseId;
+    public void setChapterDescription(String chapterDescription) {
+        this.chapterDescription = chapterDescription;
     }
+
 
 }

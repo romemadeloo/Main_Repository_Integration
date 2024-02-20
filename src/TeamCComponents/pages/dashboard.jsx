@@ -22,7 +22,7 @@ function TeamC_Dashboard() {
   useEffect(() => {
     const fetchChapters = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/chapter");
+        const response = await axios.get("http://localhost:8080/course");
         setChapters(response.data);
       } catch (error) {
         console.error("Error fetching chapters:", error);
