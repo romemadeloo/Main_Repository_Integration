@@ -1,8 +1,8 @@
+// Source code is decompiled from a .class file using FernFlower decompiler.
 package com.teamcid.teamcapplication.repository;
 
-import org.springframework.data.repository.CrudRepository;
 import com.teamcid.teamcapplication.model.chapter;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface chapterRepository extends CrudRepository<chapter, Integer> {
-    chapter findById(int id); // or findById(Integer id);
+public interface chapterRepository extends JpaRepository<chapter, Long> {
 }

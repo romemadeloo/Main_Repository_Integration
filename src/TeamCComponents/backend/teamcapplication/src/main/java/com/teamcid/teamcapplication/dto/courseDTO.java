@@ -1,48 +1,18 @@
 // Source code is decompiled from a .class file using FernFlower decompiler.
-package com.teamcid.teamcapplication.model;
+package com.teamcid.teamcapplication.dto;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import java.sql.Date;
-import java.util.HashSet;
-import java.util.Set;
 
-@Entity
-public class course {
-   @Id
-   @GeneratedValue(
-      strategy = GenerationType.IDENTITY
-   )
+public class courseDTO {
    private Long course_id;
    private String course_title;
    private String course_description;
    private Date course_start_date;
    private Date course_end_date;
-   @ManyToMany(
-      fetch = FetchType.LAZY,
-      cascade = {CascadeType.ALL}
-   )
-   @JoinTable(
-      name = "course_chapter_table",
-      joinColumns = {@JoinColumn(
-   name = "cour_id",
-   referencedColumnName = "course_id"
-)},
-      inverseJoinColumns = {@JoinColumn(
-   name = "chap_id",
-   referencedColumnName = "chapter_id"
-)}
-   )
-   private Set<chapter> chapters = new HashSet();
+   private String chapter_title;
+   private Long instructor_id;
 
-   public course() {
+   public courseDTO() {
    }
 
    public Long getCourse_id() {
@@ -85,11 +55,19 @@ public class course {
       this.course_end_date = course_end_date;
    }
 
-   public Set<chapter> getChapters() {
-      return this.chapters;
+   public String getChapter_title() {
+      return this.chapter_title;
    }
 
-   public void setChapters(Set<chapter> chapters) {
-      this.chapters = chapters;
+   public void setChapter_title(String chapter_title) {
+      this.chapter_title = chapter_title;
+   }
+
+   public Long getInstructor_id() {
+      return this.instructor_id;
+   }
+
+   public void setInstructor_id(Long instructor_id) {
+      this.instructor_id = instructor_id;
    }
 }
