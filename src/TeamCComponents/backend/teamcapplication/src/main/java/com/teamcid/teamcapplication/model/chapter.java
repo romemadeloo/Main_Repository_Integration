@@ -1,4 +1,4 @@
-package com.
+package com.teamcid.teamcapplication.model;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 @Entity
-public class Chapter {
+public class chapter {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long chapter_id; // Unique identifier for the chapter
@@ -31,13 +31,13 @@ public class Chapter {
     @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "course_id") // Defines the foreign key column in the Chapter table
-    private Course course; // Associated course for the chapter
+    private course course; // Associated course for the chapter
 
-    public Course getCourse() {
+    public course getCourse() {
         return this.course; // Getter for course
     }
     
-    public void setCourse(Course course) {
+    public void setCourse(course course) {
         this.course = course; // Setter for course
     }
 
@@ -46,26 +46,12 @@ public class Chapter {
     // February 12, 2024
 
     // JPA relationship one to many between chapter and topic
-    @OneToMany(mappedBy = "chapter", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Topic> topic; // List of topics associated with the chapter
-
-    public List<Topic> getTopic() {
-        return this.topic; // Getter for topic
-    }
-    
-    public void setTopic(List<Topic> topic) {
-        this.topic = topic; // Setter for topic
-    }
 
     // February 12, 2024
 
     // February 13, 2024
     // Used in adding topic inside chapter
-    @JsonIgnore
-    public void addTopic(Topic topic) {
-        topic.setChapter(this); // Set the chapter for the topic
-        this.getTopic().add(topic); // Add the topic to the collection of topics
-    }
+
     // February 13, 2024
 
     public Long getChapter_id() {

@@ -1,8 +1,8 @@
-// Source code is decompiled from a .class file using FernFlower decompiler.
 package com.teamcid.teamcapplication.exception;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -11,15 +11,14 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ControllerAdvice
 public class chapterNotFoundAdvice {
-   public chapterNotFoundAdvice() {
-   }
+    @ResponseBody
+    @ExceptionHandler(chapterNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public Map<String, String> ExceptionHandler(chapterNotFoundException exception){
+        Map<String, String> errorMap = new HashMap<>();
+        errorMap.put("errorMessage", exception.getMessage());
 
-   @ResponseBody
-   @ExceptionHandler({chapterNotFoundException.class})
-   @ResponseStatus(HttpStatus.NOT_FOUND)
-   public Map<String, String> ExceptionHandler(chapterNotFoundException exception) {
-      Map<String, String> errorMap = new HashMap();
-      errorMap.put("errorMessage", exception.getMessage());
-      return errorMap;
-   }
+        return errorMap;
+    }
+
 }
