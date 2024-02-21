@@ -17,6 +17,7 @@ import CourseDescription from "./CourseDescription";
 import Nav from "../../NavBar/Nav";
 import { CourseContext } from "../../context/CourseContext";
 import axios from "axios";
+import Footer from "../../Footer";
 
 const TopicPage = () => {
   const navigate = useNavigate();
@@ -343,6 +344,7 @@ const TopicPage = () => {
           </div>
         </div>
       </div>
+      
     </>
   );
 };

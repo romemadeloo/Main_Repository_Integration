@@ -4,11 +4,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import Footer from "./Footer";
 
 function ForgotForm({ onForgotPassword }) {
+  // State variables for email and OTP
   const [email, setEmail] = useState('');
   const [otp, setOtp] = useState(''); // Add state for OTP
 
+  // Navigation hook from react-router-dom
   const navigate = useNavigate();
 
+  // Event handler for handling the forgot password process
   const handleForgot = (e) => {
     e.preventDefault();
     // Call the onForgotPassword prop with the email value
