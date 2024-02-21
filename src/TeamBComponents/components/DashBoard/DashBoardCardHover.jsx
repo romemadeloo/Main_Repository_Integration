@@ -51,8 +51,8 @@ const DashBoardCardHover = ({ courseId, closeDashHover }) => {
   };
 
   return (
-    <div className="backdrop-blur-[.05rem] w-[95vw]">
-      <div className="flex justify-center items-center  h-[150vh]  mt-7">
+    <div className="backdrop-blur-[.05rem] w-full fixed inset-0 flex items-center justify-center">
+      <div className="flex justify-center items-center h-[150vh] w-[100%] mt-7">
         {" "}
         {/* Container for hover card */}
         <div className="h-[70vh] w-[90%] md:w-[500px] lg:max-w-[800px] 2xl:h-[500px] 2xl:w-[1000px]  bg-[#BCE8B1] rounded-2xl shadow-2xl mt-7">
