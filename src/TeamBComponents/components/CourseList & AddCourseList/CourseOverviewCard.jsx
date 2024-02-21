@@ -48,8 +48,8 @@ const CourseOverviewCard = ({ courseTitle }) => {
 
       <div className="relative w-full m-auto h-[120vh] mt-[70px]  ">
         <div className="relative w-full h-[120vh] m-auto ">
-          <div className="w-[90%] pb-5 mt-10 flex mx-auto flex-col lg:center-row lg:w-[90%] lg:m-auto  items-center  ">
-            <div className="flex w-[100%] justify-between">
+          <div className="w-[100%] pb-5 mt-10 flex mx-auto flex-col lg:center-row lg:w-[100%] lg:m-auto  items-center  ">
+            <div className=" w-[100%] justify-between hidden lg:flex">
               <div
                 className=" items-center cursor-pointer w-[10%] absolute left-0 top-[-.3rem]  hidden lg:flex pb-4"
                 onClick={goBack}>
@@ -57,18 +57,17 @@ const CourseOverviewCard = ({ courseTitle }) => {
                   <IoArrowBackCircle />
                 </span>
               </div>
-              <div className="lg:font-bold lg:text-[2rem] w-full flex justify-center ">
-                <p className="lg:font-bold TeamB_text-shadow ">
+              <div className="lg:text-[2rem] w-full flex justify-center">
+                <p className=" 2xl:text-[48px] lg:font-bold TeamB_text-shadow">
                   Course Overview
                 </p>
               </div>
             </div>
-            <div className="w-full lg:max-w-[800px]">
+         
               <div className="flex items-center justify-center">
                 <CourseOverviewById courseTitle={courseTitle} />
               </div>
-            </div>
-
+         
             {/* <div>
               <EditChapterTitle/>
             </div> */}
