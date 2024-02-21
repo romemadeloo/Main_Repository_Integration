@@ -121,6 +121,7 @@ const CourseListCard = () => {
   }, [searchContainerRef]);
   // Initialize a count for chapters within this course
   let courseCount = 0;
+
   return (
     <>
       {/* 1/12/2024 UI development and Mobile responsiveness */}
@@ -128,16 +129,16 @@ const CourseListCard = () => {
       <div className="mt-[70px] h-[120vh] relative">
         {/* 1/15/2024 functions and buttons */}
         <div className="" ref={pageTopRef}>
-          <div className="  xl:w-[1244px]  w-[90%] flex mx-auto flex-col lg:center-row lg:w-[80vw] lg:m-auto lg:mt-5 items-center lg:h-full relative gap-5">
+          <div className="  xl:w-[1244px]  w-[90%] flex mx-auto flex-col lg:center-row lg:w-[80vw] lg:m-auto lg:mt-5 items-center lg:h-full relative gap-4 lg:gap-5">
             {/*January 15 2024, API connection of frontend to backend can fetch data from the backend*/}
-            <div className="text-black  w-[60vw] lg:font-bold text-[.8rem]  lg:text-[2rem]  flex justify-between items-center ">
-              <p className=" 2xl:text-[48px] lg:font-bold TeamB_text-shadow   ">
+            <div className="text-black  w-[100%] lg:w-[60vw] lg:font-bold text-[.8rem]  lg:text-[2rem]  flex justify-between items-center ">
+              <p className="hidden lg:flex 2xl:text-[48px] lg:font-bold TeamB_text-shadow">
                 Course List
               </p>
-              <div className="relative flex items-center h-full lg:w-[300px] 2xl:w-[544px] 2xl:h-[53px]  bg-white outline-none rounded-md border-b-[.1rem] border-black">
+              <div className="relative flex items-center h-full w-[100%] lg:w-[300px] 2xl:w-[544px] 2xl:h-[53px] bg-white outline-none rounded-md border-b-[.1rem] border-black">
                 <input
                   type="text"
-                  className="outline-none placeholder:font-thin placeholder:text-[1.2rem] font-normal pl-2 text-[1rem] lg:w-[300px] 2xl:w-[544px] h-[35px] 2xl:h-[53px] rounded-md"
+                  className="outline-none w-[100%]   placeholder:font-thin placeholder:text-[1.2rem] font-normal pl-2 text-[1rem] lg:w-[300px] 2xl:w-[544px] h-[35px] 2xl:h-[53px] rounded-md"
                   placeholder="Search"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
@@ -146,6 +147,7 @@ const CourseListCard = () => {
                 <div className="absolute top-1 right-2">
                   <IoSearchSharp className="text-[1.5rem]" />
                 </div>
+
                 {hideSearch && (
                   <div
                     ref={searchContainerRef}
@@ -181,12 +183,17 @@ const CourseListCard = () => {
                 )}
               </div>
             </div>
-            <div className="flex flex-col h-full gap-y-5">
+            <p className="lg:hidden TeamB_text-shadow w-[100%] text-[2rem] font-medium text-center">
+              Course List
+            </p>
+            <div className="flex flex-col w-[100%] items-center justify-center h-full gap-y-5">
               {/* change to currentCourse for API connection */}
               {currentCourse.map((course, idx) => {
                 courseCount++;
                 return (
-                  <div key={idx} className="w-[60vw] rounded-md shadow-md">
+                  <div
+                    key={idx}
+                    className="w-[100%] lg:w-[60vw] rounded-md shadow-md">
                     <div className=" relative flex px-0 py-0 rounded-md xl:h-[115px]  ">
                       <div className="bg-[#BCE8B1] flex py-1 item-center justify-center text-center text-[.8rem] lg:text-[1rem] w-[30%] lg:w-[20%] lg:p-5 rounded-l-sm lg:rounded-l-md">
                         <p className="lg:font-medium TeamB_text-shadow h-[8vh] flex items-center  ">
@@ -196,10 +203,12 @@ const CourseListCard = () => {
                       </div>
                       <Link
                         to={`/teambcourseoverview/${course.course_id}`}
-                        className="text-white TeamB_text-shadow lg:font-bold text-[.8rem] py-1 lg:py-0 lg:text-[1.2rem] w-full flex justify-left px-3 items-center
+                        className="text-white TeamB_text-shadow line-clamp-1 lg:font-bold text-[.8rem] w-full py-1 lg:py-0 lg:text-[1.2rem] flex justify-left px-3 items-center
                             rounded-r-sm lg:rounded-r-md 	bg-[#126912]  ">
                         {/* change to course_title for api connection */}
-                        {course.course_title}
+                        <p className="w-[90%] line-clamp-1">
+                          {course.course_title}
+                        </p>
                       </Link>
 
                       <span
@@ -239,8 +248,8 @@ const CourseListCard = () => {
               </Stack>
             )}
             {/* onClick={() => setShowCreateCourse((prev) => !prev)} */}
-            <div className=" w-[100%]">
-              <div className=" h-[8vh]  flex w-[50%] m-auto lg:w-[80%]   items-center justify-center">
+            <div className="w-[100%]">
+              <div className=" h-[8vh] flex w-[100%] m-auto lg:w-[80%]   items-center justify-center">
                 <div
                   className="bg-[#BCE8B1] w-[10%] cursor-pointer  flex items-center justify-center h-[8vh]  rounded-l-sm lg:rounded-l-md"
                   onClick={() => setShowCreateCourse((prev) => !prev)}>
@@ -250,7 +259,7 @@ const CourseListCard = () => {
                 </div>
                 <div
                   className="bg-[#126912] text-white lg:font-bold h-[8vh]  cursor-pointer
-                  w-[30%] 2xl:w-[50%] flex items-center justify-center rounded-r-sm  lg:rounded-r-md"
+                  w-[60%] md:w-[40%] lg:w-[30%] 2xl:w-[50%] flex items-center justify-center rounded-r-sm  lg:rounded-r-md"
                   onClick={() => setShowCreateCourse((prev) => !prev)}>
                   <span className=" 2xl:text-[2rem] TeamB_text-shadow  ">
                     Add New Course
