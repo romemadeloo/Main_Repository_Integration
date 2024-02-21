@@ -203,10 +203,10 @@ const CourseListCard = () => {
                       </div>
                       <Link
                         to={`/teambcourseoverview/${course.course_id}`}
-                        className="text-white TeamB_text-shadow over  w-full lg:font-bold text-[.8rem] py-1 lg:py-0 lg:text-[1.2rem]  flex justify-left px-3 items-center
+                        className="text-white TeamB_text-shadow line-clamp-1 lg:font-bold text-[.8rem] w-full py-1 lg:py-0 lg:text-[1.2rem] flex justify-left px-3 items-center
                             rounded-r-sm lg:rounded-r-md 	bg-[#126912]  ">
                         {/* change to course_title for api connection */}
-                        <p className="w-[90%] overflow-x-auto">
+                        <p className="w-[90%] line-clamp-1">
                           {course.course_title}
                         </p>
                       </Link>

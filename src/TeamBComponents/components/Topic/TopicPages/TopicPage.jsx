@@ -65,16 +65,19 @@ const TopicPage = () => {
     setShowCourseDescription(true);
     setShowAddTopic(false);
     setShowEditTopic(false);
+    setSideBarShow(false);
   };
   const showAddHandle = () => {
     setShowAddTopic(true);
     setShowCourseDescription(false);
+    setSideBarShow(false);
     setShowEditTopic(false);
   };
 
   const showEditHandle = () => {
     setShowEditTopic(true);
     setShowCourseDescription(false);
+    setSideBarShow(false);
     setShowAddTopic(false);
   };
 
@@ -86,10 +89,11 @@ const TopicPage = () => {
 
   //for sm sidebar react state
   const [sideBarShow, setSideBarShow] = useState(false);
+
   return (
     <>
       <Nav />
-      <div className="flex mt-[80px] lg:h-[100vh] 2xl:h-[1011px]">
+      <div className="flex mt-[80px] md:h-[100vh] 2xl:h-[1011px]">
         {/* sidebar for md */}
         <div className="h-full hidden md:flex flex-col items-center lg:w-[250px] 2xl:w-[375px] bg-[#126912]">
           <div
@@ -154,11 +158,13 @@ const TopicPage = () => {
               })}
             </div>
 
-            <div className="flex items-center h-[30%] " onClick={showAddHandle}>
-              <div className="text-white text-[2.5rem] pr-2 cursor-pointer">
+            <div
+              className="flex items-center justify-center h-[30%] "
+              onClick={showAddHandle}>
+              <div className="text-white text-[4rem] lg:text-[2.5rem] pr-2 cursor-pointer">
                 <IoIosAddCircle />
               </div>
-              <span className="font-medium text-white cursor-pointer text-[1rem] 2xl:text-[24px]">
+              <span className="hidden lg:flex font-medium text-white cursor-pointer text-[1rem] 2xl:text-[24px]">
                 Add New Topic
               </span>
             </div>
@@ -167,29 +173,28 @@ const TopicPage = () => {
 
         {/* sidebar for sm */}
         {sideBarShow ? (
-          <div
-            className="fixed md:hidden z-10 flex justify-start  pt-3 pb-8 cursor-pointer w-[90%]"
-            onClick={() => setSideBarShow((prev) => !prev)}>
-            <span className="text-[2.1rem] text-white">
+          <div className="fixed md:hidden z-20 flex justify-start  pt-3  cursor-pointer w-[90%]">
+            <span
+              className="text-[2.1rem] text-white"
+              onClick={() => setSideBarShow((prev) => !prev)}>
               <IoArrowBackCircle />
             </span>
           </div>
         ) : (
-          <div
-            className="fixed z-10 md:hidden flex justify-start  pt-3 pb-8 cursor-pointer w-[90%]"
-            onClick={() => setSideBarShow((prev) => !prev)}>
-            <span className="text-[2.1rem] text-black">
-              {" "}
+          <div className="fixed z-20 md:hidden flex justify-start  pt-3  cursor-pointer w-[90%]">
+            <span
+              className="text-[2.1rem] text-black"
+              onClick={() => setSideBarShow((prev) => !prev)}>
               <IoArrowForwardCircle />
             </span>
           </div>
         )}
         {sideBarShow && (
-          <div className="h-full fixed md:hidden flex-col items-center w-[70%] bg-[#126912] rounded-r-lg">
+          <div className="h-full fixed z-10 md:hidden flex-col items-center w-[70%] bg-[#126912] rounded-r-lg">
             <div className="h-[70%] w-[1005] mt-[60px] pl-2">
               <div>
                 <p
-                  className="cursor-pointer font-light pb-3 text-white TeamB_text-shadow text-[1.3rem] 2xl:text-[32px]"
+                  className="relative z-10 cursor-pointer font-light pb-3 text-white TeamB_text-shadow text-[1.3rem] 2xl:text-[32px]"
                   onClick={showDescriptionHandle}>
                   Description
                 </p>
