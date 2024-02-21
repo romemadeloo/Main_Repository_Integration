@@ -117,25 +117,30 @@ const CourseOverviewById = ({ courseTitle }) => {
 
   return (
     <>
-      <div className="w-full h-full ">
-        <div className=" m-0 lg:max-w-[full] lg:flex lg:flex-col  lg:justify-center">
-          <div className="h-full">
-            <div className="w-full lg:max-w-[800px]">
-              <div className="text-black  w-full lg:font-bold text-[.8rem]  lg:py-0 lg:text-[2rem]  flex justify-between items-center pb-2">
-                <p className="lg:font-bold TeamB_text-shadow">{courseTitle}</p>
+      <div className="w-full h-full">
+        <div className=" m-0 lg:max-w-[1920px] lg:flex lg:flex-col  lg:justify-center">
+          <div className="">
+            
+            <div className="w-full  md:max-w-[1024px] lg:max-w-[1280px] xl:max-w-[1536px] 2xl:max-w-[2560px] ">
+          
+              <div className="text-black  w-[100%] lg:w-[60vw] 2xl:w-[60vw] xl:w-[59vw] lg:font-bold text-[.8rem]  lg:text-[2rem]  lg:flex lg:items-center flex flex-row justify-between">
+                <p className="hidden lg:flex lg:font-bold TeamB_text-shadow lg:text-[2.5rem] text-[1.3rem]">{courseTitle}</p>
+                
 
-                <div className="relative flex items-center lg:max-w-[300px] 2xl:w-[544px] lg:h-[35px] 2xl:h-[53px] bg-white outline-none rounded-md border-b-[.1rem] border-black ">
-                  <input
-                    type="text"
-                    className="outline-none font-normal placeholder:font-thin placeholder:text-[1.2rem] pl-2 text-[1rem] lg:w-[300px] 2xl:w-[544px] lg:h-[35px] 2xl:h-[53px] w-[100px] h-[20px] rounded "
-                    placeholder="Search"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    onClick={() => setHideSearch(true)}
-                  />
-                  <div className="absolute top-1 right-2">
-                    <IoSearchSharp className="text-[1.5rem]" />
-                  </div>
+                <div className="relative flex items-center h-full w-[100%] lg:w-[300px] 2xl:w-[544px] 2xl:h-[53px] bg-white outline-none rounded-md border-b-[.1rem] border-black">
+                <input
+                  type="text"
+                  className="outline-none w-[100%]   placeholder:font-thin placeholder:text-[1.2rem] font-normal pl-2 text-[1rem] lg:w-[300px] 2xl:w-[544px] h-[35px] 2xl:h-[53px] rounded-md"
+                  placeholder="Search"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onClick={() => setHideSearch(true)}
+                />
+                <div className="absolute top-1 right-2">
+                  <IoSearchSharp className="text-[1.5rem]" />
+                </div>
+               
+             
                   {hideSearch && (
                     <div
                       ref={searchContainerRef}
@@ -177,11 +182,18 @@ const CourseOverviewById = ({ courseTitle }) => {
                     </div>
                   )}
                 </div>
+                
               </div>
-              <div className="lg:max-w-[1000px] bg-[#BCE8B1] h-[2vh] items-center lg:rounded-lg">
-                <div className="max-w-[30%] bg-[#126912] h-[2vh] lg:rounded-lg"></div>
+              <div className="lg:text-[2rem] w-full flex justify-center">
+                <p className="flex lg:hidden 2xl:text-[48px]  text-[20px] font-bold TeamB_text-shadow p-3">
+                  Course Overview
+                </p>
               </div>
-              <div className="w-[98%] font-medium pt-1 pb-2 text-[1rem] lg:text-[1.4rem] 2xl:text-[36px] lg:m-auto lg:pt-2 lg:pb-4 ">
+              <p className="flex lg:hidden font-bold TeamB_text-shadow lg:text-[2.5rem] text-[1.3rem] pb-3">{courseTitle}</p>
+              <div className="lg:max-w-[800px] bg-[#BCE8B1] h-[2vh] items-center rounded-lg xl:max-w-[900px] 2xl:max-w-[1140px] lg:rounded-lg">
+                <div className="max-w-[30%] bg-[#126912] h-[2vh] rounded-lg lg:rounded-lg"></div>
+              </div>
+              <div className="w-[95%] font-medium pt-1 pb-2 text-[1.4rem] lg:text-[1.4rem] 2xl:text-[36px] lg:m-auto lg:pt-2 lg:pb-4 ">
                 <span className=" TeamB_text-shadow">Lessons</span>
               </div>
               <div className="h-[45vh] lg:w-[95%] overflow-y-auto overflow-x-hidden TeamB_no-scrollbar pr-3">
@@ -212,11 +224,11 @@ const CourseOverviewById = ({ courseTitle }) => {
 
                                     <Link
                                       to={`/teambtopicpage/${chapter_id}`}
-                                      className="relative 2xl:rounded-[20px] w-[50vw]  lg:flex lg:items-center lg:font-medium lg:text-[1rem] 2xl:text-[24px] bg-[#126912] py-1 lg:text-center text-[.8rem]  lg:p-5 text-white lg:h-[50px] lg:rounded-[1rem] line-clamp-1">
+                                      className="relative 2xl:rounded-[20px] w-[60vw] rounded-lg  lg:flex lg:items-center lg:font-medium lg:text-[1rem] 2xl:text-[24px] bg-[#126912] py-1 lg:text-center text-[.8rem]  lg:p-5 text-white lg:h-[80px] lg:rounded-[1rem] line-clamp-1">
                                       {/* <p className="text-shadow">
                                         CHAPTER {chapterCount}:
                                       </p> */}
-                                      <p className="w-[90%] pl-2 lg:font-medium text-shadow line-clamp-1">
+                                      <p className="w-[90%] pl-2 lg:font-medium lg:text-[30px] text-shadow overflow-x-auto">
                                         {chapter_title}
                                       </p>
                                
