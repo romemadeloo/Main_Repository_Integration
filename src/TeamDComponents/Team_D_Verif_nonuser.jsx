@@ -12,7 +12,7 @@ const Team_D_Verification = () => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [isValidSerial, setIsValidSerial] = useState(false);
-
+  const defaultCodePrefix = "B55-";
   const handleVerify = async () => {
     setLoading(true);
     try {
