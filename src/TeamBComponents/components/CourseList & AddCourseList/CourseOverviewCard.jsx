@@ -51,14 +51,14 @@ const CourseOverviewCard = ({ courseTitle }) => {
           <div className="w-[90%] pb-5 mt-10 flex mx-auto flex-col lg:center-row lg:w-[90%] lg:m-auto  items-center  ">
             <div className="flex w-[100%] justify-between">
               <div
-                className="flex items-center cursor-pointer w-[10%] absolute left-0 top-[-.3rem] pb-4"
+                className=" items-center cursor-pointer w-[10%] absolute left-0 top-[-.3rem]  hidden lg:flex pb-4"
                 onClick={goBack}>
                 <span className="text-[2.5rem] px-5">
                   <IoArrowBackCircle />
                 </span>
               </div>
-              <div className="lg:font-bold lg:text-[2rem] w-full flex justify-center">
-                <p className="lg:font-bold TeamB_text-shadow">
+              <div className="lg:font-bold lg:text-[2rem] w-full flex justify-center ">
+                <p className="lg:font-bold TeamB_text-shadow ">
                   Course Overview
                 </p>
               </div>
