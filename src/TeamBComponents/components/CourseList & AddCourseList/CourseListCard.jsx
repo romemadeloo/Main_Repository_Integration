@@ -30,6 +30,7 @@ import CourseTitleModal from "./CourseModal/CourseTitleModal";
 
 //close icon
 import { IoMdClose } from "react-icons/io";
+import Footer from "../Footer";
 
 const CourseListCard = () => {
   // *NOTE
@@ -131,14 +132,14 @@ const CourseListCard = () => {
         <div className="" ref={pageTopRef}>
           <div className="  xl:w-[1244px]  w-[90%] flex mx-auto flex-col lg:center-row lg:w-[80vw] lg:m-auto lg:mt-5 items-center lg:h-full relative gap-4 lg:gap-5">
             {/*January 15 2024, API connection of frontend to backend can fetch data from the backend*/}
-            <div className="text-black  w-[100%] lg:w-[60vw] lg:font-bold text-[.8rem]  lg:text-[2rem]  flex justify-between items-center ">
+            <div className="text-black  w-[100%] lg:w-[60vw] lg:font-bold text-[.8rem]  lg:text-[2rem]  flex justify-between items-center mt-3">
               <p className="hidden lg:flex 2xl:text-[48px] lg:font-bold TeamB_text-shadow">
                 Course List
               </p>
-              <div className="relative flex items-center h-full w-[100%] lg:w-[300px] 2xl:w-[544px] 2xl:h-[53px] bg-white outline-none rounded-md border-b-[.1rem] border-black">
+              <div className="relative flex items-center h-full w-[100%]  lg:w-[300px] 2xl:w-[544px] 2xl:h-[53px] bg-white outline-none rounded-md border-b-[.1rem] border-black">
                 <input
                   type="text"
-                  className="outline-none w-[100%]   placeholder:font-thin placeholder:text-[1.2rem] font-normal pl-2 text-[1rem] lg:w-[300px] 2xl:w-[544px] h-[35px] 2xl:h-[53px] rounded-md"
+                  className="outline-none w-[100%] placeholder:font-thin placeholder:text-[1.2rem] font-normal pl-2 text-[1rem] lg:w-[300px] 2xl:w-[544px] h-[35px] 2xl:h-[53px] rounded-md"
                   placeholder="Search"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
@@ -275,13 +276,7 @@ const CourseListCard = () => {
             {/*January 15 2024*/}
             {/*January 19 2024 -gem modify buttons add footer*/}
           </div>
-          <footer className="absolute bottom-10 flex justify-center w-[100%]">
-            <div className="">
-              <p className="text-[#4D9349] font-medium">
-                All Rights Reserved | Copyright 2024
-              </p>
-            </div>
-          </footer>
+          <Footer/>
         </div>
         {/*January 19 2024 -gem modify buttons add footer*/}
       </div>
