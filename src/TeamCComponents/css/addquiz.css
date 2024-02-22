@@ -1,11 +1,46 @@
-p{
-    size: 100px;
-    padding: 10px;
+@media (max-width: 767px),
+  (min-width: 768px) and (max-width: 1023px),
+  (min-width: 1024px) {
+.AddQuizTitle{
+    font-size: 30px;
+    
     color: #145a32; /* Change the "Forum" text color to dark green */
+    font-weight: 500;
     /*text-shadow: 0 0 3px black, 0 0 5px white;*/
+
+
 }
 
 .quizOption{
-    padding: 5px;
+    width: 500px;
+    padding: 10px;
 }
 
+.teamcquizbtn{
+    background-color: #165207; /* Green background color */
+    color: #fff; /* White text color */
+    border-color: #165207; /* Green border color */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+    text-align: left; /* Align the text to the left */
+    /* margin-left: 1070px;
+    margin-bottom: 10px;
+    width: auto; */
+}
+.teamcquizbtnone{
+    background-color: #165207; /* Green background color */
+    color: #fff; /* White text color */
+    border-color: #165207; /* Green border color */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+    text-align: left; /* Align the text to the left */
+}
+
+.teamcquizbtntwo{
+    background-color: #165207; /* Green background color */
+    color: #fff; /* White text color */
+    border-color: #165207; /* Green border color */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+    text-align: left; /* Align the text to the left */
+    margin-left: 5px;
+}
+
+  }
