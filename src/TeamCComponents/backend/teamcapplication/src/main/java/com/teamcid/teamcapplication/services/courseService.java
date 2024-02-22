@@ -9,29 +9,30 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable; 
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.teamcid.teamcapplication.exception.chapterNotFoundException;
 import com.teamcid.teamcapplication.exception.courseNotFoundException;
-import com.teamcid.teamcapplication.exception.courseNotFoundAdvice;
 import com.teamcid.teamcapplication.model.chapter;
 import com.teamcid.teamcapplication.model.course;
 import com.teamcid.teamcapplication.repository.chapterRepository;
 import com.teamcid.teamcapplication.repository.courseRepository;
-
 @Service // Annotation to indicate this class as a service
 public class courseService {
     @Autowired // Annotation for dependency injection of CourseRepository bean
-    private courseService courseRepository; // Declaration of CourseRepository bean
+    private courseRepository courseRepository; // Declaration of CourseRepository bean
 
     @Autowired
-    private courseService chapterRepository;
+    private chapterRepository chapterRepository;
 
+    // Function to retrieve all courses
     public List<course> getAllCourse() { // Method signature to retrieve all courses
-      return courseRepository.findAll(); // referring to findAll() method of CourseRepository interface
-  }
-  // Function to retrieve a course by its ID
-  public course getCourseById(Long course_id) { // Method signature to retrieve a course by its ID
-      return courseRepository.findById(course_id) // referring to findById() method of CourseRepository interface
-              .orElseThrow(() -> new CourseNotFoundException(course_id)); // Handling CourseNotFoundException
-  }
+        return courseRepository.findAll(); // referring to findAll() method of CourseRepository interface
+    }
+
+    // Function to retrieve a course by its ID
+    public course getCourseById(Long course_id) { // Method signature to retrieve a course by its ID
+        return courseRepository.findById(course_id) // referring to findById() method of CourseRepository interface
+                .orElseThrow(() -> new courseNotFoundException(course_id)); // Handling CourseNotFoundException
+    }
 
     // Function to create a new course with an array of chapters
 
@@ -47,8 +48,8 @@ public class courseService {
 
     // Function to add a chapter inside the course
     public course addChapterToCourse(Long course_id, chapter chapter) {
-      course course = courseRepository.findById(course_id)
-                                        .orElseThrow(() -> new CourseNotFoundException(course_id));
+        course course = courseRepository.findById(course_id)
+                                        .orElseThrow(() -> new courseNotFoundException(course_id));
         course.addChapter(chapter);
         return courseRepository.save(course);
     }
@@ -86,13 +87,12 @@ public class courseService {
                     course.setCourse_start_date(newCourse.getCourse_start_date()); // Updating course start date
                     course.setCourse_end_date(newCourse.getCourse_end_date()); // Updating course end date
                     return courseRepository.save(course); // Saving updated course
-                }).orElseThrow(() -> new CourseNotFoundException(course_id)); // Handling CourseNotFoundException
+                }).orElseThrow(() -> new courseNotFoundException(course_id)); // Handling CourseNotFoundException
     }
 
     // Function to retrieve courses by chapter ID
     public List<course> getCourseByChapterId(Long chapter_id) { // Method signature to retrieve courses by chapter ID
         return courseRepository.findByChapterId(chapter_id); // referring to findByChapterId() method of CourseRepository interface
     }
-  
 }
 //January 22 2024 adding service class for organize code and function calling

@@ -87,8 +87,8 @@ public class courseController {
 
     // API for adding chapter inside the course by calling course id
     @PostMapping("/{course_id}/chapters")
-    public ResponseEntity<Course> addChapterToCourse(@PathVariable Long course_id, @RequestBody Chapter chapter) { // Adds chapter to course
-        Course updatedCourse = courseService.addChapterToCourse(course_id, chapter);
+    public ResponseEntity<course> addChapterToCourse(@PathVariable Long course_id, @RequestBody chapter chapter) { // Adds chapter to course
+        course updatedCourse = courseService.addChapterToCourse(course_id, chapter);
         if (updatedCourse != null) {
             return new ResponseEntity<>(updatedCourse, HttpStatus.OK);
         }

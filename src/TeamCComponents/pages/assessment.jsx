@@ -13,7 +13,7 @@ function TeamC_Assessments() {
   useEffect(() => {
     const fetchChapters = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/chapter");
+        const response = await axios.get("http://localhost:8080/api/courses");
         setChapters(response.data);
       } catch (error) {
         console.error("Error fetching chapters:", error);
@@ -32,7 +32,7 @@ function TeamC_Assessments() {
         <Link to='/assessment_sql'>
         <div className="card mb-3" id="c_assessment_sql" style={{ borderRadius: '15px', backgroundColor: '#bce8b1' }}>
           <div className="card-body d-flex justify-content-between" >
-            <p style={{ color: '#0e3b03' }} className="h4"><b>{chapter.chapterTitle}</b></p>
+            <p style={{ color: '#0e3b03' }} className="h4"><b>{chapter.course_title}</b></p>
             <small id="subText" style={{ fontStyle: 'italic', alignSelf: 'center', color: '#0e3b03' }}>-STATUS-</small>
           </div>
         </div>

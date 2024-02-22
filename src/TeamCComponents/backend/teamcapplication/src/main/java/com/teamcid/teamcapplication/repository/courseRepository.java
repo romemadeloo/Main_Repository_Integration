@@ -16,7 +16,7 @@ public interface courseRepository extends JpaRepository<course, Long> {
 
     Optional<course> findById(Long course_id);
 
-    @Query("SELECT DISTINCT c FROM Course c JOIN c.chapter ch WHERE ch.chapter_id = :chapter_id")
+    @Query("SELECT DISTINCT c FROM course c JOIN c.chapter ch WHERE ch.chapter_id = :chapter_id")
     List<course> findByChapterId(@Param("chapter_id") Long chapter_id);
 }
 

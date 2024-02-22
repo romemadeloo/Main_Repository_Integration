@@ -62,13 +62,5 @@ public class chapterController {
         return chapterService.getChapterByCourseId(course_id);
     }
 
-    // POST MAPPING TO ADD TOPIC TO CHAPTER
-    @PostMapping("/{chapter_id}/topics")
-    public ResponseEntity<chapter> addTopicToChapter(@PathVariable Long chapter_id, @RequestBody Topic topic) { // Adds topic to chapter
-      chapter updatedChapter = chapterService.addTopicToChapter(chapter_id, topic);
-        if (updatedChapter != null) {
-            return new ResponseEntity<>(updatedChapter, HttpStatus.OK); // Returns updated chapter if successful
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND); // Handles course not found scenario
-    }
+
 }

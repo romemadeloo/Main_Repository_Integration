@@ -12,7 +12,7 @@ function TeamC_ChapterSvn() {
   useEffect(() => {
     const fetchChapters = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/course");
+        const response = await axios.get("http://localhost:8080/api/courses");
         setChapters(response.data);
       } catch (error) {
         console.error("Error fetching chapters:", error);
@@ -41,10 +41,10 @@ function TeamC_ChapterSvn() {
             {/* Chapter Card */}
             <div className="c_course_cardmain card flex-grow-1" style={{ marginTop: '10px', willChange: 'filter', transition: 'filter 300ms', backgroundColor: '#126912', borderRadius: '1rem', }}>
               {/* Chapter Link */}
-              <Link to={`/chapterlist/${chapter.chapterId}`} className="h4 text-white text-decoration-none c_chapter_cardtext">
+              <Link to={`/chapterlist/${chapter.course_id}`} className="h4 text-white text-decoration-none c_chapter_cardtext">
                 {/* Chapter Card Body */}
                 <div className="card-body d-flex" id="c_course_cardbody" style={{ backgroundColor: '#126912', borderRadius: '1rem', }}>
-                  {chapter.chapterTitle}
+                  {chapter.course_title}
                 </div>
               </Link>
             </div>

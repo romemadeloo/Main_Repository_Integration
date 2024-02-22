@@ -11,7 +11,7 @@ function ChapterList() {
     useEffect(() => {
         const loadChapters = async () => {
             try {
-                const result = await axios.get(`http://localhost:8080/chapter/${id}`);
+                const result = await axios.get(`http://localhost:8080/api/chapters/${id}`);
                 setChapters(result.data);
             } catch (error) {
                 console.error("Error loading chapters:", error);
