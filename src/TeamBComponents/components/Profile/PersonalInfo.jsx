@@ -56,21 +56,21 @@ const PersonalInfo = ({ intructorName }) => {
   return (
     <>
       {editPersonalInfo && (
-        <div className=" flex flex-col h-full gap-y-5 w-[90%] lg:h-[380px]  lg:w-[680px]  xl:h-[655px] xl:w-[948px] bg-[#BCE8B1] rounded shadow-md">
+        <div className=" flex flex-col h-full gap-y-5 w-[90%] lg:h-[380px]  lg:min-w-[680px]  ] bg-[#BCE8B1] rounded shadow-md">
           <div className="lg:w-[95%] lg:m-auto ">
-            <div className="lg:flex lg:w-[100%] relative lg:gap-x-5 h-[500px] lg:h-[350px] xl:h-[655px]">
+            <div className="lg:flex lg:w-[100%] relative lg:gap-x-5 h-[500px] lg:h-[350px]">
               <div className="lg:w-[30%] flex justify-center lg:justify-start">
                 <img
                   src={profilePic}
                   alt=""
-                  className=" h-[150px] lg:p-2 lg:flex lg:w-[200px]  xl:w-[292px] xl:h-[239px]"
+                  className=" h-[150px] lg:p-2 lg:flex lg:w-[200px]"
                 />
               </div>
               <div className="mt-3 w-[90%] flex m-auto relative flex-col lg:w-[70%]">
                 <div className="relative">
                   <label
                     htmlFor="firstName"
-                    className=" text-[#4D4141] text-opacity-[53%] absolute z-10 top-0 left-2 text-[.8rem] xl:text-[16px]  ">
+                    className=" text-[#4D4141] text-opacity-[53%] absolute z-10 top-0 left-2 text-[.8rem]   ">
                     First Name
                   </label>
 
@@ -88,7 +88,7 @@ const PersonalInfo = ({ intructorName }) => {
                 <div className="relative ">
                   <label
                     htmlFor="lastName"
-                    className=" text-[#4D4141] text-opacity-[53%] absolute z-10 top-0 left-2 text-[.8rem] xl:text-[16px] ">
+                    className=" text-[#4D4141] text-opacity-[53%] absolute z-10 top-0 left-2 text-[.8rem]  ">
                     Last Name
                   </label>
 
@@ -102,11 +102,11 @@ const PersonalInfo = ({ intructorName }) => {
                     value={instructor_last_name}
                     disabled
                   />
-                  <div className="lg:flex lg:flex-col xl:gap-y-10">
+                  <div className="lg:flex lg:flex-col ">
                     <div className="relative">
                       <label
                         htmlFor="Email"
-                        className=" text-[#4D4141] text-opacity-[53%] absolute   z-10 top-0 left-2 text-[.8rem] xl:text-[16px]">
+                        className=" text-[#4D4141] text-opacity-[53%] absolute   z-10 top-0 left-2 text-[.8rem] ">
                         Email Address
                       </label>
 
@@ -124,7 +124,7 @@ const PersonalInfo = ({ intructorName }) => {
                     <div className="relative">
                       <label
                         htmlFor="Email"
-                        className=" text-[#4D4141] text-opacity-[53%] absolute   z-10 top-0 left-2 text-[.8rem] xl:text-[16px]">
+                        className=" text-[#4D4141] text-opacity-[53%] absolute   z-10 top-0 left-2 text-[.8rem] ">
                         Contact Number
                       </label>
                       {/* CONTACT NUMBER INPUT */}
@@ -146,7 +146,7 @@ const PersonalInfo = ({ intructorName }) => {
               <div className="w-[100%] flex justify-center lg:justify-end absolute bottom-2 lg:bottom-0">
                 <button
                   onClick={showUpdate}
-                  className=" TeamB_btn-style  lg:w-[120px] lg:flex lg:justify-center w-[90%] xl:w-[170px] rounded-full">
+                  className=" TeamB_btn-style  lg:w-[120px] lg:flex lg:justify-center w-[90%]  rounded-full">
                   Edit
                 </button>
               </div>

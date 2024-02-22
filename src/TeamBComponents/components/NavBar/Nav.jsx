@@ -63,7 +63,7 @@ const Nav = () => {
             />
             {/* January 30, 2024 - Cedrick - Fixed the style of the nav bar according to the design of team D */}
           </Link>
-          <div className="hidden lg:flex lg:items-end xl:w-[300px] lg:pl-10 lg:min-w-[400px] lg:justify-between gap-5">
+          <div className="hidden lg:flex lg:items-end  lg:pl-10 lg:min-w-[400px] lg:justify-between gap-5">
             {/* 1/11/2024 */}
             {/* Link to dashboard */}
             <Link to="/teambdashboard" onClick={showDashBoard}>
