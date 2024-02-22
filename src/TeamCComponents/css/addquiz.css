@@ -1,0 +1,11 @@
+p{
+    size: 100px;
+    padding: 10px;
+    color: #145a32; /* Change the "Forum" text color to dark green */
+    /*text-shadow: 0 0 3px black, 0 0 5px white;*/
+}
+
+.quizOption{
+    padding: 5px;
+}
+
