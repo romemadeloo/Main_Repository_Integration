@@ -12,6 +12,7 @@ import Nav from "../NavBar/Nav";
 import { useNavigate } from "react-router-dom";
 
 import { IoArrowBackCircle } from "react-icons/io5";
+import Footer from "../Footer";
 
 const CourseOverviewCard = ({ courseTitle }) => {
   const [chapter, setChapter] = useState({
@@ -77,13 +78,7 @@ const CourseOverviewCard = ({ courseTitle }) => {
 
             {/*January 19 2024 -gem modify buttons add footer*/}
           </div>
-          <footer className="flex justify-center pt-10 pb-5">
-            <div>
-              <p className="text-[#4D9349] font-medium">
-                All Rights Reserved | Copyright 2024
-              </p>
-            </div>
-          </footer>
+          <Footer/>
         </div>
       </div>
     </>
