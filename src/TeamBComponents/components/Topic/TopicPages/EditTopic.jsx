@@ -312,10 +312,10 @@ const EditTopic = ({ topicId, courseTitle, chapterTitle }) => {
           </div>
         )}
         <ToastContainer className="tcenter" closeButton={CloseButton} />
-        <div className="">
-          <Footer />
-        </div>
       </form>
+      <div className="">
+        <Footer />
+      </div>
     </>
   );
 };

@@ -47,7 +47,7 @@ const CourseOverviewCard = ({ courseTitle }) => {
     <>
       {/*January 19 2024 -gem modify responsiveness*/}
 
-      <div className="relative w-full m-auto h-[120vh] mt-[70px]  ">
+      <div className="relative w-full m-auto h-[100vh] mt-[70px]  ">
         <div className="relative w-full h-[120vh] m-auto ">
           <div className="w-[100%] pb-5 mt-10 flex mx-auto flex-col lg:center-row lg:w-[100%] lg:m-auto  items-center  ">
             <div className=" w-[100%] justify-between hidden lg:flex">
@@ -64,11 +64,11 @@ const CourseOverviewCard = ({ courseTitle }) => {
                 </p>
               </div>
             </div>
-         
-              <div className="flex items-center justify-center">
-                <CourseOverviewById courseTitle={courseTitle} />
-              </div>
-         
+
+            <div className="flex items-center justify-center">
+              <CourseOverviewById courseTitle={courseTitle} />
+            </div>
+
             {/* <div>
               <EditChapterTitle/>
             </div> */}
@@ -78,7 +78,6 @@ const CourseOverviewCard = ({ courseTitle }) => {
 
             {/*January 19 2024 -gem modify buttons add footer*/}
           </div>
-          <Footer/>
         </div>
       </div>
     </>

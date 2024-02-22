@@ -1,12 +1,14 @@
 import React from 'react'; // Importing React library
 import DashboardCard from './DashboardCard'; // Importing DashboardCard component from './DashboardCard' file
 import Nav from '../NavBar/Nav'; // Importing Nav component from '../NavBar/Nav' file
+import Footer from '../Footer';
 
 const Dashboard = () => { // Defining Dashboard functional component
   return ( // Returning JSX
     <div>
     <Nav/>
      <DashboardCard/> {/* Rendering Nav component */}
+     <Footer/>
     </div>
   );
 };

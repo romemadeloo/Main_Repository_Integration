@@ -94,7 +94,7 @@ const TopicPage = () => {
   return (
     <>
       <Nav />
-      <div className="flex mt-[80px] md:h-[100vh] 2xl:h-[1011px]">
+      <div className="flex mt-[80px] h-[100vh]">
         {/* sidebar for md */}
         <div className="h-full hidden md:flex flex-col items-center lg:w-[250px] 2xl:w-[375px] bg-[#126912]">
           <div
@@ -344,7 +344,6 @@ const TopicPage = () => {
           </div>
         </div>
       </div>
-      
     </>
   );
 };

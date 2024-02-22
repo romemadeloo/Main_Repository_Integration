@@ -124,10 +124,9 @@ const Profile = () => {
             {/* <AccDetails/> */}
           </div>
         </div>
-        <div className="pt-20">
-          <Footer />
-        </div>
+      
       </div>
+          <Footer />
     </>
   );
 };

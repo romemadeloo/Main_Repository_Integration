@@ -107,11 +107,6 @@ const DashboardCard = () => {
         })}
       </div>{" "}
       {/* End of courses section */}
-      <div className="mt-10 ">
-        {" "}
-        {/* Render footer */}
-        <Footer />
-      </div>{" "}
       {/* Render dashboard hover */}
       <div className="flex items-center justify-center ">
         {courses.map((course, idx) => {

@@ -127,7 +127,7 @@ const CourseListCard = () => {
     <>
       {/* 1/12/2024 UI development and Mobile responsiveness */}
 
-      <div className="mt-[70px] h-[120vh] relative">
+      <div className="mt-[70px] h-[100vh] relative">
         {/* 1/15/2024 functions and buttons */}
         <div className="" ref={pageTopRef}>
           <div className="  xl:w-[1244px]  w-[90%] flex mx-auto flex-col lg:center-row lg:w-[80vw] lg:m-auto lg:mt-5 items-center lg:h-full relative gap-4 lg:gap-5">
@@ -194,10 +194,10 @@ const CourseListCard = () => {
                 return (
                   <div
                     key={idx}
-                    className="w-[100%] lg:w-[60vw] rounded-md shadow-md">
+                    className="w-[100%] lg:w-[60vw] rounded-md shadow-md ">
                     <div className=" relative flex px-0 py-0 rounded-md xl:h-[115px]  ">
-                      <div className="bg-[#BCE8B1] flex py-1 item-center justify-center text-center text-[.8rem] lg:text-[1rem] w-[30%] lg:w-[20%] lg:p-5 rounded-l-sm lg:rounded-l-md">
-                        <p className="lg:font-medium TeamB_text-shadow h-[8vh] flex items-center  ">
+                      <div className="bg-[#BCE8B1] flex py-3 item-center justify-center text-center text-[.8rem] lg:text-[1rem] w-[30%] lg:w-[20%] lg:p-5 rounded-l-sm lg:rounded-l-md">
+                        <p className="flex items-center h-full lg:font-medium TeamB_text-shadow ">
                           {/* change to course_id for api connection */}
                           CC00{courseCount}
                         </p>
@@ -276,7 +276,6 @@ const CourseListCard = () => {
             {/*January 15 2024*/}
             {/*January 19 2024 -gem modify buttons add footer*/}
           </div>
-          <Footer/>
         </div>
         {/*January 19 2024 -gem modify buttons add footer*/}
       </div>
