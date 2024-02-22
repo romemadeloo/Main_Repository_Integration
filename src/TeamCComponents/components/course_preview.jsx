@@ -12,7 +12,7 @@ function CoursePreview() {
   useEffect(() => {
     const fetchChapters = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/course");
+        const response = await axios.get("http://localhost:8080/api/courses");
         console.log("Response Data:", response.data); // Log response data
         setChapters(response.data);
       } catch (error) {
@@ -47,9 +47,9 @@ function CoursePreview() {
                   <div className="card-header bg-transparent border-success "></div>
                   <div className="card mb-4">
                     <div className="card-body ">
-                      <h5 className="card-title fw-bold text-center text-success" style={{ fontSize: '1.7rem' }}>{chapterData.chapterTitle}</h5>
+                      <h5 className="card-title fw-bold text-center text-success" style={{ fontSize: '1.7rem' }}>{chapterData.course_title}</h5>
                       <hr/>
-                      <p className="card-body bg-transparent border-success d-flex flex-column text-justify">{chapterData.chapterDescription}</p>
+                      <p className="card-body bg-transparent border-success d-flex flex-column text-justify">{chapterData.course_description}</p>
                       <p className="fw-bold text-end" id='c_course_seemoretext' data-bs-toggle="modal" data-bs-target={`#modal_seemore${index + 1}`} onClick={incrementCounterAndAttributes}>See more..</p>
                       <div ><br /></div>
                       <button

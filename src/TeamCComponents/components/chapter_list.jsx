@@ -6,24 +6,26 @@ import axios from "axios";
 
 function ChapterList() {
     const [chapters, setChapters] = useState([]);
-    const { id } = useParams(); // Destructure id from useParams
 
+    const {id} = useParams()
     useEffect(() => {
-        const loadChapters = async () => {
+        const fetchChapters = async () => {
             try {
-                const result = await axios.get(`http://localhost:8080/api/chapters/${id}`);
-                setChapters(result.data);
+              const result = await axios.get(`http://localhost:8080/api/courses/${id}`);
+        
+              // Ensure that result.data is always an array by converting it
+              const coursesArray = Array.isArray(result.data)
+                ? result.data
+                : [result.data];
+                setChapters(coursesArray);
             } catch (error) {
-                console.error("Error loading chapters:", error);
-                // Handle error (e.g., set an error state or display an error message)
+              console.error("Error loading chapters:", error);
             }
-        }
-        if (id) { // Check if id is defined before calling loadChapters
-            loadChapters();
-        }
+          };
+  
+      fetchChapters();
     }, [id]);
-    
-console.log(chapters)
+console.log(chapters)  
     return (
         <>
             {/* Back button */}
@@ -39,19 +41,25 @@ console.log(chapters)
                 </div>
             </Link>
             <div className="container mt-4 mx-auto">
-                <h2 className="text-left mb-4" style={{ fontWeight: 'bold', fontSize: '2rem' }}>TITLE GOES HERE</h2>
-                <hr />
-                {Array.isArray(chapters) && chapters.map((chapter, index) => (
-                    <div className="d-flex align-items-center" key={index}>
+                
+               {chapters.map((chap, idx) => {
+                const {chapter, course_title} = chap
+                console.log(chapter)
+                return (
+                   <div key={idx}>
+                    <h2 className="text-left mb-4" style={{ fontWeight: 'bold', fontSize: '2rem' }}>{course_title}</h2><hr />
+                    {chapter.map((chap, idc) => {const {chapter_title} = chap
+                    return(
+                        <div className="d-flex align-items-center" key={idc}>
                         <div className="c_chapter_cardmain card flex-grow-1" style={{
                             willChange: 'filter',
                             transition: 'filter 300ms', marginTop: '10px', backgroundColor: '#126912', borderRadius: '1rem',
                         }}>
-                            <Link to={`/course${index + 1}_sql`} className="h4 text-white text-decoration-none c_chapter_cardtext">
+                            <Link to={`/course${idx + 1}_sql`} className="h4 text-white text-decoration-none c_chapter_cardtext">
                                 <div className="card-body d-flex c_chapter_cardbody" style={{
                                     backgroundColor: '#126912', borderRadius: '1rem',
                                 }}>
-                                    {chapter.courseTitle}
+                                    {chapter_title}
                                 </div>
                             </Link>
                         </div>
@@ -64,7 +72,11 @@ console.log(chapters)
                             </div>
                         </div>
                     </div>
-                ))}
+                    )
+               })}
+                   </div>
+                )
+               })}
             </div>
         </>
     );

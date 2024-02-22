@@ -22,6 +22,7 @@ function TeamC_ChapterSvn() {
     fetchChapters();
   }, []);
 
+  console.log(chapters)
   return (
     <>
       {/*Navbar Component*/}
@@ -31,25 +32,29 @@ function TeamC_ChapterSvn() {
         <h2 className="text-center mb-4" style={{ fontWeight: 'bold', fontSize: '2rem' }}>Program Overview</h2>
         <hr />
 
-        {chapters.map((chapter, index) => (
-          <div key={index} className="d-flex align-items-center">
-            {/* Chapter Tag */}
-            <div className='d-flex align-items-center justify-content-center' id="c_course_tag">
-              <span id="c_course_tagtext">BSQL-01</span>
-            </div>
-
-            {/* Chapter Card */}
-            <div className="c_course_cardmain card flex-grow-1" style={{ marginTop: '10px', willChange: 'filter', transition: 'filter 300ms', backgroundColor: '#126912', borderRadius: '1rem', }}>
-              {/* Chapter Link */}
-              <Link to={`/chapterlist/${chapter.course_id}`} className="h4 text-white text-decoration-none c_chapter_cardtext">
-                {/* Chapter Card Body */}
-                <div className="card-body d-flex" id="c_course_cardbody" style={{ backgroundColor: '#126912', borderRadius: '1rem', }}>
-                  {chapter.course_title}
-                </div>
-              </Link>
-            </div>
+       {chapters.map((chapter, idx) => {
+        const {course_title, course_id} = chapter
+        console.log(course_title)
+        return (
+          <div key={idx} className="d-flex align-items-center">
+          {/* Chapter Tag */}
+          <div className='d-flex align-items-center justify-content-center' id="c_course_tag">
+            <span id="c_course_tagtext">BSQL-01</span>
           </div>
-        ))}
+
+          {/* Chapter Card */}
+          <div className="c_course_cardmain card flex-grow-1" style={{ marginTop: '10px', willChange: 'filter', transition: 'filter 300ms', backgroundColor: '#126912', borderRadius: '1rem', }}>
+            {/* Chapter Link */}
+            <Link to={`/api/chapters/${course_id}`} className="h4 text-white text-decoration-none c_chapter_cardtext">
+              {/* Chapter Card Body */}
+              <div className="card-body d-flex" id="c_course_cardbody" style={{ backgroundColor: '#126912', borderRadius: '1rem', }}>
+                {course_title}
+              </div>
+            </Link>
+          </div>
+        </div>
+        )
+       })}
       </div>
     </>
   );
