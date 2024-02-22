@@ -47,22 +47,22 @@ const DashboardCard = () => {
   const [editCourseId, setEditCourseId] = useState(null); // Declare state variable 'editCourseId' using useState hook
   return (
     //Return JSX for DashboardCard component
-    <div className="w-full h-[120vh] relative  ">
+    <div className="w-full h-[100vh] relative ">
       {/* change bg color to provided img */}
       {/* 1/18/204 bg height 323px */}
-      <div className=" lg:h-[40vh]  xl:h-[486px]  relative flex flex-col items-center justify-center w-full py-10 bg-[url('https://img.freepik.com/fotos-premium/acuarela-abstracta-verde-textura-papel-blanco_7190-1311.jpg?w=996')] bg-cover shadow-lg lg:py-5">
+      <div className=" lg:max-h-[40vh]  xl:max-h-[486px]  relative flex flex-col items-center justify-center w-full py-10 bg-[url('https://img.freepik.com/fotos-premium/acuarela-abstracta-verde-textura-papel-blanco_7190-1311.jpg?w=996')] bg-cover shadow-lg lg:py-5">
         {" "}
         {/* Render header section */}
-        <p className="mt-16 TeamB_text-shadow  text-[1.8rem] lg:text-[2rem] font-bold text-white w-[80%] text-center xl:text-[3.5rem] 2xl:text-[64px] ">
+        <p className="mt-16 TeamB_text-shadow  text-[1.8rem] lg:text-[2rem] font-bold text-white w-[80%] text-center ">
           月伝で自分のやり方を学びましょう。
         </p>
-        <p className="TeamB_text-shadow  xl:text-[3rem] 2xl:text-[64px] italic lg:text-[1.7rem] font-bold text-[#67836B]  pb-10 lg:pb-15">
+        <p className="TeamB_text-shadow italic lg:text-[1.7rem] font-bold text-[#67836B]  pb-10 lg:pb-15">
           Learn your way at Tsukiden.
         </p>
       </div>{" "}
       {/* End of header section */}
       <div
-        className="xl:h-[330px] 2xl:w-[1519px] flex flex-col lg:flex-row lg:w-[90vw] 
+        className=" flex flex-col lg:flex-row lg:w-[90vw] 
       lg:m-auto lg:justify-center lg:mt-[2rem] items-center gap-[4rem] mt-[5rem] ">
         {" "}
         {/* Render courses section */}
@@ -72,7 +72,7 @@ const DashboardCard = () => {
 
             <div
               key={idx}
-              className="w-[95%] h-[300px] lg:max-w-[270px] shadow-sm rounded-[2rem] 2xl:w-[271px] xl:h-[330px]  bg-[#BCE8B1]">
+              className="w-[95%] h-[300px] lg:max-w-[270px] shadow-sm rounded-[2rem]   bg-[#BCE8B1]">
               {" "}
               {/* Render individual course card */}
               <div className="flex flex-col h-fit rounded-t-[2rem]  p-4  lg:p-5 2xl:px-2 lg:h-[35%] justify-center ">
@@ -107,11 +107,6 @@ const DashboardCard = () => {
         })}
       </div>{" "}
       {/* End of courses section */}
-      <div className="mt-10 ">
-        {" "}
-        {/* Render footer */}
-        <Footer />
-      </div>{" "}
       {/* Render dashboard hover */}
       <div className="flex items-center justify-center ">
         {courses.map((course, idx) => {
@@ -130,11 +125,11 @@ const DashboardCard = () => {
           );
         })}
       </div>
+  
     </div> // End of main container div
   );
 };
 
 export default DashboardCard; //Export DashboardCard component
 // 1/23/2024
-//comments by: Judes 02-19-24 
-
+//comments by: Judes 02-19-24

@@ -69,8 +69,8 @@ const PersonalEdit = ({ hideUpdatePersonalInfo }) => {
         autoComplete="off"
         required
         onSubmit={(e) => handleSubmit(e)}
-        className="flex flex-col h-full gap-y-5 w-[90%] lg:h-[380px] lg:w-[680px] xl:h-[655px] xl:w-[948px] bg-[#BCE8B1] rounded shadow-md">
-        <div className="relative lg:w-[95%] lg:m-auto h-[500px] lg:h-[350px]  xl:h-[655px]">
+        className="flex flex-col h-full gap-y-5 w-[90%] lg:h-[380px] lg:min-w-[680px]  bg-[#BCE8B1] rounded shadow-md">
+        <div className="relative lg:w-[95%] lg:m-auto h-[500px] lg:h-[350px]  ">
           <div className="lg:flex lg:w-[100%] lg:gap-x-5">
             {/* IMAGE */}
             <div className="lg:w-[30%] flex lg:flex-col relative">
@@ -78,7 +78,7 @@ const PersonalEdit = ({ hideUpdatePersonalInfo }) => {
                 <img
                   src={profilePic}
                   alt=""
-                  className="cursor-pointer p-2 lg:flex lg:w-[200px] h-[150px] xl:w-[292px] xl:h-[239px]"
+                  className="cursor-pointer p-2 lg:flex lg:w-[200px] h-[150px]"
                 />
               </label>
               <input id="uploadProfile" type="file" className="hidden" />
@@ -86,7 +86,7 @@ const PersonalEdit = ({ hideUpdatePersonalInfo }) => {
                 <img
                   src={signature}
                   alt=""
-                  className="cursor-pointer p-4 lg:flex lg:w-[200px] h-[150px] xl:w-[292px] xl:h-[239px]"
+                  className="cursor-pointer p-4 lg:flex lg:w-[200px] h-[150px] "
                 />
               </label>
               <input id="uploadSignature" type="file" className="hidden" />
@@ -105,8 +105,8 @@ const PersonalEdit = ({ hideUpdatePersonalInfo }) => {
                   htmlFor="firstName"
                   className={`${
                     showTooltipLastName
-                      ? "text-[#4D4141] text-opacity-[53%] absolute z-10 top-0 left-2 text-[.8rem] xl:text-[16px] blur-lg"
-                      : "text-[#4D4141] text-opacity-[53%] absolute z-10 top-0 left-2 text-[.8rem] xl:text-[16px]"
+                      ? "text-[#4D4141] text-opacity-[53%] absolute z-10 top-0 left-2 text-[.8rem] blur-lg"
+                      : "text-[#4D4141] text-opacity-[53%] absolute z-10 top-0 left-2 text-[.8rem] "
                   }`}>
                   First Name <span className="text-[#FF2626]">*</span>
                 </label>
@@ -147,7 +147,7 @@ const PersonalEdit = ({ hideUpdatePersonalInfo }) => {
               <div className="relative">
                 <label
                   htmlFor="lastName"
-                  className="text-[#4D4141] text-opacity-[53%] absolute z-10 top-0 left-2 text-[.8rem] xl:text-[16px]">
+                  className="text-[#4D4141] text-opacity-[53%] absolute z-10 top-0 left-2 text-[.8rem]">
                   Last Name <span className="text-[#FF2626]">*</span>
                 </label>
                 {/* LASTNAME INPUT */}
@@ -172,7 +172,7 @@ const PersonalEdit = ({ hideUpdatePersonalInfo }) => {
                   onMouseLeave={() => setShowTooltipLastName(false)}
                 />
                 {showTooltipLastName && (
-                  <div className="absolute top-[-3.5rem] 2xl:top-[-2.5rem] left-10 bg-[#fff] w-[60%] p-1 rounded-lg border-[1px] border-[#EBFFE5]">
+                  <div className="absolute top-[-3.5rem] left-10 bg-[#fff] w-[60%] p-1 rounded-lg border-[1px] border-[#EBFFE5]">
                     <p className="text-[.8rem] text-[#4D4141] text-opacity-[53%]">
                       Maximum of 50 letters, only alphabets and spaces are
                       allowed.
@@ -185,8 +185,8 @@ const PersonalEdit = ({ hideUpdatePersonalInfo }) => {
                   htmlFor="Email"
                   className={`${
                     showTooltipContactNo
-                      ? "text-[#4D4141] text-opacity-[53%] absolute z-10 top-0 left-2 text-[.8rem] xl:text-[16px] blur-lg"
-                      : "text-[#4D4141] text-opacity-[53%] absolute z-10 top-0 left-2 text-[.8rem] xl:text-[16px]"
+                      ? "text-[#4D4141] text-opacity-[53%] absolute z-10 top-0 left-2 text-[.8rem] blur-lg"
+                      : "text-[#4D4141] text-opacity-[53%] absolute z-10 top-0 left-2 text-[.8rem]"
                   }`}>
                   Email Address
                 </label>
@@ -206,8 +206,8 @@ const PersonalEdit = ({ hideUpdatePersonalInfo }) => {
                   htmlFor="ContactNumber"
                   className={`${
                     showTooltipUploadSignature
-                      ? "text-[#4D4141] text-opacity-[53%] absolute z-10 top-0 left-2 text-[.8rem] xl:text-[16px] blur-lg"
-                      : "text-[#4D4141] text-opacity-[53%] absolute z-10 top-0 left-2 text-[.8rem] xl:text-[16px]"
+                      ? "text-[#4D4141] text-opacity-[53%] absolute z-10 top-0 left-2 text-[.8rem] blur-lg"
+                      : "text-[#4D4141] text-opacity-[53%] absolute z-10 top-0 left-2 text-[.8rem]"
                   }`}>
                   Contact Number <span className="text-[#FF2626]">*</span>
                 </label>
@@ -264,19 +264,19 @@ const PersonalEdit = ({ hideUpdatePersonalInfo }) => {
             <input id="uploadSignature" type="file" className="hidden" />
             <label
               htmlFor="uploadSignature"
-              className="cursor-pointer hidden mr-auto lg:w-[130px] xl:ml-3 text-center font-bold lg:h-[30px] xl:w-[159px] xl:h-[36px] bg-[#D1DFCD] lg:text-[.8rem] 2xl:text-[16px] lg:rounded-lg 2xl:rounder-[5px] text-[#4D4141] text-opacity-[53%] shadow-lg lg:flex justify-center items-center"
+              className="cursor-pointer hidden mr-auto lg:w-[130px]  text-center font-bold lg:h-[30px]  bg-[#D1DFCD] lg:text-[.8rem] lg:rounded-lg  text-[#4D4141] text-opacity-[53%] shadow-lg lg:flex justify-center items-center"
               onMouseOver={() => setShowTooltipUploadSignature(true)}
               onMouseLeave={() => setShowTooltipUploadSignature(false)}>
               Choose File
             </label>
             <span
-              className="xl:text-[24px] TeamB_btn-style text-black bg-[#fff] lg:bg-transparent rounded-full  w-[42.5%] lg:w-[120px] lg:text-[1rem] font-medium flex justify-center items-center cursor-pointer"
+              className=" TeamB_btn-style text-black bg-[#fff] lg:bg-transparent rounded-full  w-[42.5%] lg:w-[120px] lg:text-[1rem] font-medium flex justify-center items-center cursor-pointer"
               onClick={hideUpdatePersonalInfo}>
               Cancel
             </span>
             <button
               type="submit"
-              className="TeamB_btn-style w-[42.5%] lg:w-[120px] lg:flex rounded-full lg:justify-center xl:w-[170px] ">
+              className="TeamB_btn-style w-[42.5%] lg:w-[120px] lg:flex rounded-full lg:justify-center  ">
               Update
             </button>
           </div>

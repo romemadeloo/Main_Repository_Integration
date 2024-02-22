@@ -120,9 +120,9 @@ const CourseOverviewById = ({ courseTitle }) => {
       <div className="w-full h-full">
         <div className=" m-0 lg:max-w-[1920px] lg:flex lg:flex-col lg:justify-center">
           <div className="">
-            <div className="w-full md:max-w-[1024px] lg:max-w-[1280px] xl:max-w-[1536px] 2xl:max-w-[2560px] ">
+            <div className="w-full  lg:w-[800px] ">
               <div className="text-black w-[100%] lg:font-bold text-[.8rem]  lg:text-[2rem]  lg:flex lg:items-center flex flex-row justify-between">
-                <p className="hidden lg:flex lg:font-bold TeamB_text-shadow lg:text-[2.5rem] text-[1.3rem]">
+                <p className="hidden lg:flex lg:font-bold TeamB_text-shadow lg:text-[2.5rem] text-[1.3rem] w-[50%] overflow-x-auto TeamB_no-scrollbar mb-2 cursor-pointer">
                   {courseTitle}
                 </p>
 
@@ -165,7 +165,7 @@ const CourseOverviewById = ({ courseTitle }) => {
                                     <div key={idx}>
                                       <Link
                                         to={`/teambtopicpage/${chapter_id}`}>
-                                        <p className="text-[.9rem] pl-2 font-light TeamB_text-shadow cursor-pointer">
+                                        <p className="text-[.9rem] pl-2 font-light TeamB_text-shadow cursor-pointer line-clamp-1">
                                           {chapter_title}
                                         </p>
                                       </Link>
@@ -186,7 +186,7 @@ const CourseOverviewById = ({ courseTitle }) => {
                   Course Overview
                 </p>
               </div>
-              <p className="flex lg:hidden font-bold TeamB_text-shadow lg:text-[2.5rem] text-[1.3rem] pb-3">
+              <p className="flex lg:hidden font-bold TeamB_text-shadow lg:text-[2.5rem] text-[1.3rem] pb-3 line-clamp-1">
                 {courseTitle}
               </p>
               <div className="w-full bg-[#BCE8B1] h-[2vh] items-center rounded-lg lg:rounded-lg">
@@ -227,7 +227,7 @@ const CourseOverviewById = ({ courseTitle }) => {
                                       {/* <p className="text-shadow">
                                         CHAPTER {chapterCount}:
                                       </p> */}
-                                      <p className="w-[90%] pl-2 lg:font-medium lg:text-[1.3rem] text-shadow overflow-x-auto">
+                                      <p className="w-[90%] pl-2 lg:font-medium lg:text-[1.3rem] text-shadow overflow-x-auto line-clamp-1">
                                         {chapter_title}
                                       </p>
 
@@ -334,25 +334,24 @@ const CourseOverviewById = ({ courseTitle }) => {
                 </span>
               </button>
             </div>
-     
-              <div className="w-full ">
-                {showChapModal && (
-                  <div>
-                    {courses.map((course, idx) => {
-                      const { course_id } = course;
-                      return (
-                        <div key={idx}>
-                          <CopyofCreateChapterTitle
-                            courseId={course_id}
-                            showModal={setShowChapModal}
-                          />
-                        </div>
-                      );
-                    })}
-                  </div>
-                )}
-              </div>
-          
+
+            <div className="w-full ">
+              {showChapModal && (
+                <div>
+                  {courses.map((course, idx) => {
+                    const { course_id } = course;
+                    return (
+                      <div key={idx}>
+                        <CopyofCreateChapterTitle
+                          courseId={course_id}
+                          showModal={setShowChapModal}
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
           </div>
         </div>
         {/*  </div> */}
