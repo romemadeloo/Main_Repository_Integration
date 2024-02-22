@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.teamcid.teamcapplication.services.chapterService;
 import com.teamcid.teamcapplication.model.chapter;
-import com.teambcmsproject.teambcmsprojectspringboot.model.Topic;
 
 @RestController
 @RequestMapping("/api/chapters") // Endpoint base path for chapter related operations

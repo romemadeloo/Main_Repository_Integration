@@ -1,8 +1,24 @@
-// Source code is decompiled from a .class file using FernFlower decompiler.
 package com.teamcid.teamcapplication.repository;
 
-import com.teamcid.teamcapplication.model.chapter;
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+import java.util.Optional;
 
-public interface chapterRepository extends JpaRepository<chapter, Long> {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import com.teamcid.teamcapplication.model.chapter;
+
+
+public interface chapterRepository extends JpaRepository<chapter, Long>  {
+  
+    List<chapter> findAll();
+
+    Optional<chapter> findById(Long chapter_id);
+
+    @Query("Select ch FROM Chapter ch WHERE ch.course.course_id = :course_id")
+    List<chapter> findByCourse_id(@Param("course_id") Long course_id);
+
+    @Query("SELECT DISTINCT ch FROM Chapter ch JOIN ch.topic t WHERE t.topic_id = :topic_id")
+    List<chapter> findByTopicId(@Param("topic_id") Long topic_id);
 }

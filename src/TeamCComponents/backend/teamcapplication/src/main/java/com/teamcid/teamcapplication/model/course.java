@@ -12,8 +12,6 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -28,20 +26,6 @@ public class course {
     private Date course_end_date; // End date of the course
 
 
-    //february 13 2024
-     @JsonIgnore
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "instructor_id") // Defines the foreign key column in the cOURSE table
-    private Instructor instructor; // Associated instructor for the course
-
-    public Instructor getInstructor() {
-        return this.instructor;
-    }
-
-    public void setInstructor(Instructor instructor) {
-        this.instructor = instructor;
-    }
-
     
     //february 13 2024
     // January 24, 2024: JPA relationship successfully integrated many-to-many
@@ -54,19 +38,19 @@ public class course {
 
     // Mapping many-to-one relationship from Chapter
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Chapter> chapter; // List of chapters associated with the course
+    private List<chapter> chapter; // List of chapters associated with the course
 
-    public List<Chapter> getChapter() {
+    public List<chapter> getChapter() {
         return this.chapter;
     }
 
-    public void setChapter(List<Chapter> chapter) {
+    public void setChapter(List<chapter> chapter) {
         this.chapter = chapter;
     }
 
     // Used in adding chapter inside course
     @JsonIgnore
-    public void addChapter(Chapter chapter) {
+    public void addChapter(chapter chapter) {
         chapter.setCourse(this); // Set the course for the chapter
         this.getChapter().add(chapter); // Add the chapter to the collection of chapters
     }
