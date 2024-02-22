@@ -1,11 +1,12 @@
-p{
-    size: 100px;
+.AddQuizTitle{
+    font-size: 30px;
     padding: 10px;
     color: #145a32; /* Change the "Forum" text color to dark green */
+    font-weight: 500;
     /*text-shadow: 0 0 3px black, 0 0 5px white;*/
 }
 
 .quizOption{
-    padding: 5px;
+    width: 500px;
+    padding: 10px;
 }
-
