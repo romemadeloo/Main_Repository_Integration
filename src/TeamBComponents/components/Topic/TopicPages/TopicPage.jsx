@@ -94,9 +94,9 @@ const TopicPage = () => {
   return (
     <>
       <Nav />
-      <div className="flex mt-[80px] h-[100vh]">
+      <div className="flex mt-[80px] h-[170vh] md:h-[100vh]">
         {/* sidebar for md */}
-        <div className="h-full hidden md:flex flex-col items-center lg:w-[250px] 2xl:w-[375px] bg-[#126912]">
+        <div className="h-full hidden md:flex flex-col items-center lg:w-[250px]  bg-[#126912]">
           <div
             className="flex justify-start  pt-3 pb-8 cursor-pointer w-[90%]"
             onClick={goBack}>
@@ -109,7 +109,7 @@ const TopicPage = () => {
           <div className="h-[70%] w-[80%] ">
             <div>
               <p
-                className="cursor-pointer font-light pb-3 text-white TeamB_text-shadow text-[1.3rem] 2xl:text-[32px]"
+                className="cursor-pointer font-light pb-3 text-white TeamB_text-shadow text-[1.3rem] "
                 onClick={showDescriptionHandle}>
                 Description
               </p>
@@ -131,7 +131,7 @@ const TopicPage = () => {
                               <div key={idx}>
                                 <div className="flex items-center justify-between">
                                   <p
-                                    className=" line-clamp-1 cursor-pointer py-1 font-light text-white TeamB_text-shadow  text-[1.2rem] 2xl:text-[32px]"
+                                    className=" line-clamp-1 cursor-pointer py-1 font-light text-white TeamB_text-shadow  text-[1.2rem]"
                                     onClick={() => {
                                       showEditHandle();
                                       setEditTopicId(topic_id);
@@ -162,10 +162,10 @@ const TopicPage = () => {
             <div
               className="flex items-center justify-center h-[30%] "
               onClick={showAddHandle}>
-              <div className="text-white text-[4rem] lg:text-[2.5rem] pr-2 cursor-pointer">
+              <div className="text-white text-[4rem] md:text-[2.5rem] lg:text-[2.5rem] pr-2 cursor-pointer">
                 <IoIosAddCircle />
               </div>
-              <span className="hidden lg:flex font-medium text-white cursor-pointer text-[1rem] 2xl:text-[24px]">
+              <span className="hidden lg:flex font-medium text-white cursor-pointer text-[1rem]">
                 Add New Topic
               </span>
             </div>
@@ -195,7 +195,7 @@ const TopicPage = () => {
             <div className="h-[70%] w-[1005] mt-[60px] pl-2">
               <div>
                 <p
-                  className="relative z-10 cursor-pointer font-light pb-3 text-white TeamB_text-shadow text-[1.3rem] 2xl:text-[32px]"
+                  className="relative z-10 cursor-pointer font-light pb-3 text-white TeamB_text-shadow text-[1.3rem]"
                   onClick={showDescriptionHandle}>
                   Description
                 </p>
@@ -217,7 +217,7 @@ const TopicPage = () => {
                                 <div key={idx}>
                                   <div className="flex items-center justify-between">
                                     <p
-                                      className=" line-clamp-1 cursor-pointer py-1 font-light text-white TeamB_text-shadow  text-[1.2rem] 2xl:text-[32px]"
+                                      className=" line-clamp-1 cursor-pointer py-1 font-light text-white TeamB_text-shadow  text-[1.2rem]"
                                       onClick={() => {
                                         showEditHandle();
                                         setEditTopicId(topic_id);
@@ -251,7 +251,7 @@ const TopicPage = () => {
                 <div className="text-white text-[2.5rem] pr-2 cursor-pointer">
                   <IoIosAddCircle />
                 </div>
-                <span className="font-medium text-white cursor-pointer text-[1rem] 2xl:text-[24px]">
+                <span className="font-medium text-white cursor-pointer text-[1rem] ">
                   Add New Topic
                 </span>
               </div>
@@ -344,6 +344,7 @@ const TopicPage = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };
