@@ -3,9 +3,9 @@ import DashboardCard from './DashboardCard'; // Importing DashboardCard componen
 import Nav from '../NavBar/Nav'; // Importing Nav component from '../NavBar/Nav' file
 
 const Dashboard = () => { // Defining Dashboard functional component
-  return ( // Returning JSX
-    <div>
-    <Nav/>
+  return ( // Returning JSX 
+    <div> 
+    <Nav/> {/*Rendering Nav component */} 
      <DashboardCard/> {/* Rendering Nav component */}
     </div>
   );
