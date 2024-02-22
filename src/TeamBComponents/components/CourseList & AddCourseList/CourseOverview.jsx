@@ -4,6 +4,7 @@ import Nav from "../NavBar/Nav";
 import { CourseContext } from "../context/CourseContext";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import Footer from "../Footer";
 
 const CourseOverview = () => {
   const { courses, setCourses } = useContext(CourseContext);
@@ -47,6 +48,7 @@ const CourseOverview = () => {
           );
         })}
       </div>
+      <Footer/>
     </div>
   );
 };
