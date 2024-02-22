@@ -4,9 +4,9 @@ import Nav from '../NavBar/Nav'; // Importing Nav component from '../NavBar/Nav'
 import Footer from '../Footer';
 
 const Dashboard = () => { // Defining Dashboard functional component
-  return ( // Returning JSX
-    <div>
-    <Nav/>
+  return ( // Returning JSX 
+    <div> 
+    <Nav/> {/*Rendering Nav component */} 
      <DashboardCard/> {/* Rendering Nav component */}
      <Footer/>
     </div>
