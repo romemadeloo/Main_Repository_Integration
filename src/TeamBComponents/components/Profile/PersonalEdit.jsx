@@ -9,47 +9,48 @@ import { useEffect, useState } from "react";
 import profilePic from "../../../assets/TeamBassests/Registration.png";
 import signature from "../../../assets/TeamBassests/signature.png";
 const PersonalEdit = ({ hideUpdatePersonalInfo }) => {
-  const [instructors, setInstructors] = useState([]);
+  const [users, setUsers] = useState([]);
 
-  const [instructor, setInstructor] = useState({
-    instructor_first_name: "",
-    instructor_last_name: "",
-    instructor_contact_number: "",
-    instructor_email: "",
+  const [user, setUser] = useState({
+    firstName: "",
+    lastName: "",
+    phoneNumber: "",
+    email: "",
   });
 
+
   useEffect(() => {
-    const loadInstructors = async () => {
-      const result = await axios.get("http://localhost:8080/instructors");
-      setInstructors(result.data);
+    const loadUsers = async () => {
+      const result = await axios.get("http://localhost:8080/api/v1/auth/users");
+      setUsers(result.data);
     };
 
-    loadInstructors();
+    loadUsers();
   }, []);
 
   const handleInputChange = (e) => {
-    setInstructor({ ...instructor, [e.target.name]: e.target.value });
+    setUser({ ...user, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Validate contact number
-    if (instructor.instructor_contact_number.length !== 10) {
+    if (user.phoneNumber.length !== 10) {
       // Show an error message or handle the invalid input as per your requirement
       alert("Contact number must be exactly 10 digits.");
       return; // Stop the submission process
     }
 
-    await axios.post("http://localhost:8080/instructor", instructor);
+    await axios.post("http://localhost:8080/api/v1/auth/users", user);
   };
 
-  console.log(instructors);
+  console.log(user);
   const {
-    instructor_first_name,
-    instructor_last_name,
-    instructor_email,
-    instructor_contact_number,
-  } = instructor;
+    firstName ,
+    lastName,
+    phoneNumber,
+    email,
+  } = user;
 
   // React hook for tooltip
   const [showTooltipFirstName, setShowTooltipFirstName] = useState(false);
@@ -119,8 +120,8 @@ const PersonalEdit = ({ hideUpdatePersonalInfo }) => {
                   }`}
                   id="firstName"
                   type="text"
-                  name="instructor_first_name"
-                  value={instructor_first_name}
+                  name="firstName"
+                  value={firstName}
                   onChange={(e) => handleInputChange(e)}
                   maxLength={50}
                   required={true}
@@ -155,8 +156,8 @@ const PersonalEdit = ({ hideUpdatePersonalInfo }) => {
                   className="  mb-4 relative TeamB_input-style px-2 lg:w-full bg-[#EBFFE5]"
                   id="lastName"
                   type="text"
-                  name="instructor_last_name"
-                  value={instructor_last_name}
+                  name="lastName"
+                  value={lastName}
                   onChange={(e) => handleInputChange(e)}
                   maxLength={50}
                   required={true}
@@ -195,9 +196,9 @@ const PersonalEdit = ({ hideUpdatePersonalInfo }) => {
                   className="px-2 mb-4 TeamB_input-style"
                   disabled
                   id="Email"
-                  type="number"
-                  name="instructor_username"
-                  value={instructor_email}
+                  type="email"
+                  name="email"
+                  value={email}
                   onChange={(e) => handleInputChange(e)}
                 />
               </div>
@@ -219,10 +220,10 @@ const PersonalEdit = ({ hideUpdatePersonalInfo }) => {
                       : "relative TeamB_input-style px-2 lg:w-full bg-[#EBFFE5]"
                   }`}
                   placeholder="+63"
-                  type="text"
-                  id="ContactNumber"
-                  name="instructor_contact_number"
-                  value={instructor_contact_number}
+                  type="number"
+                  id="PhoneNumber"
+                  name="phoneNumber"
+                  value={phoneNumber}
                   onChange={(e) => handleInputChange(e)}
                   maxLength={10}
                   required={true}
