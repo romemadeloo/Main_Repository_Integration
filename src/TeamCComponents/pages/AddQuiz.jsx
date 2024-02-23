@@ -3,9 +3,9 @@ import "../css/addquiz.css";
 import { IoIosAdd } from "react-icons/io";
 import { FaTrashAlt } from "react-icons/fa";
 import { IoIosSave } from "react-icons/io";
-import Pagination from "react-bootstrap/Pagination";
 
 const AddQuiz = () => {
+
   return (
     <>
       <div className="teamcaddquizbody container mt-5">
