@@ -29,7 +29,7 @@ const ChapterModal = ({ chapterId, editTitle }) => {
 
     try {
       await axios.put(
-        `http://localhost:8080/api/chapters/${chapterId}`,
+        `http://localhost:8080/api/v1/auth/chapter/${chapterId}`,
         chapters
       );
       // showModal(false);
@@ -41,7 +41,7 @@ const ChapterModal = ({ chapterId, editTitle }) => {
 
   const loadChapters = async () => {
     const result = await axios.get(
-      `http://localhost:8080/api/chapters/${chapterId}`
+      `http://localhost:8080/api/v1/auth/chapter/${chapterId}`
     );
     setChapters(result.data);
   };
@@ -50,6 +50,7 @@ const ChapterModal = ({ chapterId, editTitle }) => {
     // Implement your cancel logic here
     editTitle((prev) => !prev);
   };
+  console.log(chapter_title);
 
   return (
     <>
