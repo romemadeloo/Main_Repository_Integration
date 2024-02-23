@@ -26,6 +26,7 @@ function ChapterList() {
       fetchChapters();
     }, [id]);
 console.log(chapters)  
+
     return (
         <>
             {/* Back button */}

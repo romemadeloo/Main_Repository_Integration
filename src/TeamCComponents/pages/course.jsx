@@ -36,10 +36,10 @@ function TeamC_ChapterSvn() {
         const {course_title, course_id} = chapter
         console.log(course_title)
         return (
-          <div key={idx} className="d-flex align-items-center">
+          <div key={idx} className="d-flex align-items-center" id="c_course_courses">
           {/* Chapter Tag */}
           <div className='d-flex align-items-center justify-content-center' id="c_course_tag">
-            <span id="c_course_tagtext">BSQL-01</span>
+            <span id="c_course_tagtext">course_code</span>
           </div>
 
           {/* Chapter Card */}
