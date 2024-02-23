@@ -19,7 +19,7 @@ function TeamC_Dashboard() {
   useEffect(() => {
     const fetchChapters = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/courses");
+        const response = await axios.get("http://localhost:8080/api/v1/auth/getCourses");
         setChapters(response.data);
       } catch (error) {
         console.error("Error fetching chapters:", error);
@@ -28,7 +28,7 @@ function TeamC_Dashboard() {
 
     fetchChapters();
   }, []);
- 
+ console.log(chapters)
   return (
     <Fragment>
       {/* Header title */}
