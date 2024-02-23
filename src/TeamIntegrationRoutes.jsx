@@ -68,6 +68,7 @@ import ForumD from "./TeamCComponents/pages/ForumD";
 import AssessmentSql from "./TeamCComponents/pages/quiz/assessment_sql";
 import AssessmentSvn from "./TeamCComponents/pages/quiz/assessment_svn";
 import AssessmentHtml from "./TeamCComponents/pages/quiz/assessment_html";
+import ChapterList from "./TeamCComponents/components/chapter_list";
 import AddQuiz from "./TeamCComponents/pages/AddQuiz";
 
 // team D
@@ -136,6 +137,7 @@ function TeamIntegrationRoutes() {
         <Route path="/assessment_sql" element={<AssessmentSql />} />
         <Route path="/assessment_svn" element={<AssessmentSvn />} />
         <Route path="/assessment_html" element={<AssessmentHtml />} />
+        <Route path="/api/chapters/:id" element={<ChapterList/>} />
 
           {/* COURSE 1 */}
           <Route

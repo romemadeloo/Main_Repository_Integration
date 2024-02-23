@@ -270,7 +270,7 @@ const ForumFInstructor = () => {
         <Footer/>
       </div>
     </>
-  );
-};
+  )
+}
 
 export default ForumFInstructor;

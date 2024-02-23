@@ -104,7 +104,7 @@ const EditTopic = ({ topicId, courseTitle, chapterTitle }) => {
     // Assuming your API call is successful, update the state to indicate form submission
 
     try {
-      await axios.put(`http://localhost:8080/api/topics/${topicId}`, topics);
+      await axios.put(`http://localhost:8080/api/v1/auth/topic/${topicId}`, topics);
       // showModal(false);
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -115,7 +115,7 @@ const EditTopic = ({ topicId, courseTitle, chapterTitle }) => {
 
   const loadTopics = async () => {
     const result = await axios.get(
-      `http://localhost:8080/api/topics/${topicId}`
+      `http://localhost:8080/api/v1/auth/topic/${topicId}`
     );
     setTopics(result.data);
   };

@@ -29,7 +29,7 @@ const DashBoardCardHover = ({ courseId, closeDashHover }) => {
     // Assuming your API call is successful, update the state to indicate form submission
 
     try {
-      await axios.put(`http://localhost:8080/api/courses/${courseId}`, courses); // Makes a PUT request to update course details
+      await axios.put(`http://localhost:8080/api/v1/auth/course/${courseId}`, courses); // Makes a PUT request to update course details
       // showModal(false);
     } catch (error) {
       console.error("Error submitting form:", error); // Logs error if API call fails
@@ -39,7 +39,7 @@ const DashBoardCardHover = ({ courseId, closeDashHover }) => {
   const loadCourses = async () => {
     // Function to load course details
     const result = await axios.get(
-      `http://localhost:8080/api/courses/${courseId}` // Makes a GET request to fetch course details
+      `http://localhost:8080/api/v1/auth/course/${courseId}` // Makes a GET request to fetch course details
     );
     setCourses(result.data); // Sets the fetched course details in state
   };
