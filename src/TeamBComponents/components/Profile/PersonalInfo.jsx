@@ -2,23 +2,21 @@
 /* eslint-disable react/no-unknown-property */
 //january 12 2024
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 //import logo for profile pic
 import profilePic from "../../../assets/TeamBassests/Registration.png";
 
 import Footer from "../Footer";
 import PersonalEdit from "./PersonalEdit";
+import { ProfileContext } from "../context/ProfileContext";
 
 const PersonalInfo = ({ intructorName }) => {
-  const [users, setUsers] = useState([]);
 
-  const [user, setUser] = useState({
-    firstName: "",
-    lastName: "",
-    phoneNumber: "",
-    email: "",
-  });
+
+  const { user, setUser, users, setUsers, file, setFile } =
+    useContext(ProfileContext);
+  console.log(user);
 
   useEffect(() => {
     const loadUsers = async () => {
@@ -33,12 +31,8 @@ const PersonalInfo = ({ intructorName }) => {
     loadUser({ ...user, [e.target.name]: e.target.value });
   };
 
-  const {
-    firstName,
-    lastName,
-    email,
-    phoneNumber,
-  } = user;
+  const { firstName, lastName, email, phoneNumber } = users;
+  console.log(firstName);
 
   //edit update personal info
   const [editPersonalInfo, setEditPersonalInfo] = useState(true);
@@ -61,7 +55,7 @@ const PersonalInfo = ({ intructorName }) => {
             <div className="lg:flex lg:w-[100%] relative lg:gap-x-5 h-[500px] lg:h-[350px] xl:h-[655px]">
               <div className="lg:w-[30%] flex justify-center lg:justify-start">
                 <img
-                  src={profilePic}
+                  src={file}
                   alt=""
                   className=" h-[150px] lg:p-2 lg:flex lg:w-[200px]  xl:w-[292px] xl:h-[239px]"
                 />
@@ -163,4 +157,3 @@ const PersonalInfo = ({ intructorName }) => {
 export default PersonalInfo;
 
 //1/19/2024
-

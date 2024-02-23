@@ -3,13 +3,15 @@
 /* eslint-disable react/no-unknown-property */
 // January 12, 2024
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 // Import logo for profile pic
 import profilePic from "../../../assets/TeamBassests/Registration.png";
 import signature from "../../../assets/TeamBassests/signature.png";
+import { ProfileContext } from "../context/ProfileContext";
 const PersonalEdit = ({ hideUpdatePersonalInfo }) => {
-  const [users, setUsers] = useState([]);
+  const { users, setUsers, file, setFile, sigfile, setSigFile } =
+    useContext(ProfileContext);
 
   const [user, setUser] = useState({
     firstName: "",
@@ -18,7 +20,15 @@ const PersonalEdit = ({ hideUpdatePersonalInfo }) => {
     email: "",
   });
 
+  function handleChange(e) {
+    console.log(e.target.files);
+    setFile(URL.createObjectURL(e.target.files[0]));
+  }
 
+    function handleChangeSig(e) {
+      console.log(e.target.files);
+      setSigFile(URL.createObjectURL(e.target.files[0]));
+    }
   useEffect(() => {
     const loadUsers = async () => {
       const result = await axios.get("http://localhost:8080/api/v1/auth/users");
@@ -35,22 +45,18 @@ const PersonalEdit = ({ hideUpdatePersonalInfo }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Validate contact number
-    if (user.phoneNumber.length !== 10) {
-      // Show an error message or handle the invalid input as per your requirement
-      alert("Contact number must be exactly 10 digits.");
-      return; // Stop the submission process
-    }
+    // if (user.phoneNumber.length !== 10) {
+    //   // Show an error message or handle the invalid input as per your requirement
+    //   alert("Contact number must be exactly 10 digits.");
+    //   return; // Stop the submission process
+    // }
 
-    await axios.post("http://localhost:8080/api/v1/auth/users", user);
+    // await axios.post("http://localhost:8080/api/v1/auth/users", user);
+    setUsers(user);
   };
-
-  console.log(user);
-  const {
-    firstName ,
-    lastName,
-    phoneNumber,
-    email,
-  } = user;
+  console.log(users);
+  const { firstName, lastName, phoneNumber, email } = user;
+  console.log(firstName);
 
   // React hook for tooltip
   const [showTooltipFirstName, setShowTooltipFirstName] = useState(false);
@@ -77,20 +83,30 @@ const PersonalEdit = ({ hideUpdatePersonalInfo }) => {
             <div className="lg:w-[30%] flex lg:flex-col relative">
               <label htmlFor="uploadProfile">
                 <img
-                  src={profilePic}
+                  src={file}
                   alt=""
                   className="cursor-pointer p-2 lg:flex lg:w-[200px] h-[150px]"
                 />
               </label>
-              <input id="uploadProfile" type="file" className="hidden" />
+              <input
+                id="uploadProfile"
+                type="file"
+                onChange={handleChange}
+                className="hidden"
+              />
               <label htmlFor="uploadSignature">
                 <img
-                  src={signature}
+                  src={sigfile}
                   alt=""
                   className="cursor-pointer p-4 lg:flex lg:w-[200px] h-[150px] "
                 />
               </label>
-              <input id="uploadSignature" type="file" className="hidden" />
+              <input
+                id="uploadSignature"
+                onChange={handleChangeSig}
+                type="file"
+                className="hidden"
+              />
               {/* UPLOAD SIGNATURE */}
               <input id="uploadSignature" type="file" className="hidden" />
               <label

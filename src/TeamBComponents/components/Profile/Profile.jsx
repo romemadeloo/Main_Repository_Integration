@@ -115,16 +115,7 @@ const Profile = () => {
           <div className="flex justify-center lg:justify-start">
             {/* Place your Component here */}
             {
-              showPersonalInfo && <PersonalInfo /> /*= 2-17-24<div>
-              {instructor.map((inst, idx) => {
-                const {instructor_name} = inst
-                return (
-                  <div key={idx}>
-                    <PersonalInfo instructorName={instructor_name} />
-                  </div>
-                );
-              })}
-            </div> 2-17-24*/
+              showPersonalInfo && <PersonalInfo /> 
             }
             {showAccDetails && <AccDetails />}
             {/* /* Place AccDetails Component here */}
