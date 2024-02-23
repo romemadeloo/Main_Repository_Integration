@@ -157,11 +157,11 @@ const AddTopic = ({ courseTitle }) => {
                 </button>
               </div>
               <div className="w-[90%] m-auto mb-4 md:mb-5">
-                <span className="text-center md:text-start text-[2rem] 2xl:text-[48px] font-semibold ">
+                <span className="text-center md:text-start text-[2rem] font-semibold ">
                   <p>{courseTitle}</p>
                 </span>
                 <div className="flex flex-col items-center w-full pt-3 md:pt-0 md:flex-row">
-                  <span className="text-[1.5rem] 2xl:text-[36px] pr-2 text-[#070101] text-opacity-[55%]">
+                  <span className="text-[1.5rem] pr-2 text-[#070101] text-opacity-[55%]">
                     {chapter_title}:
                   </span>
                   <input
@@ -184,32 +184,24 @@ const AddTopic = ({ courseTitle }) => {
                   value={topic_description}
                   onChange={(e) => handleInputChange(e)}
                   placeholder="Topic Description"
-                  className="bg-[#BCE8B1] TeamB_text-shadow resize-none min-w-[100%] 2xl:h-[264px] 2xl:max-w-[1342px] md:h-[25vh] placeholder:font-medium placeholder:text-center placeholder:p-6
+                  className="bg-[#BCE8B1] TeamB_text-shadow resize-none min-w-[100%] md:h-[25vh] placeholder:font-medium placeholder:text-center placeholder:p-6
               outline-none rounded-lg placeholder:text-[#070101] placeholder:text-opacity-[55%] mt-4 md:mt-5 pl-5"
                 />
               </div>
-              <div className="flex w-[90%] flex-col gap-y-5 lg:gap-y-0 lg:flex-row m-auto items-center justify-center md:gap-x-[5rem] md:mt-[3rem]">
+              <div className="flex w-[90%] flex-col gap-y-5 lg:gap-y-0 md:flex-row m-auto items-center justify-center md:gap-x-[1rem] md:mt-[3rem]">
                 <div
-                  className="relative w-[100%] h-[200px] 2xl:w-[491px] 2xl:h-[282px]
+                  className="relative w-[100%] h-[200px] md:w-[50%]
            lg:w-[20vw] lg:h-[20vh] bg-[#126912] rounded-lg flex items-center
             justify-center cursor-pointer"
                   onClick={() => setLinkFileShow((prev) => !prev)}>
-                  <img
-                    src={vidUpload}
-                    alt=""
-                    className="md:w-[3rem] 2xl:w-[84px] 2xl:h-[87px]"
-                  />
+                  <img src={vidUpload} alt="" className="md:w-[3rem] " />
                 </div>
                 <div
-                  className=" relative w-[100%] h-[200px] 2xl:w-[491px] 2xl:h-[282px] md:w-[100%] md:h-[100px]
+                  className=" relative w-[100%] h-[200px] md:w-[50%]
            lg:w-[20vw] lg:h-[20vh] bg-[#126912] rounded-lg flex
            items-center justify-center cursor-pointer"
                   onClick={toggleQuizPopup}>
-                  <img
-                    src={quizLink}
-                    alt=""
-                    className="md:w-[3rem] 2xl:w-[84px] 2xl:h-[87px]"
-                  />
+                  <img src={quizLink} alt="" className="md:w-[3rem] " />
                 </div>
               </div>
               {/* Video Popup */}
@@ -289,9 +281,6 @@ const AddTopic = ({ courseTitle }) => {
                 </div>
               )}
               <ToastContainer className="tcenter" closeButton={CloseButton} />
-              <div className="">
-                <Footer />
-              </div>
             </form>
           </div>
         );

@@ -57,7 +57,7 @@ import AssessmentSql from "./TeamCComponents/pages/quiz/assessment_sql";
 import AssessmentSvn from "./TeamCComponents/pages/quiz/assessment_svn";
 import AssessmentHtml from "./TeamCComponents/pages/quiz/assessment_html";
 import ChapterList from "./TeamCComponents/components/chapter_list";  
-import TeamC_MainContent from "./TeamCComponents/components/course_maincontent";    
+import TeamC_MainContent from "./TeamCComponents/components/course_maincontent";    import AddQuiz from "./TeamCComponents/pages/AddQuiz";
 
 // team D
 import Team_D_View from "./TeamDComponents/Team_D_View";
@@ -66,6 +66,7 @@ import Team_D_Verif_nonuser from "./TeamDComponents/Team_D_Verif_nonuser";
 import Team_D_Content from "./TeamDComponents/Team_D_Content";
 import Home from "./TeamAComponents/components/Home";
 import ForumDInstructor from "./TeamCComponents/pages/ForumDInstructor";
+
 
 
 function TeamIntegrationRoutes() {
@@ -116,6 +117,7 @@ function TeamIntegrationRoutes() {
         <Route path="/assessment" element={<TeamC_Assessments />} />
         <Route path="/course" element={<TeamC_Course />} />
         <Route path="/ForumF" element={<ForumF />} />
+        <Route path="/AddQuiz" element={<AddQuiz/>}/>
         <Route path="/ForumFInstructor" element={<ForumFInstructor />} />
         <Route path="/quizform" element={<TeamC_QuizForm/>} />
         <Route path="/forum_discussion" element={<ForumD/>} />
