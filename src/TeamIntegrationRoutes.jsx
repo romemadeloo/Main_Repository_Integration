@@ -57,7 +57,8 @@ import AssessmentSql from "./TeamCComponents/pages/quiz/assessment_sql";
 import AssessmentSvn from "./TeamCComponents/pages/quiz/assessment_svn";
 import AssessmentHtml from "./TeamCComponents/pages/quiz/assessment_html";
 import ChapterList from "./TeamCComponents/components/chapter_list";  
-import TeamC_MainContent from "./TeamCComponents/components/course_maincontent";    import AddQuiz from "./TeamCComponents/pages/AddQuiz";
+import TeamC_MainContent from "./TeamCComponents/components/course_maincontent";    
+import AddQuiz from "./TeamCComponents/pages/AddQuiz";
 
 // team D
 import Team_D_View from "./TeamDComponents/Team_D_View";
@@ -127,6 +128,7 @@ function TeamIntegrationRoutes() {
         <Route path="/assessment_html" element={<AssessmentHtml />} />
         <Route path="/api/chapters/:id" element={<ChapterList/>} />
         <Route path="/api/topics/:id" element={<TeamC_MainContent/>} />
+        
 
 
           {/* QUIZ LIST */}
