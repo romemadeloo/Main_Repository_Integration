@@ -45,7 +45,7 @@ function TeamC_ChapterSvn() {
           {/* Chapter Card */}
           <div className="c_course_cardmain card flex-grow-1" style={{ marginTop: '10px', willChange: 'filter', transition: 'filter 300ms', backgroundColor: '#126912', borderRadius: '1rem', }}>
             {/* Chapter Link */}
-            <Link to={`/api/chapters/${course_id}`} className="h4 text-white text-decoration-none c_chapter_cardtext">
+            <Link to={`/api/v1/auth/chapters/${course_id}`} className="h4 text-white text-decoration-none c_chapter_cardtext">
               {/* Chapter Card Body */}
               <div className="card-body d-flex" id="c_course_cardbody" style={{ backgroundColor: '#126912', borderRadius: '1rem', }}>
                 {course_title}
