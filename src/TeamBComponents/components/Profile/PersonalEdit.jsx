@@ -25,10 +25,10 @@ const PersonalEdit = ({ hideUpdatePersonalInfo }) => {
     setFile(URL.createObjectURL(e.target.files[0]));
   }
 
-    function handleChangeSig(e) {
-      console.log(e.target.files);
-      setSigFile(URL.createObjectURL(e.target.files[0]));
-    }
+  function handleChangeSig(e) {
+    console.log(e.target.files);
+    setSigFile(URL.createObjectURL(e.target.files[0]));
+  }
   useEffect(() => {
     const loadUsers = async () => {
       const result = await axios.get("http://localhost:8080/api/v1/auth/users");
@@ -76,7 +76,7 @@ const PersonalEdit = ({ hideUpdatePersonalInfo }) => {
         autoComplete="off"
         required
         onSubmit={(e) => handleSubmit(e)}
-        className="flex flex-col h-full gap-y-5 w-[90%] lg:h-[380px] lg:min-w-[680px]  bg-[#BCE8B1] rounded shadow-md">
+        className="flex flex-col h-full gap-y-5 w-[90%] lg:h-[380px] lg:w-[680px]  bg-[#BCE8B1] rounded shadow-md">
         <div className="relative lg:w-[95%] lg:m-auto h-[500px] lg:h-[350px]  ">
           <div className="lg:flex lg:w-[100%] lg:gap-x-5">
             {/* IMAGE */}
