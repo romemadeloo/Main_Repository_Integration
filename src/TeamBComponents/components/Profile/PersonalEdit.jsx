@@ -9,7 +9,7 @@ import { useContext, useEffect, useState } from "react";
 import profilePic from "../../../assets/TeamBassests/Registration.png";
 import signature from "../../../assets/TeamBassests/signature.png";
 import { ProfileContext } from "../context/ProfileContext";
-const PersonalEdit = ({ hideUpdatePersonalInfo }) => {
+const PersonalEdit = ({ hideUpdatePersonalInfo, showEdit, userEmail }) => {
   const { users, setUsers, file, setFile, sigfile, setSigFile } =
     useContext(ProfileContext);
 
@@ -53,9 +53,10 @@ const PersonalEdit = ({ hideUpdatePersonalInfo }) => {
 
     // await axios.post("http://localhost:8080/api/v1/auth/users", user);
     setUsers(user);
+    showEdit();
   };
-  console.log(users);
-  const { firstName, lastName, phoneNumber, email } = user;
+
+  const { firstName, lastName, phoneNumber, email } = users;
   console.log(firstName);
 
   // React hook for tooltip
@@ -214,7 +215,7 @@ const PersonalEdit = ({ hideUpdatePersonalInfo }) => {
                   id="Email"
                   type="email"
                   name="email"
-                  value={email}
+                  value={userEmail}
                   onChange={(e) => handleInputChange(e)}
                 />
               </div>
