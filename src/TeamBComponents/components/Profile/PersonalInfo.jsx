@@ -11,8 +11,8 @@ import Footer from "../Footer";
 import PersonalEdit from "./PersonalEdit";
 import { ProfileContext } from "../context/ProfileContext";
 
-const PersonalInfo = ({ intructorName }) => {
-  const { user, setUser, users, setUsers, file, setFile } =
+const PersonalInfo = ({ intructorName, userEmail }) => {
+  const { user, setUser, users, setUsers, file, setFile, accDetails } =
     useContext(ProfileContext);
   console.log(user);
 
@@ -45,6 +45,7 @@ const PersonalInfo = ({ intructorName }) => {
     setEditPersonalInfo(false);
     setUpdatePersonalInfo(true);
   };
+  console.log(userEmail);
   return (
     <>
       {editPersonalInfo && (
@@ -109,7 +110,7 @@ const PersonalInfo = ({ intructorName }) => {
                         id="Email"
                         type="text"
                         name="email" //edit
-                        value={email}
+                        value={userEmail}
                         disabled
                       />
                     </div>
@@ -147,7 +148,13 @@ const PersonalInfo = ({ intructorName }) => {
           </div>
         </div>
       )}
-      {updatePersonalInfo && <PersonalEdit hideUpdatePersonalInfo={showEdit} />}
+      {updatePersonalInfo && (
+        <PersonalEdit
+          hideUpdatePersonalInfo={showEdit}
+          showEdit={showEdit}
+          userEmail={userEmail}
+        />
+      )}
     </>
   );
 };

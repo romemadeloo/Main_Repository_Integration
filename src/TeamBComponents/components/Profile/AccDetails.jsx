@@ -1,12 +1,10 @@
+/* eslint-disable react/prop-types */
 import Footer from "../Footer"; // Importing footer component
 import { Link } from "react-router-dom"; // Importing Link component from react-router-dom
 import { ProfileContext } from "../context/ProfileContext";
 import { useContext } from "react";
 
-const AccDetails = () => {
-  const { setAccDetails, accDetails } = useContext(ProfileContext);
-  //Function component declaration
-  console.log(accDetails.name);
+const AccDetails = ({ email, userName }) => {
   return (
     <>
       {/* 1/11/2024 Created Account Details UI Ouline */}
@@ -19,32 +17,25 @@ const AccDetails = () => {
           {" "}
           {/* Nested div */}
           {/* Email section */}
-          {accDetails.map((acc, idx) => {
-            const { email, userName } = acc;
-            return (
-              <div
-                key={idx}
-                className="relative flex flex-col gap-y-5  w-[100%] items-center">
-                <p className="relative w-[100%] lg:w-[600px] rounded-md p-2 lg:h-[50px]  bg-[#D1DFCD] text-[.8rem]  lg:rounded-lg  text-[#4D4141] text-opacity-[53%] shadow-lg  flex items-center pl-2 ">
-                  {" "}
-                  {/* Paragraph element */}
-                  <span className="lg:text-[1.3rem] TeamB_text-shadow">
-                    {email}
-                  </span>{" "}
-                  {/* Span element */}
-                </p>
-                {/* Username section */}
-                <p className="relative w-[100%] rounded-md lg:w-[600px] p-2 lg:h-[50px]  bg-[#D1DFCD] text-[.8rem]  lg:rounded-lg  text-[#4D4141] text-opacity-[53%] shadow-lg  flex items-center pl-2 ">
-                  {" "}
-                  {/* Paragraph element */}
-                  <span className="lg:text-[1.3rem] TeamB_text-shadow">
-                    {userName}
-                  </span>{" "}
-                  {/* Span element */}
-                </p>
-              </div>
-            );
-          })}
+          <div className="relative flex flex-col gap-y-5  w-[100%] items-center">
+            <p className="relative w-[100%] lg:w-[600px] rounded-md p-2 lg:h-[50px]  bg-[#D1DFCD] text-[.8rem]  lg:rounded-lg  text-[#4D4141] text-opacity-[53%] shadow-lg  flex items-center pl-2 ">
+              {" "}
+              {/* Paragraph element */}
+              <span className="lg:text-[1.3rem] TeamB_text-shadow">
+                {email}
+              </span>{" "}
+              {/* Span element */}
+            </p>
+            {/* Username section */}
+            <p className="relative w-[100%] rounded-md lg:w-[600px] p-2 lg:h-[50px]  bg-[#D1DFCD] text-[.8rem]  lg:rounded-lg  text-[#4D4141] text-opacity-[53%] shadow-lg  flex items-center pl-2 ">
+              {" "}
+              {/* Paragraph element */}
+              <span className="lg:text-[1.3rem] TeamB_text-shadow">
+                {userName}
+              </span>{" "}
+              {/* Span element */}
+            </p>
+          </div>
           {/* Change Password section */}
           <p className="cursor-pointer p-1 rounded-md mr-auto lg:w-[130px]  text-center lg:h-[30px] font-medium lg:font-semibold    bg-[#D1DFCD] text-[.8rem]  lg:rounded-lg  text-[#4D4141] text-opacity-[53%] shadow-lg  flex justify-center items-center  ">
             {" "}
