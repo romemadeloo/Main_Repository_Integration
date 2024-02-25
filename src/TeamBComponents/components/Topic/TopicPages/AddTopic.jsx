@@ -122,7 +122,7 @@ const AddTopic = ({ courseTitle }) => {
   const loadChapter = async () => {
     try {
       const result = await axios.get(
-        `http://localhost:8080/api/chapters/${id}`
+        `http://localhost:8080/api/v1/auth/chapter/${id}`
       );
 
       // Ensure that result.data is always an array by converting it
@@ -157,11 +157,11 @@ const AddTopic = ({ courseTitle }) => {
                 </button>
               </div>
               <div className="w-[90%] m-auto mb-4 md:mb-5">
-                <span className="text-center md:text-start text-[2rem] font-semibold ">
+                <span className="flex justify-center items-center md:justify-start md:items-start text-[2rem] font-semibold ">
                   <p>{courseTitle}</p>
                 </span>
                 <div className="flex flex-col items-center w-full pt-3 md:pt-0 md:flex-row">
-                  <span className="text-[1.5rem] pr-2 text-[#070101] text-opacity-[55%]">
+                  <span className="text-[1.5rem] pr-2 text-[#070101] text-opacity-[55%] line-clamp-1">
                     {chapter_title}:
                   </span>
                   <input

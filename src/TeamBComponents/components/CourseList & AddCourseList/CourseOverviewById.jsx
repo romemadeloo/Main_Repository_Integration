@@ -43,7 +43,9 @@ const CourseOverviewById = ({ courseTitle }) => {
 
   const loadChapters = async () => {
     try {
-      const result = await axios.get(`http://localhost:8080/api/courses/${id}`);
+      const result = await axios.get(
+        `http://localhost:8080/api/v1/auth/course/${id}`
+      );
 
       // Ensure that result.data is always an array by converting it
       const coursesArray = Array.isArray(result.data)
@@ -57,7 +59,9 @@ const CourseOverviewById = ({ courseTitle }) => {
 
   const [loadByChapter, setLoadByChapter] = useState([]);
   const loadChapter = async () => {
-    const result = await axios.get("http://localhost:8080/api/chapters");
+    const result = await axios.get(
+      "http://localhost:8080/api/v1/auth/getChapter"
+    );
     setLoadByChapter(result.data);
   };
   // console.log(courses);
@@ -67,15 +71,11 @@ const CourseOverviewById = ({ courseTitle }) => {
   const [deleteModalVisible, setDeleteModalVisible] = useState(false);
   const [selectedChapterId, setSelectedChapterId] = useState(null);
 
-  const handleEditClick = (chapterId) => {
-    setSelectedChapterId(chapterId);
-    setEditModalVisible(true);
-  };
-
-  const handleDeleteChapter = (chapterId) => {
-    //  await axios.delete(`http://localhost:8080/api/chapters/${chapterId}`);
-    setSelectedChapterId(chapterId);
-    setDeleteModalVisible(true);
+  const handleDeleteChapter = async (chapterId) => {
+    const deleteChapter = await axios.delete(
+      `http://localhost:8080/api/v1/auth/chapter/${chapterId}`
+    );
+    setLoadByChapter(deleteChapter.data);
   };
 
   const [searchQuery, setSearchQuery] = useState("");
@@ -115,6 +115,7 @@ const CourseOverviewById = ({ courseTitle }) => {
     };
   }, [searchContainerRef]);
 
+  const [editChapterTitle, setEditChapterTitle] = useState(null);
   return (
     <>
       <div className="w-full h-full">
@@ -235,18 +236,22 @@ const CourseOverviewById = ({ courseTitle }) => {
                                         <div className="flex items-center gap-2 pl-2 cursor-pointer">
                                           <div
                                             className="text-[1.3rem] 2xl:text-[2rem]  text-white"
-                                            onClick={() =>
-                                              handleEditClick(chapter_id)
-                                            }>
+                                            onClick={() => {
+                                              setEditModalVisible(
+                                                (prev) => !prev
+                                              );
+                                              setEditChapterTitle(chapter_id);
+                                            }}>
                                             <FaEdit />
                                           </div>
 
                                           <div
                                             className="text-[1.3rem] 2xl:text-[2rem]  text-white"
-                                            // onClick={() =>
-                                            //   handleDeleteChapter(chapter_id)
-                                            // }
-                                          >
+                                            onClick={() =>
+                                              setDeleteModalVisible(
+                                                (prev) => !prev
+                                              )
+                                            }>
                                             <RiDeleteBinLine />
                                           </div>
                                         </div>
@@ -256,9 +261,12 @@ const CourseOverviewById = ({ courseTitle }) => {
                                       <div className="flex items-center gap-2 cursor-pointer pl-2- ">
                                         <div
                                           className="text-[1.3rem] 2xl:text-[2rem]  text-black"
-                                          onClick={() =>
-                                            handleEditClick(chapter_id)
-                                          }>
+                                          onClick={() => {
+                                            setEditModalVisible(
+                                              (prev) => !prev
+                                            );
+                                            setEditChapterTitle(chapter_id);
+                                          }}>
                                           <FaEdit />
                                         </div>
 
@@ -296,10 +304,13 @@ const CourseOverviewById = ({ courseTitle }) => {
                       const { topic, chapter_title, chapter_id } = chap;
                       return (
                         <div key={idx}>
-                          <ChapterModal
-                            editTitle={setEditModalVisible}
-                            chapterId={chapter_id}
-                          />
+                          {editModalVisible &&
+                            editChapterTitle === chapter_id && (
+                              <ChapterModal
+                                editTitle={setEditModalVisible}
+                                chapterId={chapter_id}
+                              />
+                            )}
                         </div>
                       );
                     })}
@@ -311,11 +322,33 @@ const CourseOverviewById = ({ courseTitle }) => {
           {deleteModalVisible && (
             <div className="fixed w-full h-full pl-10 top-9 left-20">
               <div className="lg:w-[1080px] ">
-                <DeleteChapterModal
-                  chapterId={selectedChapterId}
-                  onClose={() => setDeleteModalVisible(false)}
-                  onSaved={() => setDeleteModalVisible(false)}
-                />
+              
+               
+                    {courses.map((course, idx) => {
+                      const { chapter } = course;
+                      return (
+                        <div key={idx}>
+                        {
+                          chapter.map((chap, idx) => {
+                            const {chapter_id} = chap
+                            return (
+                              <div key={idx}>
+                                <DeleteChapterModal
+                                  chapterId={chapter_id}
+                                  deleteChap={handleDeleteChapter}
+                                  showDeleteModal={setDeleteModalVisible}
+                                />
+                              </div>
+                            );
+                          })
+                        }
+                          
+                        </div>
+                      );
+                    })}
+                 
+              
+                
               </div>
             </div>
           )}

@@ -55,7 +55,7 @@ const CopyofCreateNewCourse = () => {
   const handleSubmit = async (e) => {
     // Assuming your API call is successful, update the state to indicate form submission
     try {
-      await axios.post("http://localhost:8080/api/courses", course);
+      await axios.post("http://localhost:8080/api/v1/auth/postCourses", course);
       setFormSubmitted(true);
     } catch (error) {
       console.error("Error submitting form:", error);
