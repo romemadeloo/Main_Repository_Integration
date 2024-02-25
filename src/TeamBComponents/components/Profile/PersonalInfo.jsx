@@ -12,8 +12,6 @@ import PersonalEdit from "./PersonalEdit";
 import { ProfileContext } from "../context/ProfileContext";
 
 const PersonalInfo = ({ intructorName }) => {
-
-
   const { user, setUser, users, setUsers, file, setFile } =
     useContext(ProfileContext);
   console.log(user);
@@ -50,9 +48,9 @@ const PersonalInfo = ({ intructorName }) => {
   return (
     <>
       {editPersonalInfo && (
-        <div className=" flex flex-col h-full gap-y-5 w-[90%] lg:h-[380px]  lg:w-[680px]  xl:h-[655px] xl:w-[948px] bg-[#BCE8B1] rounded shadow-md">
-          <div className="lg:w-[95%] lg:m-auto ">
-            <div className="lg:flex lg:w-[100%] relative lg:gap-x-5 h-[500px] lg:h-[350px] xl:h-[655px]">
+        <div className=" flex flex-col h-full gap-y-5 w-[90%] lg:h-[380px]  lg:w-[680px] bg-[#BCE8B1] rounded shadow-md">
+          <div className="lg:w-[95%] lg:m-auto h-[500px] lg:h-[350px]">
+            <div className="lg:flex lg:w-[100%] relative lg:gap-x-5 h-[500px] lg:h-[350px]">
               <div className="lg:w-[30%] flex justify-center lg:justify-start">
                 <img
                   src={file}
@@ -96,7 +94,7 @@ const PersonalInfo = ({ intructorName }) => {
                     value={lastName}
                     disabled
                   />
-                  <div className="lg:flex lg:flex-col xl:gap-y-10">
+                  <div className="lg:flex lg:flex-col ">
                     <div className="relative">
                       <label
                         htmlFor="Email"

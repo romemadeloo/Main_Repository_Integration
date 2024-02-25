@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 //  1/30/2024 fix margin top for profile container
 
 import React, { useContext, useState, useEffect } from "react";
@@ -81,8 +74,8 @@ const Profile = () => {
         </div>
         {/* 1/11/2024 fix nav */}
         <div className="flex flex-col lg:flex-row lg:justify-center lg:gap-5 lg:mt-1 ">
-          <div className=" lg:w-[20%] xl:w-[449px] xl:h-[440px] lg:h-[200px] lg:shadow-lg lg:bg-[#BCE8B1] lg:flex lg:items-center lg:flex-col lg:rounded-md">
-            <p className="lg:p-5 text-[2rem] lg:text-[1.2rem] xl:text-[32px] font-bold text-[#4D4141] opacity-[80%] text-center lg:text-start">
+          <div className=" lg:w-[20%] lg:h-[200px] lg:shadow-lg lg:bg-[#BCE8B1] lg:flex lg:items-center lg:flex-col lg:rounded-md">
+            <p className="lg:p-5 text-[2rem] lg:text-[1.2rem]  font-bold text-[#4D4141] opacity-[80%] text-center lg:text-start">
               Profile Management
             </p>
 
@@ -95,8 +88,8 @@ const Profile = () => {
               <p
                 className={
                   showPersonalInfo
-                    ? "cursor-pointer p-1 rounded-md lg:mt-2 lg:p-2 lg:text-[1.2rem] xl:text-[32px] text-[#000000] opacity-[53%] bg-[#126912] lg:w-[100%] lg:text-center bg-opacity-[25%] "
-                    : "cursor-pointer p-1 rounded-md lg:mt-2 lg:p-2 lg:text-[1.2rem] xl:text-[32px] text-[#4D4141] hover:text-[#000000] opacity-[53%] lg:w-[100%] lg:text-center "
+                    ? "cursor-pointer p-1 rounded-md lg:mt-2 lg:p-2 lg:text-[1.2rem]  text-[#000000] opacity-[53%] bg-[#126912] lg:w-[100%] lg:text-center bg-opacity-[25%] "
+                    : "cursor-pointer p-1 rounded-md lg:mt-2 lg:p-2 lg:text-[1.2rem]  text-[#4D4141] hover:text-[#000000] opacity-[53%] lg:w-[100%] lg:text-center "
                 }
                 onClick={showPInfo}>
                 Personal Information
@@ -104,8 +97,8 @@ const Profile = () => {
               <p
                 className={
                   showAccDetails
-                    ? "cursor-pointer p-1 rounded-md lg:text-[1.2rem] xl:text-[32px] lg:p-2 text-[#000] opacity-[53%] bg-[#126912] lg:w-[100%] lg:text-center bg-opacity-[25%]"
-                    : "cursor-pointer p-1 rounded-md lg:text-[1.2rem] xl:text-[32px] lg:p-2 text-[#4D4141] hover:text-[#000] opacity-[53%]  lg:w-[100%] lg:text-center "
+                    ? "cursor-pointer p-1 rounded-md lg:text-[1.2rem]  lg:p-2 text-[#000] opacity-[53%] bg-[#126912] lg:w-[100%] lg:text-center bg-opacity-[25%]"
+                    : "cursor-pointer p-1 rounded-md lg:text-[1.2rem]  lg:p-2 text-[#4D4141] hover:text-[#000] opacity-[53%]  lg:w-[100%] lg:text-center "
                 }
                 onClick={showADetails}>
                 Account Details
@@ -114,9 +107,7 @@ const Profile = () => {
           </div>
           <div className="flex justify-center lg:justify-start">
             {/* Place your Component here */}
-            {
-              showPersonalInfo && <PersonalInfo /> 
-            }
+            {showPersonalInfo && <PersonalInfo />}
             {showAccDetails && <AccDetails />}
             {/* /* Place AccDetails Component here */}
             {/* <AccDetails/> */}
