@@ -1,18 +1,15 @@
 
 import React, { Fragment, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { enroll } from "../js/script";
 import CoursePreview from "../components/course_preview";
 import Team_D_HeaderV2 from "../../TeamDComponents/Team_D_HeaderV2";
 import ModalSeeMore from "../components/modal_course_seemore";
 import axios from "axios";
-import ProfileModal from "../../TeamAComponents/components/ProfileModal";
 
 
 import "../css/base_style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import { useAuth } from "../../TeamAComponents/components/AuthContext";
 
   //Added code for profile modal
 
@@ -22,7 +19,7 @@ function TeamC_Dashboard() {
   useEffect(() => {
     const fetchChapters = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/chapter");
+        const response = await axios.get("http://localhost:8080/api/courses");
         setChapters(response.data);
       } catch (error) {
         console.error("Error fetching chapters:", error);
@@ -80,7 +77,7 @@ function TeamC_Dashboard() {
           <div className="modal-dialog">
             <div className="modal-content" style={{ backgroundColor: "#D9FFCF" }}>
               <div className="modal-header">
-                <h5 className="modal-title" id={`modal${index + 1}`}>{chapter.chapterTitle}</h5>
+                <h5 className="modal-title" id={`modal${index + 1}`}>{chapter.course_title}</h5>
                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div className="modal-body">

@@ -7,7 +7,7 @@ function ModalSeeMore() {
     useEffect(() => {
         const loadChapters = async () => {
             try {
-                const response = await axios.get("http://localhost:8080/chapter");
+                const response = await axios.get("http://localhost:8080/api/courses");
                 setChapters(response.data);
             } catch (error) {
                 console.error("Error loading chapters:", error);
@@ -28,13 +28,13 @@ function ModalSeeMore() {
                     <div className="modal-dialog" role="document">
                         <div className="modal-content" style={{ backgroundColor: "#D9FFCF" }}>
                             <div className="modal-header">
-                                <h5 className="modal-title fw-bold" id={`exampleModalLongTitle${index + 1}`}>{chapterData.chapterTitle}</h5>
+                                <h5 className="modal-title fw-bold" id={`exampleModalLongTitle${index + 1}`}>{chapterData.course_title}</h5>
                                 <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div className="modal-body">
-                                <p>{chapterData.chapterDescription}</p>
+                                <p>{chapterData.course_description}</p>
                             </div>
                             <div className="modal-footer">
 

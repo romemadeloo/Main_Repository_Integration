@@ -50,7 +50,10 @@ const CourseDescription = ({ courseId }) => {
     // Assuming your API call is successful, update the state to indicate form submission
 
     try {
-      await axios.put(`http://localhost:8080/api/courses/${courseId}`, courses);
+      await axios.put(
+        `http://localhost:8080/api/v1/auth/course/${courseId}`,
+        courses
+      );
       // showModal(false);
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -60,7 +63,7 @@ const CourseDescription = ({ courseId }) => {
 
   const loadCourses = async () => {
     const result = await axios.get(
-      `http://localhost:8080/api/courses/${courseId}`
+      `http://localhost:8080/api/v1/auth/course/${courseId}`
     );
     setCourses(result.data);
   };
@@ -80,8 +83,8 @@ const CourseDescription = ({ courseId }) => {
             <span className="text-[#126912] font-semibold">Save</span>
           </button>
         </div>
-        <div className="w-[90%] m-auto">
-          <span className="lg:text-[2rem] 2xl:text-[48px] font-semibold ">
+        <div className="w-[100%] flex flex-col justify-center items-center lg:justify-start lg:items-start lg:w-[90%] m-auto">
+          <span className="text-[2rem]  mt-3 lg:mt-0 font-semibold ">
             Course Description
           </span>
 
@@ -94,15 +97,12 @@ const CourseDescription = ({ courseId }) => {
             cols="30"
             rows="10"
             placeholder="Course Description"
-            className="bg-[#BCE8B1] TeamB_text-shadow resize-none lg:min-w-[100%] 2xl:h-[504px] 2xl:max-w-[1342px] lg:h-[50vh] placeholder:font-medium placeholder:text-justify placeholder:p-10
-              outline-none rounded-lg placeholder:text-[#070101] placeholder:text-opacity-[55%] mt-5 p-2 "
+            className="bg-[#BCE8B1] TeamB_text-shadow resize-none w-[90%] lg:min-w-[100%]  lg:h-[50vh] placeholder:font-medium placeholder:text-justify placeholder:p-10
+              outline-none rounded-lg placeholder:text-[#070101] placeholder:text-opacity-[55%] mt-3 lg:mt-5 p-2 "
           />
         </div>
 
         <ToastContainer className="tcenter" closeButton={CloseButton} />
-        <div className="mt-[50px]">
-          <Footer />
-        </div>
       </form>
     </>
   );
