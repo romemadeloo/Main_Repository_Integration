@@ -22,7 +22,7 @@ const CopyofCreateChapterTitle = ({ courseId, showModal }) => {
     // Assuming your API call is successful, update the state to indicate form submission
     try {
       await axios.post(
-        `http://localhost:8080/api/courses/${courseId}/chapters`,
+        `//localhost:8080/api/v1/auth/course/${courseId}/chapters`,
         chapter
       );
       showModal(false);

@@ -30,7 +30,7 @@ const NavSideBar = () => {
   } = useContext(NavBarContext);
 
   return (
-    <div className="w-[60%] md:w-[40%] h-[100vh] bg-[#bce8b1] bg-opacity-[80%] ">
+    <div className="w-[250px] h-[100vh] bg-[#bce8b1] bg-opacity-[80%] ">
       <div className="flex flex-col items-center justify-center lg:hidden gap-x-2">
         <div className="w-full pl-5 mt-3 text-[1.3rem]">
           <Link to="/teambprofile" onClick={showProfile}>

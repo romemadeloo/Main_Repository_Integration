@@ -50,7 +50,10 @@ const CourseDescription = ({ courseId }) => {
     // Assuming your API call is successful, update the state to indicate form submission
 
     try {
-      await axios.put(`http://localhost:8080/api/courses/${courseId}`, courses);
+      await axios.put(
+        `http://localhost:8080/api/v1/auth/course/${courseId}`,
+        courses
+      );
       // showModal(false);
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -60,7 +63,7 @@ const CourseDescription = ({ courseId }) => {
 
   const loadCourses = async () => {
     const result = await axios.get(
-      `http://localhost:8080/api/courses/${courseId}`
+      `http://localhost:8080/api/v1/auth/course/${courseId}`
     );
     setCourses(result.data);
   };
@@ -100,7 +103,6 @@ const CourseDescription = ({ courseId }) => {
         </div>
 
         <ToastContainer className="tcenter" closeButton={CloseButton} />
-       
       </form>
     </>
   );

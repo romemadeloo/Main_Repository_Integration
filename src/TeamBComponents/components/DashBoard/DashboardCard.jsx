@@ -27,7 +27,9 @@ const DashboardCard = () => {
 
   const loadCourses = async () => {
     // Function to fetch courses from API
-    const result = await axios.get("http://localhost:8080/api/courses");
+    const result = await axios.get(
+      "http://localhost:8080/api/v1/auth/getCourses"
+    );
     setCourses(result.data); // Set the fetched data to 'courses' state
   };
 

@@ -26,7 +26,10 @@ const CourseTitleModal = ({ courseId, editTitle }) => {
     // Assuming your API call is successful, update the state to indicate form submission
 
     try {
-      await axios.put(`http://localhost:8080/api/courses/${courseId}`, courses);
+      await axios.put(
+        `http://localhost:8080/api/v1/auth/course/${courseId}`,
+        courses
+      );
       // showModal(false);
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -35,7 +38,7 @@ const CourseTitleModal = ({ courseId, editTitle }) => {
   };
   const loadCourses = async () => {
     const result = await axios.get(
-      `http://localhost:8080/api/courses/${courseId}`
+      `http://localhost:8080/api/v1/auth/course/${courseId}`
     );
     setCourses(result.data);
   };
@@ -67,9 +70,7 @@ const CourseTitleModal = ({ courseId, editTitle }) => {
             />
             <div className="flex justify-end w-full pt-8">
               <div className="flex gap-x-5">
-                <button
-                  className="  lg:text-[1rem]"
-                  onClick={handleCancel}>
+                <button className="  lg:text-[1rem]" onClick={handleCancel}>
                   Cancel
                 </button>
                 <button
