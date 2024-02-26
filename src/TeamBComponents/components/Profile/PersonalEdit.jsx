@@ -31,7 +31,8 @@ const PersonalEdit = ({ hideUpdatePersonalInfo, showEdit, userEmail }) => {
   }
   useEffect(() => {
     const loadUsers = async () => {
-      const result = await axios.get("http://localhost:8080/api/v1/auth/users");
+      //update
+      const result = await axios.put("http://localhost:8080/api/v1/auth/users");
       setUsers(result.data);
     };
 
@@ -57,7 +58,7 @@ const PersonalEdit = ({ hideUpdatePersonalInfo, showEdit, userEmail }) => {
   };
 
   const { firstName, lastName, phoneNumber, email } = users;
-  console.log(firstName);
+  console.log(users);
 
   // React hook for tooltip
   const [showTooltipFirstName, setShowTooltipFirstName] = useState(false);
