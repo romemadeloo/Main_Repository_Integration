@@ -30,7 +30,6 @@ const PersonalInfo = ({ intructorName, userEmail }) => {
   };
 
   const { firstName, lastName, email, phoneNumber } = users;
-  console.log(firstName);
 
   //edit update personal info
   const [editPersonalInfo, setEditPersonalInfo] = useState(true);
@@ -56,7 +55,7 @@ const PersonalInfo = ({ intructorName, userEmail }) => {
                 <img
                   src={file}
                   alt=""
-                  className=" h-[150px] lg:p-2 lg:flex lg:w-[200px]  xl:w-[292px] xl:h-[239px]"
+                  className=" h-[150px] w-[250px] lg:p-2 lg:flex lg:w-[200px]  xl:w-[292px] xl:h-[239px]"
                 />
               </div>
               <div className="mt-3 w-[90%] flex m-auto relative flex-col lg:w-[70%]">

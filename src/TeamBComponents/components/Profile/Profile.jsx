@@ -56,8 +56,14 @@ const Profile = () => {
   //2-17-24
 
   //destructure profile context
-  const { showPersonalInfo, showAccDetails, showPInfo, showADetails, accDetails, setAccDetails } =
-    useContext(ProfileContext);
+  const {
+    showPersonalInfo,
+    showAccDetails,
+    showPInfo,
+    showADetails,
+    accDetails,
+    setAccDetails,
+  } = useContext(ProfileContext);
   return (
     <>
       <Nav />
@@ -108,27 +114,25 @@ const Profile = () => {
           <div className="flex justify-center lg:justify-start">
             {/* Place your Component here */}
             {showPersonalInfo &&
-             accDetails.map((acc, idx) => {
-                const {email} = acc
+              accDetails.map((acc, idx) => {
+                const { email } = acc;
                 return (
-                  <div key={idx}>
+                  <div key={idx} className="w-[100%] flex justify-center">
                     <PersonalInfo userEmail={email} />
                   </div>
                 );
-              }) }
-            <div>
+              })}
 
-            {showAccDetails &&  
+            {showAccDetails &&
               accDetails.map((acc, idx) => {
-                const {email, userName} = acc
+                const { email, userName } = acc;
                 return (
-                  <div key={idx}>
-                    <AccDetails email={email} userName={userName}/>
+                  <div key={idx} className="w-[100%] flex justify-center">
+                    <AccDetails email={email} userName={userName} />
                   </div>
                 );
-              })
-            }
-            </div>
+              })}
+
             {/* /* Place AccDetails Component here */}
             {/* <AccDetails/> */}
           </div>
