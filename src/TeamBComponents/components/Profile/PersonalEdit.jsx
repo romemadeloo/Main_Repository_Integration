@@ -79,14 +79,14 @@ const PersonalEdit = ({ hideUpdatePersonalInfo, showEdit, userEmail }) => {
         onSubmit={(e) => handleSubmit(e)}
         className="flex flex-col h-full gap-y-5 w-[90%] lg:h-[380px] lg:w-[680px]  bg-[#BCE8B1] rounded shadow-md">
         <div className="relative lg:w-[95%] lg:m-auto h-[500px] lg:h-[350px]  ">
-          <div className="lg:flex lg:w-[100%] lg:gap-x-5">
+          <div className="lg:flex lg:w-[100%] lg:gap-x-5 ">
             {/* IMAGE */}
-            <div className="lg:w-[30%] flex lg:flex-col relative">
+            <div className="lg:w-[30%] flex lg:flex-col relative justify-between lg:justify-start md:w-[70%] m-auto">
               <label htmlFor="uploadProfile">
                 <img
                   src={file}
                   alt=""
-                  className="cursor-pointer p-2 lg:flex lg:w-[200px] h-[150px]"
+                  className="cursor-pointer p-2 lg:flex w-[200px] h-[150px]"
                 />
               </label>
               <input
@@ -95,11 +95,19 @@ const PersonalEdit = ({ hideUpdatePersonalInfo, showEdit, userEmail }) => {
                 onChange={handleChange}
                 className="hidden"
               />
+
+              {/* UPLOAD PROFILE PIC */}
+              <input id="uploadProfile" type="file" className="hidden" />
+              <label
+                htmlFor="uploadProfile"
+                className="cursor-pointer bottom-2 text-[.8rem] left-2 justify-center items-center absolute text-center font-medium px-2 rounded-sm   bg-[#D1DFCD]  text-[#4D4141] text-opacity-[53%] shadow-lg lg:hidden">
+                Choose File
+              </label>
               <label htmlFor="uploadSignature">
                 <img
                   src={sigfile}
                   alt=""
-                  className="cursor-pointer p-4 lg:flex lg:w-[200px] h-[150px] "
+                  className="cursor-pointer p-4 lg:flex w-[200px] h-[150px] "
                 />
               </label>
               <input
