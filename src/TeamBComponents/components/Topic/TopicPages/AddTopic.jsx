@@ -2,7 +2,7 @@
 
 //2/3/2024 junite, create AddTopic UI, completed
 
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FaSave } from "react-icons/fa";
 import Footer from "../../Footer";
 import vidUpload from "../../../../assets/TeamBassests/vidUpload.svg";
@@ -17,6 +17,7 @@ import LinkTopicModal from "../TopicModal/LinkTopicModal";
 
 //close icon
 import { IoMdClose } from "react-icons/io";
+import { CourseContext } from "../../context/CourseContext";
 
 //remove close button
 const CloseButton = ({ closeToast }) => (
@@ -28,6 +29,9 @@ const AddTopic = ({ courseTitle }) => {
   const [quizInputValue, setQuizInputValue] = useState("");
   const [isVideoPopupOpen, setVideoPopupOpen] = useState(false);
   const [isQuizPopupOpen, setQuizPopupOpen] = useState(false);
+
+  //  const { courses, setCourses, chapters, setChapters } =
+  //    useContext(CourseContext);
 
   const toggleVideoPopup = () => {
     setVideoPopupOpen(!isVideoPopupOpen);
@@ -101,7 +105,7 @@ const AddTopic = ({ courseTitle }) => {
 
     try {
       await axios.post(
-        `http://localhost:8080/api/chapters/${id}/topics`,
+        `http://localhost:8080/api/v1/auth/chapter/${id}/topics`,
         topics
       );
       // showModal(false);
@@ -193,7 +197,7 @@ const AddTopic = ({ courseTitle }) => {
                   className="relative w-[100%] h-[200px] md:w-[50%]
            lg:w-[20vw] lg:h-[20vh] bg-[#126912] rounded-lg flex items-center
             justify-center cursor-pointer"
-                  onClick={() => setLinkFileShow((prev) => !prev)}>
+                  onClick={toggleVideoPopup}>
                   <img src={vidUpload} alt="" className="md:w-[3rem] " />
                 </div>
                 <div
@@ -205,50 +209,45 @@ const AddTopic = ({ courseTitle }) => {
                 </div>
               </div>
               {/* Video Popup */}
-              {linkFileShow && (
+
+              {isVideoPopupOpen && (
                 <div className="fixed inset-0 flex items-center justify-center">
-                  <div className="absolute inset-0 bg-black opacity-50"></div>
-                  <div className="bg-[#EBFFE5] rounded-lg z-10 ">
-                    <div className="relative px-4 py-4">
-                      <div className="absolute right-[-.5rem] top-[-.5rem] w-[30px] h-[30px] rounded-full TeamB_text-shadow drop-shadow-lg shadow-lg bg-red-500 flex items-center justify-center">
-                        <button
-                          onClick={() => setLinkFileShow((prev) => !prev)}
-                          className="text-white ">
-                          <IoMdClose />
-                        </button>
-                      </div>
-                      <div className="flex items-center justify-between w-[14rem] ">
-                        <div
-                          className="rounded-lg shadow-lg cursor-pointer drop-shadow-lg"
-                          onClick={toggleVideoPopup}>
-                          <p className="px-2 py-2 text-white bg-blue-600 rounded-lg TeamB_text-shadow">
-                            Upload Link
-                          </p>
-                        </div>
-                        <div className="rounded-lg shadow-lg drop-shadow-lg">
-                          <label
-                            htmlFor="uploadLink"
-                            className="bg-[#BCE8B1] cursor-pointer text-black px-2 py-2 rounded-lg  TeamB_text-shadow ">
-                            Upload File
-                          </label>
-                          <input
-                            id="uploadLink"
-                            type="file"
-                            className="hidden"
-                          />
-                        </div>
-                      </div>
+                  {" "}
+                  {/* Outer container */}
+                  <div className="absolute inset-0 bg-black opacity-50"></div>{" "}
+                  {/* Background overlay */}
+                  <div className="bg-[#EBFFE5] p-8 rounded-lg z-10 w-[90%] md:w-[80%]">
+                    {" "}
+                    {/* Modal content */}
+                    <p className="mb-4 text-lg font-semibold">
+                      Add Topic Link
+                    </p>{" "}
+                    {/* Modal title */}
+                    <input // Input field for topic link
+                      required
+                      type="text"
+                      name="topic_file"
+                      value={topic_file}
+                      onChange={(e) => handleInputChange(e)}
+                      className="bg-[#BCE8B1] p-2 border border-gray-300 rounded-md mb-4 w-full"
+                      placeholder="https://www"
+                    />
+                    <div className="flex justify-end">
+                      {" "}
+                      {/* Button container */}
+                      <button // Cancel button
+                        onClick={handleVideoCancelClick}
+                        className="px-4 py-2 text-black rounded-md">
+                        Cancel
+                      </button>
+                      <button // Done button
+                        onClick={handleVideoDoneClick}
+                        className="bg-[#126912] text-white py-2 px-4 rounded-full ml-2">
+                        Done
+                      </button>
                     </div>
                   </div>
                 </div>
-              )}
-              {isVideoPopupOpen && (
-                <LinkTopicModal
-                  topic_file={topic_file}
-                  handleInputChange={handleInputChange}
-                  handleVideoCancelClick={handleVideoCancelClick}
-                  handleVideoDoneClick={handleVideoDoneClick}
-                />
               )}
               {/* Quiz Popup */}
               {isQuizPopupOpen && (

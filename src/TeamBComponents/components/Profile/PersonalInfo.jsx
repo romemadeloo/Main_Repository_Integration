@@ -53,7 +53,7 @@ const PersonalInfo = ({ intructorName, userEmail }) => {
             <div className="lg:flex lg:w-[100%] relative lg:gap-x-5 h-[500px] lg:h-[350px]">
               <div className="lg:w-[30%] flex justify-center lg:justify-start">
                 <img
-                  src={file}
+                  src={file ? file : profilePic}
                   alt=""
                   className=" h-[150px] w-[250px] lg:p-2 lg:flex lg:w-[200px]  xl:w-[292px] xl:h-[239px]"
                 />

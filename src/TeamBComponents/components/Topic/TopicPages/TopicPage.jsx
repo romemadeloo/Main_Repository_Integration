@@ -25,18 +25,38 @@ const TopicPage = () => {
     navigate(-1);
   };
 
-  const { courses, setCourses } = useContext(CourseContext);
+  const { courses, setCourses, chapters, setChapters } =
+    useContext(CourseContext);
 
   //user params to navigate specific id
   let { id } = useParams();
 
   useEffect(() => {
     loadChapters();
+    loadCourses();
   }, [id]);
 
   const loadChapters = async () => {
     try {
-      const result = await axios.get(`http://localhost:8080/api/v1/auth/course/${id}`);
+      const result = await axios.get(
+        `http://localhost:8080/api/v1/auth/chapter/${id}`
+      );
+
+      // Ensure that result.data is always an array by converting it
+      const coursesArray = Array.isArray(result.data)
+        ? result.data
+        : [result.data];
+      setChapters(coursesArray);
+    } catch (error) {
+      console.error("Error loading chapters:", error);
+    }
+  };
+
+  const loadCourses = async () => {
+    try {
+      const result = await axios.get(
+        `http://localhost:8080/api/v1/auth/byChapter/${id}`
+      );
 
       // Ensure that result.data is always an array by converting it
       const coursesArray = Array.isArray(result.data)
@@ -115,42 +135,35 @@ const TopicPage = () => {
               </p>
             </div>
             <div className="h-[40vh] overflow-auto TeamB_no-scrollbar pr-3">
-              {courses.map((course, idx) => {
-                const { chapter } = course;
+              {chapters.map((chap, idx) => {
+                const { topic } = chap;
+                console.log(chap);
                 return (
                   <div key={idx}>
-                    {chapter.map((chap, idx) => {
-                      const { topic } = chap;
-                      console.log(chap);
+                    {topic.map((tops, idx) => {
+                      const { topic_title, topic_id } = tops;
+                      console.log(tops);
                       return (
                         <div key={idx}>
-                          {topic.map((tops, idx) => {
-                            const { topic_title, topic_id } = tops;
-                            console.log(tops);
-                            return (
-                              <div key={idx}>
-                                <div className="flex items-center justify-between">
-                                  <p
-                                    className=" line-clamp-1 cursor-pointer py-1 font-light text-white TeamB_text-shadow  text-[1.2rem]"
-                                    onClick={() => {
-                                      showEditHandle();
-                                      setEditTopicId(topic_id);
-                                    }}>
-                                    {topic_title}
-                                  </p>
+                          <div className="flex items-center justify-between">
+                            <p
+                              className=" line-clamp-1 cursor-pointer py-1 font-light text-white TeamB_text-shadow  text-[1.2rem]"
+                              onClick={() => {
+                                showEditHandle();
+                                setEditTopicId(topic_id);
+                              }}>
+                              {topic_title}
+                            </p>
 
-                                  <span
-                                    className="text-[1.5rem] text-white cursor-pointer"
-                                    onClick={() => {
-                                      setDeleteModalVisible((prev) => !prev);
-                                      // deleteTopic(topic_id);
-                                    }}>
-                                    <MdDelete />
-                                  </span>
-                                </div>
-                              </div>
-                            );
-                          })}
+                            <span
+                              className="text-[1.5rem] text-white cursor-pointer"
+                              onClick={() => {
+                                setDeleteModalVisible((prev) => !prev);
+                                // deleteTopic(topic_id);
+                              }}>
+                              <MdDelete />
+                            </span>
+                          </div>
                         </div>
                       );
                     })}
@@ -201,42 +214,35 @@ const TopicPage = () => {
                 </p>
               </div>
               <div className="h-[40vh] overflow-auto TeamB_no-scrollbar pr-3">
-                {courses.map((course, idx) => {
-                  const { chapter } = course;
+                {chapters.map((chap, idx) => {
+                  const { topic } = chap;
+                  console.log(chap);
                   return (
                     <div key={idx}>
-                      {chapter.map((chap, idx) => {
-                        const { topic } = chap;
-                        console.log(chap);
+                      {topic.map((tops, idx) => {
+                        const { topic_title, topic_id } = tops;
+                        console.log(tops);
                         return (
                           <div key={idx}>
-                            {topic.map((tops, idx) => {
-                              const { topic_title, topic_id } = tops;
-                              console.log(tops);
-                              return (
-                                <div key={idx}>
-                                  <div className="flex items-center justify-between">
-                                    <p
-                                      className=" line-clamp-1 cursor-pointer py-1 font-light text-white TeamB_text-shadow  text-[1.2rem]"
-                                      onClick={() => {
-                                        showEditHandle();
-                                        setEditTopicId(topic_id);
-                                      }}>
-                                      {topic_title}
-                                    </p>
+                            <div className="flex items-center justify-between">
+                              <p
+                                className=" line-clamp-1 cursor-pointer py-1 font-light text-white TeamB_text-shadow  text-[1.2rem]"
+                                onClick={() => {
+                                  showEditHandle();
+                                  setEditTopicId(topic_id);
+                                }}>
+                                {topic_title}
+                              </p>
 
-                                    <span
-                                      className="text-[1.5rem] text-white cursor-pointer"
-                                      onClick={() => {
-                                        setDeleteModalVisible((prev) => !prev);
-                                        // deleteTopic(topic_id);
-                                      }}>
-                                      <MdDelete />
-                                    </span>
-                                  </div>
-                                </div>
-                              );
-                            })}
+                              <span
+                                className="text-[1.5rem] text-white cursor-pointer"
+                                onClick={() => {
+                                  setDeleteModalVisible((prev) => !prev);
+                                  // deleteTopic(topic_id);
+                                }}>
+                                <MdDelete />
+                              </span>
+                            </div>
                           </div>
                         );
                       })}

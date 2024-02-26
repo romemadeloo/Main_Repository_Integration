@@ -104,7 +104,10 @@ const EditTopic = ({ topicId, courseTitle, chapterTitle }) => {
     // Assuming your API call is successful, update the state to indicate form submission
 
     try {
-      await axios.put(`http://localhost:8080/api/v1/auth/topic/${topicId}`, topics);
+      await axios.put(
+        `http://localhost:8080/api/v1/auth/topic/${topicId}`,
+        topics
+      );
       // showModal(false);
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -120,21 +123,12 @@ const EditTopic = ({ topicId, courseTitle, chapterTitle }) => {
     setTopics(result.data);
   };
 
-  //store url in a variable
-  // const docs = [
-  //   {
-  //     uri: "https://rb.gy/wjgxf3",
-  //     fileType: "pptx",
-  //   }, // Remote file
-  //   // { uri: require("./example-files/pdf.pdf") }, // Local File
-  // ];
-
-  // const linkToPPTFile =
-  //   "https://onedrive.live.com/embed?resid=45112E029C22DBF%21345&authkey=!APHTfuIo5T7hg4w&em=2";
-
+  
   const [showEmbedded, setShowEmbedded] = useState(false);
   //react state for link and show
-  const [linkFileShow, setLinkFileShow] = useState(false);
+  // const [linkFileShow, setLinkFileShow] = useState(false);
+
+  console.log(topic_file);
   return (
     <>
       {/* add topic title */}
@@ -223,47 +217,44 @@ const EditTopic = ({ topicId, courseTitle, chapterTitle }) => {
           </div>
         </div>
 
-        {linkFileShow && (
+   
+        {/* Video Popup */}
+        {isVideoPopupOpen && (
           <div className="fixed inset-0 flex items-center justify-center">
-            <div className="absolute inset-0 bg-black opacity-50"></div>
-            <div className="bg-[#EBFFE5] rounded-lg z-10 ">
-              <div className="relative px-4 py-4">
-                <div className="absolute right-[-.5rem] top-[-.5rem] w-[30px] h-[30px] rounded-full TeamB_text-shadow drop-shadow-lg shadow-lg bg-red-500 flex items-center justify-center">
-                  <button
-                    onClick={() => setLinkFileShow((prev) => !prev)}
-                    className="text-white ">
-                    <IoMdClose />
-                  </button>
-                </div>
-                <div className="flex items-center justify-between w-[14rem] ">
-                  <div
-                    className="rounded-lg shadow-lg cursor-pointer drop-shadow-lg"
-                    onClick={toggleVideoPopup}>
-                    <p className="px-2 py-2 text-white bg-blue-600 rounded-lg TeamB_text-shadow">
-                      Upload Link
-                    </p>
-                  </div>
-                  <div className="rounded-lg shadow-lg drop-shadow-lg">
-                    <label
-                      htmlFor="uploadLink"
-                      className="bg-[#BCE8B1] cursor-pointer text-black px-2 py-2 rounded-lg  TeamB_text-shadow ">
-                      Upload File
-                    </label>
-                    <input id="uploadLink" type="file" className="hidden" />
-                  </div>
-                </div>
+            {" "}
+            {/* Outer container */}
+            <div className="absolute inset-0 bg-black opacity-50"></div>{" "}
+            {/* Background overlay */}
+            <div className="bg-[#EBFFE5] p-8 rounded-lg z-10 w-[90%] md:w-[80%]">
+              {" "}
+              {/* Modal content */}
+              <p className="mb-4 text-lg font-semibold">Add Topic Link</p>{" "}
+              {/* Modal title */}
+              <input // Input field for topic link
+                required
+                type="text"
+                name="topic_file"
+                value={topic_file}
+                onChange={(e) => handleInputChange(e)}
+                className="bg-[#BCE8B1] p-2 border border-gray-300 rounded-md mb-4 w-full"
+                placeholder="https://www"
+              />
+              <div className="flex justify-end">
+                {" "}
+                {/* Button container */}
+                <button // Cancel button
+                  onClick={handleVideoCancelClick}
+                  className="px-4 py-2 text-black rounded-md">
+                  Cancel
+                </button>
+                <button // Done button
+                  onClick={handleVideoDoneClick}
+                  className="bg-[#126912] text-white py-2 px-4 rounded-full ml-2">
+                  Done
+                </button>
               </div>
             </div>
           </div>
-        )}
-        {/* Video Popup */}
-        {isVideoPopupOpen && (
-          <LinkTopicModal
-            topic_file={topic_file}
-            handleInputChange={handleInputChange}
-            handleVideoCancelClick={handleVideoCancelClick}
-            handleVideoDoneClick={handleVideoDoneClick}
-          />
         )}
         {/* Quiz Popup */}
         {isQuizPopupOpen && (
