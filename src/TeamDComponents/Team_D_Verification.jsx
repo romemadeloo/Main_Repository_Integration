@@ -89,7 +89,9 @@ const Team_D_Verification = () => {
         </div>
         <div className="verification_search">
           <div className="left">
-            <h2>Verify Course Certificate</h2>
+          <div className="font-bold text-[2rem]">
+              <h2>Verify Course Certificate</h2>
+            </div>
             <Form.Control
               size="sm"
               type="text"
@@ -200,8 +202,10 @@ const Team_D_Verification = () => {
                     </div>
                     <div className="serialVerification">
                       <Form.Label>
-                        Certificate Serial No.{" "}
-                        <AiFillSafetyCertificate className="icon" />
+                      <div className="flex gap-x-2">
+                          Certificate Serial No.
+                          <AiFillSafetyCertificate className="icon" />
+                        </div>
                       </Form.Label>
                       <Form.Control size="sm" type="text" readOnly />
                     </div>
