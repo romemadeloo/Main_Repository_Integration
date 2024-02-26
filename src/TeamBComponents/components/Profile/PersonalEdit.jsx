@@ -95,7 +95,7 @@ const PersonalEdit = ({ hideUpdatePersonalInfo, showEdit, userEmail }) => {
                 type="file"
                 onChange={handleChange}
                 className="hidden"
-                accept=".svg,.webp"
+                accept=".svg,.webp,.png"
               />
 
               {/* UPLOAD PROFILE PIC */}
@@ -103,7 +103,7 @@ const PersonalEdit = ({ hideUpdatePersonalInfo, showEdit, userEmail }) => {
                 id="uploadProfile"
                 type="file"
                 className="hidden"
-                accept=".svg,.webp"
+                accept=".svg,.webp,.png"
               />
               <label
                 htmlFor="uploadProfile"
