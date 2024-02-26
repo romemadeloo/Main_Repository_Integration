@@ -116,6 +116,7 @@ const CourseOverviewById = ({ courseTitle }) => {
   }, [searchContainerRef]);
 
   const [editChapterTitle, setEditChapterTitle] = useState(null);
+  const [deleteCHapterTitle, setDeleteChapterTitle] = useState(null);
   return (
     <>
       <div className="w-full h-full">
@@ -247,11 +248,12 @@ const CourseOverviewById = ({ courseTitle }) => {
 
                                           <div
                                             className="text-[1.3rem] 2xl:text-[2rem]  text-white"
-                                            onClick={() =>
+                                            onClick={() => {
                                               setDeleteModalVisible(
                                                 (prev) => !prev
-                                              )
-                                            }>
+                                              );
+                                              setDeleteChapterTitle(chapter_id);
+                                            }}>
                                             <RiDeleteBinLine />
                                           </div>
                                         </div>
@@ -272,10 +274,11 @@ const CourseOverviewById = ({ courseTitle }) => {
 
                                         <div
                                           className="text-[1.3rem] 2xl:text-[2rem]  text-black"
-                                          // onClick={() =>
-                                          //   handleDeleteChapter(chapter_id)
-                                          // }
-                                        >
+                                          onClick={() =>
+                                            setDeleteModalVisible(
+                                              (prev) => !prev
+                                            )
+                                          }>
                                           <RiDeleteBinLine />
                                         </div>
                                       </div>
@@ -322,33 +325,28 @@ const CourseOverviewById = ({ courseTitle }) => {
           {deleteModalVisible && (
             <div className="fixed w-full h-full pl-10 top-9 left-20">
               <div className="lg:w-[1080px] ">
-              
-               
-                    {courses.map((course, idx) => {
-                      const { chapter } = course;
-                      return (
-                        <div key={idx}>
-                        {
-                          chapter.map((chap, idx) => {
-                            const {chapter_id} = chap
-                            return (
-                              <div key={idx}>
+                {courses.map((course, idx) => {
+                  const { chapter } = course;
+                  return (
+                    <div key={idx}>
+                      {chapter.map((chap, idx) => {
+                        const { chapter_id } = chap;
+                        return (
+                          <div key={idx}>
+                            {deleteModalVisible &&
+                              deleteCHapterTitle === chapter_id && (
                                 <DeleteChapterModal
                                   chapterId={chapter_id}
                                   deleteChap={handleDeleteChapter}
                                   showDeleteModal={setDeleteModalVisible}
                                 />
-                              </div>
-                            );
-                          })
-                        }
-                          
-                        </div>
-                      );
-                    })}
-                 
-              
-                
+                              )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  );
+                })}
               </div>
             </div>
           )}
