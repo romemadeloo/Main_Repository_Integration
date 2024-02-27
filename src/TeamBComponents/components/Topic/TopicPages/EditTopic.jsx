@@ -20,6 +20,7 @@ import { IoEyeSharp } from "react-icons/io5";
 //import close button icon
 import { IoMdClose } from "react-icons/io";
 import LinkTopicModal from "../TopicModal/LinkTopicModal";
+import { Link } from "react-router-dom";
 const CloseButton = ({ closeToast }) => (
   <i className="material-icons" onClick={closeToast}></i>
 );
@@ -123,7 +124,6 @@ const EditTopic = ({ topicId, courseTitle, chapterTitle }) => {
     setTopics(result.data);
   };
 
-  
   const [showEmbedded, setShowEmbedded] = useState(false);
   //react state for link and show
   // const [linkFileShow, setLinkFileShow] = useState(false);
@@ -184,10 +184,10 @@ const EditTopic = ({ topicId, courseTitle, chapterTitle }) => {
             justify-center cursor-pointer">
             {/* <img src={EditTopiclink} alt="" className="" /> */}
             <iframe
-              src={topic_file}
+              src={topic_link}
               frameborder="0"
               scrolling="no"
-              className="blur-[.05rem] h-[200px] md:w-full  hidden md:flex"></iframe>
+              className="blur-[.05rem] h-[200px] md:w-full  lg:w-[20vw] lg:h-[20vh] hidden md:flex"></iframe>
 
             <div className="absolute flex gap-x-5">
               <span className="" onClick={toggleVideoPopup}>
@@ -201,23 +201,22 @@ const EditTopic = ({ topicId, courseTitle, chapterTitle }) => {
             </div>
           </div>
 
-          <div
+          <Link
+            to=""
             className=" relative w-[100%] h-[200px]  md:w-[50%]
            lg:w-[20vw] lg:h-[20vh] bg-[#fff] rounded-lg flex
-           items-center justify-center cursor-pointer"
-            onClick={toggleQuizPopup}>
-            <iframe
-              src={topic_file}
+           items-center justify-center cursor-pointer">
+            {/* <iframe
+              src={topic_link}
               frameborder="0"
               scrolling="no"
-              className="blur-[.05rem] h-[200px]  hidden lg:flex"></iframe>
+              className="blur-[.05rem] h-[200px]  hidden lg:flex"></iframe> */}
             <span className="absolute ">
               <FaEdit className="w-[30px] h-[30px] lg:w-[30px] lg:h-[30px]  opacity-[80%]" />
             </span>
-          </div>
+          </Link>
         </div>
 
-   
         {/* Video Popup */}
         {isVideoPopupOpen && (
           <div className="fixed inset-0 flex items-center justify-center">
@@ -233,8 +232,8 @@ const EditTopic = ({ topicId, courseTitle, chapterTitle }) => {
               <input // Input field for topic link
                 required
                 type="text"
-                name="topic_file"
-                value={topic_file}
+                name="topic_link"
+                value={topic_link}
                 onChange={(e) => handleInputChange(e)}
                 className="bg-[#BCE8B1] p-2 border border-gray-300 rounded-md mb-4 w-full"
                 placeholder="https://www"
@@ -257,45 +256,17 @@ const EditTopic = ({ topicId, courseTitle, chapterTitle }) => {
           </div>
         )}
         {/* Quiz Popup */}
-        {isQuizPopupOpen && (
-          <div className="fixed inset-0 flex items-center justify-center">
-            <div className="absolute inset-0 bg-black opacity-50"></div>
-            <div className="bg-[#EBFFE5] p-8 rounded-lg z-10 w-[90%] md:w-[80%]">
-              <p className="mb-4 text-lg font-semibold">Edit Quiz Link</p>
-              <input
-                type="text"
-                name="topic_link"
-                value={topic_link}
-                onChange={(e) => handleInputChange(e)}
-                className="w-full bg-[#BCE8B1] p-2 border border-gray-300 rounded-md mb-4"
-                placeholder="https://www"
-              />
-              <div className="flex justify-end">
-                <button
-                  onClick={handleQuizCancelClick}
-                  className="px-4 py-2 text-black rounded">
-                  Cancel
-                </button>
-                <button
-                  onClick={handleQuizDoneClick}
-                  className="bg-[#126912] text-white py-2 px-4 rounded-full ml-2">
-                  Done
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
 
         {showEmbedded && (
-          <div className="absolute top-0 z-10 w-[100%] h-full flex justify-center items-center backdrop-blur-[.3rem]">
-            <div className="w-[90%] h-[50vh] lg:w-[750px] lg:h-[520px] bg-[#BCE8B1] flex flex-col justify-center items-center  rounded-lg">
+          <div className="absolute top-0 z-10 w-[100%] h-full flex justify-center items-center lg:items-start backdrop-blur-[.3rem]">
+            <div className="w-[90%] h-[50vh] md:h-[40vh] lg:w-[700px] lg:h-[450px] pb-2 bg-[#BCE8B1] flex flex-col justify-center items-center  rounded-lg">
               <div
                 className="flex justify-end w-full pb-3 pr-2 cursor-pointer"
                 onClick={() => setShowEmbedded(false)}>
                 <IoMdClose className="text-[1.5rem]" />
               </div>
               <iframe
-                src={topic_file}
+                src={topic_link}
                 frameborder="0"
                 scrolling="no"
                 className="blur-[.01rem] w-[90%] h-[80%] md:w-[500px] md:h-[350px] lg:w-[680px] lg:h-[450px] rounded-lg"></iframe>

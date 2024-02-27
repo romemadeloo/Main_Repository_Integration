@@ -78,6 +78,8 @@ const CourseOverviewById = ({ courseTitle }) => {
     setLoadByChapter(deleteChapter.data);
   };
 
+  // console.log(loadByChapter);
+
   const [searchQuery, setSearchQuery] = useState("");
 
   // // Search

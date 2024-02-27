@@ -175,7 +175,7 @@ const TopicPage = () => {
             <div
               className="flex items-center justify-center h-[30%] "
               onClick={showAddHandle}>
-              <div className="text-white text-[4rem] md:text-[2.5rem] lg:text-[2.5rem] pr-2 cursor-pointer">
+              <div className="text-white text-[4rem] md:text-[2.5rem] lg:text-[2rem] pr-2 cursor-pointer">
                 <IoIosAddCircle />
               </div>
               <span className="hidden lg:flex font-medium text-white cursor-pointer text-[1rem]">

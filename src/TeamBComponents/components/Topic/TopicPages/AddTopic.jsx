@@ -12,7 +12,7 @@ import quizLink from "../../../../assets/TeamBassests/quizLink.svg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import LinkTopicModal from "../TopicModal/LinkTopicModal";
 
 //close icon
@@ -200,13 +200,13 @@ const AddTopic = ({ courseTitle }) => {
                   onClick={toggleVideoPopup}>
                   <img src={vidUpload} alt="" className="md:w-[3rem] " />
                 </div>
-                <div
+                <Link to=""
                   className=" relative w-[100%] h-[200px] md:w-[50%]
            lg:w-[20vw] lg:h-[20vh] bg-[#126912] rounded-lg flex
            items-center justify-center cursor-pointer"
-                  onClick={toggleQuizPopup}>
+                  >
                   <img src={quizLink} alt="" className="md:w-[3rem] " />
-                </div>
+                </Link>
               </div>
               {/* Video Popup */}
 
@@ -226,8 +226,8 @@ const AddTopic = ({ courseTitle }) => {
                     <input // Input field for topic link
                       required
                       type="text"
-                      name="topic_file"
-                      value={topic_file}
+                      name="topic_link"
+                      value={topic_link}
                       onChange={(e) => handleInputChange(e)}
                       className="bg-[#BCE8B1] p-2 border border-gray-300 rounded-md mb-4 w-full"
                       placeholder="https://www"
@@ -250,35 +250,7 @@ const AddTopic = ({ courseTitle }) => {
                 </div>
               )}
               {/* Quiz Popup */}
-              {isQuizPopupOpen && (
-                <div className="fixed inset-0 flex items-center justify-center">
-                  <div className="absolute inset-0 bg-black opacity-50"></div>
-                  <div className="bg-[#EBFFE5] p-8 rounded-lg z-10 w-[90%] md:w-[80%]">
-                    <p className="mb-4 text-lg font-semibold">Add Quiz Link</p>
-                    <input
-                      required
-                      type="text"
-                      name="topic_link"
-                      value={topic_link}
-                      onChange={(e) => handleInputChange(e)}
-                      className="w-full bg-[#BCE8B1] p-2 border border-gray-300 rounded-md mb-4"
-                      placeholder="https://www"
-                    />
-                    <div className="flex justify-end">
-                      <button
-                        onClick={handleQuizCancelClick}
-                        className="px-4 py-2 text-black rounded">
-                        Cancel
-                      </button>
-                      <button
-                        onClick={handleQuizDoneClick}
-                        className="bg-[#126912] text-white py-2 px-4 rounded-full ml-2">
-                        Done
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              )}
+           
               <ToastContainer className="tcenter" closeButton={CloseButton} />
             </form>
           </div>
