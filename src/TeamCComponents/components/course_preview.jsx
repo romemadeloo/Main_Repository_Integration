@@ -48,7 +48,7 @@ function CoursePreview() {
             return (
               <div key={index} className="col-md-3 mt-3 ml-1">
                 <div
-                  className=" teamcwholecard card border-success h-100"
+                  className="teamcwholecard card border-success h-100"
                   style={{ maxWidth: "20rem", borderRadius: "10px" }}
                 >
                   <div className="card-header bg-transparent border-success "></div>
