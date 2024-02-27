@@ -75,7 +75,13 @@ const CopyofCreateNewCourse = () => {
           <div className="w-[100%] h-[100vh] flex justify-center items-center ">
             <div className=" flex border-[.01rem] drop-shadow-2xl shadow-lg border-black w-[90%] rounded-lg m-auto bg-[#EBFFE5] md:w-[500px] lg:w-[550px] 2xl:w-h-[672px] 2xl:w-[724px] ">
               <form
-                onSubmit={handleSubmit}
+              onSubmit={handleSubmit}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  handleSubmit();
+                }
+              }}
+       
                 className="w-[90%] lg:w-[80%] m-auto py-2 ">
                 <div className="flex items-center py-1 text-black lg:font-bold lg:text-3xl lg:py-0">
                   <p className=" lg:font-bold TeamB_text-shadow   text-[24px] pb-2">

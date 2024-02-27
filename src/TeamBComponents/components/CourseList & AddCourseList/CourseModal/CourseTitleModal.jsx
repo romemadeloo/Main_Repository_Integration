@@ -67,12 +67,17 @@ const CourseTitleModal = ({ courseId, editTitle }) => {
               name="course_title"
               value={course_title}
               onChange={(e) => handleInputChange(e)}
+              onKeyPress={(e) => {
+                if (e.key === "Enter") {
+                  handleSubmit();
+                }
+              }}
             />
             <div className="flex justify-end w-full pt-8">
               <div className="flex gap-x-5">
-                <button className="  lg:text-[1rem]" onClick={handleCancel}>
+                <span className="  lg:text-[1rem]" onClick={handleCancel}>
                   Cancel
-                </button>
+                </span>
                 <button
                   className="drop-shadow-md TeamB_text-shadow px-3 py-1 rounded-full   lg:w-[90px] lg:h-[40px] lg:rounded-[80px] lg:text-[1rem]  bg-[#126912]  text-[#FFFFFF]  font-bold"
                   type="submit">
