@@ -72,11 +72,15 @@ const CourseOverviewById = ({ courseTitle }) => {
   const [selectedChapterId, setSelectedChapterId] = useState(null);
 
   const handleDeleteChapter = async (chapterId) => {
+    deleteAllTopics();
     const deleteChapter = await axios.delete(
       `http://localhost:8080/api/v1/auth/chapter/${chapterId}`
     );
     setLoadByChapter(deleteChapter.data);
   };
+  
+
+  // console.log(loadByChapter);
 
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -116,6 +120,29 @@ const CourseOverviewById = ({ courseTitle }) => {
   }, [searchContainerRef]);
 
   const [editChapterTitle, setEditChapterTitle] = useState(null);
+  const [deleteCHapterTitle, setDeleteChapterTitle] = useState(null);
+
+  
+  const deleteAllTopics = async () => {
+    try {
+      // Iterate over all chapters
+      for (const chap of loadByChapter) {
+        const { topic } = chap;
+        // Iterate over all topics in the chapter
+        for (const tops of topic) {
+          const { topic_id } = tops;
+          // Send delete request for each topic
+          await axios.delete(
+            `http://localhost:8080/api/v1/auth/topic/${topic_id}`
+          );
+        }
+      }
+      // After deleting all topics, you may want to reload the chapters
+      loadChapters();
+    } catch (error) {
+      console.error("Error deleting topics:", error);
+    }
+  };
   return (
     <>
       <div className="w-full h-full">
@@ -247,11 +274,12 @@ const CourseOverviewById = ({ courseTitle }) => {
 
                                           <div
                                             className="text-[1.3rem] 2xl:text-[2rem]  text-white"
-                                            onClick={() =>
+                                            onClick={() => {
                                               setDeleteModalVisible(
                                                 (prev) => !prev
-                                              )
-                                            }>
+                                              );
+                                              setDeleteChapterTitle(chapter_id);
+                                            }}>
                                             <RiDeleteBinLine />
                                           </div>
                                         </div>
@@ -272,10 +300,11 @@ const CourseOverviewById = ({ courseTitle }) => {
 
                                         <div
                                           className="text-[1.3rem] 2xl:text-[2rem]  text-black"
-                                          // onClick={() =>
-                                          //   handleDeleteChapter(chapter_id)
-                                          // }
-                                        >
+                                          onClick={() =>
+                                            setDeleteModalVisible(
+                                              (prev) => !prev
+                                            )
+                                          }>
                                           <RiDeleteBinLine />
                                         </div>
                                       </div>
@@ -322,33 +351,28 @@ const CourseOverviewById = ({ courseTitle }) => {
           {deleteModalVisible && (
             <div className="fixed w-full h-full pl-10 top-9 left-20">
               <div className="lg:w-[1080px] ">
-              
-               
-                    {courses.map((course, idx) => {
-                      const { chapter } = course;
-                      return (
-                        <div key={idx}>
-                        {
-                          chapter.map((chap, idx) => {
-                            const {chapter_id} = chap
-                            return (
-                              <div key={idx}>
+                {courses.map((course, idx) => {
+                  const { chapter } = course;
+                  return (
+                    <div key={idx}>
+                      {chapter.map((chap, idx) => {
+                        const { chapter_id } = chap;
+                        return (
+                          <div key={idx}>
+                            {deleteModalVisible &&
+                              deleteCHapterTitle === chapter_id && (
                                 <DeleteChapterModal
                                   chapterId={chapter_id}
                                   deleteChap={handleDeleteChapter}
                                   showDeleteModal={setDeleteModalVisible}
                                 />
-                              </div>
-                            );
-                          })
-                        }
-                          
-                        </div>
-                      );
-                    })}
-                 
-              
-                
+                              )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  );
+                })}
               </div>
             </div>
           )}
