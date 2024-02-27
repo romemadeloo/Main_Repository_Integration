@@ -25,7 +25,7 @@ function CoursePreview() {
   }, []);
 
   const incrementCounterAndAttributes = () => {
-    setButtonCounter(prevCounter => prevCounter + 1); // Increment button counter
+    setButtonCounter((prevCounter) => prevCounter + 1); // Increment button counter
     incrementAttributes(); // Call incrementAttributes function from script
   };
 
@@ -35,7 +35,11 @@ function CoursePreview() {
 
   return (
     <div>
-      <div className="card-container" id="c_cardview_sql" data-card="course_sql">
+      <div
+        className="card-container"
+        id="c_cardview_sql"
+        data-card="course_sql"
+      >
         <div className="row" id="c_cardpreview_cardouter">
           {chapters.map((chapterData, index) => {
             const buttonId = `enrollButton${index + 1}`;
@@ -43,21 +47,42 @@ function CoursePreview() {
 
             return (
               <div key={index} className="col-md-3 mt-3 ml-1">
-                <div className=" teamcwholecard card border-success h-100" style={{ maxWidth: '20rem', borderRadius: '10px' }}>
+                <div
+                  className=" teamcwholecard card border-success h-100"
+                  style={{ maxWidth: "20rem", borderRadius: "10px" }}
+                >
                   <div className="card-header bg-transparent border-success "></div>
                   <div className="teamccardcard card mb-4">
                     <div className="teamccardbody card-body ">
-                      <h5 className="teamctitlecard card-title fw-bold text-center text-success" style={{ fontSize: '1.7rem' }}>{chapterData.course_title}</h5>
-                      <hr className="teamclinepartition"/>
-                      <p className="teamcparag card-body bg-transparent border-success d-flex flex-column text-justify">{chapterData.course_description}</p>
-                      <p className="fw-bold text-end" id='c_course_seemoretext' data-bs-toggle="modal" data-bs-target={`#modal_seemore${index + 1}`} onClick={incrementCounterAndAttributes}>See more..</p>
-                      <div ><br /></div>
+                      <h5
+                        className="teamctitlecard card-title fw-bold text-center text-success"
+                        style={{ fontSize: "1.7rem" }}
+                      >
+                        {chapterData.course_title}
+                      </h5>
+                      <hr className="teamclinepartition" />
+                      <p className="teamcparag card-body bg-transparent border-success d-flex flex-column text-justify">
+                        {chapterData.course_description}
+                      </p>
+                      <p
+                        className="fw-bold text-end"
+                        id="c_course_seemoretext"
+                        data-bs-toggle="modal"
+                        data-bs-target={`#modal_seemore${index + 1}`}
+                        onClick={incrementCounterAndAttributes}
+                      >
+                        See more..
+                      </p>
+                      <div>
+                        <br />
+                      </div>
                       <button
                         className="btn btn-success d-grid gap-2 col-6 mx-auto d-flex badge text-wrap"
                         data-bs-toggle="modal"
                         data-bs-target={`#${modalId}`}
                         id={buttonId}
-                        onClick={incrementCounterAndAttributes}>
+                        onClick={incrementCounterAndAttributes}
+                      >
                         Enroll Now
                       </button>
                     </div>
