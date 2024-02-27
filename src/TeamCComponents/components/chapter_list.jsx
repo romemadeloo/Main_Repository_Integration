@@ -11,7 +11,7 @@ function ChapterList() {
     useEffect(() => {
         const fetchChapters = async () => {
             try {
-              const result = await axios.get(`http://localhost:8080/api/courses/${id}`);
+              const result = await axios.get(`http://localhost:8080/api/v1/auth/byCourse/${id}`);
         
               // Ensure that result.data is always an array by converting it
               const coursesArray = Array.isArray(result.data)
@@ -26,6 +26,7 @@ function ChapterList() {
       fetchChapters();
     }, [id]);
 console.log(chapters)  
+
     return (
         <>
             {/* Back button */}

@@ -3,53 +3,61 @@
 /* eslint-disable react/no-unknown-property */
 // January 12, 2024
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 // Import logo for profile pic
 import profilePic from "../../../assets/TeamBassests/Registration.png";
 import signature from "../../../assets/TeamBassests/signature.png";
-const PersonalEdit = ({ hideUpdatePersonalInfo }) => {
-  const [instructors, setInstructors] = useState([]);
+import { ProfileContext } from "../context/ProfileContext";
+const PersonalEdit = ({ hideUpdatePersonalInfo, showEdit, userEmail }) => {
+  const { users, setUsers, file, setFile, sigfile, setSigFile } =
+    useContext(ProfileContext);
 
-  const [instructor, setInstructor] = useState({
-    instructor_first_name: "",
-    instructor_last_name: "",
-    instructor_contact_number: "",
-    instructor_email: "",
+  const [user, setUser] = useState({
+    firstName: "",
+    lastName: "",
+    phoneNumber: "",
+    email: "",
   });
 
+  function handleChange(e) {
+    console.log(e.target.files);
+    setFile(URL.createObjectURL(e.target.files[0]));
+  }
+
+  function handleChangeSig(e) {
+    console.log(e.target.files);
+    setSigFile(URL.createObjectURL(e.target.files[0]));
+  }
   useEffect(() => {
-    const loadInstructors = async () => {
-      const result = await axios.get("http://localhost:8080/instructors");
-      setInstructors(result.data);
+    const loadUsers = async () => {
+      const result = await axios.get("http://localhost:8080/api/v1/auth/users");
+      setUsers(result.data);
     };
 
-    loadInstructors();
+    loadUsers();
   }, []);
 
   const handleInputChange = (e) => {
-    setInstructor({ ...instructor, [e.target.name]: e.target.value });
+    setUser({ ...user, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Validate contact number
-    if (instructor.instructor_contact_number.length !== 10) {
-      // Show an error message or handle the invalid input as per your requirement
-      alert("Contact number must be exactly 10 digits.");
-      return; // Stop the submission process
-    }
+    // if (user.phoneNumber.length !== 10) {
+    //   // Show an error message or handle the invalid input as per your requirement
+    //   alert("Contact number must be exactly 10 digits.");
+    //   return; // Stop the submission process
+    // }
 
-    await axios.post("http://localhost:8080/instructor", instructor);
+    // await axios.post("http://localhost:8080/api/v1/auth/users", user);
+    setUsers(user);
+    showEdit();
   };
 
-  console.log(instructors);
-  const {
-    instructor_first_name,
-    instructor_last_name,
-    instructor_email,
-    instructor_contact_number,
-  } = instructor;
+  const { firstName, lastName, phoneNumber, email } = users;
+  console.log(firstName);
 
   // React hook for tooltip
   const [showTooltipFirstName, setShowTooltipFirstName] = useState(false);
@@ -69,27 +77,45 @@ const PersonalEdit = ({ hideUpdatePersonalInfo }) => {
         autoComplete="off"
         required
         onSubmit={(e) => handleSubmit(e)}
-        className="flex flex-col h-full gap-y-5 w-[90%] lg:h-[380px] lg:min-w-[680px]  bg-[#BCE8B1] rounded shadow-md">
+        className="flex flex-col h-full gap-y-5 w-[90%] lg:h-[380px] lg:w-[680px]  bg-[#BCE8B1] rounded shadow-md">
         <div className="relative lg:w-[95%] lg:m-auto h-[500px] lg:h-[350px]  ">
-          <div className="lg:flex lg:w-[100%] lg:gap-x-5">
+          <div className="lg:flex lg:w-[100%] lg:gap-x-5 ">
             {/* IMAGE */}
-            <div className="lg:w-[30%] flex lg:flex-col relative">
+            <div className="lg:w-[30%] flex lg:flex-col relative justify-between lg:justify-start md:w-[70%] m-auto">
               <label htmlFor="uploadProfile">
                 <img
-                  src={profilePic}
+                  src={file}
                   alt=""
-                  className="cursor-pointer p-2 lg:flex lg:w-[200px] h-[150px]"
+                  className="cursor-pointer p-2 lg:flex w-[200px] h-[150px]"
                 />
               </label>
+              <input
+                id="uploadProfile"
+                type="file"
+                onChange={handleChange}
+                className="hidden"
+              />
+
+              {/* UPLOAD PROFILE PIC */}
               <input id="uploadProfile" type="file" className="hidden" />
+              <label
+                htmlFor="uploadProfile"
+                className="cursor-pointer bottom-2 text-[.8rem] left-2 justify-center items-center absolute text-center font-medium px-2 rounded-sm   bg-[#D1DFCD]  text-[#4D4141] text-opacity-[53%] shadow-lg lg:hidden">
+                Choose File
+              </label>
               <label htmlFor="uploadSignature">
                 <img
-                  src={signature}
+                  src={sigfile}
                   alt=""
-                  className="cursor-pointer p-4 lg:flex lg:w-[200px] h-[150px] "
+                  className="cursor-pointer p-4 lg:flex w-[200px] h-[150px] "
                 />
               </label>
-              <input id="uploadSignature" type="file" className="hidden" />
+              <input
+                id="uploadSignature"
+                onChange={handleChangeSig}
+                type="file"
+                className="hidden"
+              />
               {/* UPLOAD SIGNATURE */}
               <input id="uploadSignature" type="file" className="hidden" />
               <label
@@ -119,8 +145,8 @@ const PersonalEdit = ({ hideUpdatePersonalInfo }) => {
                   }`}
                   id="firstName"
                   type="text"
-                  name="instructor_first_name"
-                  value={instructor_first_name}
+                  name="firstName"
+                  value={firstName}
                   onChange={(e) => handleInputChange(e)}
                   maxLength={50}
                   required={true}
@@ -155,8 +181,8 @@ const PersonalEdit = ({ hideUpdatePersonalInfo }) => {
                   className="  mb-4 relative TeamB_input-style px-2 lg:w-full bg-[#EBFFE5]"
                   id="lastName"
                   type="text"
-                  name="instructor_last_name"
-                  value={instructor_last_name}
+                  name="lastName"
+                  value={lastName}
                   onChange={(e) => handleInputChange(e)}
                   maxLength={50}
                   required={true}
@@ -195,9 +221,9 @@ const PersonalEdit = ({ hideUpdatePersonalInfo }) => {
                   className="px-2 mb-4 TeamB_input-style"
                   disabled
                   id="Email"
-                  type="number"
-                  name="instructor_username"
-                  value={instructor_email}
+                  type="email"
+                  name="email"
+                  value={userEmail}
                   onChange={(e) => handleInputChange(e)}
                 />
               </div>
@@ -219,10 +245,10 @@ const PersonalEdit = ({ hideUpdatePersonalInfo }) => {
                       : "relative TeamB_input-style px-2 lg:w-full bg-[#EBFFE5]"
                   }`}
                   placeholder="+63"
-                  type="text"
-                  id="ContactNumber"
-                  name="instructor_contact_number"
-                  value={instructor_contact_number}
+                  type="number"
+                  id="PhoneNumber"
+                  name="phoneNumber"
+                  value={phoneNumber}
                   onChange={(e) => handleInputChange(e)}
                   maxLength={10}
                   required={true}

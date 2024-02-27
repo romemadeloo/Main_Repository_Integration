@@ -14,6 +14,9 @@
   transform: scale(1.1); /* Scales up chapter return button on hover */
 }
 
+#c_course_courses:hover {
+    filter: drop-shadow(0 0 1em #484848) /* Applies drop shadow to course item container on hover */
+      
 #c_course_itemcontainer:hover {
   filter: drop-shadow(
     0 0 1em #126912
@@ -34,19 +37,11 @@
 }
 
 #c_preview_headerSub {
-  font-size: 2.3rem; /* Sets the font size of the header subtitle */
+    font-size: 1.5rem; /* Overrides the font size of the header subtitle (Note: This rule will override the previous one for the same selector) */
 }
 
-#c_preview_headerSub {
-  font-size: 1.5rem; /* Overrides the font size of the header subtitle (Note: This rule will override the previous one for the same selector) */
-}
-
-#c_assessment_sql:hover,
-#c_assessment_svn:hover,
-#c_assessment_html:hover {
-  filter: drop-shadow(
-    0 0 1em #126912
-  ); /* Applies drop shadow effect on hover for SQL, SVN, and HTML assessments */
+#c_assessment_courses:hover{
+    filter: drop-shadow(0 0 1em #484848) /* Applies drop shadow effect on hover for SQL, SVN, and HTML assessments */
 }
 
 #enrollButton1,

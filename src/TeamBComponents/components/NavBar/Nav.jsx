@@ -18,6 +18,7 @@ import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 //Importing NavBarContext from context
 import { NavBarContext } from "../context/NavBarContext";
+import { ProfileContext } from "../context/ProfileContext";
 //Nav functional component
 const Nav = () => {
   //Destructuring values from NavBarContext
@@ -41,6 +42,10 @@ const Nav = () => {
     setForumShow,
   } = useContext(NavBarContext);
 
+  const { users, file } = useContext(ProfileContext);
+
+  const { firstName, lastName, email } = users;
+
   return (
     <>
       {/* Navigation bar */}
@@ -50,8 +55,7 @@ const Nav = () => {
             header
               ? "relative flex justify-between items-center lg:justify-normal bg-[#D9FFCF] h-[69px] transition-all "
               : "relative flex justify-between items-center lg:justify-normal bg-transparent h-[69px] transition-all "
-          }
-        >
+          }>
           {/* Link to Dashboard*/}
           <Link to="/teambdashboard" className="">
             <img
@@ -73,8 +77,7 @@ const Nav = () => {
                   dashBoardShow
                     ? "font-semibold text-[#116211] text-center p-1 TeamB_text-shadow   transition-all"
                     : "font-bold TeamB_text-shadow   p-1  hover:text-[#116211] transition-all hover:bg-opacity-[50%] hover:font-semibold "
-                }
-              >
+                }>
                 Dashboard
               </ul>
             </Link>
@@ -85,8 +88,7 @@ const Nav = () => {
                   courseListShow
                     ? "font-semibold text-[#116211] text-center p-1 TeamB_text-shadow   transition-all"
                     : "font-bold TeamB_text-shadow   p-1  hover:text-[#116211] hover:bg-opacity-[50%] hover:font-semibold transition-all"
-                }
-              >
+                }>
                 Course List
               </ul>
             </Link>
@@ -97,36 +99,34 @@ const Nav = () => {
                   forumShow
                     ? "font-semibold text-[#116211] text-center p-1 TeamB_text-shadow   transition-all"
                     : "font-bold TeamB_text-shadow   p-1  hover:text-[#116211] transition-all hover:bg-opacity-[50%] hover:font-semibold "
-                }
-              >
+                }>
                 Forums
               </ul>
             </Link>
           </div>
           {/* Hamburger menu for mobile view */}
-          <div className="relative flex items-center lg:hidden justify-end">
+          <div className="relative flex items-center justify-end lg:hidden">
             {show ? (
-              <div className="flex w-full">
+              <div className="flex w-[250px]">
                 <div
                   onClick={() => setShow((prev) => !prev)}
-                  className="m-auto TeamB_text-shadow gap-x-4 py-1 px-2 bg-[#bce8b1] rounded-[8rem] shadow-lg flex justify-center items-center lg:hidden"
-                >
+                  className="w-[250px] TeamB_text-shadow gap-x-4 py-2 px-4 bg-[#bce8b1] rounded-[.5rem] shadow-lg flex justify-center items-center lg:hidden">
                   <img
-                    className="h-[6vh] rounded-[50%] border-2 border-green-800"
-                    src={profileLogo}
+                    className="h-[40px] w-[40px] rounded-[50%] border-2 border-green-800"
+                    src={file}
                     alt="profileLogo"
                   />
                   <div className="text-[.8rem] leading-3">
-                    <p>Judes Macabales</p>
-                    <p>jmacabales@tgsi.com.ph</p>
+                    <p>{`${firstName} ${lastName}`}</p>
+                    <p>{email}</p>
                   </div>
                 </div>
               </div>
             ) : (
               <div className="pr-2">
                 <img
-                  className="rounded-[50%] border-2 border-green-800"
-                  src={profileLogo}
+                  className="h-[40px] w-[40px] rounded-[50%] border-2 border-green-800"
+                  src={file}
                   height={40}
                   width={40}
                   alt="profileLogo"
@@ -137,36 +137,38 @@ const Nav = () => {
           </div>
 
           {/* Profile dropdown */}
-          <div className=" drop-shadow-lg shadow-lg  bg-[#ffffff] mr-1 cursor-pointer lg:text-[1rem]  h-[7vh] rounded-md ml-auto hidden border-lime-900 border-[.1rem] lg:flex justify-between items-center p-1 text-[#126912]">
+          <div className="drop-shadow-lg shadow-lg w-[150px] bg-[#ffffff] mr-2 cursor-pointer lg:text-[1rem] rounded-md ml-auto hidden border-lime-900 border-[.1rem] lg:flex justify-between items-center p-1 text-[#126912]">
             <div className="flex items-center justify-center gap-x-1">
               <img
-                src={profileLogo}
+                src={file}
                 alt=""
-                className="h-[6vh] rounded-[50%]"
+                className="h-[30px] w-[30px] rounded-[50%]"
                 onClick={() => setShowDropDown((prev) => !prev)}
               />
               <p
                 onClick={() => setShowDropDown((prev) => !prev)}
-                className="  text-[2.5vh]"
-              >
-                Hi, JMacabales!
+                className="text-[15px] ml-2">
+                Hi,
               </p>
+              <span
+                className="w-[50px] line-clamp-1"
+                onClick={() =>
+                  setShowDropDown((prev) => !prev)
+                }>{` ${firstName}!`}</span>
 
               <span
                 onClick={() => setShowDropDown((prev) => !prev)}
-                className="cursor-pointer"
-              >
+                className="cursor-pointer">
                 {showDropDown ? <FaChevronUp /> : <FaChevronDown />}
               </span>
               {/* Dropdown content */}
               {showDropDown && (
-                <div className="bg-[#D9FFCF] absolute right-0 top-12 lg:top-11 w-full flex flex-col justify-between rounded-md items-center border-solid border-[1px] border-[#116211]">
+                <div className="bg-[#D9FFCF] absolute right-0 top-12 lg:top-10 w-full flex flex-col justify-between rounded-md items-center border-solid border-[1px] border-[#116211]">
                   {/* Link to profile */}
                   <Link
                     to="/teambprofile"
                     onClick={showProfile}
-                    className="w-full text-center "
-                  >
+                    className="w-full text-center ">
                     <p
                       className={
                         profileShow
@@ -176,9 +178,8 @@ const Nav = () => {
                           : showDropDown
                           ? " text-[#000000] rounded-md text-start p-1  hover:text-[#116211]"
                           : ""
-                      }
-                    >
-                      <CgProfile className="text-[4vh] inline-block align-start mr-3 " />
+                      }>
+                      <CgProfile className="text-[20px] inline-block align-start mr-3 " />
                       Profile
                     </p>
                   </Link>
@@ -187,8 +188,7 @@ const Nav = () => {
                     to="/"
                     src="CgProfile"
                     onClick={showLogout}
-                    className="w-full text-center "
-                  >
+                    className="w-full text-center ">
                     <p
                       className={
                         logout
@@ -198,9 +198,8 @@ const Nav = () => {
                           : showDropDown
                           ? " text-red-600 rounded-md text-start p-1 bg-[#D9FFCF]  hover:text-red-500"
                           : " "
-                      }
-                    >
-                      <MdOutlineLogout className=" text-[4vh] inline-block align-middle mr-3 " />
+                      }>
+                      <MdOutlineLogout className=" text-[20px] inline-block align-middle mr-3 " />
                       Log out
                     </p>
                   </Link>

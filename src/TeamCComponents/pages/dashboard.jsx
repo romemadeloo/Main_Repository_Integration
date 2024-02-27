@@ -19,7 +19,7 @@ function TeamC_Dashboard() {
   useEffect(() => {
     const fetchChapters = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/courses");
+        const response = await axios.get("http://localhost:8080/api/v1/auth/getCourses");
         setChapters(response.data);
       } catch (error) {
         console.error("Error fetching chapters:", error);
@@ -28,17 +28,16 @@ function TeamC_Dashboard() {
 
     fetchChapters();
   }, []);
- 
+ console.log(chapters)
   return (
     <Fragment>
       {/* Header title */}
       <Team_D_HeaderV2 />
-      <div className="header p-3 h-50 d-flex align-items-center justify-content-center" id="c_dashboard_header">
        
       <div className="header p-3 h-50 d-flex align-items-center justify-content-center" id="c_dashboard_header">
         <div className="c_dashboard_title title p-3 text-center">
-          <div className="c_dashboard_japchar jap-char">
-            <h1 className="c_dashboard_char fw-bold" id="c_preview_headerTitle">
+          <div className="jap-char" id="c_dashboard_japchar">
+            <h1 className="fw-bold" id="c_preview_headerTitle">
               月伝で自分のやり方を学びましょう。
             </h1>
           </div>
@@ -46,7 +45,6 @@ function TeamC_Dashboard() {
             <h4 id="c_preview_headerSub fw-bold">Learn your way at Tsukiden.</h4>
           </div>
         </div>
-      </div>
       </div>
       {/* End of Header title */}
 
