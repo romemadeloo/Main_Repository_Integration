@@ -140,6 +140,32 @@
 }
 
 
+.teamccardcard {
+  flex: 1 0 300px;
+}
+
+.teamccardbody {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.teamclinepartition {
+    position: absolute;
+    width: 80%;
+    top: 28%;
+    right: 10%;
+  }
+
+  .teamctitlecard{
+    margin-bottom: 50px;
+  }
+  
+.teamcparag{
+    margin-top: 30px;
+}
+
+
 
 /* LARGE DESKTOP */
 /* For screens with a maximum width of 1024px */
@@ -162,6 +188,7 @@
     #c_maincontent_textcontainer {
         font-size: 18px; /* Adjusts font size of text container in main content */
     }
+    
 }
 
 /* For typical laptops with a maximum width of 992px */
@@ -197,6 +224,8 @@
         flex-direction: column; /* Arranges items in a column */
         align-items: center; /* Aligns items to the center */
         max-height: 100%; /* Sets maximum height to 100% */
+        padding: 50px;
+        
     }
 
     #c_course_cardbody {
@@ -229,6 +258,7 @@
         flex-direction: column; /* Arranges items in a column */
         align-items: center; /* Aligns items to the center */
         max-height: 100%; /* Sets maximum height to 100% */
+        margin-left: 23px;
     }
 
     #c_course_cardbody {
@@ -249,6 +279,8 @@
 
     #c_maincontent_textcontainer {
         width: 20rem; /* Sets width of text container */
+        margin-top: 10px;
+        margin-left: 75px;
     }
 
     #c_maincontent_maincontainer {
@@ -279,5 +311,9 @@
 
         /* JUSTIFY-CONTENT-MD-END */
         justify-content: flex-end; /* Aligns content to the end */
+    }
+
+    .modal-content{
+        margin-top: 400px;
     }
 }

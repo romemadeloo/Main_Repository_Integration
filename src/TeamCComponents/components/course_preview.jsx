@@ -43,13 +43,13 @@ function CoursePreview() {
 
             return (
               <div key={index} className="col-md-3 mt-3 ml-1">
-                <div className="card border-success h-100" style={{ maxWidth: '20rem', borderRadius: '10px' }}>
+                <div className=" teamcwholecard card border-success h-100" style={{ maxWidth: '20rem', borderRadius: '10px' }}>
                   <div className="card-header bg-transparent border-success "></div>
-                  <div className="card mb-4">
-                    <div className="card-body ">
-                      <h5 className="card-title fw-bold text-center text-success" style={{ fontSize: '1.7rem' }}>{chapterData.course_title}</h5>
-                      <hr/>
-                      <p className="card-body bg-transparent border-success d-flex flex-column text-justify">{chapterData.course_description}</p>
+                  <div className="teamccardcard card mb-4">
+                    <div className="teamccardbody card-body ">
+                      <h5 className="teamctitlecard card-title fw-bold text-center text-success" style={{ fontSize: '1.7rem' }}>{chapterData.course_title}</h5>
+                      <hr className="teamclinepartition"/>
+                      <p className="teamcparag card-body bg-transparent border-success d-flex flex-column text-justify">{chapterData.course_description}</p>
                       <p className="fw-bold text-end" id='c_course_seemoretext' data-bs-toggle="modal" data-bs-target={`#modal_seemore${index + 1}`} onClick={incrementCounterAndAttributes}>See more..</p>
                       <div ><br /></div>
                       <button
