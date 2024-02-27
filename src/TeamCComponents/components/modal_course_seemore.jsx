@@ -7,7 +7,7 @@ function ModalSeeMore() {
     useEffect(() => {
         const loadChapters = async () => {
             try {
-                const response = await axios.get("http://localhost:8080/api/v1/auth/getCourses");
+                const response = await axios.get("http://localhost:8080/api/v1/auth/courses");
                 setChapters(response.data);
             } catch (error) {
                 console.error("Error loading chapters:", error);
