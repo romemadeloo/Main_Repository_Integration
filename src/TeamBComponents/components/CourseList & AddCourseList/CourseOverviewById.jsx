@@ -72,11 +72,13 @@ const CourseOverviewById = ({ courseTitle }) => {
   const [selectedChapterId, setSelectedChapterId] = useState(null);
 
   const handleDeleteChapter = async (chapterId) => {
+    deleteAllTopics();
     const deleteChapter = await axios.delete(
       `http://localhost:8080/api/v1/auth/chapter/${chapterId}`
     );
     setLoadByChapter(deleteChapter.data);
   };
+  
 
   // console.log(loadByChapter);
 
@@ -119,6 +121,28 @@ const CourseOverviewById = ({ courseTitle }) => {
 
   const [editChapterTitle, setEditChapterTitle] = useState(null);
   const [deleteCHapterTitle, setDeleteChapterTitle] = useState(null);
+
+  
+  const deleteAllTopics = async () => {
+    try {
+      // Iterate over all chapters
+      for (const chap of loadByChapter) {
+        const { topic } = chap;
+        // Iterate over all topics in the chapter
+        for (const tops of topic) {
+          const { topic_id } = tops;
+          // Send delete request for each topic
+          await axios.delete(
+            `http://localhost:8080/api/v1/auth/topic/${topic_id}`
+          );
+        }
+      }
+      // After deleting all topics, you may want to reload the chapters
+      loadChapters();
+    } catch (error) {
+      console.error("Error deleting topics:", error);
+    }
+  };
   return (
     <>
       <div className="w-full h-full">

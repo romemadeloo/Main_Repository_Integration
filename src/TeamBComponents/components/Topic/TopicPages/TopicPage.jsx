@@ -104,12 +104,37 @@ const TopicPage = () => {
 
   const [editTopicId, setEditTopicId] = useState(null);
 
-  const deleteTopic = async (topic_id) => {
-    await axios.delete(`http://localhost:8080/api/topics/${topic_id}`);
+  const deleteTopic = async (topicId) => {
+    const deleteById = await axios.delete(
+      `http://localhost:8080/api/v1/auth/topic/${topicId}`
+    );
+    setChapters(deleteById.data);
   };
 
   //for sm sidebar react state
   const [sideBarShow, setSideBarShow] = useState(false);
+  const [deleteTopicTitle, setDeleteTopicTitle] = useState(null);
+
+  const deleteAllTopics = async () => {
+    try {
+      // Iterate over all chapters
+      for (const chap of chapters) {
+        const { topic } = chap;
+        // Iterate over all topics in the chapter
+        for (const tops of topic) {
+          const { topic_id } = tops;
+          // Send delete request for each topic
+          await axios.delete(
+            `http://localhost:8080/api/v1/auth/topic/${topic_id}`
+          );
+        }
+      }
+      // After deleting all topics, you may want to reload the chapters
+      loadChapters();
+    } catch (error) {
+      console.error("Error deleting topics:", error);
+    }
+  };
 
   return (
     <>
@@ -134,6 +159,7 @@ const TopicPage = () => {
                 Description
               </p>
             </div>
+            {/* <button onClick={deleteAllTopics}>delete all topics</button> */}
             <div className="h-[40vh] overflow-auto TeamB_no-scrollbar pr-3">
               {chapters.map((chap, idx) => {
                 const { topic } = chap;
@@ -159,7 +185,7 @@ const TopicPage = () => {
                               className="text-[1.5rem] text-white cursor-pointer"
                               onClick={() => {
                                 setDeleteModalVisible((prev) => !prev);
-                                // deleteTopic(topic_id);
+                                setDeleteTopicTitle(topic_id);
                               }}>
                               <MdDelete />
                             </span>
@@ -238,7 +264,7 @@ const TopicPage = () => {
                                 className="text-[1.5rem] text-white cursor-pointer"
                                 onClick={() => {
                                   setDeleteModalVisible((prev) => !prev);
-                                  // deleteTopic(topic_id);
+                                  setDeleteTopicTitle(topic_id);
                                 }}>
                                 <MdDelete />
                               </span>
@@ -269,7 +295,27 @@ const TopicPage = () => {
         {deleteModalVisible && (
           <div className="fixed inset-0 z-10 flex items-center justify-center">
             <div className="lg:w-full">
-              <DeleteTopicModal />
+              {chapters.map((chap, idx) => {
+                const { topic } = chap;
+                return (
+                  <div key={idx}>
+                    {topic.map((topic, idx) => {
+                      const { topic_id } = topic;
+                      return (
+                        <div key={idx}>
+                          {deleteModalVisible &&
+                            deleteTopicTitle === topic_id && (
+                              <DeleteTopicModal
+                                topicId={topic_id}
+                                deleteTopic={deleteTopic}
+                              />
+                            )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                );
+              })}
             </div>
           </div>
         )}
