@@ -128,6 +128,7 @@ function TeamIntegrationRoutes() {
         <Route path="/assessment_html" element={<AssessmentHtml />} />
         <Route path="/api/v1/auth/chapters/:id" element={<ChapterList/>} />
         <Route path="/api/v1/auth/topics/:id" element={<TeamC_MainContent/>} />
+        <Route path="/topic" element={<TeamC_MainContent/>} />
         
 
 
