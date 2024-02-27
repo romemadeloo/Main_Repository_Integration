@@ -49,10 +49,30 @@ console.log(chapters)
                 return (
                    <div key={idx}>
                     <h2 className="text-left mb-4" style={{ fontWeight: 'bold', fontSize: '2rem' }}>{course_title}</h2><hr />
-
-                    {chapter.map((chap, idc) => {const {chapter_title} = chap
+                    {chapter && chapter.map((chap, idc) => {const {chapter_title} = chap
                     return(
-                        <div key={idc}>{chapter_title}</div>
+                        <div className="d-flex align-items-center" key={idc}>
+                        <div className="c_chapter_cardmain card flex-grow-1" style={{
+                            willChange: 'filter',
+                            transition: 'filter 300ms', marginTop: '10px', backgroundColor: '#126912', borderRadius: '1rem',
+                        }}>
+                            <Link to={`/course${idx + 1}_sql`} className="h4 text-white text-decoration-none c_chapter_cardtext">
+                                <div className="card-body d-flex c_chapter_cardbody" style={{
+                                    backgroundColor: '#126912', borderRadius: '1rem',
+                                }}>
+                                    {course_title}
+                                </div>
+                            </Link>
+                        </div>
+                        <div className="small-box-container c_chapter_scoremain" style={{ marginTop: '0.6rem', marginLeft: '0.99rem', }}>
+                            <div className="small-box c_chapter_scoresub d-flex align-items-center justify-content-center text-white" style={{
+                                backgroundColor: '#126912', width: '4rem',
+                                height: '4rem', borderRadius: '10px',
+                            }}>
+                                <span>-$-</span>
+                            </div>
+                        </div>
+                    </div>
                     )
                })}
                    </div>
