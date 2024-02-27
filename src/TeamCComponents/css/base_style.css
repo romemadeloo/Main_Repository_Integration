@@ -16,11 +16,11 @@
 
 #c_course_courses:hover {
     filter: drop-shadow(0 0 1em #484848) /* Applies drop shadow to course item container on hover */
-      
+}
 #c_course_itemcontainer:hover {
   filter: drop-shadow(
     0 0 1em #126912
-  ); /* Applies drop shadow to course item container on hover */
+   ) /* Applies drop shadow to course item container on hover */
 }
 
 /* CARD POSITIONING */
