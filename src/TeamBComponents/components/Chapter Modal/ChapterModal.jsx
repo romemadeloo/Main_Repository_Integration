@@ -83,7 +83,7 @@ const ChapterModal = ({ chapterId, editTitle }) => {
             <div className="flex align-middle text-center justify-end w-full pt-8">
               <div className="flex gap-x-5">
                 <span
-                  className=" xl:text-[24px]  lg:text-[1rem]"
+                  className=" xl:text-[24px] py-2 lg:text-[1rem]"
                   onClick={handleCancel}>
                   Cancel
                 </span>
