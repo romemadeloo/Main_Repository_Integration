@@ -46,7 +46,7 @@ console.log(chapters)
             <div className="container mt-4 mx-auto">
                 
                {chapters.map((chap, idx) => {
-                const {chapter, course_title} = chap
+                const {chapter, course_title} = chap 
                 console.log(chapter)
                 return (
                    <div key={idx}>
