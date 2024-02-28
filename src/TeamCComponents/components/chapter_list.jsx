@@ -49,7 +49,7 @@ console.log(chapters)
                 return (
                    <div key={idx}>
                     <h2 className="text-left mb-4" style={{ fontWeight: 'bold', fontSize: '2rem' }}>{course_title}</h2><hr />
-                    {chapter.map((chap, idc) => {const {chapter_title} = chap
+                    {chapter && chapter.map((chap, idc) => {const {chapter_title} = chap
                     return(
                         <div className="d-flex align-items-center" key={idc}>
                         <div className="c_chapter_cardmain card flex-grow-1" style={{
@@ -60,7 +60,7 @@ console.log(chapters)
                                 <div className="card-body d-flex c_chapter_cardbody" style={{
                                     backgroundColor: '#126912', borderRadius: '1rem',
                                 }}>
-                                    {chapter_title}
+                                    {course_title}
                                 </div>
                             </Link>
                         </div>
