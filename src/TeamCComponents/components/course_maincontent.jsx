@@ -1,15 +1,37 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Team_D_HeaderV2 from "../../TeamDComponents/Team_D_HeaderV2";
 
 function TeamC_MainContent() {
+  const navigate = useNavigate();
+  const [chapters, setChapters] = useState([]);
+
+  const {id} = useParams()
+  useEffect(() => {
+      const fetchChapters = async () => {
+          try {
+            const result = await axios.get(`http://localhost:8080/api/topics/${id}`);
+      
+            // Ensure that result.data is always an array by converting it
+            const coursesArray = Array.isArray(result.data)
+              ? result.data
+              : [result.data];
+              setChapters(coursesArray);
+          } catch (error) {
+            console.error("Error loading chapters:", error);
+          }
+        };
+
+    fetchChapters();
+  }, [id]);
+console.log(chapters)  
 
   return (
     <>
     <Team_D_HeaderV2/>
        {/* Return button linking back to the specified URL */}
-      <Link to="" className="buttonReturn d-flex align-items-center c_chapter_returncontainer" style={{ textDecoration: 'none', color: 'black', width: 'fit-content', }}>
+      <Link onClick={() => navigate(-1)} className="buttonReturn d-flex align-items-center c_chapter_returncontainer" style={{ textDecoration: 'none', color: 'black', width: 'fit-content', }}>
         <div className="d-flex align-items-center" style={{ marginTop: '1rem' }}>
           <div>
             <img src="../../src/assets/TeamCassets/green_button.png" className="btnReturn c_chapter_return" alt="return-icon" style={{
