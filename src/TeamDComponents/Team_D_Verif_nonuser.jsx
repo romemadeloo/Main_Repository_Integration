@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import { AiFillSafetyCertificate } from "react-icons/ai";
 import warningErr from "../TeamDComponents/TeamD_Assets/icons8-warning-96.png";
 import Team_D_HeaderLanding from "./Team_D_HeaderLanding";
+import Navigation from "../TeamAComponents/components/Navigation";
 
 const Team_D_Verification = () => {
   const [code, setCode] = useState("");
@@ -77,7 +78,7 @@ const Team_D_Verification = () => {
 
   return (
     <div>
-      <Team_D_HeaderLanding />
+      <Navigation/>
       <section className="verification_container">
         <div className="verification_title">
           <span></span>
