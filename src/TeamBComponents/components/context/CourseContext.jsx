@@ -18,6 +18,7 @@ const CourseProvider = ({children}) => {
   //hide and show create new course
   const [showCreateCourse, setShowCreateCourse] = useState(false);
 
+  
   return (
     <CourseContext.Provider
       value={{

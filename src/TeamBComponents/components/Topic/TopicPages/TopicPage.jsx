@@ -18,6 +18,7 @@ import Nav from "../../NavBar/Nav";
 import { CourseContext } from "../../context/CourseContext";
 import axios from "axios";
 import Footer from "../../Footer";
+import DeleteAllTopics from "../TopicModal/DeleteAllTopics";
 
 const TopicPage = () => {
   const navigate = useNavigate();
@@ -136,6 +137,7 @@ const TopicPage = () => {
     }
   };
 
+  // const [showDeleteAllTopics, setShowDeleteAllTopics] = useState(false);
   return (
     <>
       <Nav />
@@ -159,7 +161,25 @@ const TopicPage = () => {
                 Description
               </p>
             </div>
-            {/* <button onClick={deleteAllTopics}>delete all topics</button> */}
+            {/* <div
+              className="flex justify-center w-full px-2 py-1 mb-2 bg-red-500 rounded-md cursor-pointer lg:justify-between text-red"
+              onClick={() => setShowDeleteAllTopics((prev) => !prev)}>
+              <p className="text-white md:hidden lg:flex">Delete All Topics</p>
+              <button className="text-[1.5rem]">
+                <MdDelete />
+              </button>
+            </div> */}
+{/* 
+            {showDeleteAllTopics && (
+              <div className="fixed inset-0 z-10 flex items-center justify-center">
+                <div className="w-full">
+                  <DeleteAllTopics
+                    deleteByAllTopics={deleteAllTopics}
+                    showDeleteAllTopics={setShowDeleteAllTopics}
+                  />
+                </div>
+              </div>
+            )} */}
             <div className="h-[40vh] overflow-auto TeamB_no-scrollbar pr-3">
               {chapters.map((chap, idx) => {
                 const { topic } = chap;
@@ -238,6 +258,14 @@ const TopicPage = () => {
                   onClick={showDescriptionHandle}>
                   Description
                 </p>
+              </div>
+              <div
+                className="flex justify-between w-[80%] m-auto px-2 py-1 mb-2 bg-red-500 rounded-md cursor-pointer text-red"
+                onClick={deleteAllTopics}>
+                <p className="text-white">Delete All Topics</p>
+                <button className="text-[1.5rem]">
+                  <MdDelete />
+                </button>
               </div>
               <div className="h-[40vh] overflow-auto TeamB_no-scrollbar pr-3">
                 {chapters.map((chap, idx) => {

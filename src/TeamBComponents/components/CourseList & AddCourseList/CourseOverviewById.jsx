@@ -71,15 +71,6 @@ const CourseOverviewById = ({ courseTitle }) => {
   const [deleteModalVisible, setDeleteModalVisible] = useState(false);
   const [selectedChapterId, setSelectedChapterId] = useState(null);
 
-  const handleDeleteChapter = async (chapterId) => {
-    deleteAllTopics();
-    const deleteChapter = await axios.delete(
-      `http://localhost:8080/api/v1/auth/chapter/${chapterId}`
-    );
-    setLoadByChapter(deleteChapter.data);
-  };
-  
-
   // console.log(loadByChapter);
 
   const [searchQuery, setSearchQuery] = useState("");
@@ -122,7 +113,6 @@ const CourseOverviewById = ({ courseTitle }) => {
   const [editChapterTitle, setEditChapterTitle] = useState(null);
   const [deleteCHapterTitle, setDeleteChapterTitle] = useState(null);
 
-  
   const deleteAllTopics = async () => {
     try {
       // Iterate over all chapters
@@ -143,6 +133,15 @@ const CourseOverviewById = ({ courseTitle }) => {
       console.error("Error deleting topics:", error);
     }
   };
+
+  const handleDeleteChapter = async (chapterId) => {
+   
+    const deleteChapter = await axios.delete(
+      `http://localhost:8080/api/v1/auth/chapter/${chapterId}`
+    );
+    setLoadByChapter(deleteChapter.data);
+  };
+
   return (
     <>
       <div className="w-full h-full">
