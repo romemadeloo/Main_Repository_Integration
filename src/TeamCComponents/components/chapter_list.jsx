@@ -34,7 +34,7 @@ console.log(chapters)
             <Link onClick={() => navigate(-1)} className="buttonReturn d-flex align-items-center c_chapter_returncontainer" style={{ textDecoration: 'none', color: 'black', width: 'fit-content', }}>
                 <div className="d-flex align-items-center" style={{ marginTop: '1rem' }}>
                     <div>
-                        <img src="../../src/assets/TeamCassets/green_button.png" className="btnReturn c_chapter_return" alt="return-icon" style={{
+                        <img src="../../assets/TeamCassets/green_button.png" className="btnReturn c_chapter_return" alt="return" style={{
                             transition: 'transform .1s', color: '#ffffff',
                             marginLeft: '1rem', width: '2rem', height: '2rem',
                         }} />
