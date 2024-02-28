@@ -1,7 +1,10 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Team_D_HeaderV2 from "../../TeamDComponents/Team_D_HeaderV2";
+import { IoArrowBackCircleSharp } from "react-icons/io5";
+//import Team_D_HeaderV2 from "../../TeamDComponents/Team_D_HeaderV2";
+
+
 
 function TeamC_MainContent() {
   const navigate = useNavigate();
@@ -29,21 +32,6 @@ console.log(chapters)
 
   return (
     <>
-    <Team_D_HeaderV2/>
-       {/* Return button linking back to the specified URL */}
-      <Link onClick={() => navigate(-1)} className="buttonReturn d-flex align-items-center c_chapter_returncontainer" style={{ textDecoration: 'none', color: 'black', width: 'fit-content', }}>
-        <div className="d-flex align-items-center" style={{ marginTop: '1rem' }}>
-          <div>
-            <img src="../../src/assets/TeamCassets/green_button.png" className="btnReturn c_chapter_return" alt="return-icon" style={{
-              transition: 'transform .1s', color: '#ffffff',
-              marginLeft: '1rem', width: '2rem', height: '2rem',
-            }} />
-          </div>
-          <span className="returnTitle c_chapter_returnText" style={{ marginLeft: '0.5rem', color: '#126912', fontSize: '1.5rem', marginTop: '0rem', }}>Back</span>
-        </div>
-         {/* Return button contents */}
-      </Link>
-
       {/* Main layout */}
       <main id="c_maincontent_mainlayout">
 
