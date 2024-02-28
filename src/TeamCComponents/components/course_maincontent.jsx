@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { IoArrowBackCircleSharp } from "react-icons/io5";
@@ -7,6 +7,28 @@ import { IoArrowBackCircleSharp } from "react-icons/io5";
 
 
 function TeamC_MainContent() {
+  const navigate = useNavigate();
+  const [chapters, setChapters] = useState([]);
+
+  const {id} = useParams()
+  useEffect(() => {
+      const fetchChapters = async () => {
+          try {
+            const result = await axios.get(`http://localhost:8080/api/topics/${id}`);
+      
+            // Ensure that result.data is always an array by converting it
+            const coursesArray = Array.isArray(result.data)
+              ? result.data
+              : [result.data];
+              setChapters(coursesArray);
+          } catch (error) {
+            console.error("Error loading chapters:", error);
+          }
+        };
+
+    fetchChapters();
+  }, [id]);
+console.log(chapters)  
 
   return (
     <>

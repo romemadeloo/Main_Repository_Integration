@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import { IoArrowBackCircleSharp } from "react-icons/io5";
 import axios from "axios";
 
 function ChapterList() {
+    const navigate = useNavigate();
     const [chapters, setChapters] = useState([]);
 
     const {id} = useParams()
@@ -31,7 +32,7 @@ console.log(chapters)
     return (
         <>
             {/* Back button */}
-            <Link to='/course' className="buttonReturn d-flex align-items-center c_chapter_returncontainer" style={{ textDecoration: 'none', color: 'black', width: 'fit-content', }}>
+            <Link onClick={() => navigate(-1)} className="buttonReturn d-flex align-items-center c_chapter_returncontainer" style={{ textDecoration: 'none', color: 'black', width: 'fit-content', }}>
                 <div className="d-flex align-items-center" style={{ marginTop: '1rem' }}>
                     <div>
                        <IoArrowBackCircleSharp className="btnReturn c_chapter_return" alt="return-icon" style={{
@@ -57,7 +58,7 @@ console.log(chapters)
                             willChange: 'filter',
                             transition: 'filter 300ms', marginTop: '10px', backgroundColor: '#126912', borderRadius: '1rem',
                         }}>
-                            <Link to={`/course${idx + 1}_sql`} className="h4 text-white text-decoration-none c_chapter_cardtext">
+                            <Link to={`/api/v1/auth/topics/:id`} className="h4 text-white text-decoration-none c_chapter_cardtext">
                                 <div className="card-body d-flex c_chapter_cardbody" style={{
                                     backgroundColor: '#126912', borderRadius: '1rem',
                                 }}>
