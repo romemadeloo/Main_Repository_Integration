@@ -11,10 +11,10 @@ import Footer from "../Footer";
 import PersonalEdit from "./PersonalEdit";
 import { ProfileContext } from "../context/ProfileContext";
 
-const PersonalInfo = ({ intructorName, userEmail }) => {
+const PersonalInfo = ({ userEmail, userFirstName, userLastName, userPhoneNumber }) => {
   const { user, setUser, users, setUsers, file, setFile, accDetails } =
     useContext(ProfileContext);
-  console.log(user);
+
 
   useEffect(() => {
     const loadUsers = async () => {
@@ -44,7 +44,7 @@ const PersonalInfo = ({ intructorName, userEmail }) => {
     setEditPersonalInfo(false);
     setUpdatePersonalInfo(true);
   };
-  console.log(userEmail);
+
   return (
     <>
       {editPersonalInfo && (
@@ -53,7 +53,7 @@ const PersonalInfo = ({ intructorName, userEmail }) => {
             <div className="lg:flex lg:w-[100%] relative lg:gap-x-5 h-[500px] lg:h-[350px]">
               <div className="lg:w-[30%] flex justify-center lg:justify-start">
                 <img
-                  src={file}
+                  src={file ? file : profilePic}
                   alt=""
                   className=" h-[150px] w-[250px] lg:p-2 lg:flex lg:w-[200px]  xl:w-[292px] xl:h-[239px]"
                 />
@@ -73,7 +73,7 @@ const PersonalInfo = ({ intructorName, userEmail }) => {
                     id="firstName"
                     type="text"
                     name="firstName" //should be edited
-                    value={firstName}
+                    value={userFirstName}
                     disabled
                   />
                 </div>
@@ -91,7 +91,7 @@ const PersonalInfo = ({ intructorName, userEmail }) => {
                     id="lastName"
                     type="text"
                     name="lastName" //edit
-                    value={lastName}
+                    value={userLastName}
                     disabled
                   />
                   <div className="lg:flex lg:flex-col ">
@@ -128,7 +128,7 @@ const PersonalInfo = ({ intructorName, userEmail }) => {
                         type="text"
                         id="phoneNumber"
                         name="phoneNumber" //edit
-                        value={phoneNumber}
+                        value={userPhoneNumber}
                         disabled
                       />
                       <div />
