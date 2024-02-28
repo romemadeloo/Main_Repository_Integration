@@ -1,18 +1,18 @@
-import { useLocation, Link } from "react-router-dom";
-
+import { Link, useParams, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Team_D_HeaderV2 from "../../TeamDComponents/Team_D_HeaderV2";
 
 function TeamC_MainContent() {
-
-  const [con, setCon] = useState([]);
+  const navigate = useNavigate();
+  const [chapters, setChapters] = useState([]);
 
   const {id} = useParams()
   useEffect(() => {
       const fetchChapters = async () => {
           try {
-            const result = await axios.get(`http://localhost:8080/api/v1/auth/getCourses/${id}`);
-            
+            const result = await axios.get(`http://localhost:8080/api/topics/${id}`);
+      
             // Ensure that result.data is always an array by converting it
             const coursesArray = Array.isArray(result.data)
               ? result.data
@@ -25,13 +25,13 @@ function TeamC_MainContent() {
 
     fetchChapters();
   }, [id]);
-console.log(con)
+console.log(chapters)  
 
   return (
     <>
     <Team_D_HeaderV2/>
        {/* Return button linking back to the specified URL */}
-      <Link to={urlReturn} className="buttonReturn d-flex align-items-center c_chapter_returncontainer" style={{ textDecoration: 'none', color: 'black', width: 'fit-content', }}>
+      <Link onClick={() => navigate(-1)} className="buttonReturn d-flex align-items-center c_chapter_returncontainer" style={{ textDecoration: 'none', color: 'black', width: 'fit-content', }}>
         <div className="d-flex align-items-center" style={{ marginTop: '1rem' }}>
           <div>
             <img src="../../src/assets/TeamCassets/green_button.png" className="btnReturn c_chapter_return" alt="return-icon" style={{
@@ -52,14 +52,14 @@ console.log(con)
 
           <div className="container" id="c_maincontent_maincontainer" >
             {/* Displaying dynamic content based on the current pathname */}
-            <p style={{ fontWeight: 'bold' }}>{layoutTitle}</p>
-            <p>{subTitle}</p>
+            <p style={{ fontWeight: 'bold' }}>TITLE OF LAYOUT</p>
+            <p>SUBTITLE LAYOUT</p>
             <div style={{ backgroundColor: '#EBFFE5' }}>
               <div>
                 <div
                   id="c_maincontent_textcontainer"
                 >
-                  <p className="lh-base" id="c_maincontent_textdesc" style={{ marginTop: '1rem', marginLeft: '1rem', marginRight: '1rem', marginBottom: '1rem', }}>{descText}</p>
+                  <p className="lh-base" id="c_maincontent_textdesc" style={{ marginTop: '1rem', marginLeft: '1rem', marginRight: '1rem', marginBottom: '1rem', }}>DESCRIPTION TEXT HERE</p>
                 </div>
                 <div id="c_maincontent_buttoncontainer" >
                   <button className="btn courseButton"
