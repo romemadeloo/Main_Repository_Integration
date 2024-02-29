@@ -33,7 +33,7 @@ function ModalSeeMore() {
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div className="modal-body"  style={{ wordWrap: 'break-word' }}>
+                            <div className="modal-body" style={{ wordWrap: 'break-word' }}>
                                 <p>{chapterData.course_description}</p>
                             </div>
                             <div className="modal-footer">

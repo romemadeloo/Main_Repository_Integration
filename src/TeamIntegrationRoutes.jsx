@@ -59,7 +59,7 @@ import AssessmentHtml from "./TeamCComponents/pages/quiz/assessment_html";
 import ChapterList from "./TeamCComponents/components/chapter_list";    
 import AddQuiz from "./TeamCComponents/pages/AddQuiz";
 import AssessmentQuiz from "./TeamCComponents/pages/AssessmentQuiz";
-import TeamC_Topic from "./TeamCComponents/pages/page_topics";
+import TeamC_Topics from "./TeamCComponents/pages/Topics";
 
 // team D
 import Team_D_View from "./TeamDComponents/Team_D_View";
@@ -129,7 +129,7 @@ function TeamIntegrationRoutes() {
         <Route path="/assessment_svn" element={<AssessmentSvn />} />
         <Route path="/assessment_html" element={<AssessmentHtml />} />
         <Route path="/api/v1/auth/chapters/:id" element={<ChapterList/>} />
-        <Route path="/api/v1/auth/topics/:id" element={<TeamC_Topic/>} />
+        <Route path="/api/v1/auth/topics/:id" element={<TeamC_Topics/>} />
         
 
 
