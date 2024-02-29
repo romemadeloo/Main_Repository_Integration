@@ -1,7 +1,10 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Team_D_HeaderV2 from "../../TeamDComponents/Team_D_HeaderV2";
+import { IoArrowBackCircleSharp } from "react-icons/io5";
+//import Team_D_HeaderV2 from "../../TeamDComponents/Team_D_HeaderV2";
+
+
 import axios from "axios";
 
 
@@ -36,12 +39,11 @@ console.log(topics)
 
   return (
     <>
-    <Team_D_HeaderV2/>
        {/* Return button linking back to the specified URL */}
       <Link onClick={goBack} className="buttonReturn d-flex align-items-center c_chapter_returncontainer" style={{ textDecoration: 'none', color: 'black', width: 'fit-content', }}>
         <div className="d-flex align-items-center" style={{ marginTop: '1rem' }}>
           <div>
-            <img src="../../src/assets/TeamCassets/green_button.png" className="btnReturn c_chapter_return" alt="return-icon" style={{
+            <img src="../../TeamCassets/green_button.png" className="btnReturn c_chapter_return" alt="return-icon" style={{
               transition: 'transform .1s', color: '#ffffff',
               marginLeft: '1rem', width: '2rem', height: '2rem',
             }} />
@@ -107,7 +109,7 @@ console.log(topics)
 
        {/* Modals for quiz and resource download */}              
       <div className="modal fade modalMain" id="mainId" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
-        <div className="modal-dialog">
+        <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content" style={{ backgroundColor: '#D9FFCF' }}>
             <div className="modal-header">
               <h5 className="modal-title" id="exampleModalLabel">Take the quiz?</h5>
@@ -128,7 +130,7 @@ console.log(topics)
 
       <div className="modal fade modalSub" id="subId" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
         {/* Modal contents for resource download */}
-        <div className="modal-dialog">
+        <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content" style={{ backgroundColor: '#D9FFCF' }}>
             <div className="modal-header">
               <h5 className="modal-title" id="exampleModalLabel">Take the quiz?</h5>

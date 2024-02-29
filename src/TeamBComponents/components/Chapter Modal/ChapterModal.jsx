@@ -25,6 +25,7 @@ const ChapterModal = ({ chapterId, editTitle }) => {
   }, []);
 
   const handleSubmit = async (e) => {
+ 
     // Assuming your API call is successful, update the state to indicate form submission
 
     try {
@@ -37,6 +38,8 @@ const ChapterModal = ({ chapterId, editTitle }) => {
       console.error("Error submitting form:", error);
       // Handle error if the API call fails
     }
+
+    
   };
 
   const loadChapters = async () => {
@@ -70,15 +73,20 @@ const ChapterModal = ({ chapterId, editTitle }) => {
               name="chapter_title"
               value={chapter_title}
               onChange={(e) => handleInputChange(e)}
+              onKeyPress={(e) => {
+                if (e.key === "Enter") {
+                  handleSubmit();
+                }
+              }}
               required
             />
-            <div className="flex justify-end w-full pt-8">
+            <div className="flex align-middle text-center justify-end w-full pt-8">
               <div className="flex gap-x-5">
-                <button
-                  className="xl:text-[24px]  lg:text-[1rem]"
+                <span
+                  className=" xl:text-[24px] py-2 lg:text-[1rem]"
                   onClick={handleCancel}>
                   Cancel
-                </button>
+                </span>
 
                 <button
                   className="drop-shadow-md TeamB_text-shadow   w-[90px] h-[40px] rounded-[80px] lg:text-[1rem] xl:w-[114px] xl:h-[58px] xl:rounded-[100px] bg-[#126912] xl:text-[24px] text-[#FFFFFF]  font-bold"

@@ -48,7 +48,7 @@ function CoursePreview() {
             return (
               <div key={index} className="col-md-3 mt-3 ml-1">
                 <div
-                  className=" teamcwholecard card border-success h-100"
+                  className="teamcwholecard card border-success h-100"
                   style={{ maxWidth: "20rem", borderRadius: "10px" }}
                 >
                   <div className="card-header bg-transparent border-success "></div>
@@ -61,18 +61,21 @@ function CoursePreview() {
                         {chapterData.course_title}
                       </h5>
                       <hr className="teamclinepartition" />
-                      <p className="teamcparag card-body bg-transparent border-success d-flex flex-column text-justify">
-                        {chapterData.course_description}
-                      </p>
-                      <p
-                        className="fw-bold text-end"
-                        id="c_course_seemoretext"
-                        data-bs-toggle="modal"
-                        data-bs-target={`#modal_seemore${index + 1}`}
-                        onClick={incrementCounterAndAttributes}
-                      >
-                        See more..
-                      </p>
+                      <div className="teamcparag card-body bg-transparent border-success d-flex flex-column text-justify">
+                          <span>
+                              {chapterData.course_description.split(' ').slice(0, 20).join(' ')}
+                          </span>
+                          <span
+                              className="fw-bold text-end"
+                              id="c_course_seemoretext"
+                              data-bs-toggle="modal"
+                              data-bs-target={`#modal_seemore${index + 1}`}
+                              onClick={incrementCounterAndAttributes}
+                          >
+                              See more..
+                          </span>
+                      </div>
+                     
                       <div>
                         <br />
                       </div>
@@ -82,7 +85,13 @@ function CoursePreview() {
                         data-bs-target={`#${modalId}`}
                         id={buttonId}
                         onClick={incrementCounterAndAttributes}
-                      >
+                        style={{ 
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          height: '30px'
+                      }}
+                        >
                         Enroll Now
                       </button>
                     </div>

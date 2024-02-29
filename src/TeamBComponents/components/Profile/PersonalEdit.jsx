@@ -31,7 +31,8 @@ const PersonalEdit = ({ hideUpdatePersonalInfo, showEdit, userEmail }) => {
   }
   useEffect(() => {
     const loadUsers = async () => {
-      const result = await axios.get("http://localhost:8080/api/v1/auth/users");
+      //update
+      const result = await axios.put("http://localhost:8080/api/v1/auth/users");
       setUsers(result.data);
     };
 
@@ -57,7 +58,7 @@ const PersonalEdit = ({ hideUpdatePersonalInfo, showEdit, userEmail }) => {
   };
 
   const { firstName, lastName, phoneNumber, email } = users;
-  console.log(firstName);
+  console.log(users);
 
   // React hook for tooltip
   const [showTooltipFirstName, setShowTooltipFirstName] = useState(false);
@@ -77,15 +78,16 @@ const PersonalEdit = ({ hideUpdatePersonalInfo, showEdit, userEmail }) => {
         autoComplete="off"
         required
         onSubmit={(e) => handleSubmit(e)}
-        className="flex flex-col h-full gap-y-5 w-[90%] lg:h-[380px] lg:w-[680px]  bg-[#BCE8B1] rounded shadow-md">
+        className="flex flex-col h-full gap-y-5 w-[90%] lg:h-[380px] lg:w-[680px]  bg-[#BCE8B1] rounded shadow-md"
+      >
         <div className="relative lg:w-[95%] lg:m-auto h-[500px] lg:h-[350px]  ">
           <div className="lg:flex lg:w-[100%] lg:gap-x-5 ">
             {/* IMAGE */}
             <div className="lg:w-[30%] flex lg:flex-col relative justify-between lg:justify-start md:w-[70%] m-auto">
               <label htmlFor="uploadProfile">
                 <img
-                  src={file}
-                  alt=""
+                  src={file ? file : profilePic}
+                  alt="Profile_Picture"
                   className="cursor-pointer p-2 lg:flex w-[200px] h-[150px]"
                 />
               </label>
@@ -94,20 +96,27 @@ const PersonalEdit = ({ hideUpdatePersonalInfo, showEdit, userEmail }) => {
                 type="file"
                 onChange={handleChange}
                 className="hidden"
+                accept=".svg,.webp,.png"
               />
 
               {/* UPLOAD PROFILE PIC */}
-              <input id="uploadProfile" type="file" className="hidden" />
+              <input
+                id="uploadProfile"
+                type="file"
+                className="hidden"
+                accept=".svg,.webp,.png"
+              />
               <label
                 htmlFor="uploadProfile"
-                className="cursor-pointer bottom-2 text-[.8rem] left-2 justify-center items-center absolute text-center font-medium px-2 rounded-sm   bg-[#D1DFCD]  text-[#4D4141] text-opacity-[53%] shadow-lg lg:hidden">
+                className="cursor-pointer  bottom-2 text-[.8rem] left-2 justify-center items-center absolute text-center font-medium px-2 rounded-sm   bg-[#D1DFCD]  text-[#4D4141] text-opacity-[53%] shadow-lg lg:hidden"
+              >
                 Choose File
               </label>
-              <label htmlFor="uploadSignature">
+              <label>
                 <img
-                  src={sigfile}
+                  src={sigfile ? sigfile : signature}
                   alt=""
-                  className="cursor-pointer p-4 lg:flex w-[200px] h-[150px] "
+                  className="cursor-pointer lg:cursor-default p-4 lg:flex w-[200px] h-[150px] "
                 />
               </label>
               <input
@@ -115,12 +124,19 @@ const PersonalEdit = ({ hideUpdatePersonalInfo, showEdit, userEmail }) => {
                 onChange={handleChangeSig}
                 type="file"
                 className="hidden"
+                accept=".svg,.webp"
               />
               {/* UPLOAD SIGNATURE */}
-              <input id="uploadSignature" type="file" className="hidden" />
+              <input
+                id="uploadSignature"
+                type="file"
+                className="hidden"
+                accept=".svg,.webp"
+              />
               <label
                 htmlFor="uploadSignature"
-                className="cursor-pointer bottom-2 text-[.8rem] right-2 justify-center items-center absolute text-center font-medium px-2 rounded-sm   bg-[#D1DFCD]  text-[#4D4141] text-opacity-[53%] shadow-lg lg:hidden">
+                className="cursor-pointer bottom-2 text-[.8rem] right-2 justify-center items-center absolute text-center font-medium px-2 rounded-sm   bg-[#D1DFCD]  text-[#4D4141] text-opacity-[53%] shadow-lg lg:hidden"
+              >
                 Choose File
               </label>
             </div>
@@ -133,7 +149,8 @@ const PersonalEdit = ({ hideUpdatePersonalInfo, showEdit, userEmail }) => {
                     showTooltipLastName
                       ? "text-[#4D4141] text-opacity-[53%] absolute z-10 top-0 left-2 text-[.8rem] blur-lg"
                       : "text-[#4D4141] text-opacity-[53%] absolute z-10 top-0 left-2 text-[.8rem] "
-                  }`}>
+                  }`}
+                >
                   First Name <span className="text-[#FF2626]">*</span>
                 </label>
                 {/* FIRSTNAME INPUT */}
@@ -173,7 +190,8 @@ const PersonalEdit = ({ hideUpdatePersonalInfo, showEdit, userEmail }) => {
               <div className="relative">
                 <label
                   htmlFor="lastName"
-                  className="text-[#4D4141] text-opacity-[53%] absolute z-10 top-0 left-2 text-[.8rem]">
+                  className="text-[#4D4141] text-opacity-[53%] absolute z-10 top-0 left-2 text-[.8rem]"
+                >
                   Last Name <span className="text-[#FF2626]">*</span>
                 </label>
                 {/* LASTNAME INPUT */}
@@ -213,7 +231,8 @@ const PersonalEdit = ({ hideUpdatePersonalInfo, showEdit, userEmail }) => {
                     showTooltipContactNo
                       ? "text-[#4D4141] text-opacity-[53%] absolute z-10 top-0 left-2 text-[.8rem] blur-lg"
                       : "text-[#4D4141] text-opacity-[53%] absolute z-10 top-0 left-2 text-[.8rem]"
-                  }`}>
+                  }`}
+                >
                   Email Address
                 </label>
                 {/* EMAIL INPUT */}
@@ -234,7 +253,8 @@ const PersonalEdit = ({ hideUpdatePersonalInfo, showEdit, userEmail }) => {
                     showTooltipUploadSignature
                       ? "text-[#4D4141] text-opacity-[53%] absolute z-10 top-0 left-2 text-[.8rem] blur-lg"
                       : "text-[#4D4141] text-opacity-[53%] absolute z-10 top-0 left-2 text-[.8rem]"
-                  }`}>
+                  }`}
+                >
                   Contact Number <span className="text-[#FF2626]">*</span>
                 </label>
                 {/* CONTACT NUMBER INPUT */}
@@ -245,11 +265,12 @@ const PersonalEdit = ({ hideUpdatePersonalInfo, showEdit, userEmail }) => {
                       : "relative TeamB_input-style px-2 lg:w-full bg-[#EBFFE5]"
                   }`}
                   placeholder="+63"
-                  type="number"
+                  type="text" // Change type to text
                   id="PhoneNumber"
                   name="phoneNumber"
                   value={phoneNumber}
                   onChange={(e) => handleInputChange(e)}
+                  pattern="[0-9]*" // Allow only numeric input
                   maxLength={10}
                   required={true}
                   onError={errorContactNo}
@@ -263,6 +284,7 @@ const PersonalEdit = ({ hideUpdatePersonalInfo, showEdit, userEmail }) => {
                   onMouseOver={() => setShowTooltipContactNo(true)}
                   onMouseLeave={() => setShowTooltipContactNo(false)}
                 />
+
                 {showTooltipContactNo && (
                   <div className="absolute top-[-2.5rem] left-10 bg-[#fff] w-[45%] p-1 rounded-lg border-[1px] border-[#EBFFE5]">
                     <p className="text-[.8rem] text-[#4D4141] text-opacity-[53%]">
@@ -287,22 +309,30 @@ const PersonalEdit = ({ hideUpdatePersonalInfo, showEdit, userEmail }) => {
 
           <div className="w-[100%] flex  justify-center items-center lg:justify-end absolute bottom-2 lg:bottom-0 gap-x-5">
             {/* UPLOAD SIGNATURE */}
-            <input id="uploadSignature" type="file" className="hidden" />
+            <input
+              id="uploadSignature"
+              type="file"
+              className="hidden"
+              accept=".svg,.webp"
+            />
             <label
               htmlFor="uploadSignature"
               className="cursor-pointer hidden mr-auto lg:w-[130px]  text-center font-bold lg:h-[30px]  bg-[#D1DFCD] lg:text-[.8rem] lg:rounded-lg  text-[#4D4141] text-opacity-[53%] shadow-lg lg:flex justify-center items-center"
               onMouseOver={() => setShowTooltipUploadSignature(true)}
-              onMouseLeave={() => setShowTooltipUploadSignature(false)}>
+              onMouseLeave={() => setShowTooltipUploadSignature(false)}
+            >
               Choose File
             </label>
             <span
               className=" TeamB_btn-style text-black bg-[#fff] lg:bg-transparent rounded-full  w-[42.5%] lg:w-[120px] lg:text-[1rem] font-medium flex justify-center items-center cursor-pointer"
-              onClick={hideUpdatePersonalInfo}>
+              onClick={hideUpdatePersonalInfo}
+            >
               Cancel
             </span>
             <button
               type="submit"
-              className="TeamB_btn-style w-[42.5%] lg:w-[120px] lg:flex rounded-full lg:justify-center  ">
+              className="TeamB_btn-style w-[42.5%] lg:w-[120px] lg:flex rounded-full lg:justify-center  "
+            >
               Update
             </button>
           </div>

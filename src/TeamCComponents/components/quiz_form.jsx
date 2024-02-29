@@ -250,7 +250,7 @@ function TeamC_QuizForm_Component() {
 
       {/* Modal for taking the quiz */}
       <div className="modal fade modalMain" id="mainId" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div className="modal-dialog">
+          <div className="modal-dialog modal-dialog-centered">
               <div className="modal-content" style={{ backgroundColor: '#D9FFCF' }}>
                   <div className="modal-header">
                       <h5 className="modal-title" id="exampleModalLabel">Take the quiz?</h5>
@@ -272,7 +272,7 @@ function TeamC_QuizForm_Component() {
 
       {/* Modal for downloading resource file */}
       <div className="modal fade modalSub" id="subId" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div className="modal-dialog">
+          <div className="modal-dialog modal-dialog-centered">
               <div className="modal-content" style={{ backgroundColor: '#D9FFCF' }}>
                   <div className="modal-header">
                       <h5 className="modal-title" id="exampleModalLabel">Take the quiz?</h5>
