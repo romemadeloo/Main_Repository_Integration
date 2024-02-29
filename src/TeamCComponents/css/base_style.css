@@ -1,5 +1,6 @@
 .btn-view-course:hover {
     background-color: #145304; /* Changes background color on hover */
+
   }
   
   #c_dashboard_header {
@@ -10,9 +11,9 @@
     filter: drop-shadow(0 0 1em #484848); /* Applies drop shadow on hover */
   }
   
-  .buttonReturn:hover .c_chapter_return {
+  /* .buttonReturn:hover .c_chapter_return {
     transform: scale(1.1); /* Scales up chapter return button on hover */
-  }
+   
   
   #c_course_courses:hover {
       filter: drop-shadow(0 0 1em #484848) /* Applies drop shadow to course item container on hover */
@@ -247,6 +248,8 @@
       text-align: center; /* Aligns text to the center */
       align-items: left; /* Aligns items to the left */
       font-size: 2.5rem; /* Adjusts font size of main container */
+      margin-top: 200px;
+      margin-left: 10px;
     }
   
     .teamcwholecard {

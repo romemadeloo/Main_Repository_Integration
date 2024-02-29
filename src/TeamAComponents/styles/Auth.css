@@ -5,7 +5,6 @@
   text-align: center;
 }
 
-
 .app-header {
   background-color: #282c34;  /* Set the background color of the .app-header element to dark blue-gray */
   padding: 20px; /* Add padding of 20 pixels to the content inside .app-header, creating space around it */
@@ -866,7 +865,6 @@ input::placeholder{
   margin-top: 20px; /* Add space above the projects data */
 }
 
-
 .Prof2-navbar {
   background-color: #D9FFCF;
   padding: 15px;
@@ -1104,7 +1102,6 @@ input::placeholder{
 }
 
 /*Change Password*/
-
 .Change-navbar {
   background-color: #D9FFCF;
   padding: 15px;
@@ -1367,7 +1364,6 @@ input::placeholder{
   }
 }
 
-
 .resend {
   color: #4D4141;   /* Set the text color to a dark shade of red-brown (#4D4141) */
   font-weight: 700px;   /* Set the font weight to a strong value (700) */
@@ -1429,8 +1425,6 @@ input::placeholder{
 .wBackbutton:hover{
 background-color: gray;
 }
-
-
 
 /* Responsive styles */
 @media only screen and (max-width: 600px) {
@@ -1545,10 +1539,6 @@ background-color: gray;
 
 } */
 
-
-
-
-
 /* para hindi dumikit sa gilid */
 /* .image-container {
   flex: 1;
@@ -1579,10 +1569,6 @@ background-color: gray;
   height: 50px;
   margin-top: 10px;
 }
-
-
-
-
 
 .TeamA-card-container {
   display: flex;   /* Use flexbox for layout */
@@ -1788,6 +1774,22 @@ color: gray;
 .teamDimg {
   height: 50px;   /* Set the height of the image to 50 pixels */
   width: auto;   /* Set the width of the image to auto, maintaining its aspect ratio */
+}
+
+.cols{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.col1, .col2{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+strong{
+  color: rgb(28, 87, 28);
 }
 
 /* Media query for screens with a maximum width of 900 pixels */
