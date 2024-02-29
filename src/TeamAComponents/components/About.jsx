@@ -7,39 +7,14 @@ import { Link } from "react-router-dom";
 import "../styles/Auth.css";
 import card1 from "../../assets/card 1.svg";
 import card2 from "../../assets/card 2.svg";
+import Navigation from "./Navigation";
 
 // About component
 const About = () => {
   return (
     <>
        {/* Navigation bar */}
-      <nav className="my-navigation">
-        <Link to="/">
-           {/* Logo image */}
-          <img src="..\src\assets\TeamAassets\companyLogo.png" alt="Logo" />
-        </Link>
-        {/* Navigation menu */}
-        <ul className="menu-hide">
-          <li>
-            <a href="/verif_nonuser">Verification</a>
-          </li>
-          <li>
-            <a href="About">About us</a>
-          </li>
-          <li>
-            <a href="https://www.tsukiden.com.ph">Contact us</a>
-          </li>
-        </ul>
-        {/* Registration and login buttons */}
-        <div className="testing">
-          <Link to="/register">
-            <button id="register">Register</button>
-          </Link>
-          <Link to="/login">
-            <button id="login">Log In</button>
-          </Link>
-        </div>
-      </nav>
+      <Navigation/>
       {/* Main Content Section */}
       {/* className="home-content" old css */}   
       <div className="flex flex-col TeamB_text-shadow">

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./TeamD_Css/content.css";
+import "../TeamDComponents/TeamD_Css/content.css";
 import { pdfjs } from "react-pdf";
 import { Alert, Dropdown } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
@@ -7,13 +7,16 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import { BiFileFind } from "react-icons/bi";
 import { MdOutlineFileDownload } from "react-icons/md";
-import { FiSearch } from "react-icons/fi";
+import { FiSearch, FiX } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import { FaArrowUp } from "react-icons/fa";
-import NoCert from "./TeamD_Assets/undraw_learning_re_32qv.svg";
+import NoCert from "../TeamDComponents/TeamD_Assets/undraw_learning_re_32qv.svg";
+import { Spinner } from 'react-bootstrap';
 import Team_D_HeaderV2 from "./Team_D_HeaderV2";
+
+//updated code as of 2/28/24 -jake
 
 // Set up PDF.js worker source
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
@@ -29,7 +32,7 @@ const Team_D_Content = () => {
   const [overlayVisibilities, setOverlayVisibilities] = useState([]);
   const [disableViewButtons, setDisableViewButtons] = useState([]);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 769); // Check if the viewport width is less than 769
-  
+
   // State to store the search term
   const [searchTerm, setSearchTerm] = useState(
     localStorage.getItem("searchTerm") || ""
@@ -85,6 +88,14 @@ const Team_D_Content = () => {
     // Set the filtered certificates in the state
     setFilteredCertificates(filtered);
   };
+  // Function to handle clearing the search term and updating filtered certificates
+const handleClearSearch = () => {
+  // Clear the search term
+  setSearchTerm("");
+
+  // Display all certificates
+  setFilteredCertificates(pdfFileNames);
+};
 
   // Effect hook to update the filtered certificates when the search term changes
   useEffect(() => {
@@ -101,7 +112,6 @@ const Team_D_Content = () => {
     // Set the filtered certificates in the state
     setFilteredCertificates(filtered);
   }, [searchTerm, pdfFileNames]);
-
 
   // Effect to load thumbnails for PDF files
   useEffect(() => {
@@ -221,7 +231,8 @@ const Team_D_Content = () => {
     const pdfPath = `/PDF/${pdfFileNames[index].certificate_file}`; // Assuming certificate_file contains the path to the PDF
     const link = document.createElement("a");
     link.href = pdfPath;
-    link.download = "Certificate.pdf";
+    // Assuming certificate_file contains the desired name for the downloaded file
+    link.download = pdfFileNames[index].certificate_file;
 
     // Event listeners for download events
     link.addEventListener("abort", () => {
@@ -358,24 +369,42 @@ const Team_D_Content = () => {
           <h1>Certificates</h1>
 
           <InputGroup expand="lg" size="sm" className="float-right">
-            {/* Search input form */}
-            <Form.Control
-              placeholder="Search..."
-              aria-label="Recipient's username"
-              aria-describedby="basic-addon2"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              onKeyPress={(e) => {
-                if (e.key === "Enter") {
-                  // Handle the "Enter" key press, e.g., trigger the verification function
-                  handleSearch();
-                }
-              }}
-            />
-            <Button variant="success" id="button-addon2" onClick={handleSearch}>
-              <FiSearch className="TeamD_icon search_icon" />
-            </Button>
-          </InputGroup>
+  <Form.Control
+    type="text"
+    placeholder="Search here..."
+    aria-label="Recipient's username"
+    aria-describedby="basic-addon2"
+    value={searchTerm}
+    onChange={(e) => setSearchTerm(e.target.value)}
+    onKeyPress={(e) => {
+      if (e.key === "Enter") {
+        // Handle the "Enter" key press, e.g., trigger the verification function
+        handleSearch();
+      }
+    }}
+    className="TeamD_search-input" // Add a class for styling
+  />
+  {searchTerm && (
+    <OverlayTrigger
+      placement="top"
+      overlay={<Tooltip className="clear-tooltip">Clear</Tooltip>}
+    >
+      <InputGroup.Text
+        className="TeamD_icon_search_icon-container"
+        onClick={handleClearSearch} // Correctly bind the function to onClick
+      >
+        <span>
+          <FiX className="TeamD_icon_clear_search_icon" />
+        </span>
+      </InputGroup.Text>
+    </OverlayTrigger>
+  )}
+  <InputGroup.Text className="TeamD_icon_search_icon-container">
+    <span>
+      <FiSearch className="TeamD_icon_search_icon" />
+    </span>
+  </InputGroup.Text>
+</InputGroup>
         </section>
         <div className="hr"></div> {/* Horizontal rule */}
       </section>
@@ -419,7 +448,8 @@ const Team_D_Content = () => {
                 ) : !isMobile && thumbnails[index] ? (
                   <img src={thumbnails[index]} alt="PDF Thumbnail" />
                 ) : (
-                  <p>Loading thumbnail...</p>
+                  <p className="TeamD_loading-spinner"><Spinner/> <br/>
+                  Loading.. </p>
                 )}
 
                 {/* Render overlay with view and download buttons */}
@@ -482,7 +512,7 @@ const Team_D_Content = () => {
                 )}
               </div>
               {/* Display course title */}
-              <p style={{ textTransform: "capitalize" }}>
+              <p className="TeamD_certificate_courseTitle">
                 {pdfFile.quizTaken.quiz.course.title}
               </p>
             </div>
