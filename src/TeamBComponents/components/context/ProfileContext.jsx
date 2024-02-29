@@ -22,8 +22,8 @@ const ProfileProvider = ({ children }) => {
 
   const [accDetails, setAccDetails] = useState([
     {
-      email: "jmacabales@tspi.com.ph",
-      userName: "JMacabales",
+      // email: "jmacabales@tspi.com.ph",
+      // userName: "JMacabales",
     },
   ]);
 
@@ -46,6 +46,7 @@ const ProfileProvider = ({ children }) => {
    const [file, setFile] = useState();
    const [sigfile, setSigFile] = useState();
    
+   const [instructors, setInstructors] = useState([]);
  
 
   return (
@@ -67,6 +68,8 @@ const ProfileProvider = ({ children }) => {
         setFile,
         sigfile,
         setSigFile,
+        instructors,
+        setInstructors,
       }}>
       {children}
     </ProfileContext.Provider>

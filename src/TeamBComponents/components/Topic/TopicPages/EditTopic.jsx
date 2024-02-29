@@ -20,6 +20,7 @@ import { IoEyeSharp } from "react-icons/io5";
 //import close button icon
 import { IoMdClose } from "react-icons/io";
 import LinkTopicModal from "../TopicModal/LinkTopicModal";
+import { Link } from "react-router-dom";
 const CloseButton = ({ closeToast }) => (
   <i className="material-icons" onClick={closeToast}></i>
 );
@@ -104,7 +105,10 @@ const EditTopic = ({ topicId, courseTitle, chapterTitle }) => {
     // Assuming your API call is successful, update the state to indicate form submission
 
     try {
-      await axios.put(`http://localhost:8080/api/v1/auth/topic/${topicId}`, topics);
+      await axios.put(
+        `http://localhost:8080/api/v1/auth/topic/${topicId}`,
+        topics
+      );
       // showModal(false);
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -120,21 +124,11 @@ const EditTopic = ({ topicId, courseTitle, chapterTitle }) => {
     setTopics(result.data);
   };
 
-  //store url in a variable
-  // const docs = [
-  //   {
-  //     uri: "https://rb.gy/wjgxf3",
-  //     fileType: "pptx",
-  //   }, // Remote file
-  //   // { uri: require("./example-files/pdf.pdf") }, // Local File
-  // ];
-
-  // const linkToPPTFile =
-  //   "https://onedrive.live.com/embed?resid=45112E029C22DBF%21345&authkey=!APHTfuIo5T7hg4w&em=2";
-
   const [showEmbedded, setShowEmbedded] = useState(false);
   //react state for link and show
-  const [linkFileShow, setLinkFileShow] = useState(false);
+  // const [linkFileShow, setLinkFileShow] = useState(false);
+
+  console.log(topic_file);
   return (
     <>
       {/* add topic title */}
@@ -190,10 +184,10 @@ const EditTopic = ({ topicId, courseTitle, chapterTitle }) => {
             justify-center cursor-pointer">
             {/* <img src={EditTopiclink} alt="" className="" /> */}
             <iframe
-              src={topic_file}
+              src={topic_link}
               frameborder="0"
               scrolling="no"
-              className="blur-[.05rem] h-[200px] md:w-full  hidden md:flex"></iframe>
+              className="blur-[.05rem] h-[200px] md:w-full  lg:w-[20vw] lg:h-[20vh] hidden md:flex"></iframe>
 
             <div className="absolute flex gap-x-5">
               <span className="" onClick={toggleVideoPopup}>
@@ -207,86 +201,53 @@ const EditTopic = ({ topicId, courseTitle, chapterTitle }) => {
             </div>
           </div>
 
-          <div
+          <Link
+            to=""
             className=" relative w-[100%] h-[200px]  md:w-[50%]
            lg:w-[20vw] lg:h-[20vh] bg-[#fff] rounded-lg flex
-           items-center justify-center cursor-pointer"
-            onClick={toggleQuizPopup}>
-            <iframe
-              src={topic_file}
+           items-center justify-center cursor-pointer">
+            {/* <iframe
+              src={topic_link}
               frameborder="0"
               scrolling="no"
-              className="blur-[.05rem] h-[200px]  hidden lg:flex"></iframe>
+              className="blur-[.05rem] h-[200px]  hidden lg:flex"></iframe> */}
             <span className="absolute ">
               <FaEdit className="w-[30px] h-[30px] lg:w-[30px] lg:h-[30px]  opacity-[80%]" />
             </span>
-          </div>
+          </Link>
         </div>
 
-        {linkFileShow && (
-          <div className="fixed inset-0 flex items-center justify-center">
-            <div className="absolute inset-0 bg-black opacity-50"></div>
-            <div className="bg-[#EBFFE5] rounded-lg z-10 ">
-              <div className="relative px-4 py-4">
-                <div className="absolute right-[-.5rem] top-[-.5rem] w-[30px] h-[30px] rounded-full TeamB_text-shadow drop-shadow-lg shadow-lg bg-red-500 flex items-center justify-center">
-                  <button
-                    onClick={() => setLinkFileShow((prev) => !prev)}
-                    className="text-white ">
-                    <IoMdClose />
-                  </button>
-                </div>
-                <div className="flex items-center justify-between w-[14rem] ">
-                  <div
-                    className="rounded-lg shadow-lg cursor-pointer drop-shadow-lg"
-                    onClick={toggleVideoPopup}>
-                    <p className="px-2 py-2 text-white bg-blue-600 rounded-lg TeamB_text-shadow">
-                      Upload Link
-                    </p>
-                  </div>
-                  <div className="rounded-lg shadow-lg drop-shadow-lg">
-                    <label
-                      htmlFor="uploadLink"
-                      className="bg-[#BCE8B1] cursor-pointer text-black px-2 py-2 rounded-lg  TeamB_text-shadow ">
-                      Upload File
-                    </label>
-                    <input id="uploadLink" type="file" className="hidden" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
         {/* Video Popup */}
         {isVideoPopupOpen && (
-          <LinkTopicModal
-            topic_file={topic_file}
-            handleInputChange={handleInputChange}
-            handleVideoCancelClick={handleVideoCancelClick}
-            handleVideoDoneClick={handleVideoDoneClick}
-          />
-        )}
-        {/* Quiz Popup */}
-        {isQuizPopupOpen && (
           <div className="fixed inset-0 flex items-center justify-center">
-            <div className="absolute inset-0 bg-black opacity-50"></div>
+            {" "}
+            {/* Outer container */}
+            <div className="absolute inset-0 bg-black opacity-50"></div>{" "}
+            {/* Background overlay */}
             <div className="bg-[#EBFFE5] p-8 rounded-lg z-10 w-[90%] md:w-[80%]">
-              <p className="mb-4 text-lg font-semibold">Edit Quiz Link</p>
-              <input
+              {" "}
+              {/* Modal content */}
+              <p className="mb-4 text-lg font-semibold">Add Topic Link</p>{" "}
+              {/* Modal title */}
+              <input // Input field for topic link
+                required
                 type="text"
                 name="topic_link"
                 value={topic_link}
                 onChange={(e) => handleInputChange(e)}
-                className="w-full bg-[#BCE8B1] p-2 border border-gray-300 rounded-md mb-4"
+                className="bg-[#BCE8B1] p-2 border border-gray-300 rounded-md mb-4 w-full"
                 placeholder="https://www"
               />
               <div className="flex justify-end">
-                <button
-                  onClick={handleQuizCancelClick}
-                  className="px-4 py-2 text-black rounded">
+                {" "}
+                {/* Button container */}
+                <button // Cancel button
+                  onClick={handleVideoCancelClick}
+                  className="px-4 py-2 text-black rounded-md">
                   Cancel
                 </button>
-                <button
-                  onClick={handleQuizDoneClick}
+                <button // Done button
+                  onClick={handleVideoDoneClick}
                   className="bg-[#126912] text-white py-2 px-4 rounded-full ml-2">
                   Done
                 </button>
@@ -294,17 +255,18 @@ const EditTopic = ({ topicId, courseTitle, chapterTitle }) => {
             </div>
           </div>
         )}
+        {/* Quiz Popup */}
 
         {showEmbedded && (
-          <div className="absolute top-0 z-10 w-[100%] h-full flex justify-center items-center backdrop-blur-[.3rem]">
-            <div className="w-[90%] h-[50vh] lg:w-[750px] lg:h-[520px] bg-[#BCE8B1] flex flex-col justify-center items-center  rounded-lg">
+          <div className="absolute top-0 z-10 w-[100%] h-full flex justify-center items-center lg:items-start backdrop-blur-[.3rem]">
+            <div className="w-[90%] h-[50vh] md:h-[40vh] lg:w-[700px] lg:h-[450px] pb-2 bg-[#BCE8B1] flex flex-col justify-center items-center  rounded-lg">
               <div
                 className="flex justify-end w-full pb-3 pr-2 cursor-pointer"
                 onClick={() => setShowEmbedded(false)}>
                 <IoMdClose className="text-[1.5rem]" />
               </div>
               <iframe
-                src={topic_file}
+                src={topic_link}
                 frameborder="0"
                 scrolling="no"
                 className="blur-[.01rem] w-[90%] h-[80%] md:w-[500px] md:h-[350px] lg:w-[680px] lg:h-[450px] rounded-lg"></iframe>

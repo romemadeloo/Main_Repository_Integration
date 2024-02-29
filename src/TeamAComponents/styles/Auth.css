@@ -64,16 +64,13 @@ background-color: gray;
   margin: 0;    /* Remove margin from .home-header */
 }
 
+
 .left-container {
   display: flex;   /* Use flexbox for layout within .left-container */
   align-items: center;   /* Align items at the center along the cross axis */
+  justify-content: space-between;
   margin-left: 20px;   /* Add left margin of 20px to create space between this container and elements on its left */
 }
-
-.right-container button{
-  align-items: center;   /* Align items at the center along the cross axis */
-  margin-right: 20px;   /* Add right margin of 20px to create space between this button and elements on its right */
-} 
 
 .logo-container {
   display: flex;   /* Use flexbox for layout within .logo-container */
