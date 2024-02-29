@@ -74,11 +74,13 @@ const Navigation = () => {
          {/* Logo container */}
         <div className="logo-container">
           {/* Logo image */}
+          <Link to="/">
           <img
             src="..\src\assets\TeamAassets\companyLogo.png"
             alt="Logo"
             className="logo"
           />
+          </Link>
         </div>
          {/* Navigation links for logged-in users */}
         {isLoggedIn && (
@@ -98,6 +100,27 @@ const Navigation = () => {
           </nav>
         )}
       </div>
+
+     
+      {!isLoggedIn && (
+        
+        <nav>
+       <ul className="flex font-bold text-[1.2rem] gap-5">
+          <li>
+            <a href="/verif_nonuser">Verification</a>
+          </li>
+          <li>
+            <a href="About">About us</a>
+          </li>
+          <li>
+            <a href="https://www.tsukiden.com.ph">Contact us</a>
+          </li>
+        </ul>
+        </nav>
+          )}
+        
+      
+
       {/* Right container with buttons for login, register, and logout */}
       <div className="right-container">
         {/* Render these elements if the user is not logged in */}
