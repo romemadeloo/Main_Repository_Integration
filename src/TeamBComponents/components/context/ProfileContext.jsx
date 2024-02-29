@@ -35,18 +35,16 @@ const ProfileProvider = ({ children }) => {
   //   }
   // ])
 
-    const [user, setUser] = useState({
-      firstName: "",
-      lastName: "",
-      phoneNumber: "",
-      email: "",
-    });
-   const [users, setUsers] = useState([]);
+  const [user, setUser] = useState({
+    firstName: "",
+    lastName: "",
+    phoneNumber: "",
+    email: "",
+  });
+  const [users, setUsers] = useState([]);
 
-   const [file, setFile] = useState();
-   const [sigfile, setSigFile] = useState();
-   
- 
+  const [file, setFile] = useState();
+  const [sigfile, setSigFile] = useState();
 
   return (
     <ProfileContext.Provider

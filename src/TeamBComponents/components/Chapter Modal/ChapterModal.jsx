@@ -1,30 +1,31 @@
-/* eslint-disable react/prop-types */
+/* eslint-disable react/prop-types */ // Disables eslint rule for prop-types
 //2/1/2024 junite, created UI Modal for course title edit, completed
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react"; // Importing necessary modules
 import axios from "axios";
 
-const ChapterModal = ({ chapterId, editTitle }) => {
+const ChapterModal = ({ chapterId, editTitle }) => { // Functional component accepting props
   //state for topics
-  const [chapters, setChapters] = useState({
+  const [chapters, setChapters] = useState({ // Using useState hook to manage state
     chapter_title: "",
   });
 
-  const { chapter_title } = chapters;
+  const { chapter_title } = chapters; // Destructuring chapter_title from state
   // const handleInputChange = (e) => {
   //   setChapters({ ...chapters, [e.target.name]: e.target.value });
   // };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e) => { // Function to handle input change
     const { name, value } = e.target;
     const capitalizedValue = value.charAt(0).toUpperCase() + value.slice(1); // Capitalize first letter
     setChapters({ ...chapters, [name]: capitalizedValue });
   };
 
-  useEffect(() => {
+  useEffect(() => { // useEffect hook for fetching data on component mount
     loadChapters();
   }, []);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => { // Function to handle form submission
+ 
     // Assuming your API call is successful, update the state to indicate form submission
 
     try {
@@ -34,23 +35,25 @@ const ChapterModal = ({ chapterId, editTitle }) => {
       );
       // showModal(false);
     } catch (error) {
-      console.error("Error submitting form:", error);
+      console.error("Error submitting form:", error); // Log error if API call fails
       // Handle error if the API call fails
     }
+
+    
   };
 
-  const loadChapters = async () => {
+  const loadChapters = async () => { // Function to fetch chapter data
     const result = await axios.get(
       `http://localhost:8080/api/v1/auth/chapter/${chapterId}`
     );
-    setChapters(result.data);
+    setChapters(result.data); // Set loaded chapters to state
   };
 
-  const handleCancel = () => {
+  const handleCancel = () => { // Function to handle cancellation
     // Implement your cancel logic here
-    editTitle((prev) => !prev);
+    editTitle((prev) => !prev); // Toggle editTitle state 
   };
-  console.log(chapter_title);
+  console.log(chapter_title); // Logging chapter_title
 
   return (
     <>
@@ -70,15 +73,20 @@ const ChapterModal = ({ chapterId, editTitle }) => {
               name="chapter_title"
               value={chapter_title}
               onChange={(e) => handleInputChange(e)}
+              onKeyPress={(e) => {
+                if (e.key === "Enter") {
+                  handleSubmit();
+                }
+              }}
               required
             />
-            <div className="flex justify-end w-full pt-8">
+            <div className="flex align-middle text-center justify-end w-full pt-8">
               <div className="flex gap-x-5">
-                <button
-                  className="xl:text-[24px]  lg:text-[1rem]"
+                <span
+                  className=" xl:text-[24px] py-2 lg:text-[1rem]"
                   onClick={handleCancel}>
                   Cancel
-                </button>
+                </span>
 
                 <button
                   className="drop-shadow-md TeamB_text-shadow   w-[90px] h-[40px] rounded-[80px] lg:text-[1rem] xl:w-[114px] xl:h-[58px] xl:rounded-[100px] bg-[#126912] xl:text-[24px] text-[#FFFFFF]  font-bold"
@@ -94,4 +102,5 @@ const ChapterModal = ({ chapterId, editTitle }) => {
   );
 };
 
-export default ChapterModal;
+export default ChapterModal; // Exporting ChapterModal component
+//comments by: Judes 02-29-24

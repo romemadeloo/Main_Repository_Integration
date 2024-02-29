@@ -84,8 +84,8 @@ const PersonalEdit = ({ hideUpdatePersonalInfo, showEdit, userEmail }) => {
             <div className="lg:w-[30%] flex lg:flex-col relative justify-between lg:justify-start md:w-[70%] m-auto">
               <label htmlFor="uploadProfile">
                 <img
-                  src={file}
-                  alt=""
+                  src={file ? file : profilePic}
+                  alt="Profile_Picture"
                   className="cursor-pointer p-2 lg:flex w-[200px] h-[150px]"
                 />
               </label>
@@ -94,20 +94,26 @@ const PersonalEdit = ({ hideUpdatePersonalInfo, showEdit, userEmail }) => {
                 type="file"
                 onChange={handleChange}
                 className="hidden"
+                accept=".svg,.webp,.png"
               />
 
               {/* UPLOAD PROFILE PIC */}
-              <input id="uploadProfile" type="file" className="hidden" />
+              <input
+                id="uploadProfile"
+                type="file"
+                className="hidden"
+                accept=".svg,.webp,.png"
+              />
               <label
                 htmlFor="uploadProfile"
-                className="cursor-pointer bottom-2 text-[.8rem] left-2 justify-center items-center absolute text-center font-medium px-2 rounded-sm   bg-[#D1DFCD]  text-[#4D4141] text-opacity-[53%] shadow-lg lg:hidden">
+                className="cursor-pointer  bottom-2 text-[.8rem] left-2 justify-center items-center absolute text-center font-medium px-2 rounded-sm   bg-[#D1DFCD]  text-[#4D4141] text-opacity-[53%] shadow-lg lg:hidden">
                 Choose File
               </label>
-              <label htmlFor="uploadSignature">
+              <label>
                 <img
-                  src={sigfile}
+                  src={sigfile ? sigfile : signature}
                   alt=""
-                  className="cursor-pointer p-4 lg:flex w-[200px] h-[150px] "
+                  className="cursor-pointer lg:cursor-default p-4 lg:flex w-[200px] h-[150px] "
                 />
               </label>
               <input
@@ -115,9 +121,15 @@ const PersonalEdit = ({ hideUpdatePersonalInfo, showEdit, userEmail }) => {
                 onChange={handleChangeSig}
                 type="file"
                 className="hidden"
+                accept=".svg,.webp"
               />
               {/* UPLOAD SIGNATURE */}
-              <input id="uploadSignature" type="file" className="hidden" />
+              <input
+                id="uploadSignature"
+                type="file"
+                className="hidden"
+                accept=".svg,.webp"
+              />
               <label
                 htmlFor="uploadSignature"
                 className="cursor-pointer bottom-2 text-[.8rem] right-2 justify-center items-center absolute text-center font-medium px-2 rounded-sm   bg-[#D1DFCD]  text-[#4D4141] text-opacity-[53%] shadow-lg lg:hidden">
@@ -245,11 +257,12 @@ const PersonalEdit = ({ hideUpdatePersonalInfo, showEdit, userEmail }) => {
                       : "relative TeamB_input-style px-2 lg:w-full bg-[#EBFFE5]"
                   }`}
                   placeholder="+63"
-                  type="number"
+                  type="text" // Change type to text
                   id="PhoneNumber"
                   name="phoneNumber"
                   value={phoneNumber}
                   onChange={(e) => handleInputChange(e)}
+                  pattern="[0-9]*" // Allow only numeric input
                   maxLength={10}
                   required={true}
                   onError={errorContactNo}
@@ -263,6 +276,7 @@ const PersonalEdit = ({ hideUpdatePersonalInfo, showEdit, userEmail }) => {
                   onMouseOver={() => setShowTooltipContactNo(true)}
                   onMouseLeave={() => setShowTooltipContactNo(false)}
                 />
+
                 {showTooltipContactNo && (
                   <div className="absolute top-[-2.5rem] left-10 bg-[#fff] w-[45%] p-1 rounded-lg border-[1px] border-[#EBFFE5]">
                     <p className="text-[.8rem] text-[#4D4141] text-opacity-[53%]">
@@ -287,7 +301,12 @@ const PersonalEdit = ({ hideUpdatePersonalInfo, showEdit, userEmail }) => {
 
           <div className="w-[100%] flex  justify-center items-center lg:justify-end absolute bottom-2 lg:bottom-0 gap-x-5">
             {/* UPLOAD SIGNATURE */}
-            <input id="uploadSignature" type="file" className="hidden" />
+            <input
+              id="uploadSignature"
+              type="file"
+              className="hidden"
+              accept=".svg,.webp"
+            />
             <label
               htmlFor="uploadSignature"
               className="cursor-pointer hidden mr-auto lg:w-[130px]  text-center font-bold lg:h-[30px]  bg-[#D1DFCD] lg:text-[.8rem] lg:rounded-lg  text-[#4D4141] text-opacity-[53%] shadow-lg lg:flex justify-center items-center"

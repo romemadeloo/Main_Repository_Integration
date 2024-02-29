@@ -30,7 +30,7 @@ function TeamC_Assessments() {
         <p className="text-left mb-4" style={{ fontSize: '2rem' }}>ASSESSMENTS</p>
         {chapters.map((chapter, index) => (
         <Link to='/assessment_sql'>
-        <div className="card mb-3" id="c_assessment_sql" style={{ borderRadius: '15px', backgroundColor: '#bce8b1' }}>
+        <div className="card mb-3" id="c_assessment_courses" style={{ borderRadius: '15px', backgroundColor: '#bce8b1' }}>
           <div className="card-body d-flex justify-content-between" >
             <p style={{ color: '#0e3b03' }} className="h4"><b>{chapter.course_title}</b></p>
             <small id="subText" style={{ fontStyle: 'italic', alignSelf: 'center', color: '#0e3b03' }}>-STATUS-</small>

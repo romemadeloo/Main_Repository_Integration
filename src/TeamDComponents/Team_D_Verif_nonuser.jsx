@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import "./TeamD_Css/verification.css";
+import "../TeamDComponents/TeamD_Css/verification.css";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { AiFillSafetyCertificate } from "react-icons/ai";
-import warningErr from "./TeamD_Assets/icons8-warning-96.png";
+import warningErr from "../TeamDComponents/TeamD_Assets/icons8-warning-96.png";
 import Team_D_HeaderLanding from "./Team_D_HeaderLanding";
+import Navigation from "../TeamAComponents/components/Navigation";
 
 const Team_D_Verification = () => {
   const [code, setCode] = useState("");
@@ -15,6 +16,8 @@ const Team_D_Verification = () => {
   const [showPlaceholderText, setShowPlaceholderText] = useState(false);
   const [verifyClicked, setVerifyClicked] = useState(false);
   const defaultCodePrefix = "B55-";
+
+//updated code as of 2/28/24 -jake
 
   const handleVerify = async () => {
     setLoading(true);
@@ -75,14 +78,16 @@ const Team_D_Verification = () => {
 
   return (
     <div>
-      <Team_D_HeaderLanding />
+      <Navigation/>
       <section className="verification_container">
         <div className="verification_title">
           <span></span>
         </div>
         <div className="verification_search">
           <div className="left">
-            <h2>Verify Course Certificate</h2>
+            <div className="font-bold text-[2rem]">
+              <h2>Verify Course Certificate</h2>
+            </div>
             <Form.Control
               size="sm"
               type="text"
@@ -101,7 +106,7 @@ const Team_D_Verification = () => {
                 }
                 inputValue = inputValue.substring(
                   0,
-                  defaultCodePrefix.length + 18
+                  defaultCodePrefix.length + 14
                 );
                 setCode(inputValue);
                 setIsValidSerial(false);
@@ -165,7 +170,7 @@ const Team_D_Verification = () => {
                       : "none",
                 }}
               >
-                Please Enter Serial Number.
+                Please Enter Serial Number
               </span>
             </div>
             <Button
@@ -188,8 +193,10 @@ const Team_D_Verification = () => {
                     </div>
                     <div className="serialVerification">
                       <Form.Label>
-                        Certificate Serial No.{" "}
-                        <AiFillSafetyCertificate className="icon" />
+                        <div className="flex gap-x-2">
+                          Certificate Serial No.
+                          <AiFillSafetyCertificate className="icon" />
+                        </div>
                       </Form.Label>
                       <Form.Control size="sm" type="text" readOnly />
                     </div>
@@ -212,8 +219,10 @@ const Team_D_Verification = () => {
                     </div>
                     <div className="serialVerification">
                       <Form.Label>
-                        Certificate Serial No.{" "}
-                        <AiFillSafetyCertificate className="icon" />
+                        <div className="flex gap-x-2">
+                          Certificate Serial No.
+                          <AiFillSafetyCertificate className="icon" />
+                        </div>
                       </Form.Label>
                       <Form.Control
                         size="sm"

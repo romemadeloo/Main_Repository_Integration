@@ -7,39 +7,14 @@ import { Link } from "react-router-dom";
 import "../styles/Auth.css";
 import card1 from "../../assets/card 1.svg";
 import card2 from "../../assets/card 2.svg";
+import Navigation from "./Navigation";
 
 // About component
 const About = () => {
   return (
     <>
        {/* Navigation bar */}
-      <nav className="my-navigation">
-        <Link to="/">
-           {/* Logo image */}
-          <img src="..\src\assets\TeamAassets\companyLogo.png" alt="Logo" />
-        </Link>
-        {/* Navigation menu */}
-        <ul className="menu-hide">
-          <li>
-            <a href="/verif_nonuser">Verification</a>
-          </li>
-          <li>
-            <a href="About">About us</a>
-          </li>
-          <li>
-            <a href="https://www.tsukiden.com.ph">Contact us</a>
-          </li>
-        </ul>
-        {/* Registration and login buttons */}
-        <div className="testing">
-          <Link to="/register">
-            <button id="register">Register</button>
-          </Link>
-          <Link to="/login">
-            <button id="login">Log In</button>
-          </Link>
-        </div>
-      </nav>
+      <Navigation/>
       {/* Main Content Section */}
       {/* className="home-content" old css */}   
       <div className="flex flex-col TeamB_text-shadow">
@@ -47,12 +22,12 @@ const About = () => {
     
           {/* About Tsukiden Section */}
             <h1 className="mt-[15px] text-center font-bold text-[2rem]">
-              About Tsukiden{" "}
+              About Us{" "}
             </h1>
             <p className=" text-center">
               {  /* Tsukiden Global Solutions introduction */}
-              Tsukiden Global Solutions, Inc.<i>YOUR RELIABLE IT PARTNER </i>
-              That's who <i>WE</i> are. For more than 30 years now, Team
+              Tsukiden Global Solutions, Inc., <i><strong>YOUR RELIABLE IT PARTNER</strong></i>
+              , that's who <i><strong>WE</strong></i> are. For more than 30 years now, team
               Tsukiden has always been the trusted reliable IT partner of its
               clients for various projects in Japan, Philippines, Malaysia, Hong
               Kong, Singapore, Taiwan, United Kingdom, and the United States of
@@ -70,37 +45,39 @@ const About = () => {
             {/* Include the PhotoSection component here */}
         </div>
        {/* Mission and Vision Section */}
-        <div className=" flex flex-row leading-6">
-            <div className="border w-[50%] text-center pl-[6rem] pr-[1rem]">
+        <div className="cols flex flex-row leading-6">
+            <div className="col1 w-[50%] text-center pl-[6rem] pr-[1rem]">
               {/* Mission Section */}
-              <h1 className=" font-bold text-[2rem] ">Mission</h1>
-              We aim to... provide excellent quality service to our{" "}
-              <i>CLIENTS </i>, foster professional growth and care to our{" "}
-              <i>EMPLOYEES</i> & develop innovative solutions dedicated for the
-              welfare of our <i>COMMUNITY & SOCIETY.</i>
+              <div>
+                <h1 className=" font-bold text-[2rem] ">Mission</h1>
+                We aim to... provide excellent quality service to our{" "}
+                <i><strong>CLIENTS</strong> </i>, foster professional growth and care to our{" "}
+                <i><strong>EMPLOYEES</strong></i> & develop innovative solutions dedicated for the
+                welfare of our <i><strong>COMMUNITY & SOCIETY</strong></i>.
+                </div>
               <div className="pt-[1.5rem]">
                  {/* Image for Mission */}
-              <img src={card1} alt="" width={500}/>
+                <img src={card1} alt="" width={300}/>
               </div>
             </div>
-            <div className="border w-[50%] pr-[6rem] pl-[1rem]">
-            <div className="pb-[1.5rem] ">
-              {/* Image for Vision */}
-            <img src={card2} alt="" width={500}/>
-            </div>
-              {/* Vision Section */}
-              <h1 className="text-center font-bold text-[2rem] ">Vision</h1>
-              <div className="text-center">
-                <i>TGSI</i> is committed to be{" "}
-                <i>THE PREMIER GLOBAL I.T. BUSINESS PARTNER </i>
-                driven by passion for innovation
+            <div className="col2 w-[50%] pr-[6rem] pl-[1rem]">
+              <div className="pb-[1.5rem] ">
+                {/* Image for Vision */}
+              <img src={card2} alt="" width={300}/>
               </div>
+                {/* Vision Section */}
+                <h1 className="text-center font-bold text-[2rem] ">Vision</h1>
+                <div className="text-center">
+                  <i><strong>TGSI</strong></i> is committed to be{" "}
+                  <i><strong>THE PREMIER GLOBAL I.T. BUSINESS PARTNER</strong> </i>
+                  driven by passion for innovation.
+                </div>
             </div>
         </div>
       </div>
       {/* Footer */}
       <div>
-        <footer className="flex justify-center p-5  bottom-0 w-full ">
+        <footer className="flex justify-center p-7  bottom-0 w-full ">
           <div>
             <p className="text-[#4D9349] font-medium">
               All Rights Reserved | Copyright 2024

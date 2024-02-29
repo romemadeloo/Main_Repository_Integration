@@ -1,3 +1,5 @@
+/* updated code as of 2/28/24 -jake */
+
 /* Styles for content view PDF container */
 .contentViewPdf {
     display: flex; /* Display as flex */
@@ -199,10 +201,6 @@
     .contentViewPdf {
         padding: 20px; /* Padding */
     }
-    /* add back missing css start on 768px */
-  #goBackTooltip, #criteriaTooltip, #downloadTooltip{
-    display: none;
-}
 }
 
 /* Media query for extra-small screens */
@@ -239,10 +237,6 @@
     .contentViewPdf {
         padding: 20px; /* Padding */
     }
-    /* add back missing css start on 768px */
-  #goBackTooltip, #criteriaTooltip, #downloadTooltip{
-    display: none;
-}
 }
 
 /* Styles for modal title */
@@ -314,10 +308,6 @@
     .contentViewPdf {
         padding: 20px; /* Padding */
     }
-    /* add back missing css start on 768px */
-  #goBackTooltip, #criteriaTooltip, #downloadTooltip{
-    display: none;
-}
 }
 
 /* Media query for screens up to 321px */
@@ -377,8 +367,4 @@
     .certificatesView {
         background-color: transparent; /* Transparent background */
     }
-    /* add back missing css start on 768px */
-  #goBackTooltip, #criteriaTooltip, #downloadTooltip{
-    display: none;
-}
 }
