@@ -148,11 +148,9 @@ const CourseOverviewById = ({ courseTitle }) => {
           <div className="">
             <div className="w-full  lg:w-[800px] ">
               <div className="text-black w-[100%] lg:font-bold text-[.8rem]  lg:text-[2rem]  lg:flex lg:items-center flex flex-row justify-between">
-                <p className="hidden lg:flex lg:font-bold TeamB_text-shadow lg:text-[2.5rem] text-[1.3rem] w-[30%] overflow-x-auto TeamB_no-scrollbar mb-2 cursor-pointer">
+                <p className="hidden lg:flex lg:font-bold TeamB_text-shadow lg:text-[2.5rem] text-[1.3rem] w-[60%] overflow-x-auto TeamB_no-scrollbar mb-2 cursor-pointer">
                   {courseTitle}
                 </p>
-
-               
 
                 <div className="relative flex items-center h-full w-[100%] lg:w-[300px] 2xl:w-[544px] 2xl:h-[53px] bg-white outline-none rounded-md border-b-[.1rem] border-black">
                   <input
@@ -170,8 +168,7 @@ const CourseOverviewById = ({ courseTitle }) => {
                   {hideSearch && (
                     <div
                       ref={searchContainerRef}
-                      className="h-[20vh] w-[100%] absolute bg-[#fff] top-10 z-10 shadow-lg rounded-md pt-2"
-                    >
+                      className="h-[20vh] w-[100%] absolute bg-[#fff] top-10 z-10 shadow-lg rounded-md pt-2">
                       <div className="flex justify-end w-full cursor-pointer">
                         <IoMdClose
                           onClick={() => setHideSearch(false)}
@@ -193,8 +190,7 @@ const CourseOverviewById = ({ courseTitle }) => {
                                   return (
                                     <div key={idx}>
                                       <Link
-                                        to={`/teambtopicpage/${chapter_id}`}
-                                      >
+                                        to={`/teambtopicpage/${chapter_id}`}>
                                         <p className="text-[.9rem] pl-2 font-light TeamB_text-shadow cursor-pointer line-clamp-1">
                                           {chapter_title}
                                         </p>
@@ -247,15 +243,13 @@ const CourseOverviewById = ({ courseTitle }) => {
                               return (
                                 <div
                                   key={idx}
-                                  className="relative m-0 lg:w-full"
-                                >
+                                  className="relative m-0 lg:w-full">
                                   <div className="flex items-center justify-center w-full gap-4 pb-4 m-auto">
                                     <div className="h-[1.3rem] w-[1.3rem] bg-[#126912] rounded-[100%] hidden lg:flex"></div>
 
                                     <Link
                                       to={`/teambtopicpage/${chapter_id}`}
-                                      className="relative 2xl:rounded-[20px] w-[60vw] rounded-lg  lg:flex lg:items-center lg:font-medium lg:text-[1rem] 2xl:text-[24px] bg-[#126912] py-1  text-[.8rem]  text-white lg:rounded-[1rem] line-clamp-1"
-                                    >
+                                      className="relative 2xl:rounded-[20px] w-[60vw] rounded-lg  lg:flex lg:items-center lg:font-medium lg:text-[1rem] 2xl:text-[24px] bg-[#126912] py-1  text-[.8rem]  text-white lg:rounded-[1rem] line-clamp-1">
                                       {/* <p className="text-shadow">
                                         CHAPTER {chapterCount}:
                                       </p> */}
@@ -272,8 +266,7 @@ const CourseOverviewById = ({ courseTitle }) => {
                                                 (prev) => !prev
                                               );
                                               setEditChapterTitle(chapter_id);
-                                            }}
-                                          >
+                                            }}>
                                             <FaEdit />
                                           </div>
 
@@ -284,8 +277,7 @@ const CourseOverviewById = ({ courseTitle }) => {
                                                 (prev) => !prev
                                               );
                                               setDeleteChapterTitle(chapter_id);
-                                            }}
-                                          >
+                                            }}>
                                             <RiDeleteBinLine />
                                           </div>
                                         </div>
@@ -300,8 +292,7 @@ const CourseOverviewById = ({ courseTitle }) => {
                                               (prev) => !prev
                                             );
                                             setEditChapterTitle(chapter_id);
-                                          }}
-                                        >
+                                          }}>
                                           <FaEdit />
                                         </div>
 
@@ -311,8 +302,7 @@ const CourseOverviewById = ({ courseTitle }) => {
                                             setDeleteModalVisible(
                                               (prev) => !prev
                                             )
-                                          }
-                                        >
+                                          }>
                                           <RiDeleteBinLine />
                                         </div>
                                       </div>
@@ -390,9 +380,8 @@ const CourseOverviewById = ({ courseTitle }) => {
             {/*add new chapter title */}
             <div className="lg:rounded-[.5rem] lg:h-[35px] 2xl:h-[10px] flex items-center justify-center cursor-pointer  mx-2 my-2 bg-[#BCE8B1]">
               <button
-              className="flex items-center justify-center lg:w-[155px]  2xl:w-[481px ]"
-                onClick={() => setShowChapModal((prev) => !prev)}
-              >
+                className="flex items-center justify-center lg:w-[155px]  2xl:w-[481px ]"
+                onClick={() => setShowChapModal((prev) => !prev)}>
                 <span className="pr-1">
                   <IoAdd className="text-[2rem] lg:text-[1.5rem] text-white" />
                 </span>
@@ -400,25 +389,22 @@ const CourseOverviewById = ({ courseTitle }) => {
                   Chapter Title
                 </span>
               </button>
-            </div> 
+            </div>
 
             <div className="lg:rounded-[.5rem] lg:h-[35px] 2xl:h-[10px] flex items-center justify-center cursor-pointer mx-2 my-2 bg-[#BCE8B1]">
-             
-                    <button
-                    className="flex items-center justify-center lg:w-[155px]  2xl:w-[481px]"
-                    onClick={() => setShowChapModal((prev) => !prev)}
-                  >
-                    <span className="pr-1">
-                      <IoAdd className="text-[2rem] lg:text-[1.5rem] text-white" />
-                    </span>
-                    <Link to="/addquiz">
-                    <span className="text-shadow lg:text-[1rem] lg:font-bold 2xl:text-[24px]  text-[#070101] text-opacity-[55%] pr-1">
-                      Assessment
-                    </span>
-                    </Link>
-                  </button>
-              
-                </div>
+              <button
+                className="flex items-center justify-center lg:w-[155px]  2xl:w-[481px]"
+                onClick={() => setShowChapModal((prev) => !prev)}>
+                <span className="pr-1">
+                  <IoAdd className="text-[2rem] lg:text-[1.5rem] text-white" />
+                </span>
+                <Link to="/addquiz">
+                  <span className="text-shadow lg:text-[1rem] lg:font-bold 2xl:text-[24px]  text-[#070101] text-opacity-[55%] pr-1">
+                    Assessment
+                  </span>
+                </Link>
+              </button>
+            </div>
 
             <div className="w-full ">
               {showChapModal && (
