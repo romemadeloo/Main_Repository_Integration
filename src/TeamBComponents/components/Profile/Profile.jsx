@@ -6,7 +6,7 @@ import AccDetails from "./AccDetails";
 
 //arrow back icon
 import { IoArrowBackCircle } from "react-icons/io5";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Footer from "../Footer";
 
 import { ProfileContext } from "../context/ProfileContext";
@@ -22,7 +22,8 @@ const Profile = () => {
     navigate(-1);
   };
 
-
+  //2-17-24
+  const [instructors, setInstructors] = useState([]);
 
   const [instructor, setInstructor] = useState({
     firstName: "",
@@ -30,17 +31,16 @@ const Profile = () => {
     phoneNumber: "",
     email: "",
   });
-  // const {id} = useParams(); for by id
-   useEffect(() => {
+
+  useEffect(() => {
     const loadInstructors = async () => {
-      // const result = await axios.get(`http://localhost:8080/api/v1/auth/users/${id}`); by id
-      const result = await axios.get(`http://localhost:8080/api/v1/auth/users`);
+      const result = await axios.get("http://localhost:8080/api/v1/auth/users");
       setInstructors(result.data);
     };
 
     loadInstructors();
   }, []);
-  // console.log(instructors);
+  console.log(instructors);
 
   // const handleInputChange = (e) => {
   //   setInstructor({ ...instructor, [e.target.name]: e.target.value });
@@ -61,10 +61,8 @@ const Profile = () => {
     showAccDetails,
     showPInfo,
     showADetails,
-    instructors,
-    setInstructors,
-    // accDetails,
-    // setAccDetails,
+    accDetails,
+    setAccDetails,
   } = useContext(ProfileContext);
   return (
     <>
@@ -116,21 +114,21 @@ const Profile = () => {
           <div className="flex justify-center lg:justify-start">
             {/* Place your Component here */}
             {showPersonalInfo &&
-              instructors.map((instructor, idx) => {
-                const { email, firstName, lastName, phoneNumber} = instructor;
+              accDetails.map((acc, idx) => {
+                const { email } = acc;
                 return (
                   <div key={idx} className="w-[100%] flex justify-center">
-                    <PersonalInfo userEmail={email} userFirstName={firstName} userLastName={lastName} userPhoneNumber={phoneNumber} />
+                    <PersonalInfo userEmail={email} />
                   </div>
                 );
               })}
 
             {showAccDetails &&
-              instructors.map((instructor, idx) => {
-                const { email, username } = instructor;
+              accDetails.map((acc, idx) => {
+                const { email, userName } = acc;
                 return (
                   <div key={idx} className="w-[100%] flex justify-center">
-                    <AccDetails email={email} user_name={username} />
+                    <AccDetails email={email} userName={userName} />
                   </div>
                 );
               })}

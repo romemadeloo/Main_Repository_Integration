@@ -11,10 +11,10 @@ import Footer from "../Footer";
 import PersonalEdit from "./PersonalEdit";
 import { ProfileContext } from "../context/ProfileContext";
 
-const PersonalInfo = ({ userEmail, userFirstName, userLastName, userPhoneNumber }) => {
+const PersonalInfo = ({ intructorName, userEmail }) => {
   const { user, setUser, users, setUsers, file, setFile, accDetails } =
     useContext(ProfileContext);
-
+  console.log(user);
 
   useEffect(() => {
     const loadUsers = async () => {
@@ -44,7 +44,7 @@ const PersonalInfo = ({ userEmail, userFirstName, userLastName, userPhoneNumber 
     setEditPersonalInfo(false);
     setUpdatePersonalInfo(true);
   };
-
+  console.log(userEmail);
   return (
     <>
       {editPersonalInfo && (
@@ -73,7 +73,7 @@ const PersonalInfo = ({ userEmail, userFirstName, userLastName, userPhoneNumber 
                     id="firstName"
                     type="text"
                     name="firstName" //should be edited
-                    value={userFirstName}
+                    value={firstName}
                     disabled
                   />
                 </div>
@@ -91,7 +91,7 @@ const PersonalInfo = ({ userEmail, userFirstName, userLastName, userPhoneNumber 
                     id="lastName"
                     type="text"
                     name="lastName" //edit
-                    value={userLastName}
+                    value={lastName}
                     disabled
                   />
                   <div className="lg:flex lg:flex-col ">
@@ -128,7 +128,7 @@ const PersonalInfo = ({ userEmail, userFirstName, userLastName, userPhoneNumber 
                         type="text"
                         id="phoneNumber"
                         name="phoneNumber" //edit
-                        value={userPhoneNumber}
+                        value={phoneNumber}
                         disabled
                       />
                       <div />
