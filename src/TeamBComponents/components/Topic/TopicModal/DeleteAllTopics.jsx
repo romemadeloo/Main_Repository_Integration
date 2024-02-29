@@ -3,16 +3,11 @@
 //2/2/2024 junite, created UI Modal for Topic Delete Icon, completed
 import React from "react"; // Importing React library
 
-const DeleteTopicModal = ({
-  topicId,
-  deleteTopic,
-  topicTitle,
-  deleteModalVisible,
-}) => {
+const DeleteAllTopics = ({ deleteAllByTopics, showDeleteAllTopics }) => {
   // Define DeleteTopicModal component
 
   const handleSubmit = () => {
-    deleteTopic(topicId);
+    deleteAllByTopics();
   };
   return (
     <>
@@ -29,21 +24,21 @@ const DeleteTopicModal = ({
               {/* Title container */}
               <p className="  lg:font-bold TeamB_text-shadow lg:text-[1.2rem]   pt-2">
                 {/* Title */}
-                {topicTitle}
+                Topic Title
               </p>
             </div>
             <p className=" pb-2 lg:font-bold TeamB_text-shadow lg:text-[1.2rem]   pt-2">
               {" "}
               {/* Confirmation message */}
-              Are you sure you want to delete this Topic?
+              Are you sure you want to delete all Topics?
             </p>
             <div className="pt-8 pb-2 lg:w-full lg:flex lg:justify-end">
               {" "}
               {/* Button container */}
-              <div className="flex gap-x-5 cursor-pointer items-center">
+              <div className="flex gap-x-5">
                 <span
                   className="  lg:text-[1rem]"
-                  onClick={() => deleteModalVisible((prev) => !prev)}>
+                  onClick={() => showDeleteAllTopics((prev) => !prev)}>
                   {" "}
                   {/* Cancel button */}
                   Cancel
@@ -65,5 +60,5 @@ const DeleteTopicModal = ({
   );
 };
 
-export default DeleteTopicModal; // Exporting DeleteTopicModal component
+export default DeleteAllTopics; // Exporting DeleteTopicModal component
 // comments by: Judes 02-22-24

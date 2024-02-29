@@ -107,6 +107,7 @@ function TeamIntegrationRoutes() {
         <Route path="/course" element={<TeamC_Course />} />
         <Route path="/ForumF" element={<ForumF />} />
         <Route path="/AddQuiz" element={<AddQuiz/>}/>
+        <Route path="/AssessmentQuiz" element={<AssessmentQuiz/>}/>
         <Route path="/ForumFInstructor" element={<ForumFInstructor />} />
         <Route path="/quizform" element={<TeamC_QuizForm/>} />
         <Route path="/forum_discussion" element={<ForumD/>} />

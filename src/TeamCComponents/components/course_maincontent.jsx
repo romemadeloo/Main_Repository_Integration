@@ -35,8 +35,6 @@ function Component_MainContent() {
 
   return (
     <>
-
-
       {/* Main layout */}
       <main id="c_maincontent_mainlayout">
 

@@ -20,7 +20,6 @@ const SidebarC = () => {
   };
 
   return (
-
     <div className="sidebar-wrapper">
       <div className="logo-container">
         {/* Your logo component goes here */}
@@ -58,7 +57,6 @@ const SidebarC = () => {
           </ul>
         </div>
       </nav>
-
     </div>
   );
 };
