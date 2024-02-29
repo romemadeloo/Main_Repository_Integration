@@ -128,7 +128,7 @@ const EditTopic = ({ topicId, courseTitle, chapterTitle }) => {
   //react state for link and show
   // const [linkFileShow, setLinkFileShow] = useState(false);
 
-  console.log(topic_file);
+  console.log(topics);
   return (
     <>
       {/* add topic title */}

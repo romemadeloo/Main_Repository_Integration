@@ -3,22 +3,31 @@
 //2/2/2024 junite, created UI Modal for Topic Delete Icon, completed
 import React from "react"; // Importing React library
 
-const DeleteChapterModal = ({ showDeleteModal, deleteChap, chapterId }) => { // Functional component DeleteChapterModal receiving props
-  const handleSubmit = () => { // Function to handle form submission
-    deleteChap(chapterId); // Calling deleteChap function with chapterId parameter
+
+const DeleteChapterModal = ({
+  chapterTitle,
+  showDeleteModal,
+  deleteChap,
+  chapterId,
+}) => {
+  const handleSubmit = () => {
+    deleteChap(chapterId);
+
   };
   return ( // Returning JSX for component
     <>
-      <div className=" h-[100vh] pt-[150px] backdrop-blur-[.1rem] "> {/* Outer container with custom CSS classes */}
-        <div className=" flex border-[.01rem] drop-shadow-2xl shadow-lg border-black rounded-lg m-auto bg-[#EBFFE5] lg:max-w-[550px] 2xl:max-h-[672px] 2xl:max-w-[724px] "> {/*Inner container with custom CSS classes*/}
-          <form onSubmit={handleSubmit} className="w-[80%] m-auto "> {/* Form with onSubmit event handler and custom CSS classes */}
-            <div className="flex items-center py-1 text-black lg:font-bold lg:text-3xl lg:py-0"> {/* Flex container with custom CSS classes*/}
-              <p className="  lg:font-bold TeamB_text-shadow lg:text-[1.2rem]  xl:text-[24px] pt-2"> {/* Paragraph with custom CSS classes*/}
-                Topic Title
+
+      <div className=" h-[100vh] pt-[150px] backdrop-blur-[.1rem] ">
+        <div className=" flex border-[.01rem] drop-shadow-2xl shadow-lg border-black rounded-lg m-auto bg-[#EBFFE5] lg:max-w-[550px] 2xl:max-h-[672px] 2xl:max-w-[724px] ">
+          <form onSubmit={handleSubmit} className="w-[80%] m-auto ">
+            <div className="flex items-center py-1 text-black lg:font-bold lg:text-3xl lg:py-0">
+              <p className="  lg:font-bold TeamB_text-shadow lg:text-[1.2rem]  xl:text-[24px] pt-2">
+                {chapterTitle}
               </p>
             </div>
-            <p className=" pb-2 lg:font-bold TeamB_text-shadow lg:text-[1.2rem]  xl:text-[24px] pt-2"> {/*Paragraph with custom CSS classes */}
-              Are you sure you want to delete this Topic?
+            <p className=" pb-2 lg:font-bold TeamB_text-shadow lg:text-[1.2rem]  xl:text-[24px] pt-2">
+              Are you sure you want to delete this Chapter?
+
             </p>
             <div className="pt-8 pb-2 lg:w-full lg:flex lg:justify-end"> {/* Div container with custom CSS classes */}
               <div className="flex gap-x-5"> {/* Flex container with custom CSS classes */}
