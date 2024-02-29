@@ -96,7 +96,7 @@ console.log(chapters)
 
        {/* Modals for quiz and resource download */}              
       <div className="modal fade modalMain" id="mainId" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
-        <div className="modal-dialog">
+        <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content" style={{ backgroundColor: '#D9FFCF' }}>
             <div className="modal-header">
               <h5 className="modal-title" id="exampleModalLabel">Take the quiz?</h5>
@@ -117,7 +117,7 @@ console.log(chapters)
 
       <div className="modal fade modalSub" id="subId" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
         {/* Modal contents for resource download */}
-        <div className="modal-dialog">
+        <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content" style={{ backgroundColor: '#D9FFCF' }}>
             <div className="modal-header">
               <h5 className="modal-title" id="exampleModalLabel">Take the quiz?</h5>

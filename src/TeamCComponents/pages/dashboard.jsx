@@ -72,7 +72,7 @@ function TeamC_Dashboard() {
           aria-labelledby={`modal${index + 1}`}
           aria-hidden="true"
         >
-          <div className="modal-dialog">
+          <div className="modal-dialog modal-dialog-centered">
             <div className="modal-content" style={{ backgroundColor: "#D9FFCF" }}>
               <div className="modal-header">
                 <h5 className="modal-title" id={`modal${index + 1}`}>{chapter.course_title}</h5>
