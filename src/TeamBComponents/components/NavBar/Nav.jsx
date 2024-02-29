@@ -166,7 +166,7 @@ const Nav = () => {
                 <div className="bg-[#D9FFCF] absolute right-0 top-12 lg:top-10 w-full flex flex-col justify-between rounded-md items-center border-solid border-[1px] border-[#116211]">
                   {/* Link to profile */}
                   <Link
-                    to="/teambprofile"
+                    to="/profile"
                     onClick={showProfile}
                     className="w-full text-center ">
                     <p

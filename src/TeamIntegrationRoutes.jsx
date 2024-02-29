@@ -17,21 +17,46 @@ import About from "../src/TeamAComponents/components/About";
 import Footer from "./TeamAComponents/components/Footer";
 import Email from "./TeamAComponents/components/Email";
 
-
 // TEAM B IMPORTS
 
 //2/4/2024 junite, routes integration, added code splitting for app optimization
 
 import TeamB_Fallbackloading from "./TeamBComponents/components/FallbackLoading";
-const TeamB_Profile = lazy(() => import("./TeamBComponents/components/Profile/Profile"));
-const TeamB_Dashboard = lazy(() => import("./TeamBComponents/components/DashBoard/Dashboard"));
-const TeamB_CourseList = lazy(() => import("./TeamBComponents/components/CourseList & AddCourseList/CourseList"));
-const TeamB_AddNewCourse = lazy(() => import("./TeamBComponents/components/CourseList & AddCourseList/AddNewCourse"));
-const TeamB_CourseOverview = lazy(() => import("./TeamBComponents/components/CourseList & AddCourseList/CourseOverview"));
-const TeamB_EditChapterTitle = lazy(() => import("./TeamBComponents/components/CourseList & AddCourseList/EditChapterTitle"));
-const TeamB_CreateNewChapterTitle = lazy(() => import("./TeamBComponents/components/CourseList & AddCourseList/CreateNewChapterTitle"));
-const TeamB_CreateNewCourseCopy = lazy(() => import("./TeamBComponents/components/CourseList & AddCourseList/CreateCourse/CreateNewCourse"));
-const TeamB_TopicPage = lazy(() => import("./TeamBComponents/components/Topic/TopicPages/TopicPage"));
+const TeamB_Profile = lazy(() =>
+  import("./TeamBComponents/components/Profile/Profile")
+);
+const TeamB_Dashboard = lazy(() =>
+  import("./TeamBComponents/components/DashBoard/Dashboard")
+);
+const TeamB_CourseList = lazy(() =>
+  import("./TeamBComponents/components/CourseList & AddCourseList/CourseList")
+);
+const TeamB_AddNewCourse = lazy(() =>
+  import("./TeamBComponents/components/CourseList & AddCourseList/AddNewCourse")
+);
+const TeamB_CourseOverview = lazy(() =>
+  import(
+    "./TeamBComponents/components/CourseList & AddCourseList/CourseOverview"
+  )
+);
+const TeamB_EditChapterTitle = lazy(() =>
+  import(
+    "./TeamBComponents/components/CourseList & AddCourseList/EditChapterTitle"
+  )
+);
+const TeamB_CreateNewChapterTitle = lazy(() =>
+  import(
+    "./TeamBComponents/components/CourseList & AddCourseList/CreateNewChapterTitle"
+  )
+);
+const TeamB_CreateNewCourseCopy = lazy(() =>
+  import(
+    "./TeamBComponents/components/CourseList & AddCourseList/CreateCourse/CreateNewCourse"
+  )
+);
+const TeamB_TopicPage = lazy(() =>
+  import("./TeamBComponents/components/Topic/TopicPages/TopicPage")
+);
 import TeamB_EditTopic from "./TeamBComponents/components/Topic/TopicPages/EditTopic";
 
 // TEAM C IMPORT
@@ -56,8 +81,8 @@ import ForumD from "./TeamCComponents/pages/ForumD";
 import AssessmentSql from "./TeamCComponents/pages/quiz/assessment_sql";
 import AssessmentSvn from "./TeamCComponents/pages/quiz/assessment_svn";
 import AssessmentHtml from "./TeamCComponents/pages/quiz/assessment_html";
-import ChapterList from "./TeamCComponents/components/chapter_list";  
-import TeamC_MainContent from "./TeamCComponents/components/course_maincontent";    
+import ChapterList from "./TeamCComponents/components/chapter_list";
+import TeamC_MainContent from "./TeamCComponents/components/course_maincontent";
 import AddQuiz from "./TeamCComponents/pages/AddQuiz";
 import AssessmentQuiz from "./TeamCComponents/pages/AssessmentQuiz";
 import Test from "./TeamCComponents/pages/test";
@@ -69,8 +94,6 @@ import Team_D_Verif_nonuser from "./TeamDComponents/Team_D_Verif_nonuser";
 import Team_D_Content from "./TeamDComponents/Team_D_Content";
 import Home from "./TeamAComponents/components/Home";
 import ForumDInstructor from "./TeamCComponents/pages/ForumDInstructor";
-
-
 
 function TeamIntegrationRoutes() {
   return (
@@ -93,7 +116,7 @@ function TeamIntegrationRoutes() {
 
           {/* TEAM B */}
           <Route path="/teambdashboard" element={<TeamB_Dashboard />} />
-          <Route path="/teambprofile" element={<TeamB_Profile />} />
+          {/* <Route path="/teambprofile" element={<TeamB_Profile />} /> */}
           <Route path="/teambcourselist" element={<TeamB_CourseList />} />
           <Route path="/teambaddnewcourse" element={<TeamB_AddNewCourse />} />
           <Route
@@ -113,27 +136,31 @@ function TeamIntegrationRoutes() {
             path="teambcreatenewcoursecopy"
             element={<TeamB_CreateNewCourseCopy />}
           />
-          <Route path="teambtopicedit/:id" element={<TeamB_EditTopic/>}/>
+          <Route path="teambtopicedit/:id" element={<TeamB_EditTopic />} />
 
-        {/* TEAM C */}
-        <Route path="/teamcdashboard" element={<TeamC_Dashboard />} />
-        <Route path="/assessment" element={<TeamC_Assessments />} />
-        <Route path="/course" element={<TeamC_Course />} />
-        <Route path="/ForumF" element={<ForumF />} />
-        <Route path="/AddQuiz" element={<AddQuiz/>}/>
-        <Route path="/AssessmentQuiz" element={<AssessmentQuiz/>}/>
-        <Route path="/ForumFInstructor" element={<ForumFInstructor />} />
-        <Route path="/quizform" element={<TeamC_QuizForm/>} />
-        <Route path="/forum_discussion" element={<ForumD/>} />
-        <Route path="/forum_discussion_instructor" element={<ForumDInstructor/>} />
-        <Route path="/assessment_sql" element={<AssessmentSql />} />
-        <Route path="/assessment_svn" element={<AssessmentSvn />} />
-        <Route path="/assessment_html" element={<AssessmentHtml />} />
-        <Route path="/api/v1/auth/chapters/:id" element={<ChapterList/>} />
-        <Route path="/api/v1/auth/topics/:id" element={<TeamC_MainContent/>} />
-        <Route path="/topic" element={<Test />} />
-        
-
+          {/* TEAM C */}
+          <Route path="/teamcdashboard" element={<TeamC_Dashboard />} />
+          <Route path="/assessment" element={<TeamC_Assessments />} />
+          <Route path="/course" element={<TeamC_Course />} />
+          <Route path="/ForumF" element={<ForumF />} />
+          <Route path="/AddQuiz" element={<AddQuiz />} />
+          <Route path="/AssessmentQuiz" element={<AssessmentQuiz />} />
+          <Route path="/ForumFInstructor" element={<ForumFInstructor />} />
+          <Route path="/quizform" element={<TeamC_QuizForm />} />
+          <Route path="/forum_discussion" element={<ForumD />} />
+          <Route
+            path="/forum_discussion_instructor"
+            element={<ForumDInstructor />}
+          />
+          <Route path="/assessment_sql" element={<AssessmentSql />} />
+          <Route path="/assessment_svn" element={<AssessmentSvn />} />
+          <Route path="/assessment_html" element={<AssessmentHtml />} />
+          <Route path="/api/v1/auth/chapters/:id" element={<ChapterList />} />
+          <Route
+            path="/api/v1/auth/topics/:id"
+            element={<TeamC_MainContent />}
+          />
+          <Route path="/topic" element={<Test />} />
 
           {/* QUIZ LIST */}
           <Route path="/quiz_sql1" element={<TeamC_QuizSql1 />} />
@@ -154,8 +181,20 @@ function TeamIntegrationRoutes() {
           <Route path="/verification" element={<Team_D_Verification />} />
           <Route path="/verif_nonuser" element={<Team_D_Verif_nonuser />} />
           <Route path="/about" element={<About />} />
-          <Route path="*" element={<h1 style={{color: "red", textAlign: "center", marginTop: "20%", fontSize: "5rem"}}>404 - Page Not Found</h1>} />
-  
+          <Route
+            path="*"
+            element={
+              <h1
+                style={{
+                  color: "red",
+                  textAlign: "center",
+                  marginTop: "20%",
+                  fontSize: "5rem",
+                }}>
+                404 - Page Not Found
+              </h1>
+            }
+          />
         </Routes>
       </Suspense>
     </>

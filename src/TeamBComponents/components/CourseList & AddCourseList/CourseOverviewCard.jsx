@@ -9,7 +9,7 @@ import { IoSearchSharp } from "react-icons/io5";
 
 import CourseOverviewById from "./CourseOverviewById";
 import Nav from "../NavBar/Nav";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { IoArrowBackCircle } from "react-icons/io5";
 import Footer from "../Footer";
@@ -51,13 +51,13 @@ const CourseOverviewCard = ({ courseTitle }) => {
         <div className="relative w-full h-full m-auto ">
           <div className="w-[100%] pb-5 mt-10 flex mx-auto flex-col lg:center-row lg:w-[100%] lg:m-auto  items-center  ">
             <div className=" w-[100%] justify-between hidden lg:flex">
-              <div
-                className=" items-center cursor-pointer w-[10%] absolute left-0 top-[-.3rem]  hidden lg:flex pb-4"
-                onClick={goBack}>
-                <span className="text-[2.5rem] px-5">
+              <Link
+                to="/teambcourselist"
+                className=" items-center cursor-pointer w-[10%] absolute left-0 top-[-.3rem]  hidden lg:flex pb-4">
+                <span className="text-[2.5rem] text-black px-5">
                   <IoArrowBackCircle />
                 </span>
-              </div>
+              </Link>
               <div className="lg:text-[2rem] w-full flex justify-center">
                 <p className=" 2xl:text-[48px] lg:font-bold TeamB_text-shadow">
                   Course Overview
