@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import axios from "axios";
+import Team_D_HeaderV2 from "../../TeamDComponents/Team_D_HeaderV2";
 
 function ChapterList() {
     const [chapters, setChapters] = useState([]);
@@ -11,7 +12,7 @@ function ChapterList() {
     useEffect(() => {
         const fetchChapters = async () => {
             try {
-              const result = await axios.get(`http://localhost:8080/api/v1/auth/courses/${id}`);
+              const result = await axios.get(`http://localhost:8080/api/v1/auth/course/${id}`);
         
               // Ensure that result.data is always an array by converting it
               const coursesArray = Array.isArray(result.data)
@@ -29,6 +30,7 @@ console.log(chapters)
 
     return (
         <>
+        <Team_D_HeaderV2 />
             {/* Back button */}
             <Link to='/course' className="buttonReturn d-flex align-items-center c_chapter_returncontainer" style={{ textDecoration: 'none', color: 'black', width: 'fit-content', }}>
                 <div className="d-flex align-items-center" style={{ marginTop: '1rem' }}>
@@ -49,18 +51,18 @@ console.log(chapters)
                 return (
                    <div key={idx}>
                     <h2 className="text-left mb-4" style={{ fontWeight: 'bold', fontSize: '2rem' }}>{course_title}</h2><hr />
-                    {chapter && chapter.map((chap, idc) => {const {chapter_title} = chap
+                    {chapter && chapter.map((chap, idc) => {const {chapter_title, chapter_id} = chap
                     return(
                         <div className="d-flex align-items-center" key={idc}>
                         <div className="c_chapter_cardmain card flex-grow-1" style={{
                             willChange: 'filter',
                             transition: 'filter 300ms', marginTop: '10px', backgroundColor: '#126912', borderRadius: '1rem',
                         }}>
-                            <Link to={`/course${idx + 1}_sql`} className="h4 text-white text-decoration-none c_chapter_cardtext">
+                            <Link to={`/api/v1/auth/topics/${chapter_id}`} className="h4 text-white text-decoration-none c_chapter_cardtext">
                                 <div className="card-body d-flex c_chapter_cardbody" style={{
                                     backgroundColor: '#126912', borderRadius: '1rem',
                                 }}>
-                                    {course_title}
+                                    {chapter_title}
                                 </div>
                             </Link>
                         </div>

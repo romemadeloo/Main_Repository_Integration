@@ -1,15 +1,44 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Team_D_HeaderV2 from "../../TeamDComponents/Team_D_HeaderV2";
+import axios from "axios";
+
 
 function TeamC_MainContent() {
+  const navigate = useNavigate();
+  
+  const goBack = () => {
+    navigate(-1);
+  };
+
+    const [topics, setTopics] = useState([]);
+
+    const {id} = useParams()
+    useEffect(() => {
+        const fetchChapters = async () => {
+            try {
+              const result = await axios.get(`http://localhost:8080/api/v1/auth/topic/${id}`);
+        
+              // Ensure that result.data is always an array by converting it
+              const coursesArray = Array.isArray(result.data)
+                ? result.data
+                : [result.data];
+                setTopics(coursesArray);
+            } catch (error) {
+              console.error("Error loading chapters:", error);
+            }
+          };
+  
+      fetchChapters();
+    }, [id]);
+console.log(topics)  
 
   return (
     <>
     <Team_D_HeaderV2/>
        {/* Return button linking back to the specified URL */}
-      <Link to="" className="buttonReturn d-flex align-items-center c_chapter_returncontainer" style={{ textDecoration: 'none', color: 'black', width: 'fit-content', }}>
+      <Link onClick={goBack} className="buttonReturn d-flex align-items-center c_chapter_returncontainer" style={{ textDecoration: 'none', color: 'black', width: 'fit-content', }}>
         <div className="d-flex align-items-center" style={{ marginTop: '1rem' }}>
           <div>
             <img src="../../src/assets/TeamCassets/green_button.png" className="btnReturn c_chapter_return" alt="return-icon" style={{
@@ -26,46 +55,52 @@ function TeamC_MainContent() {
       <main id="c_maincontent_mainlayout">
 
         {/* Start of Topic Container */}
-        <div id="topic0" className="c_maincontent_parentcontainer">
+        {topics && topics.map((top, idx) => {
+                const {topic_title, topic_description, topic_link} = top
+            return(
+
+              <div key={idx} id="topic0" className="c_maincontent_parentcontainer">
 
           <div className="container" id="c_maincontent_maincontainer" >
             {/* Displaying dynamic content based on the current pathname */}
-            <p style={{ fontWeight: 'bold' }}>TITLE OF LAYOUT</p>
-            <p>SUBTITLE LAYOUT</p>
+            <p style={{ fontWeight: 'bold' }}>{topic_title}</p>
             <div style={{ backgroundColor: '#EBFFE5' }}>
               <div>
                 <div
                   id="c_maincontent_textcontainer"
                 >
-                  <p className="lh-base" id="c_maincontent_textdesc" style={{ marginTop: '1rem', marginLeft: '1rem', marginRight: '1rem', marginBottom: '1rem', }}>DESCRIPTION TEXT HERE</p>
+                  <p className="lh-base" id="c_maincontent_textdesc" style={{ marginTop: '1rem', marginLeft: '1rem', marginRight: '1rem', marginBottom: '1rem', }}>{topic_description}</p>
                 </div>
+
+                <iframe
+                src={topic_link}
+                frameBorder="0"
+                scrolling="no"
+                className="blur-[.01rem] mt-3 h-[80%]  md:h-[350px] w-full lg:h-[450px] rounded-lg"></iframe>
+
+
+
+
                 <div id="c_maincontent_buttoncontainer" >
                   <button className="btn courseButton"
                     data-bs-toggle="modal"
                     data-bs-target="#mainId"
                     type="button"
                     style={{
-                      backgroundColor: '#D9FFCF',
-                      boxShadow: '0 2px 5px 0 rgb(0 0 0 / 25%), 0 5px 5px 0 rgb(0 0 0 / 30%)',
-                      color: '#126912',
-                    }}
-                  >Go to quiz</button>
-
-                  <button className="btn courseButton"
-                    data-bs-toggle="modal"
-                    data-bs-target="#subId"
-                    type="button"
-                    style={{
                       backgroundColor: '#0E3B03',
                       color: 'white',
                       boxShadow: '0 2px 5px 0 rgb(0 0 0 / 25%), 0 5px 5px 0 rgb(0 0 0 / 30%)',
                     }}
-                  >Download</button>
+                  >Go to quiz</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
+            )
+                
+        })}
+        
       </main>
       {/* End of Topic Container */}
       {/* End of Main Layout */}

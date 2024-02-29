@@ -12,7 +12,7 @@ function CoursePreview() {
   useEffect(() => {
     const fetchChapters = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/v1/auth/courses");
+        const response = await axios.get("http://localhost:8080/api/v1/auth/getCourses");
         console.log("Response Data:", response.data); // Log response data
         setChapters(response.data);
       } catch (error) {
