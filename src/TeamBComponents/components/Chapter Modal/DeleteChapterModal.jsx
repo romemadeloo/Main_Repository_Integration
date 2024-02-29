@@ -18,7 +18,7 @@ const DeleteChapterModal = ({ showDeleteModal, deleteChap, chapterId }) => {
               </p>
             </div>
             <p className=" pb-2 lg:font-bold TeamB_text-shadow lg:text-[1.2rem]  xl:text-[24px] pt-2">
-              Are you sure you want to delete this Topic?
+              Are you sure you want to delete this Chapter?
             </p>
             <div className="pt-8 pb-2 lg:w-full lg:flex lg:justify-end">
               <div className="flex gap-x-5">
