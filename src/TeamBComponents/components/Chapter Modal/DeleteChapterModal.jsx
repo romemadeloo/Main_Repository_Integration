@@ -3,7 +3,12 @@
 //2/2/2024 junite, created UI Modal for Topic Delete Icon, completed
 import React from "react";
 
-const DeleteChapterModal = ({ showDeleteModal, deleteChap, chapterId }) => {
+const DeleteChapterModal = ({
+  chapterTitle,
+  showDeleteModal,
+  deleteChap,
+  chapterId,
+}) => {
   const handleSubmit = () => {
     deleteChap(chapterId);
   };
@@ -14,7 +19,7 @@ const DeleteChapterModal = ({ showDeleteModal, deleteChap, chapterId }) => {
           <form onSubmit={handleSubmit} className="w-[80%] m-auto ">
             <div className="flex items-center py-1 text-black lg:font-bold lg:text-3xl lg:py-0">
               <p className="  lg:font-bold TeamB_text-shadow lg:text-[1.2rem]  xl:text-[24px] pt-2">
-                Topic Title
+                {chapterTitle}
               </p>
             </div>
             <p className=" pb-2 lg:font-bold TeamB_text-shadow lg:text-[1.2rem]  xl:text-[24px] pt-2">

@@ -364,13 +364,14 @@ const CourseOverviewById = ({ courseTitle }) => {
                   return (
                     <div key={idx}>
                       {chapter.map((chap, idx) => {
-                        const { chapter_id } = chap;
+                        const { chapter_id, chapter_title } = chap;
                         return (
                           <div key={idx}>
                             {deleteModalVisible &&
                               deleteCHapterTitle === chapter_id && (
                                 <DeleteChapterModal
                                   chapterId={chapter_id}
+                                  chapterTitle={chapter_title}
                                   deleteChap={handleDeleteChapter}
                                   showDeleteModal={setDeleteModalVisible}
                                 />
