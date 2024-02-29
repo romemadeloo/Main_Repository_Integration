@@ -32,7 +32,6 @@ console.log(chapters)
 
   return (
     <>
-    <Team_D_HeaderV2/>
        {/* Return button linking back to the specified URL */}
       <Link onClick={() => navigate(-1)} className="buttonReturn d-flex align-items-center c_chapter_returncontainer" style={{ textDecoration: 'none', color: 'black', width: 'fit-content', }}>
         <div className="d-flex align-items-center" style={{ marginTop: '1rem' }}>

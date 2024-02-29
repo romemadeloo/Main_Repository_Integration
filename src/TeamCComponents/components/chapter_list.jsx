@@ -43,7 +43,7 @@ console.log(chapters)
                     <span className="returnTitle c_chapter_returnText" style={{ marginLeft: '0.5rem', color: '#126912', fontSize: '1.5rem', marginTop: '0rem', }}>Back</span>
                 </div>
             </Link>
-            <div className="container mt-4 mx-auto">
+            <div className="container mt-4 mx-auto" a>
                 
                {chapters.map((chap, idx) => {
                 const {chapter, course_title} = chap 
