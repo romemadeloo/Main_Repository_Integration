@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import '../styles/Auth.css';
 import ForgotForm from './ForgotForm';
 
-function Forgot({ onNavigateHome, onForgotPassword, openNewPassModal, closeForgotModal }) {
+function Forgot({ onNavigateHome, onForgotPassword, openNewPassModal, closeForgotModal, openLoginModal }) {
   // Function implementation goes here
 
   return (
@@ -15,7 +15,7 @@ function Forgot({ onNavigateHome, onForgotPassword, openNewPassModal, closeForgo
         {/* Main content section with the 'Forgot Password' form */}
       <div className="forgot-content">
         <div className="forgot-sign">
-        <ForgotForm openNewPassModal={openNewPassModal} closeForgotModal={closeForgotModal} />
+        <ForgotForm openNewPassModal={openNewPassModal} closeForgotModal={closeForgotModal} openLoginModal={openLoginModal}/>
         </div>
       </div>
       </div>

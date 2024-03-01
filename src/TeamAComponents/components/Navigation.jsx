@@ -165,7 +165,7 @@ const Navigation = () => {
           <Verification closeVerificationModal={closeVerificationModal} openLoginModal={openLoginModal}/>
         </CustomModal>
         <CustomModal show={forgotModalIsOpen} handleClose={closeForgotModal} childType="forgot">
-          <Forgot openNewPassModal={openNewPassModal} closeForgotModal={closeForgotModal}/>
+          <Forgot openNewPassModal={openNewPassModal} closeForgotModal={closeForgotModal} openLoginModal={openLoginModal}/>
         </CustomModal>
         <CustomModal show={newpassModalIsOpen} handleClose={closeNewPassModal} childType="newpass">
           <NewPass openLoginModal={openLoginModal} closeNewPassModal={closeNewPassModal}/>
