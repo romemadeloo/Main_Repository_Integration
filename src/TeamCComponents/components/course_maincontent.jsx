@@ -101,7 +101,7 @@ function Component_MainContent() {
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div className="modal-body text-center">
-              <p>You will be redirected to Google Form's website. Please keep your notes and answer the Quiz honestly.</p><p>Good luck trainee!</p>
+              <p>You will be redirected to the Quiz Page.</p><p>Good luck trainee!</p>
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={() => { window.location.href = urlQuiz; }} style={{ backgroundColor: '#0e3b03', color: '#ffffff', borderRadius: '20px', fontSize: '15px', width: '100px' }}>Yes</button>
