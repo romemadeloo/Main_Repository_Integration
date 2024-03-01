@@ -47,7 +47,7 @@ const Profile  = ({ handleClose, handleEditClick, handlePasswordChangeClick }) =
           return;
         }
   
-        const response = await fetch(`http://localhost:8085/api/v1/auth/users/${userId}`, {
+        const response = await fetch(`http://localhost:8080/api/v1/auth/users/${userId}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
