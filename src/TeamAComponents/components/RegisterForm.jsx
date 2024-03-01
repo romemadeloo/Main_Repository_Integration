@@ -1,18 +1,25 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-function RegisterForm() {
+function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModal }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [userName, setUserName] = useState('');
-  const [role, setRole] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [role, setRole] = useState(''); // Default to 'STUDENT'
   const [error, setError] = useState('');
   const [showError, setShowError] = useState(false);
-  const [verificationCodeSent, setVerificationCodeSent] = useState(false);
+  const [phoneNumberError, setPhoneNumberError] = useState('');
+  const [verificationCodeSent, setVerificationCodeSent] = useState(false);  
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+
   const navigate = useNavigate();
-  const [passwordFocused, setPasswordFocused] = useState(false); // Track if the password field is focused
+
+  const handleProceed = () => {
+    navigate('/verify');
+  };
 
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -20,8 +27,23 @@ function RegisterForm() {
   };
 
   const validatePassword = (password) => {
-    const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{8,20}$/;
-    return passwordRegex.test(password);
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{8,}$/;
+    const isValid = passwordRegex.test(password);
+    setError(isValid ? '' : 'Password must be at least 8 characters with at least 1 uppercase, 1 numeric, and 1 symbol.');
+    return isValid;
+  };
+
+  const handlePhoneNumberChange = (e) => {
+    const enteredPhoneNumber = e.target.value;
+    setPhoneNumber(enteredPhoneNumber);
+
+    // Validate the phone number format
+    const phoneNumberRegex = /^09\d{9}$/;
+    const isValidPhoneNumber = phoneNumberRegex.test(enteredPhoneNumber);
+
+    setPhoneNumberError(
+      isValidPhoneNumber ? '' : 'Please enter a valid 11-digit phone number starting with "09".'
+    );
   };
 
   const handleRoleChange = (e) => {
@@ -30,77 +52,142 @@ function RegisterForm() {
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
-    setShowError(false);
+    validatePassword(e.target.value);
   };
 
-  const handlePasswordFocus = () => {
-    setPasswordFocused(true);
-  };
-
-  const handlePasswordBlur = () => {
-    setPasswordFocused(false);
-  };
-// Define an asynchronous function to handle user registration
   const handleRegister = async (e) => {
-    e.preventDefault(); // Prevent the default form submission behavior
+    e.preventDefault();
 
-    // Validate the email address using the validateEmail function
-    if (!validateEmail(email)) {
-      setError('Please enter a valid email address.'); // Set an error message if the email is invalid
-      setShowError(true);
-      return;
-    }
-
-    // Check if the password does not meet the validation criteria
-    if (!validatePassword(password)) {
-       // Set an error message indicating the password requirements
-      setError('Password must be 8 to 20 characters long with at least 1 uppercase, 1 numeric, and 1 symbol.');
-      setShowError(true); // Display the error message
+    if (!validateEmail(email) || !validatePassword(password)) {
       return;
     }
 
     try {
-       // Map the role value to either 'INSTRUCTOR' or 'STUDENT'
       const mappedRole = role === 'INSTRUCTOR' ? 'INSTRUCTOR' : 'STUDENT';
-      // Send a POST request to the signup endpoint with the provided data
+      console.log('Selected Role:', role);
+      console.log('Mapped role:', mappedRole);
+
+      console.log('Email:', email);
+      console.log('Password:', password);
+      console.log('FirstName:', firstName);
+      console.log('LastName:', lastName);
+      console.log('UserName:', userName);
+      console.log('PhoneNumber:', phoneNumber);
+
       const response = await fetch('http://localhost:8085/api/v1/auth/signup', {
-        method: 'POST', // Request method
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, password, firstName, lastName, userName, role: mappedRole }),
+        body: JSON.stringify({ 
+          email, 
+          password, 
+          firstName, 
+          lastName, 
+          userName, 
+          phoneNumber, 
+          role: mappedRole }),
       });
 
       if (response.ok) {
-        // Store the email in local storage
+        console.log('Registration successful');
         localStorage.setItem('email', email);
-        // Set the verification code sent state to true
         setVerificationCodeSent(true);
-        // Navigate to the verification page
-        navigate('/verify');
+        closeRegisterModal();
+        openVerificationModal();
       } else {
-        // Extract data from response headers if available
         const data = response.headers.get('Content-Type')?.includes('application/json') ? await response.json() : null;
         if (response.status === 409) {
-          // Set error message if user with the email or username already exists
-          setError('User with this email or username already exists. Please use different credentials.');
+          console.error('User already exists');
+          setError(data?.message || 'User with this email or username already exists. Please use different credentials.');
         } else {
-          // Set error message based on response data or default message
+          console.error('Registration failed');
           setError(data?.message || 'Registration failed. Please try again.');
         }
-        // Show the error message
-        setShowError(true);
       }
     } catch (error) {
+      console.error('Error during registration:', error);
       setError('Registration failed. Please try again.');
-      setShowError(true);
     }
   };
 
-  const isPasswordValid = validatePassword(password);
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleRegister(e);
+    }
+  };
+
+  const checkEmailAvailability = async () => {
+    try {
+      const response = await fetch('http://localhost:8085/api/v1/auth/check-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+  
+      if (response.ok) {
+        console.log('Email is available');
+        setError(''); // Reset error state
+        setShowError(false); // Reset showError state
+      } else if (response.status === 409) {
+        console.error('Email already exists');
+        setError('Email already exists');
+        setShowError(true);
+      } else {
+        console.error('Error checking email availability');
+        setError('Error checking email availability');
+        setShowError(true);
+      }
+    } catch (error) {
+      console.error('Error during email availability check:', error);
+      setError('Error during email availability check');
+      setShowError(true);
+    }
+  };
+  
+  const checkUsernameAvailability = async () => {
+    try {
+      const response = await fetch('http://localhost:8085/api/v1/auth/check-username', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username: userName }),
+      });
+  
+      if (response.ok) {
+        console.log('Username is available');
+        setError(''); // Reset error state
+        setShowError(false); // Reset showError state
+      } else if (response.status === 409) {
+        console.error('Username already exists');
+        setError('Username already exists');
+        setShowError(true);
+      } else {
+        console.error('Error checking username availability');
+        setError('Error checking username availability');
+        setShowError(true);
+      }
+    } catch (error) {
+      console.error('Error during username availability check:', error);
+      setError('Error during username availability check');
+      setShowError(true);
+    }
+  };
+  
 
   return (
+    <div className="register-form-container"> {/* Container for the entire form */}
     <form onSubmit={handleRegister} className="template-form">
+      <Link to="/">
+        <div className="qBackbutton">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-left" viewBox="0 0 16 16">
+            <path fillRule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+          </svg>
+        </div>
+      </Link>
       <h2>Sign up an account.</h2>
       <h2>Be part of the success.</h2>
 
@@ -110,19 +197,17 @@ function RegisterForm() {
           id="username"
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
+          onBlur={checkUsernameAvailability}
           placeholder={`Username (${role === 'Admin' ? 'Admin' : role})`}
           required
         />
 
-        {/* Select role */}
         <select
           id="Role"
           value={role}
           onChange={handleRoleChange}
         >
-          {/* Option for student */}
           <option value="STUDENT">Student</option>
-           {/* Option for instructor */}
           <option value="INSTRUCTOR">Instructor</option>
         </select>
       </div>
@@ -147,7 +232,16 @@ function RegisterForm() {
         id="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
+        onBlur={checkEmailAvailability}
         placeholder="Email Address"
+        required
+      />
+      <input
+        type="tel"
+        id="phoneNumber"
+        value={phoneNumber}
+        onChange={handlePhoneNumberChange}
+        placeholder="Phone Number"
         required
       />
       <input
@@ -155,41 +249,44 @@ function RegisterForm() {
         id="password"
         value={password}
         onChange={handlePasswordChange}
-        onFocus={handlePasswordFocus} // Add onFocus event handler
-        onBlur={handlePasswordBlur}   // Add onBlur event handler
+        onKeyPress={handleKeyPress}
         placeholder="Password"
         required
       />
       <div className="data-validation">
-         {/* Check if the password field is focused and display validation message */}
-        {passwordFocused && (
-          <label style={{ color: isPasswordValid ? 'green' : 'red', fontSize: '15px', fontWeight: '700', transition: 'color 0.3s' }}>
-           {/* Display error message if present, otherwise display default message */}
-            { error || 'Password must be 8 to 20 characters long with at least 1 uppercase character, 1 numeric digit, and 1 special character.'}
+        {showError && (
+          <label style={{ color: 'red', fontSize: '15px', fontWeight: '700', transition: 'color 0.3s' }}>
+            {error}
+          </label>
+        )}
+        {phoneNumberError && (
+          <label style={{ color: 'red', fontSize: '15px', fontWeight: '700', transition: 'color 0.3s' }}>
+            {phoneNumberError}
           </label>
         )}
       </div>
       <div>
-         {/* Display agreement text */}
         <h3 style={{ fontSize: '15px' }}>By clicking Sign up you agree to our Terms of Use and our Privacy Policy.</h3>
       </div>
-      {/* Conditionally render verification code sent message */}
-      {verificationCodeSent && (
-        <div style={{ backgroundColor: 'lightgreen', padding: '10px', borderRadius: '5px', marginTop: '10px' }}>
-         {/* Display verification code sent message */}
-          <span style={{ color: 'green' }}>✓</span> Verification code has been sent to your email. Please check your inbox.
-        </div>
-      )}
-      <Link to="/login">
-         {/* Link to login page */}
-        <div className="existing-account">
-          {/* Text indicating existing account */}
-          Already have an account?
-        </div>
-      </Link>
-      {/* Sign up button */}
+      <div className="existing-account" onClick={() => {
+          openLoginModal(); // Open login modal
+          closeRegisterModal(); // Close register modal
+        }}> {/* Using openLoginModal function */}
+        Already have an account?
+      </div>
       <button className="TeamA-button" style={{ backgroundColor: '#126912' }}>Sign Up</button>
     </form>
+    {showSuccessMessage && (
+      <React.Fragment>
+        <div className="modal-overlay"></div>
+        <div className="success-popup">
+          <p>Registration Successful. Verification Code Sent to Email.</p>
+          <button onClick={handleProceed}>Proceed</button>
+        </div>
+      </React.Fragment>
+    )}
+  </div>
+
   );
 }
 

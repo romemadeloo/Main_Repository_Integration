@@ -5,6 +5,9 @@ import { useAuth } from "./AuthContext";
 import Login from "./Login";
 import Register from "./Register";
 import "../styles/Auth.css";
+import Verification from "./Verification";
+import Forgot from "./Forgot";
+import NewPass from "./NewPass";
 
 // CustomModal component for displaying modals
 const CustomModal = ({ show, handleClose, children }) => {
@@ -57,6 +60,9 @@ const Navigation = () => {
   // State variables for controlling the visibility of login and register modals
   const [loginModalIsOpen, setLoginModalIsOpen] = useState(false);
   const [registerModalIsOpen, setRegisterModalIsOpen] = useState(false);
+  const [verificationModalIsOpen, setVerificationModalIsOpen] = useState(false); // State for Verification modal
+  const [forgotModalIsOpen, setForgotModalIsOpen]= useState(false);
+  const [newpassModalIsOpen, setNewPassModalIsOpen]= useState(false);
 
   // Functions to open and close the login modal
   const openLoginModal = () => setLoginModalIsOpen(true);
@@ -65,6 +71,16 @@ const Navigation = () => {
   // Functions to open and close the register modal
   const openRegisterModal = () => setRegisterModalIsOpen(true);
   const closeRegisterModal = () => setRegisterModalIsOpen(false);
+
+  const openVerificationModal = () => setVerificationModalIsOpen(true); // Function to open Verification modal
+  const closeVerificationModal = () => setVerificationModalIsOpen(false); // Function to close Verification modal
+
+  const openForgotModal = () => setForgotModalIsOpen(true);
+  const closeForgotModal = () => setForgotModalIsOpen(false);
+
+  const openNewPassModal = () => setNewPassModalIsOpen(true);
+  const closeNewPassModal = () => setNewPassModalIsOpen(false);
+
 
   return (
     // Main navigation container
@@ -126,36 +142,34 @@ const Navigation = () => {
         {/* Render these elements if the user is not logged in */}
         {!isLoggedIn && (
           <>
-             {/* Register button */}
             <button className="TeamA-button" onClick={openRegisterModal}>
               Register
             </button>
-            {/* Register modal */}
-            <CustomModal show={registerModalIsOpen} handleClose={closeRegisterModal}>
-              <Register />
+            <CustomModal show={registerModalIsOpen} handleClose={closeRegisterModal} childType="register">
+              <Register openLoginModal={openLoginModal} openVerificationModal={openVerificationModal} closeRegisterModal={closeRegisterModal}/> {/* Pass openLoginModal function */}
             </CustomModal>
           </>
         )}
-
-        {/* Render these elements if the user is logged in */}
-        {isLoggedIn ? (
-      // Logout button
-          <button className="TeamA-button" onClick={handleLogout}>
-            Logout
-          </button>
-        ) : (
-      // Render these elements if the user is not logged in
+        {!isLoggedIn && (
           <>
-             {/* Login button */}
             <button className="TeamA-button" onClick={openLoginModal}>
               Login
             </button>
-            {/* Login modal */}  
-            <CustomModal show={loginModalIsOpen} handleClose={closeLoginModal}>
-              <Login />
+            <CustomModal show={loginModalIsOpen} handleClose={closeLoginModal} childType="login">
+              <Login openForgotModal={openForgotModal} closeLoginModal={closeLoginModal}/>
             </CustomModal>
           </>
         )}
+        {/* Verification modal */}
+        <CustomModal show={verificationModalIsOpen} handleClose={closeVerificationModal} childType="verification">
+          <Verification closeVerificationModal={closeVerificationModal} openLoginModal={openLoginModal}/>
+        </CustomModal>
+        <CustomModal show={forgotModalIsOpen} handleClose={closeForgotModal} childType="forgot">
+          <Forgot openNewPassModal={openNewPassModal} closeForgotModal={closeForgotModal} openLoginModal={openLoginModal}/>
+        </CustomModal>
+        <CustomModal show={newpassModalIsOpen} handleClose={closeNewPassModal} childType="newpass">
+          <NewPass openLoginModal={openLoginModal} closeNewPassModal={closeNewPassModal}/>
+        </CustomModal>
       </div>
     </div>
   );
