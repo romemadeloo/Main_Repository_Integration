@@ -3,90 +3,174 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Footer from "./Footer";
 
-function ForgotForm({ onForgotPassword }) {
-  // State variables for email and OTP
+function ForgotForm({openNewPassModal, closeForgotModal}) {
   const [email, setEmail] = useState('');
-  const [otp, setOtp] = useState(''); // Add state for OTP
+  const [resetStatus, setResetStatus] = useState('');
+  const [otp, setOtp] = useState('');
+  const [verificationAttempted, setVerificationAttempted] = useState(false);
+  const [error, setError] = useState('');
+  const [emailSubmitted, setEmailSubmitted] = useState(false);
+  const [continueButtonDisabled, setContinueButtonDisabled] = useState(false); // State to track button disabled status
+  const [resendStatus, setResendStatus] = useState('');
+  const [resending, setResending] = useState(false);
+  const [loading, setLoading] = useState(false); 
 
-  // Navigation hook from react-router-dom
+
   const navigate = useNavigate();
 
-  // Event handler for handling the forgot password process
-  const handleForgot = (e) => {
-    e.preventDefault();
-    // Call the onForgotPassword prop with the email value
-    onForgotPassword(email);
-    console.log('Resetting password for email:', email);
+  const sendForgotCode = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch(`http://localhost:8085/api/v1/auth/forgot-password?email=${email}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
 
-    // Redirect to EmailVerification page after handling the forgot password logic
-    navigate('/EmailForm');
+      if (response.ok) {
+        console.log('Email is registered. Please check your email.');
+        setEmailSubmitted(true);
+      } else {
+        const responseData = await response.json();
+        setError(responseData.message || 'Failed to send verification code');
+        console.log('Email is invalid. Please Sign-up.');
+      }
+    } catch (error) {
+      console.error('Error sending OTP:', error);
+      setError('Error sending OTP. Please try again.');
+    }
+      finally {
+      setLoading(false); // Reset loading state regardless of success or failure
+  }
   };
 
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+  };
+
+  const resendForgotCode = async () => {
+    try {
+      const response = await fetch(`http://localhost:8085/api/v1/auth/resendCode`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (response.ok) {
+        console.log('Resent verification code. Please check your email.');
+        setError(''); // Clear previous errors when successfully resending code
+      } else {
+        const responseData = await response.json();
+        setError(responseData.message || 'Failed to resend verification code');
+      }
+    } catch (error) {
+      console.error('Error resending verification code:', error);
+      setError('Error resending verification code. Please try again.');
+    }
+  };
+
+
+  const verifyOtp = async (otp) => {
+    try {
+      const response = await fetch(`http://localhost:8085/api/v1/auth/verify-forgot-code?email=${email}&code=${otp}`, {
+        method: 'GET',
+      });
+  
+      if (response.ok) {
+        console.log('Verification successful');
+        // Store ForgotCode and ForgotEmail in local storage
+        localStorage.setItem('forgotCode', otp);
+        localStorage.setItem('forgotEmail', email);
+        closeForgotModal();
+        openNewPassModal();
+        setError('');
+      } else {
+        const responseData = await response.json();
+        console.log('Verification not successful');
+        setError(responseData.message);
+      }
+    } catch (error) {
+      console.error('Error verifying OTP:', error);
+      setError('Error verifying OTP. Please try again.');
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleFormSubmit(e);
+    }
+  };
+  
   return (
     <div className="forgot-container">
-       {/* Main container for the ForgotForm component */}
-      <div className="forgot-container">
-        {/* Form section for the ForgotForm */}
-        <form className="template-form" onSubmit={handleForgot}>
-          {/* Back button linking to the login page */}
-          <Link to="/login">
+      <div className="template-form-container">
+        <form className="template-form" onSubmit={handleFormSubmit}>
             <button className="wBackbutton">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-left" viewBox="0 0 16 16">
                 <path fillRule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
               </svg>
             </button>
-          </Link>
 
-          {/* Title and description for the forgot password form */}
           <h2 className="title">Forgot Password</h2>
-          <p>Please enter your email address to reset your password.</p>
-          {/* Input field for email with onChange event */}
-          <div className="email-input-field">
-            {/* Use setEmail to update the email state */}
-            <input
-              type="email"
-              id="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          
-          {/* Input field for OTP with Send button */}
-          <div className="email-input-field">
-  <div className="forgot-otp-input-container">
-    <input
-      type="text"
-      id="OTP"
-      placeholder="OTP"
-      value={otp}
-      onChange={(e) => setOtp(e.target.value)}
-    />
-    <button  className="forgot-otp-button">
-      Send
-    </button>
-  </div>
-</div>
-
-          {/* Links to other pages */}
-          <Link to="/login">
-            <div className="existing-account">
-              Remember your password?
-            </div>
-          </Link>
-          <Link to="/new">
-            <button className="TeamA-button">Verify</button>
-          </Link>
+          {emailSubmitted ? (
+            <>
+              <p>Please enter the OTP code sent to your email.</p>
+              <div className="otp-input-field">
+                <i className="fas fa-key"></i>
+                <input
+                  type="text"
+                  id="otp"
+                  placeholder="Enter OTP code"
+                  value={otp}
+                  onChange={(e) => setOtp(e.target.value)}
+                  onKeyPress={handleKeyPress} 
+                />
+              </div>
+              <button className="TeamA-button" onClick={() => verifyOtp(otp)}>
+                Verify
+              </button>
+              {resendStatus && <p className="error-message">{resendStatus}</p>}
+            </>
+          ) : (
+            <>
+              <p>Please enter your email address to reset your password.</p>
+              <div className="email-input-field">
+                <i className="fas fa-envelope"></i>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  onKeyPress={handleKeyPress} 
+                />
+                {error && (
+                  <p className="error-message">{error}</p>
+                )}
+              </div>
+              <button className="TeamA-button" onClick={sendForgotCode} disabled={loading}>
+               {loading ? 'Loading...' : 'Continue'}
+              </button>
+              {resendStatus && <p className="error-message">{resendStatus}</p>}
+              <p>
+                {resending ? 'Resending verification code...' : (
+                  <a href="#" className="resend-link" onClick={resendForgotCode}>
+                    Resend Code
+                  </a>
+                )}
+              </p>
+            </>
+          )}
         </form>
       </div>
-      {/* Left panel for additional content */}
-      <div className="forgot-container">
-        <div className="forgot left-panel">
-          <div className="forgot-content"></div>
-        </div>
+  
+      <div className="forgot left-panel">
+        <div className="forgot-content"></div>
       </div>
-      {/* Footer component */}
-      <Footer />
     </div>
   );
 }

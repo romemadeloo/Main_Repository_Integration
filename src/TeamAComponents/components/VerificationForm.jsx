@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import "../styles/Auth.css";
 
-function VerificationForm() {
+function VerificationForm(openVerificationModal, openLoginModal,closeVerificationModal) {
   const [verification, setVerification] = useState('');
   const [verificationStatus, setVerificationStatus] = useState(null);
   const [resendStatus, setResendStatus] = useState(null);
@@ -22,8 +22,9 @@ function VerificationForm() {
     // Check if the user is already verified
     if (verificationStatus === 'Verification successful') {
       setShowResendButton(false);
-      setIsVerified(true);
-      navigate('/login'); // Redirect to /login if already verified
+      setIsVerified(true); // Redirect to /login if already verified
+      closeVerificationModal();
+      openLoginModal();
     }
   }, [verificationStatus, navigate]);
 
@@ -89,6 +90,7 @@ function VerificationForm() {
       if (response.ok) {
         setVerificationStatus('Verification successful');
         setShowResendButton(false);
+
       } else {
         setVerificationStatus('Verification failed');
         setShowResendButton(codeExpired);
@@ -113,7 +115,7 @@ function VerificationForm() {
       if (resendResponse.ok) {
         setVerificationStatus('Verification code resent successfully');
         setShowResendButton(false);
-  
+        openVerificationModal();
         // Reload the page
         window.location.reload();
       } else {
@@ -176,7 +178,7 @@ function VerificationForm() {
               )}
               {showResendButton && (
                 <div>
-                  <a href="#" className="resend-link" onClick={handleResendCode} disabled={resending}>
+                  <a href="#" className="resend-link" onClick={handleResendCode} disabled={resending} >
                     {resending ? 'Resending...' : 'Resend Code'}
                   </a>
                 </div>
@@ -201,3 +203,4 @@ function VerificationForm() {
 }
 
 export default VerificationForm;
+
