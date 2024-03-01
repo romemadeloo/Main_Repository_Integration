@@ -5,8 +5,6 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import { IoArrowBackCircleSharp } from "react-icons/io5";
 import axios from "axios";
 import Team_D_HeaderV2 from "../../TeamDComponents/Team_D_HeaderV2";
-import { IoArrowBackCircleSharp } from "react-icons/io5";
-
 function ChapterList() {
     const navigate = useNavigate();
     const [chapters, setChapters] = useState([]);
