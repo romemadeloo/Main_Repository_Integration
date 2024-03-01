@@ -9,8 +9,9 @@ function Forgot({ onNavigateHome, onForgotPassword, openNewPassModal, closeForgo
   return (
     <div className="forgot-container">
         <div className="container-under">
-        <div className="auth-label">
-          <h1>Retrieve Account</h1>
+        <div className="forgot-auth-label">
+        <h1 style={{ color: 'white', fontSize: '25px'}}>RETRIEVE ACCOUNT</h1>
+
         </div>
         {/* Main content section with the 'Forgot Password' form */}
       <div className="forgot-content">

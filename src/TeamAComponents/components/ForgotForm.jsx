@@ -108,7 +108,7 @@ function ForgotForm({openNewPassModal, closeForgotModal, openLoginModal}) {
   return (
     <div className="forgot-container">
       <div className="template-form-container">
-        <form className="template-form" onSubmit={handleFormSubmit}>
+        <form className="forgot-template-form" onSubmit={handleFormSubmit}>
             <button className="wBackbutton" onClick={() => {
           openLoginModal();
           closeForgotModal(); 
@@ -142,7 +142,6 @@ function ForgotForm({openNewPassModal, closeForgotModal, openLoginModal}) {
             <>
               <p>Please enter your email address to reset your password.</p>
               <div className="email-input-field">
-                <i className="fas fa-envelope"></i>
                 <input
                   type="email"
                   id="email"
@@ -155,6 +154,7 @@ function ForgotForm({openNewPassModal, closeForgotModal, openLoginModal}) {
                   <p className="error-message">{error}</p>
                 )}
               </div>
+              <div className='lower'>
               <button className="TeamA-button" onClick={sendForgotCode} disabled={loading}>
                {loading ? 'Loading...' : 'Continue'}
               </button>
@@ -166,6 +166,7 @@ function ForgotForm({openNewPassModal, closeForgotModal, openLoginModal}) {
                   </a>
                 )}
               </p>
+              </div>
             </>
           )}
         </form>
