@@ -200,11 +200,11 @@ const AddTopic = ({ courseTitle }) => {
                   onClick={toggleVideoPopup}>
                   <img src={vidUpload} alt="" className="md:w-[3rem] " />
                 </div>
-                <Link to=""
+                <Link
+                  to="/AddQuiz"
                   className=" relative w-[100%] h-[200px] md:w-[50%]
            lg:w-[20vw] lg:h-[20vh] bg-[#126912] rounded-lg flex
-           items-center justify-center cursor-pointer"
-                  >
+           items-center justify-center cursor-pointer">
                   <img src={quizLink} alt="" className="md:w-[3rem] " />
                 </Link>
               </div>
@@ -250,7 +250,7 @@ const AddTopic = ({ courseTitle }) => {
                 </div>
               )}
               {/* Quiz Popup */}
-           
+
               <ToastContainer className="tcenter" closeButton={CloseButton} />
             </form>
           </div>
