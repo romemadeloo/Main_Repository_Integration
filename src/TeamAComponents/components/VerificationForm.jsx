@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import "../styles/Auth.css";
 
-function VerificationForm() {
+function VerificationForm({openVerificationModal, openLoginModal,closeVerificationModal}) {
   const [verification, setVerification] = useState('');
   const [verificationStatus, setVerificationStatus] = useState(null);
   const [resendStatus, setResendStatus] = useState(null);
@@ -22,8 +22,9 @@ function VerificationForm() {
     // Check if the user is already verified
     if (verificationStatus === 'Verification successful') {
       setShowResendButton(false);
-      setIsVerified(true);
-      navigate('/login'); // Redirect to /login if already verified
+      setIsVerified(true); // Redirect to /login if already verified
+      closeVerificationModal();
+      openLoginModal();
     }
   }, [verificationStatus, navigate]);
 
@@ -38,7 +39,7 @@ function VerificationForm() {
 
   const checkVerificationCodeExpiration = async (email) => {
     try {
-      const response = await fetch(`http://localhost:8085/api/v1/auth/checkCodeExpiration?email=${email}`);
+      const response = await fetch(`http://localhost:8080/api/v1/auth/checkCodeExpiration?email=${email}`);
 
       if (response.ok) {
         const { codeExpired, expirationTime } = await response.json();
@@ -78,7 +79,7 @@ function VerificationForm() {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:8085/api/v1/auth/verifyCode', {
+      const response = await fetch('http://localhost:8080/api/v1/auth/verifyCode', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -89,6 +90,7 @@ function VerificationForm() {
       if (response.ok) {
         setVerificationStatus('Verification successful');
         setShowResendButton(false);
+
       } else {
         setVerificationStatus('Verification failed');
         setShowResendButton(codeExpired);
@@ -102,7 +104,7 @@ function VerificationForm() {
     try {
       setResending(true);
   
-      const resendResponse = await fetch('http://localhost:8085/api/v1/auth/resendCode', {
+      const resendResponse = await fetch('http://localhost:8080/api/v1/auth/resendCode', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -113,7 +115,7 @@ function VerificationForm() {
       if (resendResponse.ok) {
         setVerificationStatus('Verification code resent successfully');
         setShowResendButton(false);
-  
+        openVerificationModal();
         // Reload the page
         window.location.reload();
       } else {
@@ -176,7 +178,7 @@ function VerificationForm() {
               )}
               {showResendButton && (
                 <div>
-                  <a href="#" className="resend-link" onClick={handleResendCode} disabled={resending}>
+                  <a href="#" className="resend-link" onClick={handleResendCode} disabled={resending} >
                     {resending ? 'Resending...' : 'Resend Code'}
                   </a>
                 </div>
@@ -201,3 +203,4 @@ function VerificationForm() {
 }
 
 export default VerificationForm;
+

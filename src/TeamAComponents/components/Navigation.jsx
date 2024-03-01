@@ -5,7 +5,11 @@ import { useAuth } from "./AuthContext";
 import Login from "./Login";
 import Register from "./Register";
 import "../styles/Auth.css";
+import Verification from "./Verification";
+import Forgot from "./Forgot";
+import NewPass from "./NewPass";
 
+// CustomModal component for displaying modals
 const CustomModal = ({ show, handleClose, children }) => {
   const modalStyles = {
     overlay: {
@@ -36,6 +40,7 @@ const CustomModal = ({ show, handleClose, children }) => {
 
   return (
     <>
+      {/* Render the modal only if show is true */}
       {show && (
         <div style={modalStyles.overlay} onClick={handleClose}>
           <div style={modalStyles.modalContent} onClick={(e) => e.stopPropagation()}>
@@ -48,27 +53,52 @@ const CustomModal = ({ show, handleClose, children }) => {
     </>
   );
 };
+// Navigation component
 const Navigation = () => {
+  // Extracting isLoggedIn and handleLogout from the useAuth hook
   const { isLoggedIn, handleLogout } = useAuth();
+  // State variables for controlling the visibility of login and register modals
   const [loginModalIsOpen, setLoginModalIsOpen] = useState(false);
   const [registerModalIsOpen, setRegisterModalIsOpen] = useState(false);
+  const [verificationModalIsOpen, setVerificationModalIsOpen] = useState(false); // State for Verification modal
+  const [forgotModalIsOpen, setForgotModalIsOpen]= useState(false);
+  const [newpassModalIsOpen, setNewPassModalIsOpen]= useState(false);
 
+  // Functions to open and close the login modal
   const openLoginModal = () => setLoginModalIsOpen(true);
   const closeLoginModal = () => setLoginModalIsOpen(false);
 
+  // Functions to open and close the register modal
   const openRegisterModal = () => setRegisterModalIsOpen(true);
   const closeRegisterModal = () => setRegisterModalIsOpen(false);
 
+  const openVerificationModal = () => setVerificationModalIsOpen(true); // Function to open Verification modal
+  const closeVerificationModal = () => setVerificationModalIsOpen(false); // Function to close Verification modal
+
+  const openForgotModal = () => setForgotModalIsOpen(true);
+  const closeForgotModal = () => setForgotModalIsOpen(false);
+
+  const openNewPassModal = () => setNewPassModalIsOpen(true);
+  const closeNewPassModal = () => setNewPassModalIsOpen(false);
+
+
   return (
+    // Main navigation container
     <div className="home-header">
+      {/* Left container with logo and navigation links */}
       <div className="left-container">
+         {/* Logo container */}
         <div className="logo-container">
+          {/* Logo image */}
+          <Link to="/">
           <img
             src="..\src\assets\TeamAassets\companyLogo.png"
             alt="Logo"
             className="logo"
           />
+          </Link>
         </div>
+         {/* Navigation links for logged-in users */}
         {isLoggedIn && (
           <nav>
             <ul>
@@ -86,34 +116,64 @@ const Navigation = () => {
           </nav>
         )}
       </div>
+
+     
+      {!isLoggedIn && (
+        
+        <nav>
+       <ul className="flex font-bold text-[1.2rem] gap-5">
+          <li>
+            <a href="/verif_nonuser">Verification</a>
+          </li>
+          <li>
+            <a href="About">About us</a>
+          </li>
+          <li>
+            <a href="https://www.tsukiden.com.ph">Contact us</a>
+          </li>
+        </ul>
+        </nav>
+          )}
+        
+      
+
+      {/* Right container with buttons for login, register, and logout */}
       <div className="right-container">
+        {/* Render these elements if the user is not logged in */}
         {!isLoggedIn && (
           <>
             <button className="TeamA-button" onClick={openRegisterModal}>
               Register
             </button>
-            <CustomModal show={registerModalIsOpen} handleClose={closeRegisterModal}>
-              <Register />
+            <CustomModal show={registerModalIsOpen} handleClose={closeRegisterModal} childType="register">
+              <Register openLoginModal={openLoginModal} openVerificationModal={openVerificationModal} closeRegisterModal={closeRegisterModal}/> {/* Pass openLoginModal function */}
             </CustomModal>
           </>
         )}
-        {isLoggedIn ? (
-          <button className="TeamA-button" onClick={handleLogout}>
-            Logout
-          </button>
-        ) : (
+        {!isLoggedIn && (
           <>
             <button className="TeamA-button" onClick={openLoginModal}>
               Login
             </button>
-            <CustomModal show={loginModalIsOpen} handleClose={closeLoginModal}>
-              <Login />
+            <CustomModal show={loginModalIsOpen} handleClose={closeLoginModal} childType="login">
+              <Login openForgotModal={openForgotModal} closeLoginModal={closeLoginModal}/>
             </CustomModal>
           </>
         )}
+        {/* Verification modal */}
+        <CustomModal show={verificationModalIsOpen} handleClose={closeVerificationModal} childType="verification">
+          <Verification closeVerificationModal={closeVerificationModal} openLoginModal={openLoginModal}/>
+        </CustomModal>
+        <CustomModal show={forgotModalIsOpen} handleClose={closeForgotModal} childType="forgot">
+          <Forgot openNewPassModal={openNewPassModal} closeForgotModal={closeForgotModal} openLoginModal={openLoginModal}/>
+        </CustomModal>
+        <CustomModal show={newpassModalIsOpen} handleClose={closeNewPassModal} childType="newpass">
+          <NewPass openLoginModal={openLoginModal} closeNewPassModal={closeNewPassModal}/>
+        </CustomModal>
       </div>
     </div>
   );
 };
 
+// Exporting the Navigation component as the default export
 export default Navigation;

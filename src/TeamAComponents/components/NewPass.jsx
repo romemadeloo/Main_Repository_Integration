@@ -4,29 +4,18 @@ import { Link } from 'react-router-dom';
 import "../styles/Auth.css";
  // Assuming you want to include Auth.css
 
-function TeamA_NewPass({ onNewPassForm }) {
+// TeamA_NewPass component
+function NewPass({closeNewPassModal, openLoginModal}) {
   return (
     <div className="email-container">
-      <div className="home-header">
-      <Link to='/'>
-        <img
-          src="..\src\assets\TeamAassets\companyLogo.png" 
-          alt="Logo"
-          className="logo"
-        />
-        </Link>
-      </div>
-      <div className="email-navi">
-       
-      </div>
-
+      
       <div className="content">
         <div className="email-sign">
-          <NewPassForm onNewPassForm={onNewPassForm} />
+          <NewPassForm closeNewPassModal={closeNewPassModal} openLoginModal={openLoginModal}/>
         </div>
       </div>
     </div>
   );
 }
 
-export default TeamA_NewPass;
+export default NewPass;

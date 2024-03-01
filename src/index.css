@@ -23,8 +23,10 @@
 }
 
 .TeamB_no-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #BCE8B1;
-  border-radius: 2rem;
+  background: #bce8b1;
+  border-radius: 100vh;
+  border: 5px solid #ebffe5;
+  cursor: pointer;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */

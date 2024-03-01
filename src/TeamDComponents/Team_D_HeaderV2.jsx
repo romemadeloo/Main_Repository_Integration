@@ -42,6 +42,9 @@ const Team_D_HeaderV2 = ({ onUserDataFetched, openModal }) => {
   const [showLogoutConfirmationModal, setShowLogoutConfirmationModal] = useState(false);
   const navigate = useNavigate(); // Use useNavigate instead of useHistory
 
+const Team_D_HeaderV2 = () => {
+  const [clicked, setClicked] = useState(false);
+
   const handleClick = () => {
     setClicked(!clicked);
   };
@@ -165,14 +168,19 @@ const Team_D_HeaderV2 = ({ onUserDataFetched, openModal }) => {
         </NavLink>
         <div>
         <ul id="navbar" className={clicked ? "active" : ""}>
+          <ul id="navbar" className={clicked ? "active" : ""}>
+            {/* Profile Info */}
             <li className="profile_info">
               <span className="profile_info_con">
-                <img src={`data:image/${getUserImageType(userData.profilePicture)};base64,${userData.profilePicture}`} alt="Logo" />
+                <img src={Profile} alt="Logo" />
                 <span className="profile_info_name">
-                  <p className="profile_fName">{userData.firstName}</p>
+                  <p className="profile_fName">Joshua Allada</p>
+                  <p className="profile_email">jallada.@tgsi.com.ph</p>
                 </span>
               </span>
             </li>
+
+            {/* Profile Links */}
             <li className="profile_link">
               <NavLink
                 to="/profile"
@@ -301,6 +309,37 @@ const Team_D_HeaderV2 = ({ onUserDataFetched, openModal }) => {
               </Link>
             </>
           )}
+          <Dropdown>
+            <Dropdown.Toggle
+              variant="success"
+              id="dropdown-basic"
+              className="button_profile"
+            >
+              <img src={Profile} alt="" className="profile_img" />
+              Hi, JALLADA!
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+              {/* Profile Dropdown Items */}
+              <Dropdown.Item href="">
+                <FaRegUserCircle /> Profile
+              </Dropdown.Item>
+              <Dropdown.Item
+                as={NavLink}
+                to="/certificate"
+                onClick={closeMobileNavbar}
+              >
+                <TbCertificate /> My Certificate
+              </Dropdown.Item>
+              <Dropdown.Item
+                as={NavLink}
+                to="/"
+                onClick={closeMobileNavbar}
+              >
+                <FiLogOut /> Log Out
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
         </div>
       </nav>
       {showLogoutConfirmationModal && (
@@ -318,6 +357,5 @@ const Team_D_HeaderV2 = ({ onUserDataFetched, openModal }) => {
     </>
   );
 };
-
 
 export default Team_D_HeaderV2;

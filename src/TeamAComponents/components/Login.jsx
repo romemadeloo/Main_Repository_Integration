@@ -3,21 +3,22 @@ import LoginForm from './LoginForm';
 import { Link } from "react-router-dom";
 import "../styles/Auth.css";
 
+//Importing styles for the component
+function Login({openForgotModal, closeLoginModal}) {
 
-function Login() {
 
   return (
-    <div className="auth-container">
-      <div style={{display: "flex", justifyContent: "center"}}>
-      <div style={{display: "flex", flexDirection: "column", alignItems: "start", }}>
-      <div>
+    
+    <div>
+      <div className="label-container">
+        <div className="container-under">
         <div className="auth-label">
           <h1>LOG IN</h1>
         </div>
-      </div>
+     
       <div className="auth-content">
         <div className="auth-sign">
-          <LoginForm />
+        <LoginForm openForgotModal={openForgotModal} closeLoginModal={closeLoginModal} />
         </div>
       </div>
       </div>
@@ -27,3 +28,4 @@ function Login() {
 }
 
 export default Login;
+

@@ -4,7 +4,7 @@
 //2/1/2024 junite, UI modifications and functionalities, mockdata inserted and used for UI test
 //2/2/2024 junite, UI modifications add background color for edit modal
 //2/5/2024 junite, fixed UI spacing
-//2/13/2024 junite, API Functionalities
+//2/13-15/2024 junite, API Functionalities
 
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { IoAdd } from "react-icons/io5";
@@ -28,6 +28,10 @@ import { CourseContext } from "../context/CourseContext";
 import { FaEdit } from "react-icons/fa";
 import CourseTitleModal from "./CourseModal/CourseTitleModal";
 
+//close icon
+import { IoMdClose } from "react-icons/io";
+import Footer from "../Footer";
+
 const CourseListCard = () => {
   // *NOTE
   //if data is coming from db use useState hook to store the data
@@ -45,7 +49,7 @@ const CourseListCard = () => {
 
   //COURSES
   const loadCourses = async () => {
-    const result = await axios.get("http://localhost:8080/api/courses");
+    const result = await axios.get("http://localhost:8080/api/v1/auth/getCourses");
     setCourses(result.data);
   };
 
@@ -84,58 +88,128 @@ const CourseListCard = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   //Search
-  const filteredCourses = currentCourse.filter((course) =>
-    course.course_title.toLowerCase().includes(searchQuery.toLowerCase())
+  // const filteredCourses = courses.filter((course) =>
+  //   course.course_title.toLowerCase().includes(searchQuery.toLowerCase())
+  // );
+
+  const filteredCourses = courses.filter(
+    (course) =>
+      typeof course.course_title === "string" &&
+      course.course_title.toLowerCase().includes(searchQuery.toLowerCase())
   );
+  const [hideSearch, setHideSearch] = useState(false);
+
+  // Ref for the search container
+  const searchContainerRef = useRef(null);
+
+  // Other state variables...
+
+  // Hide search container when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        searchContainerRef.current &&
+        !searchContainerRef.current.contains(event.target)
+      ) {
+        setHideSearch(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [searchContainerRef]);
+  // Initialize a count for chapters within this course
+  let courseCount = 0;
 
   return (
     <>
       {/* 1/12/2024 UI development and Mobile responsiveness */}
 
-      <div className="mt-[70px] h-[120vh] relative">
+      <div className="mt-[70px] h-[100vh] relative">
         {/* 1/15/2024 functions and buttons */}
         <div className="" ref={pageTopRef}>
-          <div className="  xl:w-[1244px]  w-[90%] flex mx-auto flex-col lg:center-row lg:w-[80vw] lg:m-auto lg:mt-5 items-center lg:h-full relative gap-5">
+          <div className="   w-[90%] flex mx-auto flex-col lg:center-row lg:w-[80vw] lg:m-auto lg:mt-5 items-center lg:h-full relative gap-4 lg:gap-5">
             {/*January 15 2024, API connection of frontend to backend can fetch data from the backend*/}
-            <div className="text-black  w-[60vw] lg:font-bold text-[.8rem]  lg:text-[2rem]  flex justify-between items-center ">
-              <p className=" 2xl:text-[48px] lg:font-bold TeamB_text-shadow   ">
+            <div className="text-black  w-[100%] lg:w-[60vw] lg:font-bold text-[.8rem]  lg:text-[2rem]  flex justify-between items-center mt-3">
+              <p className="hidden lg:flex lg:font-bold TeamB_text-shadow">
                 Course List
               </p>
-              <div className="relative  flex items-center lg:w-[300px] 2xl:w-[544px] h-[35px] 2xl:h-[53px]  bg-white outline-none rounded-md border-b-[.1rem] border-black">
+              <div className="relative flex items-center h-full w-[100%]  lg:w-[300px]  bg-white outline-none rounded-md border-b-[.1rem] border-black">
                 <input
                   type="text"
-
-
-                  className="outline-none placeholder:font-thin placeholder:text-[1.2rem] font-normal pl-2 text-[1rem] lg:w-[300px] 2xl:w-[544px] h-[35px] 2xl:h-[53px] rounded-md"
+                  className="outline-none w-[100%] placeholder:font-thin placeholder:text-[1.2rem] font-normal pl-2 text-[1rem] lg:w-[300px]  h-[35px]  rounded-md"
                   placeholder="Search"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-
+                  onClick={() => setHideSearch(true)}
                 />
                 <div className="absolute top-1 right-2">
                   <IoSearchSharp className="text-[1.5rem]" />
                 </div>
+
+                {hideSearch && (
+                  <div
+                    ref={searchContainerRef}
+                    className="h-[20vh] w-[100%] absolute bg-[#fff] top-10 z-10 shadow-lg rounded-md pt-2">
+                    <div className="flex justify-end w-full cursor-pointer">
+                      <IoMdClose
+                        onClick={() => setHideSearch(false)}
+                        className="text-[1rem] mr-2"
+                      />
+                    </div>
+                    <div className="h-[80%] overflow-auto TeamB_no-scrollbar mr-3">
+                      {filteredCourses.length === 0 ? (
+                        <div className="mt-4 text-center text-gray-600 text-[1rem]">
+                          No results found
+                        </div>
+                      ) : (
+                        filteredCourses.map((course, idx) => {
+                          const { course_title } = course;
+                          return (
+                            <div key={idx} className="">
+                              <Link
+                                to={`/teambcourseoverview/${course.course_id}`}>
+                                <p className="text-[.9rem] pl-2 font-light TeamB_text-shadow cursor-pointer">
+                                  {course_title}
+                                </p>
+                              </Link>
+                            </div>
+                          );
+                        })
+                      )}
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
-            <div className="flex flex-col h-full gap-y-5">
+            <p className="lg:hidden TeamB_text-shadow w-[100%] text-[2rem] font-medium text-center">
+              Course List
+            </p>
+            <div className="flex flex-col w-[100%] items-center justify-center h-full gap-y-5">
               {/* change to currentCourse for API connection */}
-              {filteredCourses.map((course, idx) => {
+              {currentCourse.map((course, idx) => {
+                courseCount++;
                 return (
-                  <div key={idx} className="w-[60vw] rounded-md shadow-md">
-                    <div className=" relative flex px-0 py-0 rounded-md xl:h-[115px]  ">
-                      <div className="bg-[#BCE8B1] flex py-1 item-center justify-center text-center text-[.8rem] lg:text-[1rem] w-[30%] lg:w-[20%] lg:p-5 rounded-l-sm lg:rounded-l-md">
-                        <p className="lg:font-medium TeamB_text-shadow h-[8vh] flex items-center  ">
+                  <div
+                    key={idx}
+                    className="w-[100%] lg:max-w-[60vw] rounded-md shadow-md ">
+                    <div className="relative flex px-0 py-0 rounded-md ">
+                      <div className="bg-[#BCE8B1] flex py-3 item-center justify-center text-center text-[.8rem] lg:text-[1rem] w-[30%] lg:w-[20%] lg:p-5 rounded-l-sm lg:rounded-l-md">
+                        <p className="flex items-center h-full lg:font-medium TeamB_text-shadow ">
                           {/* change to course_id for api connection */}
-                          PL00{course.course_id}
+                          CC00{courseCount}
                         </p>
                       </div>
-
                       <Link
                         to={`/teambcourseoverview/${course.course_id}`}
-                        className="text-white TeamB_text-shadow lg:font-bold text-[.8rem] py-1 lg:py-0 lg:text-[1.2rem] w-full flex justify-left px-3 items-center
+                        className="text-white TeamB_text-shadow line-clamp-1 lg:font-bold text-[.8rem] w-full py-1 lg:py-0 lg:text-[1.2rem] flex justify-left px-3 items-center
                             rounded-r-sm lg:rounded-r-md 	bg-[#126912]  ">
                         {/* change to course_title for api connection */}
-                        {course.course_title}
+                        <p className="w-[90%] line-clamp-1">
+                          {course.course_title}
+                        </p>
                       </Link>
 
                       <span
@@ -163,8 +237,9 @@ const CourseListCard = () => {
                 );
               })}
             </div>
-
-            {searchQuery === "" || filteredCourses.length >= 4 ? (
+            {courses.length < 4 ? (
+              <></>
+            ) : (
               <Stack spacing={2} className="">
                 <Pagination
                   count={npage}
@@ -172,27 +247,27 @@ const CourseListCard = () => {
                   onChange={handleChange}
                 />
               </Stack>
-            ) : null}
+            )}
             {/* onClick={() => setShowCreateCourse((prev) => !prev)} */}
-            <div className=" w-[100%]">
-              <div className=" h-[8vh]  flex w-[50%] m-auto lg:w-[80%]   items-center justify-center">
+            
+            <div className=" h-[8vh] flex w-[100%] m-auto lg:w-[50%]   items-center justify-center">
                 <div
-                  className="bg-[#BCE8B1] w-[10%] cursor-pointer  flex items-center justify-center h-[8vh]  rounded-l-sm lg:rounded-l-md"
+                  className="bg-[#BCE8B1] w-[10%] cursor-pointer  flex items-center justify-center  rounded-l-sm lg:rounded-l-md h-10"
                   onClick={() => setShowCreateCourse((prev) => !prev)}>
                   <span>
                     <IoAdd className="lg:text-[2rem] text-white" />
                   </span>
                 </div>
                 <div
-                  className="bg-[#126912] text-white lg:font-bold h-[8vh]  cursor-pointer
-                  w-[30%] 2xl:w-[50%] flex items-center justify-center rounded-r-sm  lg:rounded-r-md"
+                  className="bg-[#126912] text-white lg:font-bold cursor-pointer h-10
+                  w-[40%] md:w-[40%] lg:w-[30%]  flex items-center justify-center rounded-r-sm  lg:rounded-r-md"
                   onClick={() => setShowCreateCourse((prev) => !prev)}>
-                  <span className=" 2xl:text-[2rem] TeamB_text-shadow  ">
+                  <span className=" TeamB_text-shadow">
                     Add New Course
                   </span>
                 </div>
               </div>
-            </div>
+            
             <div className="absolute ">
               <div className="lg:w-[1080px] ">
                 {showCreateCourse && <CopyofCreateNewCourse />}
@@ -201,13 +276,6 @@ const CourseListCard = () => {
             {/*January 15 2024*/}
             {/*January 19 2024 -gem modify buttons add footer*/}
           </div>
-          <footer className="absolute bottom-10 flex justify-center w-[100%]">
-            <div className="">
-              <p className="text-[#4D9349] font-medium">
-                All Rights Reserved | Copyright 2024
-              </p>
-            </div>
-          </footer>
         </div>
         {/*January 19 2024 -gem modify buttons add footer*/}
       </div>

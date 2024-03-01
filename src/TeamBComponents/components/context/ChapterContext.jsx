@@ -1,17 +1,16 @@
-import axios from 'axios';
-import React, { createContext, useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import axios from 'axios'; // Importing Axios library for making HTTP requests
+import React, { createContext, useEffect, useState } from 'react' // Importing necessary components from React and react-router-dom
+import { useParams } from 'react-router-dom'; 
 
-export const ChapterContext = createContext();
+export const ChapterContext = createContext(); // Creating a new context for chapters
 
-const ChapterProvider = ({children}) => {
+const ChapterProvider = ({children}) => { // Defining the ChapterProvider component
   //react state for course api
-  const [chapters, setChapters] = useState([]);
+  const [chapters, setChapters] = useState([]); // React state for storing chapters
 
-  //hide and show create new course
-  const [ showChapter, setShowCreateChapter ] = useState(false);
+  const [ showChapter, setShowCreateChapter ] = useState(false); // State for controlling the visibility of create chapter component
 
-  return (
+  return (  // Returning the ChapterProvider component with its context
     <ChapterContext.Provider
       value={{
         chapters,
@@ -24,4 +23,5 @@ const ChapterProvider = ({children}) => {
   );
 }
 
-export default ChapterProvider
+export default ChapterProvider //Exporting ChapterProvider Component 
+//comments by: Judes 02-29-24
