@@ -202,7 +202,7 @@ const EditTopic = ({ topicId, courseTitle, chapterTitle }) => {
           </div>
 
           <Link
-            to=""
+            to="/AddQuiz"
             className=" relative w-[100%] h-[200px]  md:w-[50%]
            lg:w-[20vw] lg:h-[20vh] bg-[#fff] rounded-lg flex
            items-center justify-center cursor-pointer">
