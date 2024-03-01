@@ -75,7 +75,7 @@ const CourseTitleModal = ({ courseId, editTitle }) => {
             />
             <div className="flex justify-end w-full pt-8">
               <div className="flex gap-x-5">
-                <span className="  lg:text-[1rem]  py-2 " onClick={handleCancel}>
+                <span className="  lg:text-[1rem] py-2 cursor-pointer " onClick={handleCancel}>
                   Cancel
                 </span>
                 <button
