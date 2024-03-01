@@ -82,6 +82,7 @@ import Team_D_Verif_nonuser from "./TeamDComponents/Team_D_Verif_nonuser";
 import Team_D_Content from "./TeamDComponents/Team_D_Content";
 import Home from "./TeamAComponents/components/Home";
 import ForumDInstructor from "./TeamCComponents/pages/ForumDInstructor";
+import CertificateGenerator from "./TeamCComponents/pages/CertificateGenerator";
 
 function TeamIntegrationRoutes() {
   return (
@@ -149,12 +150,13 @@ function TeamIntegrationRoutes() {
 
 
           {/* Team D */}
-
+          <Route path="/CertGen" element={<CertificateGenerator/>}/>
           <Route path="/certificate" element={<Team_D_Content />} />
           <Route path="/landing" element={<Landing />} />
           <Route path="/viewCert" element={<Team_D_View />} />
           <Route path="/verification" element={<Team_D_Verification />} />
           <Route path="/verif_nonuser" element={<Team_D_Verif_nonuser />} />
+          
           <Route path="/about" element={<About />} />
           <Route
             path="*"
