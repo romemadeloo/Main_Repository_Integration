@@ -136,17 +136,11 @@ function TeamIntegrationRoutes() {
           <Route path="/AddQuiz" element={<AddQuiz />} />
           <Route path="/AssessmentQuiz" element={<AssessmentQuiz />} />
           <Route path="/ForumFInstructor" element={<ForumFInstructor />} />
-          <Route path="/quizform" element={<TeamC_QuizForm />} />
           <Route path="/forum_discussion" element={<ForumD />} />
-          <Route
-            path="/forum_discussion_instructor"
-            element={<ForumDInstructor />}
-          />
+          <Route path="/forum_discussion_instructor" element={<ForumDInstructor />}/>
           <Route path="/api/v1/auth/chapters/:id" element={<ChapterList />} />
-          <Route
-            path="/api/v1/auth/topics/:id"
-            element={<TeamC_Topics />}
-          />
+          <Route path="/api/v1/auth/topics/:id" element={<TeamC_Topics />} />
+          <Route path="/quizform" element={<TeamC_QuizForm />} />
 
 
           {/* Team D */}

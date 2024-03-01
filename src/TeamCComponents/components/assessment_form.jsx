@@ -1,3 +1,4 @@
+/* MAIN ASSESSMENT FORM */
 import { useLocation, Link } from "react-router-dom";
 import { useRef, useState } from "react";
 import { data } from "../data/quiz_content_data";
@@ -6,6 +7,7 @@ import '../css/quizform_style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function TeamC_AssessmentForm_Component() {
+  /* DISPLAY OF DATA BASED ON URL */
   const { pathname } = useLocation();
   let quizTitle = '';
   let descText = '';
