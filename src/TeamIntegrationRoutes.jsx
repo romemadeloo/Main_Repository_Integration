@@ -64,28 +64,20 @@ import TeamB_EditTopic from "./TeamBComponents/components/Topic/TopicPages/EditT
 import TeamC_Dashboard from "./TeamCComponents/pages/dashboard";
 import TeamC_Assessments from "./TeamCComponents/pages/assessment";
 import TeamC_Course from "./TeamCComponents/pages/course";
-import TeamC_QuizForm from "./TeamCComponents/pages/quizForm";
 import TeamA_NewPass from "./TeamAComponents/components/NewPass";
-import TeamC_QuizHtml1 from "./TeamCComponents/pages/quiz/quiz_html1";
-import TeamC_QuizSql1 from "./TeamCComponents/pages/quiz/quiz_sql1";
-import TeamC_QuizSvn1 from "./TeamCComponents/pages/quiz/quiz_svn1";
-import TeamC_QuizSql2 from "./TeamCComponents/pages/quiz/quiz_sql2";
-import TeamC_QuizSvn2 from "./TeamCComponents/pages/quiz/quiz_svn2";
-import TeamC_QuizHtml2 from "./TeamCComponents/pages/quiz/quiz_html2";
-import TeamC_QuizSql3 from "./TeamCComponents/pages/quiz/quiz_sql3";
-import TeamC_QuizSvn3 from "./TeamCComponents/pages/quiz/quiz_svn3";
-import TeamC_QuizHtml3 from "./TeamCComponents/pages/quiz/quiz_html3";
 import ForumF from "./TeamCComponents/pages/ForumF";
 import ForumFInstructor from "./TeamCComponents/pages/ForumFInstructor";
 import ForumD from "./TeamCComponents/pages/ForumD";
+
 import AssessmentSql from "./TeamCComponents/pages/quiz/assessment_sql";
 import AssessmentSvn from "./TeamCComponents/pages/quiz/assessment_svn";
 import AssessmentHtml from "./TeamCComponents/pages/quiz/assessment_html";
 import ChapterList from "./TeamCComponents/components/chapter_list";
 import TeamC_MainContent from "./TeamCComponents/components/course_maincontent";
+
 import AddQuiz from "./TeamCComponents/pages/AddQuiz";
-import AssessmentQuiz from "./TeamCComponents/pages/AssessmentQuiz";
-import Test from "./TeamCComponents/pages/test";
+import TeamC_Topics from "./TeamCComponents/pages/Topics";
+import TeamC_QuizForm from "./TeamCComponents/pages/quizForm";
 
 // team D
 import Team_D_View from "./TeamDComponents/Team_D_View";
@@ -136,6 +128,7 @@ function TeamIntegrationRoutes() {
             path="teambcreatenewcoursecopy"
             element={<TeamB_CreateNewCourseCopy />}
           />
+
           <Route path="teambtopicedit/:id" element={<TeamB_EditTopic />} />
 
           {/* TEAM C */}
@@ -172,6 +165,7 @@ function TeamIntegrationRoutes() {
           <Route path="/quiz_sql3" element={<TeamC_QuizSql3 />} />
           <Route path="/quiz_svn3" element={<TeamC_QuizSvn3 />} />
           <Route path="/quiz_html3" element={<TeamC_QuizHtml3 />} />
+
 
           {/* Team D */}
 
