@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const authToken = localStorage.getItem('authToken');
 
-      const response = await fetch('http://localhost:8085/api/v1/auth/logout', {
+      const response = await fetch('http://localhost:8080/api/v1/auth/logout', {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -50,7 +50,7 @@ export const AuthProvider = ({ children }) => {
     try {
       setLoading(true);
   
-      const response = await fetch('http://localhost:8085/api/v1/auth/signin', {
+      const response = await fetch('http://localhost:8080/api/v1/auth/signin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -97,9 +97,6 @@ export const AuthProvider = ({ children }) => {
       }
     } catch (error) {
       console.error('Unexpected error during login', error);
-  
-      console.log('Response status:', response?.status);
-      console.log('Response statusText:', response?.statusText);
   
       setError('An unexpected error occurred. Please try again later.');
     } finally {

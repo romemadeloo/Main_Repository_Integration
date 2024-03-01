@@ -61,7 +61,7 @@ const UserNavigation = ({ onUserDataFetched, openModal }) => {
 
         // Fetch user data using the user ID
         const response = await fetch(
-          `http://localhost:8085/api/v1/auth/users/${userId}`,
+          `http://localhost:8080/api/v1/auth/users/${userId}`,
           {
             method: "GET",
             headers: {

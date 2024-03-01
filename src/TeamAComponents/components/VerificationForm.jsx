@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import "../styles/Auth.css";
 
-function VerificationForm(openVerificationModal, openLoginModal,closeVerificationModal) {
+function VerificationForm({openVerificationModal, openLoginModal,closeVerificationModal}) {
   const [verification, setVerification] = useState('');
   const [verificationStatus, setVerificationStatus] = useState(null);
   const [resendStatus, setResendStatus] = useState(null);
@@ -39,7 +39,7 @@ function VerificationForm(openVerificationModal, openLoginModal,closeVerificatio
 
   const checkVerificationCodeExpiration = async (email) => {
     try {
-      const response = await fetch(`http://localhost:8085/api/v1/auth/checkCodeExpiration?email=${email}`);
+      const response = await fetch(`http://localhost:8080/api/v1/auth/checkCodeExpiration?email=${email}`);
 
       if (response.ok) {
         const { codeExpired, expirationTime } = await response.json();
@@ -79,7 +79,7 @@ function VerificationForm(openVerificationModal, openLoginModal,closeVerificatio
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:8085/api/v1/auth/verifyCode', {
+      const response = await fetch('http://localhost:8080/api/v1/auth/verifyCode', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -104,7 +104,7 @@ function VerificationForm(openVerificationModal, openLoginModal,closeVerificatio
     try {
       setResending(true);
   
-      const resendResponse = await fetch('http://localhost:8085/api/v1/auth/resendCode', {
+      const resendResponse = await fetch('http://localhost:8080/api/v1/auth/resendCode', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

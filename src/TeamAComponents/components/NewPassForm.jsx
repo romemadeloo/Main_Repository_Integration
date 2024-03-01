@@ -38,7 +38,7 @@ function NewPassForm({closeNewPassModal, openLoginModal}) {
       console.log('Password match! Submitting...');
 
       try {
-        const response = await fetch('http://localhost:8085/api/v1/auth/reset-password', {
+        const response = await fetch('http://localhost:8080/api/v1/auth/reset-password', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

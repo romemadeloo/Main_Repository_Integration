@@ -74,7 +74,7 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
       console.log('UserName:', userName);
       console.log('PhoneNumber:', phoneNumber);
 
-      const response = await fetch('http://localhost:8085/api/v1/auth/signup', {
+      const response = await fetch('http://localhost:8080/api/v1/auth/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -119,7 +119,7 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
 
   const checkEmailAvailability = async () => {
     try {
-      const response = await fetch('http://localhost:8085/api/v1/auth/check-email', {
+      const response = await fetch('http://localhost:8080/api/v1/auth/check-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -149,7 +149,7 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
   
   const checkUsernameAvailability = async () => {
     try {
-      const response = await fetch('http://localhost:8085/api/v1/auth/check-username', {
+      const response = await fetch('http://localhost:8080/api/v1/auth/check-username', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

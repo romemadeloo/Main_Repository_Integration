@@ -32,7 +32,7 @@ function ProfileEditForm({ handleClose }) {
                 return;
             }
 
-            const response = await fetch(`http://localhost:8085/api/v1/auth/users/${userId}`, {
+            const response = await fetch(`http://localhost:8080/api/v1/auth/users/${userId}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -125,7 +125,7 @@ const handleInputChange = (e, isFile = false) => {
       formData.append('userId', userId);
       formData.append('file', updateData.profilePicture);
 
-      const response = await fetch(`http://localhost:8085/api/v1/auth/upload-pp`, {
+      const response = await fetch(`http://localhost:8080/api/v1/auth/upload-pp`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${authToken}`,
@@ -167,7 +167,7 @@ const handleInputChange = (e, isFile = false) => {
 
         // Add more fields as needed
 
-        const response = await fetch(`http://localhost:8085/api/v1/auth/update/${userId}`, {
+        const response = await fetch(`http://localhost:8080/api/v1/auth/update/${userId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

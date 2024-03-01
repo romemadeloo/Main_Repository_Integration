@@ -21,7 +21,7 @@ function ForgotForm({openNewPassModal, closeForgotModal, openLoginModal}) {
   const sendForgotCode = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`http://localhost:8085/api/v1/auth/forgot-password?email=${email}`, {
+      const response = await fetch(`http://localhost:8080/api/v1/auth/forgot-password?email=${email}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -52,7 +52,7 @@ function ForgotForm({openNewPassModal, closeForgotModal, openLoginModal}) {
 
   const resendForgotCode = async () => {
     try {
-      const response = await fetch(`http://localhost:8085/api/v1/auth/resendCode`, {
+      const response = await fetch(`http://localhost:8080/api/v1/auth/resendCode`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ function ForgotForm({openNewPassModal, closeForgotModal, openLoginModal}) {
 
   const verifyOtp = async (otp) => {
     try {
-      const response = await fetch(`http://localhost:8085/api/v1/auth/verify-forgot-code?email=${email}&code=${otp}`, {
+      const response = await fetch(`http://localhost:8080/api/v1/auth/verify-forgot-code?email=${email}&code=${otp}`, {
         method: 'GET',
       });
   
