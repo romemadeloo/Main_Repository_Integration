@@ -100,6 +100,9 @@ const Team_D_HeaderV2 = () => {
                 <NavDropdown.Item href="assessment" activeClassName="active">
                   Assessment
                 </NavDropdown.Item>
+                <NavDropdown.Item href="/CertGen" activeClassName="active">
+                  Get Certification
+                </NavDropdown.Item>
               </NavDropdown>
             </li>
             <li>
