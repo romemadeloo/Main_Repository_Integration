@@ -3,9 +3,11 @@
 import React, { useState, useEffect } from "react"; // Importing necessary modules
 import axios from "axios";
 
-const ChapterModal = ({ chapterId, editTitle }) => { // Functional component accepting props
+const ChapterModal = ({ chapterId, editTitle }) => {
+  // Functional component accepting props
   //state for topics
-  const [chapters, setChapters] = useState({ // Using useState hook to manage state
+  const [chapters, setChapters] = useState({
+    // Using useState hook to manage state
     chapter_title: "",
   });
 
@@ -14,18 +16,21 @@ const ChapterModal = ({ chapterId, editTitle }) => { // Functional component acc
   //   setChapters({ ...chapters, [e.target.name]: e.target.value });
   // };
 
-  const handleInputChange = (e) => { // Function to handle input change
+  const handleInputChange = (e) => {
+    // Function to handle input change
     const { name, value } = e.target;
     const capitalizedValue = value.charAt(0).toUpperCase() + value.slice(1); // Capitalize first letter
     setChapters({ ...chapters, [name]: capitalizedValue });
   };
 
-  useEffect(() => { // useEffect hook for fetching data on component mount
+  useEffect(() => {
+    // useEffect hook for fetching data on component mount
     loadChapters();
   }, []);
 
-  const handleSubmit = async (e) => { // Function to handle form submission
- 
+  const handleSubmit = async (e) => {
+    // Function to handle form submission
+
     // Assuming your API call is successful, update the state to indicate form submission
 
     try {
@@ -38,20 +43,20 @@ const ChapterModal = ({ chapterId, editTitle }) => { // Functional component acc
       console.error("Error submitting form:", error); // Log error if API call fails
       // Handle error if the API call fails
     }
-
-    
   };
 
-  const loadChapters = async () => { // Function to fetch chapter data
+  const loadChapters = async () => {
+    // Function to fetch chapter data
     const result = await axios.get(
       `http://localhost:8080/api/v1/auth/chapter/${chapterId}`
     );
     setChapters(result.data); // Set loaded chapters to state
   };
 
-  const handleCancel = () => { // Function to handle cancellation
+  const handleCancel = () => {
+    // Function to handle cancellation
     // Implement your cancel logic here
-    editTitle((prev) => !prev); // Toggle editTitle state 
+    editTitle((prev) => !prev); // Toggle editTitle state
   };
   console.log(chapter_title); // Logging chapter_title
 
@@ -80,10 +85,10 @@ const ChapterModal = ({ chapterId, editTitle }) => { // Functional component acc
               }}
               required
             />
-            <div className="flex align-middle text-center justify-end w-full pt-8">
+            <div className="flex justify-end w-full pt-8 text-center align-middle">
               <div className="flex gap-x-5">
                 <span
-                  className=" xl:text-[24px] py-2 lg:text-[1rem]"
+                  className=" xl:text-[24px] py-2 lg:text-[1rem] cursor-pointer"
                   onClick={handleCancel}>
                   Cancel
                 </span>
