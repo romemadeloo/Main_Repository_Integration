@@ -68,13 +68,8 @@ import TeamA_NewPass from "./TeamAComponents/components/NewPass";
 import ForumF from "./TeamCComponents/pages/ForumF";
 import ForumFInstructor from "./TeamCComponents/pages/ForumFInstructor";
 import ForumD from "./TeamCComponents/pages/ForumD";
-
-import AssessmentSql from "./TeamCComponents/pages/quiz/assessment_sql";
-import AssessmentSvn from "./TeamCComponents/pages/quiz/assessment_svn";
-import AssessmentHtml from "./TeamCComponents/pages/quiz/assessment_html";
 import ChapterList from "./TeamCComponents/components/chapter_list";
 import TeamC_MainContent from "./TeamCComponents/components/course_maincontent";
-
 import AddQuiz from "./TeamCComponents/pages/AddQuiz";
 import TeamC_Topics from "./TeamCComponents/pages/Topics";
 import TeamC_QuizForm from "./TeamCComponents/pages/quizForm";
@@ -146,26 +141,11 @@ function TeamIntegrationRoutes() {
             path="/forum_discussion_instructor"
             element={<ForumDInstructor />}
           />
-          <Route path="/assessment_sql" element={<AssessmentSql />} />
-          <Route path="/assessment_svn" element={<AssessmentSvn />} />
-          <Route path="/assessment_html" element={<AssessmentHtml />} />
           <Route path="/api/v1/auth/chapters/:id" element={<ChapterList />} />
           <Route
             path="/api/v1/auth/topics/:id"
-            element={<TeamC_MainContent />}
+            element={<TeamC_Topics />}
           />
-          <Route path="/topic" element={<Test />} />
-
-          {/* QUIZ LIST */}
-          <Route path="/quiz_sql1" element={<TeamC_QuizSql1 />} />
-          <Route path="/quiz_svn1" element={<TeamC_QuizSvn1 />} />
-          <Route path="/quiz_html1" element={<TeamC_QuizHtml1 />} />
-          <Route path="/quiz_sql2" element={<TeamC_QuizSql2 />} />
-          <Route path="/quiz_svn2" element={<TeamC_QuizSvn2 />} />
-          <Route path="/quiz_html2" element={<TeamC_QuizHtml2 />} />
-          <Route path="/quiz_sql3" element={<TeamC_QuizSql3 />} />
-          <Route path="/quiz_svn3" element={<TeamC_QuizSvn3 />} />
-          <Route path="/quiz_html3" element={<TeamC_QuizHtml3 />} />
 
 
           {/* Team D */}
