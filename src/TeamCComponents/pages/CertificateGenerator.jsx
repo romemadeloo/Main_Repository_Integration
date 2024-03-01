@@ -284,11 +284,11 @@ const CertificateGenerator = () => {
         <h1>COURSE ASSESMENT</h1>
         <div>
           <p>
-            Click sumbit button to finish the assessment and get Certified on
+            Click submit button to finish the assessment and get Certified on
             this Course
           </p>
         </div>
-        <button onClick={generateCertificate}>Sumbit</button>
+        <button onClick={generateCertificate}>Submit</button>
       </div>
     </>
   );
