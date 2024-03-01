@@ -2,14 +2,17 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import "./TeamD_Css/navbar.css";
 import TsukidenLogo from "./TeamD_Assets/TsukidenLogo.png";
+import Profile from "./TeamD_Assets/profilepic.jpg";
 import Dropdown from "react-bootstrap/Dropdown";
 import { FaRegUserCircle } from "react-icons/fa";
 import { TbCertificate } from "react-icons/tb";
 import { FiLogOut } from "react-icons/fi";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import ForumF from './../TeamCComponents/pages/ForumF';
 import { useAuth } from "../TeamAComponents/components/AuthContext";
+import "../TeamAComponents/styles/Auth.css";
 
-// Function to get user image type from TeamA
+// Function to get user image type
 function getUserImageType(profilePicture) {
   // Check if profilePicture is defined and not null
   if (profilePicture && profilePicture.startsWith) {
@@ -31,36 +34,22 @@ function getUserImageType(profilePicture) {
   }
 }
 
-// Team_D_HeaderV2 component represents the header section of the website
-const Team_D_HeaderV2 = ({ onUserDataFetched, openModal }) => { //TeamA added { onUserDataFetched, openModal }
+const Team_D_HeaderV2 = ({ onUserDataFetched, openModal }) => {
   const [clicked, setClicked] = useState(false);
-  //TeamA addition
-  const [userData, setUserData] = useState({});
   const { isLoggedIn, handleLogout } = useAuth();
+  const [clicked, setClicked] = useState(false);
+  const [userData, setUserData] = useState({});
+  const [showLogoutConfirmationModal, setShowLogoutConfirmationModal] = useState(false);
+  const navigate = useNavigate(); // Use useNavigate instead of useHistory
 
-  // Function to handle the click event to toggle mobile navbar
   const handleClick = () => {
     setClicked(!clicked);
   };
 
-  // Function to close the mobile navbar
   const closeMobileNavbar = () => {
     setClicked(false);
     setMyCourseActive(false);
   };
-
-  // Add or remove the 'no-scroll' class based on the 'clicked' state
-  useEffect(() => {
-    if (clicked) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-
-    return () => {
-      document.body.style.overflow = ""; // Cleanup on component unmount
-    };
-  }, [clicked]);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -119,17 +108,64 @@ const Team_D_HeaderV2 = ({ onUserDataFetched, openModal }) => { //TeamA added { 
     fetchUserData();
   }, [onUserDataFetched]);
 
+  useEffect(() => {
+    if (clicked) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [clicked]);
+
+  const openLogoutConfirmationModal = () => {
+    setShowLogoutConfirmationModal(true);
+  };
+
+  const handleConfirmLogout = () => {
+    handleLogout();
+    setShowLogoutConfirmationModal(false);
+    navigate("/"); // Use navigate function to redirect
+  };
+
+  const handleCloseLogoutConfirmationModal = () => {
+    setShowLogoutConfirmationModal(false);
+  };
+
+  const handleOverlayClick = (event) => {
+    if (event.target.classList.contains('logoutmodal-overlay')) {
+      setShowLogoutConfirmationModal(false);
+    }
+  };
+
+  const reloadPage = () => {
+    window.location.reload();
+  };
+
+  // Add or remove the 'no-scroll' class based on the 'clicked' state
+  useEffect(() => {
+    if (clicked) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = ""; // Cleanup on component unmount
+    };
+  }, [clicked]);
+
   return (
     <>
       <nav className="navbar_TeamD">
-        <NavLink to="/" onClick={closeMobileNavbar}>
+        <NavLink  onClick={() => { closeMobileNavbar(); reloadPage(); }}>
           <img src={TsukidenLogo} alt="Logo" />
         </NavLink>
         <div>
-          {/* Navbar links */}
-          <ul id="navbar" className={clicked ? "active" : ""}>
-          {/*Added connection to fetch profile picture from TeamA*/}
-          <li className="profile_info">
+        <ul id="navbar" className={clicked ? "active" : ""}>
+            <li className="profile_info">
               <span className="profile_info_con">
                 <img src={`data:image/${getUserImageType(userData.profilePicture)};base64,${userData.profilePicture}`} alt="Logo" />
                 <span className="profile_info_name">
@@ -137,9 +173,8 @@ const Team_D_HeaderV2 = ({ onUserDataFetched, openModal }) => { //TeamA added { 
                 </span>
               </span>
             </li>
-            {/* Profile link */}
             <li className="profile_link">
-            <NavLink
+              <NavLink
                 to="/profile"
                 activeClassName="active"
                 onClick={closeMobileNavbar}
@@ -147,27 +182,25 @@ const Team_D_HeaderV2 = ({ onUserDataFetched, openModal }) => { //TeamA added { 
                 Profile
               </NavLink>
             </li>
-            {/* Certificate link */}
             <li className="profile_link">
               <NavLink
                 to="/certificate"
                 activeClassName="active"
                 onClick={closeMobileNavbar}
               >
-                Certificate
+                My Certificate
               </NavLink>
             </li>
             <li className="divider"></li>
-            {/* Dashboard link */}
+            {/* Navigation Links */}
             <li>
               <NavLink
-                to="/TeamCdashboard"
+                to="/TeamCDashboard"
                 activeClassName="active"
                 onClick={closeMobileNavbar}
               >
                 Dashboard
               </NavLink>
-              {/* My Course dropdown */}
             </li>
             <li>
               <NavDropdown
@@ -176,17 +209,18 @@ const Team_D_HeaderV2 = ({ onUserDataFetched, openModal }) => { //TeamA added { 
                 menuVariant="dark"
                 className="mycourse_dd"
               >
-                <NavDropdown.Item href="/course" activeClassName="active">
+                <NavDropdown.Item href="course" activeClassName="active">
                   Program Overview
                 </NavDropdown.Item>
-                <NavDropdown.Item href="/assessment" activeClassName="active">
+                <NavDropdown.Item href="assessment" activeClassName="active">
                   Assessment
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/CertGen" activeClassName="active">
+                  Get Certification
                 </NavDropdown.Item>
               </NavDropdown>
             </li>
-            {/* Forums link */}
             <li>
-              {/* this is the forum */}
               <NavLink
                 to="/ForumF"
                 activeClassName="active"
@@ -195,7 +229,6 @@ const Team_D_HeaderV2 = ({ onUserDataFetched, openModal }) => { //TeamA added { 
                 Forums
               </NavLink>
             </li>
-            {/* Verification link */}
             <li>
               <NavLink
                 to="/verification"
@@ -205,26 +238,31 @@ const Team_D_HeaderV2 = ({ onUserDataFetched, openModal }) => { //TeamA added { 
                 Verification
               </NavLink>
             </li>
+            {/* Log Out Link */}
+            <li className="profile_link">
+              <NavLink
+                to="/landing"
+                activeClassName="active"
+                onClick={closeMobileNavbar}
+              >
+                <span className="teamD_LogOut_Btn">Log Out</span>
+              </NavLink>
+            </li>
           </ul>
         </div>
-        {/* Mobile toggle */}
+        {/* Mobile Menu */}
         <div id="mobile" onClick={handleClick}>
           {clicked ? (
             <i className="fas fa-times"></i>
           ) : (
-            
-            <img
-            src={`data:image/${getUserImageType(userData.profilePicture)};base64,${userData.profilePicture}`}
-            alt="Logo"
-            className="mobile_profile" //Added snippet to fetch profile picture
-          />
+            <img src={Profile} alt="Logo" className="mobile_profile" />
           )}
         </div>
-        {/* Profile dropdown */}
+        {/* Profile Dropdown */}
         <div className="profile_side">
-          <Dropdown>
-            {/*Added snippet to fetch profile picture*/}
-          <Dropdown.Toggle
+          {isLoggedIn ? (
+            <Dropdown>
+              <Dropdown.Toggle
                 variant="success"
                 id="dropdown-basic"
                 className="button_profile"
@@ -237,32 +275,49 @@ const Team_D_HeaderV2 = ({ onUserDataFetched, openModal }) => { //TeamA added { 
                 Hi, {userData.firstName}!
               </Dropdown.Toggle>
 
-            <Dropdown.Menu>
-              <Dropdown.Item
-                as={NavLink}
-                to="#"
-                onClick={() => {
-                  openModal();
-                }}
-              >
-                <FaRegUserCircle /> Profile
-              </Dropdown.Item>
-              <Dropdown.Item
-                as={NavLink}
-                to="/certificate"
-                onClick={closeMobileNavbar}
-              >
-                <TbCertificate /> My Certificate
-              </Dropdown.Item>
-              <Dropdown.Item as={NavLink} to="/" onClick={closeMobileNavbar}>
-                <FiLogOut /> Log Out
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
+              <Dropdown.Menu>
+                <Dropdown.Item href="#" onClick={openModal}>
+                  <FaRegUserCircle /> Profile
+                </Dropdown.Item>
+                <Dropdown.Item
+                  as={NavLink}
+                  to="/certificate"
+                  onClick={closeMobileNavbar}
+                >
+                  <TbCertificate /> My Certificate
+                </Dropdown.Item>
+                <Dropdown.Item onClick={openLogoutConfirmationModal}>
+                  <FiLogOut /> Log Out
+                </Dropdown.Item>
+              </Dropdown.Menu>
+              </Dropdown>
+          ) : (
+            <>
+              <Link to="/register">
+                <button id="register">Register</button>
+              </Link>
+              <Link to="/login">
+                <button id="login">Log In</button>
+              </Link>
+            </>
+          )}
         </div>
       </nav>
+      {showLogoutConfirmationModal && (
+        <div className="logoutmodal-overlay" onClick={handleOverlayClick}>
+          <div className="logoutmodal">
+            <h2>Logout Confirmation</h2>
+            <p>Are you sure you want to log out?</p>
+            <div>
+              <button onClick={handleConfirmLogout}>Yes</button>
+              <button onClick={handleCloseLogoutConfirmationModal}>Cancel</button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };
 
-export default Team_D_HeaderV2; // Export the Team_D_HeaderV2 component
+
+export default Team_D_HeaderV2;
