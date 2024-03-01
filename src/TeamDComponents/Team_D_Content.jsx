@@ -64,7 +64,7 @@ const Team_D_Content = () => {
     try {
       // Replace 'apiEndpoint' with your actual API endpoint to fetch PDF file names
       const response = await fetch(
-        "http://localhost:8080/api/v1/auth/myCertification/2"
+        "http://localhost:8080/api/certifications/myCertification/3"
       );
       const data = await response.json();
       if (data) {
@@ -82,7 +82,7 @@ const Team_D_Content = () => {
 
     // Filter certificates based on the search term
     const filtered = pdfFileNames.filter((cert) =>
-      cert.finalScore.enrollment.course.course_title.toLowerCase().includes(searchTermLower)
+      cert.quizTaken.quiz.course.title.toLowerCase().includes(searchTermLower)
     );
 
     // Set the filtered certificates in the state
@@ -104,7 +104,7 @@ const handleClearSearch = () => {
       searchTerm.trim() === ""
         ? pdfFileNames // If search term is empty, display all certificates
         : pdfFileNames.filter((pdfFile) =>
-            pdfFile.finalScore.enrollment.course.course_title
+            pdfFile.quizTaken.quiz.course.title
               .toLowerCase()
               .includes(searchTerm.toLowerCase())
           );
@@ -121,7 +121,7 @@ const handleClearSearch = () => {
       const newEnableViewButtons = [];
       const newOverlayVisibilities = [];
       const newDisableViewButtons = [];
-      console.log(pdfFileNames);
+
       for (let i = 0; i < pdfFileNames.length; i++) {
         const pdfPath = `/PDF/${pdfFileNames[i].certificate_file}`; // Assuming certificate_file contains the path to the PDF
         try {
@@ -438,7 +438,7 @@ const handleClearSearch = () => {
                     to="/viewCert"
                     state={{
                       pdfName: pdfFile.certificate_file,
-                      courseTitle: pdfFile.finalScore.enrollment.course.course_title
+                      courseTitle: pdfFile.quizTaken.quiz.course.title
                     }}
                     id={`viewLink_${index}`}
                   >
@@ -467,7 +467,7 @@ const handleClearSearch = () => {
                           to="/viewCert"
                           state={{
                             pdfName: pdfFile.certificate_file,
-                            courseTitle: pdfFile.finalScore.enrollment.course.course_title
+                            courseTitle: pdfFile.quizTaken.quiz.course.title
                           }}
                         >
                           <OverlayTrigger placement="top" overlay={viewTooltip}>
@@ -513,7 +513,7 @@ const handleClearSearch = () => {
               </div>
               {/* Display course title */}
               <p className="TeamD_certificate_courseTitle">
-                {pdfFile.finalScore.enrollment.course.course_title}
+                {pdfFile.quizTaken.quiz.course.title}
               </p>
             </div>
           ))
