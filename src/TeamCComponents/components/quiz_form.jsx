@@ -77,7 +77,7 @@ function TeamC_QuizForm_Component() {
       }
     }
   }
-
+  {/* FOR THE NEXT BUTTON */}
   const next = () => {
     if (lock === false) {
       // Check if the user's answer for the current question is correct and update the score
@@ -116,6 +116,7 @@ function TeamC_QuizForm_Component() {
 
   return (
     <>
+    {/* BACK BUTTON HERE */}
       <Link to={goBack} className="buttonReturn d-flex align-items-center c_chapter_returncontainer" style={{ textDecoration: 'none', color: 'black', width: 'fit-content', }}>
         <div className="d-flex align-items-center" style={{ marginTop: '1rem' }}>
           <div>
@@ -128,16 +129,14 @@ function TeamC_QuizForm_Component() {
         </div>
       </Link>
 
-      {/* Main layout */}
+      {/* MAIN LAYOUT */}
       {quiz.map((chap, idx) => {
-                    const { quiz_description, quiz_title} = chap
-                    console.log(quiz)
-                    return (<>
+      const { quiz_description, quiz_title} = chap
+      console.log(quiz)
+      return (<>
       <main className="c_chapcourse_mainlayout" key={idx} style={{ marginTop: '1.5rem', marginLeft: '10rem', marginRight: '10rem' }}>
 
-        {/* Start of Topic Container */}
-        
-
+        {/* START OF TOPIC CONTAINER */}
         <div>
 
           <div className="container" key ={idx}>
@@ -162,6 +161,7 @@ function TeamC_QuizForm_Component() {
                   {/* QUIZ QUESTIONS GOES HERE */}
                   <div id="quizContainer" style={{ marginTop: '2.5rem', marginBottom: '2.5rem', marginLeft: '2.5rem', marginRight: '2.5rem', }}>
                     <div className="quizItemList" style={{ textAlign: 'left', fontWeight: 'bold' }}>
+
                       {result ? <></> : <>
                         <p>{index + 1}. {question.question}</p>
                         <ul>
@@ -173,6 +173,7 @@ function TeamC_QuizForm_Component() {
                         <button onClick={next} className="btn-success" style={{ width: '5rem', borderRadius: '0.5rem' }}>Next</button>
                         <div className="index">{index + 1} of {data.length} questions.</div>
                       </>}
+
                       {result ? (
                         <>
                           <p>You scored {score} out of {data.length}</p>
@@ -201,7 +202,11 @@ function TeamC_QuizForm_Component() {
                             RESET
                           </button>
                         </>
-                      ) : (<></>)}
+                      ) : 
+                      
+                      (<></>)
+                      
+                      }
 
                     </div>
                   </div>
