@@ -178,6 +178,7 @@ const CertificateGenerator = () => {
         align: "left"
       });
 
+      
       const startDate = new Date(creditHours);
 
       // Calculate the time difference in milliseconds
