@@ -1,5 +1,6 @@
 import React from 'react';
 import LoginForm from './LoginForm';
+import Dashboard from './Dashboard';
 import { Link } from "react-router-dom";
 import "../styles/Auth.css";
 
