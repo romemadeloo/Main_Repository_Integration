@@ -8,7 +8,6 @@ function Forgot({ onNavigateHome, onForgotPassword, openNewPassModal, closeForgo
 
   return (
     <div className="forgot-container">
-        <div className="container-under">
         <div className="forgot-auth-label">
         <h1 style={{ color: 'white', fontSize: '25px'}}>RETRIEVE ACCOUNT</h1>
 
@@ -18,7 +17,6 @@ function Forgot({ onNavigateHome, onForgotPassword, openNewPassModal, closeForgo
         <div className="forgot-sign">
         <ForgotForm openNewPassModal={openNewPassModal} closeForgotModal={closeForgotModal} openLoginModal={openLoginModal}/>
         </div>
-      </div>
       </div>
     </div>
   );
