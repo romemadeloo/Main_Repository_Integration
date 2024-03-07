@@ -126,7 +126,7 @@ function NewPassForm({closeNewPassModal, openLoginModal}) {
           <span style={{ color: 'red', fontSize: '14px', marginTop: '15px', display: 'block' }}>{newPasswordError}</span>
         )}
 
-        <button type="submit" className="TeamA-button" style={{ marginTop: '10px' }}>Confirm</button>
+        <button className="TeamA-button" style={{ marginTop: '10px' }}>Confirm</button>
       </form>
 
       <div className="email-panels-container">
