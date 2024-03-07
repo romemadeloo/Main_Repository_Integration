@@ -71,6 +71,7 @@ export const AuthProvider = ({ children }) => {
           updateLocalStorage('firstName', data.firstName);
           updateLocalStorage('lastName', data.lastName);
           updateLocalStorage('email', data.email);
+          updateLocalStorage('username', data.userName);
   
           setLoggedIn(true);
           setError(null);

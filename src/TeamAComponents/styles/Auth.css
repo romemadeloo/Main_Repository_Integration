@@ -53,16 +53,23 @@ background-color: gray;
 }
 
 .home-header {
-  background-color: #D9FFCF;  /* Set the background color of .home-header to a specific shade of green (#D9FFCF) */
-  padding: 10px;   /* Add padding around the content inside .home-header */
-  height: 70px;   /* Set the height of .home-header to 70px */
-  text-align: center;   /* Center-align the text content within .home-header */
-  display: flex;   /* Use flexbox for layout within .home-header */
-  justify-content: space-between;    /* Distribute space evenly between items along the main axis */
-  align-items: center;  /* Align items at the center along the cross axis */ 
-  margin: 0;    /* Remove margin from .home-header */
+  background-color: #D9FFCF;
+  padding: 10px;
+  height: 70px;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
 }
 
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .home-header {
+      flex-direction: column;
+      height: auto;
+  }
+}
 
 .left-container {
   display: flex;   /* Use flexbox for layout within .left-container */
@@ -183,24 +190,37 @@ background-color: gray;
 }
 
 .label-container {
-  /* Use flexbox to center items horizontally within the container */
- display: flex;  
- justify-content: center;
+  display: flex;
+  justify-content: center;
+}
 
-} 
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .label-container {
+      flex-direction: column;
+      align-items: center;
+  }
+}
 
-.container-under
-{
-  /* Use flexbox to arrange items in a column and align them to the start */
+
+.container-under {
   display: flex;
   flex-direction: column;
   align-items: start;
-
 }
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .container-under {
+      align-items: center;
+  }
+}
+
 
 .auth-label {
   height: 60px;  /* Set the height of the element to 60 pixels */
-  width: 400px;  /* Set the width of the element to 400 pixels */
+  width: 90%;   /* Set the width to 90% to make it responsive */
+  max-width: 400px;  /* Set the maximum width of the element to 400 pixels */
   border-radius: 5px 5px 0px 0px;   /* Apply border-radius to create rounded corners (top-left: 5px, top-right: 5px, bottom-left: 0px, bottom-right: 0px) */
   background-color: #126912;  /* Set the background color to #126912 */
   
@@ -208,9 +228,18 @@ background-color: gray;
   display: flex;  
   justify-content: center;
   align-items: center;
-
-
+  margin: 0 auto; /* Center the element horizontally */
+  margin-left: -1px;
 }
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .auth-label {
+      width: 90%;  /* Adjust width for smaller screens */
+  }
+}
+
+
 
 
 /* Landing Page Nav-Bar */
@@ -251,10 +280,9 @@ background-color: gray;
   margin: 0;  /* Remove any margin to ensure elements are positioned consistently */
 }
 
-
-
-.template-form{
-  width: 700px;   /* Set the width to 700px */
+.template-form {
+  width: 100%;   /* Set the width to 100% to make it responsive */
+  max-width: 700px;   /* Set the maximum width to 700px */
   margin: 0 auto;  /* Center the element horizontally using auto margin */
   background-color: #BCE8B1;  /* Set the background color to #BCE8B1 */
   padding: 20px;  /* Add padding of 20px */
@@ -263,16 +291,29 @@ background-color: gray;
 }
 
 .template-form input {
-  width: 400px;  /* Set the width to 400px for the input field */
+  width: 100%;  /* Set the width to 100% for the input field to make it responsive */
   padding: 20px;  /* Add padding of 20px for inner spacing within the input field */
   height: 45px;  /* Set the height to 45px for the input field */
   margin-bottom: 15px;  /* Add margin at the bottom to create space between input fields */
-  font-size: 16px;/* Set the font size to 16px for better readability */
+  font-size: 16px; /* Set the font size to 16px for better readability */
   border: 1px solid #ccc; /* Input border color */
   border-radius: 5px;   /* Add border-radius for rounded corners */
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.05);  /* Add a subtle box shadow for a slight visual effect */
   text-align: left;  /* Align text to the left within the input field */
 }
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .template-form {
+      padding: 10px; /* Reduce padding for smaller screens */
+  }
+  
+  .template-form input {
+      padding: 15px; /* Reduce padding for smaller screens */
+      font-size: 14px; /* Reduce font size for smaller screens */
+  }
+}
+
 
 .template-form h2 {
   color: #4D4141;  /* Set the text color to #4D4141 */
@@ -319,9 +360,29 @@ background-color: gray;
 
 /* New styles for Forgot.jsx form */
 .forgot-container {
-    /* Center the content horizontally */
-text-align: center; 
+  /* Center the content horizontally */
+  text-align: center;
+  width: 700px; /* Set the width to 90% of the viewport width */
+  max-width: 700px; /* Set a maximum width of 700px */
+margin-left: -30px;
 }
+
+@media (max-width: 768px) {
+  /* Adjust styles for smaller screens (tablets) */
+  .forgot-container {
+      width: 80%; /* Adjust width for tablets */
+      margin-left: 0; /* Reset margin-left */
+  }
+}
+
+@media (max-width: 576px) {
+  /* Adjust styles for even smaller screens (phones) */
+  .forgot-container {
+      width: 90%; /* Adjust width for phones */
+      margin-left: 0; /* Reset margin-left */
+  }
+}
+
 
 .forgottext{
   /* Add margin at the top for spacing */
@@ -461,21 +522,32 @@ input::placeholder{
   text-align: left;  /* Align placeholder text to the left */
 }
 
-.group_input  {
-  width: 400px;  /* Set width of the group */
+.group_input {
+  width: 100%;  /* Set width of the group to 100% to make it responsive */
+  max-width: 400px;  /* Set maximum width of the group to 400px */
   display: flex;  /* Use flexbox for layout */
-  flex-direction: row;  /* Arrange elements in a row */
+  flex-direction: column;  /* Arrange elements in a column on smaller screens */
   margin-top: 20px;  /* Set top margin */
-
 }
 
 .group_input select {
-  width:  6rem;  /* Set width of the select dropdown */
-  height: 3rem;  /* Set height of the select dropdown */
-  margin-bottom: px;  
-  border-radius: 5px;/* Apply border-radius to create rounded corners */
-  height: 45px;  /* Set the height again, might want to remove one of these declarations */
+  width: 100%;  /* Set width of the select dropdown to 100% to make it responsive */
+  height: 45px;  /* Set height of the select dropdown */
+  margin-bottom: 10px;  /* Add margin at the bottom */
+  border-radius: 5px;  /* Apply border-radius to create rounded corners */
 }
+
+/* Responsive adjustments */
+@media screen and (min-width: 768px) {
+  .group_input {
+      flex-direction: row;  /* Arrange elements in a row on larger screens */
+  }
+  
+  .group_input select {
+      width: 150px;  /* Set a fixed width for select dropdowns on larger screens */
+  }
+}
+
 
 /* Email and Code Verifictaion */
 
@@ -521,23 +593,47 @@ input::placeholder{
   display: flex;
   flex-direction: column;
   align-items: center;
-  align-items: center;
-  width: 400px;
+  width: 90%; /* Set the width to 90% of the viewport width */
+  max-width: 400px; /* Set a maximum width of 400px */
   height: 30px;
-  margin-top: 20px;
+  margin: 20px auto; /* Center the element horizontally and add margin top and bottom */
+}
+
+@media (max-width: 768px) {
+  /* Adjust styles for smaller screens (tablets) */
+  .email-input-field {
+    width: 80%; /* Adjust width for tablets */
+  }
+}
+
+@media (max-width: 576px) {
+  /* Adjust styles for even smaller screens (phones) */
+  .email-input-field {
+    width: 90%; /* Adjust width for phones */
+  }
 }
 
 
 
 .email-input-field input {
-  width: 300px;
-  margin-left:10px;
+  width: 90%; /* Set the width to 90% for responsiveness */
+  max-width: 300px; /* Set the maximum width to 300px */
+  margin-left: auto;
+  margin-right: auto; /* Center the input horizontally */
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
   text-align: center;
 }
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .email-input-field input {
+    width: 90%; /* Adjust width for smaller screens */
+  }
+}
+
 
 .email-button {
   padding: 10px 20px;
@@ -599,7 +695,7 @@ input::placeholder{
   justify-content: center;
   align-items: center;
   flex-direction: column; /* Center align items vertically */
-  margin-top: 50px;
+  margin-top: 20px;
   
 }
 
@@ -1406,33 +1502,6 @@ input::placeholder{
   }
 }
 
-/* styles.css */
-
-.wBackbutton {
-  cursor: pointer;   /* Set the cursor to a pointer when hovering, indicating it is clickable */
-  display: inline-block;   /* Display the button as an inline block */
-  padding: 10px;   /* Add padding around the content inside the button */
-  color: #fff;   /* Set the text color to white */
-  border: none;   /* Remove any borders from the button */
-  border-radius: 5px;   /* Apply rounded corners with a radius of 5 pixels */
-  transition: background-color 0.3s ease;   /* Add a smooth transition effect on the background color over 0.3 seconds */
-  background-color:#126912;    /* Set the background color to a specific shade of green (#126912) */
-  position: absolute;   /* Set the position to absolute, allowing precise placement within its containing element */
-  top: 10px;   /* Position the button 10 pixels from the top of its containing element */
-  left: 10px;    /* Position the button 10 pixels from the left of its containing element */
-}
-
-.wBackbutton:hover{
-background-color: gray;
-}
-
-/* Responsive styles */
-@media only screen and (max-width: 600px) {
-  .wBackbutton {
-    width: auto; /* Reset width to auto for smaller screens */
-    margin-bottom: 10px; /* Adjust spacing for smaller screens */
-  }
-}
 .center-text {
   text-align: center;
 }
@@ -1526,24 +1595,6 @@ background-color: gray;
   margin-left: 100px;   /* Add a left margin of 100 pixels, creating space between this container and the element on its left */
   font-family: 'Inter, sans-serif';   /* Use the 'Inter' font family for text inside the container, falling back to sans-serif if 'Inter' is not available */
 }
-
-/* .text-container h1 {
-  margin-bottom: 1em;
-  font-weight: 900;
-
-}
-
-.text-container h2 {
-  margin-bottom: 1em;
-  font-weight: 900;
-
-} */
-
-/* para hindi dumikit sa gilid */
-/* .image-container {
-  flex: 1;
-  text-align: right;
-} */
 
 .image-container img {
   width: 400px;
@@ -1816,20 +1867,37 @@ strong{
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left:-90px;
-  width: 700px;   /* Set the width to 700px */
-  margin: 0 auto;  /* Center the element horizontally using auto margin */
-  background-color: #BCE8B1;  /* Set the background color to #BCE8B1 */
-  padding: 20px;  /* Add padding of 20px */
-  border-radius: 5px;  /* Add border-radius for rounded corners */
-  position: relative;  /* Set*/
-  margin-left: -70px;
+  width: 100%; /* Set the width to 90% of the viewport width */
+  max-width: 700px; /* Set a maximum width of 700px */
+  margin: 0 auto; /* Center the element horizontally using auto margin */
+  background-color: #BCE8B1; /* Set the background color to #BCE8B1 */
+  padding: 20px; /* Add padding of 20px */
+  border-radius: 5px; /* Add border-radius for rounded corners */
+  position: relative;
+  margin-left: 0; /* Reset the margin-left */
   padding-bottom: 50px;
 }
 
+@media (max-width: 768px) {
+  /* Adjust styles for smaller screens (tablets) */
+  .forgot-template-form {
+    padding: 15px; /* Reduce padding on smaller screens */
+    margin-left: 0; /* Reset the margin-left */
+  }
+}
+
+@media (max-width: 576px) {
+  /* Adjust styles for even smaller screens (phones) */
+  .forgot-template-form {
+    padding: 10px; /* Further reduce padding on phones */
+    margin-left: 0; /* Reset the margin-left */
+  }
+}
+
+
 .forgot-auth-label {
   height: 60px;  /* Set the height of the element to 60 pixels */
-  width: 400px;  /* Set the width of the element to 400 pixels */
+  width: 300px;  /* Set the width of the element to 400 pixels */
   border-radius: 5px 5px 0px 0px;   /* Apply border-radius to create rounded corners (top-left: 5px, top-right: 5px, bottom-left: 0px, bottom-right: 0px) */
   background-color: #126912;  /* Set the background color to #126912 */
   
@@ -1837,19 +1905,62 @@ strong{
   display: flex;  
   justify-content: center;
   align-items: center;
-  margin-left: -70px;
-
-
+  margin-left:0px;
 }
 
-.forgot-auth-labelh1 {
-  font-size: 24px;
-    font-weight: 400;
-    color: white;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    margin: 0;
+.forgot-auth-label {
+  height: 60px;
+  width: 90%; /* Set the width to 90% of the viewport width */
+  max-width: 300px; /* Set a maximum width of 400px */
+  border-radius: 5px 5px 0px 0px;
+  background-color: #126912;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: -30px;
+}
+
+@media (max-width: 768px) {
+  /* Adjust styles for smaller screens (tablets) */
+  .forgot-auth-label {
+      width: 80%; /* Adjust width for tablets */
+      margin-left: 0; /* Reset margin-left */
+  }
+}
+
+@media (max-width: 576px) {
+  /* Adjust styles for even smaller screens (phones) */
+  .forgot-auth-label {
+      width: 90%; /* Adjust width for phones */
+      margin-left: 0; /* Reset margin-left */
+  }
 }
 .lower {
-  margin-top:25px;
+  margin-top:35px;
   
+}
+.wBackbutton {
+  cursor: pointer;   /* Set the cursor to a pointer when hovering, indicating it is clickable */
+  display: inline-block;   /* Display the button as an inline block */
+  padding: 10px;   /* Add padding around the content inside the button */
+  color: #fff;   /* Set the text color to white */
+  border: none;   /* Remove any borders from the button */
+  border-radius: 5px;   /* Apply rounded corners with a radius of 5 pixels */
+  transition: background-color 0.3s ease;   /* Add a smooth transition effect on the background color over 0.3 seconds */
+  background-color:#126912;    /* Set the background color to a specific shade of green (#126912) */
+  position: absolute;   /* Set the position to absolute, allowing precise placement within its containing element */
+  top: 10px;   /* Position the button 10 pixels from the top of its containing element */
+  left: 10px;    /* Position the button 10 pixels from the left of its containing element */
+}
+
+.wBackbutton:hover{
+background-color: gray;
+}
+
+/* Responsive styles */
+@media only screen and (max-width: 600px) {
+  .wBackbutton {
+    width: auto; /* Reset width to auto for smaller screens */
+    margin-bottom: 10px; /* Adjust spacing for smaller screens */
+  }
 }

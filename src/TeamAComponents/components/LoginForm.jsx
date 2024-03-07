@@ -27,7 +27,7 @@ function LoginForm({ openForgotModal, closeLoginModal }) {
       
       if (result.success) {
         console.log('Login successful'); // Add this line for debugging
-        navigate('/dashboard');
+        navigate('/teamcdashboard');
       } else {
         setError('Invalid email or password. Please try again.');
       }
