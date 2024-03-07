@@ -291,7 +291,7 @@ background-color: gray;
 }
 
 .template-form input {
-  width: 100%;  /* Set the width to 100% for the input field to make it responsive */
+  width: 77%;  /* Set the width to 100% for the input field to make it responsive */
   padding: 20px;  /* Add padding of 20px for inner spacing within the input field */
   height: 45px;  /* Set the height to 45px for the input field */
   margin-bottom: 15px;  /* Add margin at the bottom to create space between input fields */
