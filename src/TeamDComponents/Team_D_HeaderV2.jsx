@@ -8,10 +8,24 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { TbCertificate } from "react-icons/tb";
 import { FiLogOut } from "react-icons/fi";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import ForumF from './../TeamCComponents/pages/ForumF';
+import ForumF from "./../TeamCComponents/pages/ForumF";
+import { useAuth } from "../TeamAComponents/components/AuthContext";
 
 const Team_D_HeaderV2 = () => {
   const [clicked, setClicked] = useState(false);
+  const { isLoggedIn, handleLogout } = useAuth();
+  const value = localStorage.getItem('username');
+  const firstname = localStorage.getItem('firstName');
+  const lastname = localStorage.getItem('lastName');
+  const email = localStorage.getItem('email');
+
+  if (value !== null) {
+    // Value exists, you can use it
+    console.log("User is online!");
+  } else {
+    // Value does not exist
+    console.log('Value not found for the specified key.');
+  }
 
   const handleClick = () => {
     setClicked(!clicked);
@@ -42,7 +56,12 @@ const Team_D_HeaderV2 = () => {
   return (
     <>
       <nav className="navbar_TeamD">
-        <NavLink  onClick={() => { closeMobileNavbar(); reloadPage(); }}>
+        <NavLink
+          onClick={() => {
+            closeMobileNavbar();
+            reloadPage();
+          }}
+        >
           <img src={TsukidenLogo} alt="Logo" />
         </NavLink>
         <div>
@@ -52,8 +71,8 @@ const Team_D_HeaderV2 = () => {
               <span className="profile_info_con">
                 <img src={Profile} alt="Logo" />
                 <span className="profile_info_name">
-                  <p className="profile_fName">Joshua Allada</p>
-                  <p className="profile_email">jallada.@tgsi.com.ph</p>
+                  <p className="profile_fName">{firstname + " " + lastname}</p>
+                  <p className="profile_email">{email}</p>
                 </span>
               </span>
             </li>
@@ -126,9 +145,11 @@ const Team_D_HeaderV2 = () => {
             {/* Log Out Link */}
             <li className="profile_link">
               <NavLink
-                to="/landing"
+                to="/"
                 activeClassName="active"
-                onClick={closeMobileNavbar}
+                onClick={() => {
+                  handleLogout();
+                }}
               >
                 <span className="teamD_LogOut_Btn">Log Out</span>
               </NavLink>
@@ -152,7 +173,7 @@ const Team_D_HeaderV2 = () => {
               className="button_profile"
             >
               <img src={Profile} alt="" className="profile_img" />
-              Hi, JALLADA!
+              Hi, {value}!
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
@@ -170,7 +191,9 @@ const Team_D_HeaderV2 = () => {
               <Dropdown.Item
                 as={NavLink}
                 to="/"
-                onClick={closeMobileNavbar}
+                onClick={() => {
+                  handleLogout();
+                }}
               >
                 <FiLogOut /> Log Out
               </Dropdown.Item>

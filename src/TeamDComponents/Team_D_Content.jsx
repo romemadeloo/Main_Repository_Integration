@@ -32,9 +32,18 @@ const Team_D_Content = () => {
   const [overlayVisibilities, setOverlayVisibilities] = useState([]);
   const [disableViewButtons, setDisableViewButtons] = useState([]);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 769); // Check if the viewport width is less than 769
+  const value = localStorage.getItem('userId');
 
-  // State to store the search term
-  const [searchTerm, setSearchTerm] = useState(
+  if (value !== null) {
+    // Value exists, you can use it
+    console.log("User is online!");
+  } else {
+    // Value does not exist
+    console.log('Value not found for the specified key.');
+  }
+
+   // State to store the search term
+   const [searchTerm, setSearchTerm] = useState(
     localStorage.getItem("searchTerm") || ""
   );
 
@@ -64,7 +73,7 @@ const Team_D_Content = () => {
     try {
       // Replace 'apiEndpoint' with your actual API endpoint to fetch PDF file names
       const response = await fetch(
-        "http://localhost:8080/api/certifications/myCertification/3"
+        "http://localhost:8080/api/v1/auth/myCertification/2"
       );
       const data = await response.json();
       if (data) {
@@ -82,7 +91,7 @@ const Team_D_Content = () => {
 
     // Filter certificates based on the search term
     const filtered = pdfFileNames.filter((cert) =>
-      cert.quizTaken.quiz.course.title.toLowerCase().includes(searchTermLower)
+      cert.finalScore.enrollment.course.course_title.toLowerCase().includes(searchTermLower)
     );
 
     // Set the filtered certificates in the state
@@ -104,7 +113,7 @@ const handleClearSearch = () => {
       searchTerm.trim() === ""
         ? pdfFileNames // If search term is empty, display all certificates
         : pdfFileNames.filter((pdfFile) =>
-            pdfFile.quizTaken.quiz.course.title
+            pdfFile.finalScore.enrollment.course.course_title
               .toLowerCase()
               .includes(searchTerm.toLowerCase())
           );
@@ -121,7 +130,7 @@ const handleClearSearch = () => {
       const newEnableViewButtons = [];
       const newOverlayVisibilities = [];
       const newDisableViewButtons = [];
-
+      console.log(pdfFileNames);
       for (let i = 0; i < pdfFileNames.length; i++) {
         const pdfPath = `/PDF/${pdfFileNames[i].certificate_file}`; // Assuming certificate_file contains the path to the PDF
         try {
@@ -438,7 +447,7 @@ const handleClearSearch = () => {
                     to="/viewCert"
                     state={{
                       pdfName: pdfFile.certificate_file,
-                      courseTitle: pdfFile.quizTaken.quiz.course.title
+                      courseTitle: pdfFile.finalScore.enrollment.course.course_title
                     }}
                     id={`viewLink_${index}`}
                   >
@@ -467,7 +476,7 @@ const handleClearSearch = () => {
                           to="/viewCert"
                           state={{
                             pdfName: pdfFile.certificate_file,
-                            courseTitle: pdfFile.quizTaken.quiz.course.title
+                            courseTitle: pdfFile.finalScore.enrollment.course.course_title
                           }}
                         >
                           <OverlayTrigger placement="top" overlay={viewTooltip}>
@@ -513,7 +522,7 @@ const handleClearSearch = () => {
               </div>
               {/* Display course title */}
               <p className="TeamD_certificate_courseTitle">
-                {pdfFile.quizTaken.quiz.course.title}
+                {pdfFile.finalScore.enrollment.course.course_title}
               </p>
             </div>
           ))
