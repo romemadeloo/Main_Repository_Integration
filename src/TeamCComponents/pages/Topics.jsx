@@ -8,7 +8,7 @@ function TeamC_Topics () {
         <>
         <Team_D_HeaderV2 />
         <SidebarC/>
-        <Component_MainContent />
+        {/* <Component_MainContent /> */}
         
         </>
     )
