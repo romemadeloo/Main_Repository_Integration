@@ -8,19 +8,16 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
   const [lastName, setLastName] = useState('');
   const [userName, setUserName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [role, setRole] = useState(''); // Default to 'STUDENT'
+  const [role, setRole] = useState('STUDENT');
   const [error, setError] = useState('');
-  const [showError, setShowError] = useState(false);
   const [phoneNumberError, setPhoneNumberError] = useState('');
-  const [verificationCodeSent, setVerificationCodeSent] = useState(false);  
+  const [showError, setShowError] = useState(false);
+  const [verificationCodeSent, setVerificationCodeSent] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const [loading, setLoading] = useState(false); // Loading state
 
   const navigate = useNavigate();
 
-  const handleProceed = () => {
-    navigate('/verify');
-  };
+ 
 
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -30,21 +27,23 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
   const validatePassword = (password) => {
     const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{8,}$/;
     const isValid = passwordRegex.test(password);
-    setError(isValid ? '' : 'Password must be at least 8 characters with at least 1 uppercase, 1 numeric, and 1 symbol.');
+    const errors = [];
+
+    if (!/(?=.*[A-Z])/.test(password)) {
+      errors.push('Password must contain at least one uppercase letter.');
+  }
+  if (!/(?=.*\d)/.test(password)) {
+      errors.push('Password must contain at least one numeric digit.');
+  }
+  if (!/(?=.*[!@#$%^&*()_+])/.test(password)) {
+      errors.push('Password must contain at least one special character.');
+  }
+  if (password.length < 8) {
+      errors.push('Password must be at least 8 characters.');
+  }
+
+    setError(errors.join(' ')); // Display errors as a whole phrase
     return isValid;
-  };
-
-  const handlePhoneNumberChange = (e) => {
-    const enteredPhoneNumber = e.target.value;
-    setPhoneNumber(enteredPhoneNumber);
-
-    // Validate the phone number format
-    const phoneNumberRegex = /^09\d{9}$/;
-    const isValidPhoneNumber = phoneNumberRegex.test(enteredPhoneNumber);
-
-    setPhoneNumberError(
-      isValidPhoneNumber ? '' : 'Please enter a valid 11-digit phone number starting with "09".'
-    );
   };
 
   const handleRoleChange = (e) => {
@@ -59,37 +58,28 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
   const handleRegister = async (e) => {
     e.preventDefault();
 
+    // Validate email and password
     if (!validateEmail(email) || !validatePassword(password)) {
       return;
     }
 
-    setLoading(true); // Set loading state to true
-
     try {
       const mappedRole = role === 'INSTRUCTOR' ? 'INSTRUCTOR' : 'STUDENT';
-      console.log('Selected Role:', role);
-      console.log('Mapped role:', mappedRole);
-
-      console.log('Email:', email);
-      console.log('Password:', password);
-      console.log('FirstName:', firstName);
-      console.log('LastName:', lastName);
-      console.log('UserName:', userName);
-      console.log('PhoneNumber:', phoneNumber);
 
       const response = await fetch('http://localhost:8080/api/v1/auth/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ 
-          email, 
-          password, 
-          firstName, 
-          lastName, 
-          userName, 
-          phoneNumber, 
-          role: mappedRole }),
+        body: JSON.stringify({
+          email,
+          password,
+          firstName,
+          lastName,
+          userName,
+          phoneNumber,
+          role: mappedRole
+        }),
       });
 
       if (response.ok) {
@@ -111,8 +101,6 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
     } catch (error) {
       console.error('Error during registration:', error);
       setError('Registration failed. Please try again.');
-    } finally {
-      setLoading(false); // Set loading state to false
     }
   };
 
@@ -123,6 +111,13 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
   };
 
   const checkEmailAvailability = async () => {
+    // Check if the email field is filled
+    if (!email.trim()) {
+      setShowError(false); // Reset showError state if email field is empty
+      setError(''); // Reset error state
+      return;
+    }
+  
     try {
       const response = await fetch('http://localhost:8080/api/v1/auth/check-email', {
         method: 'POST',
@@ -153,6 +148,13 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
   };
   
   const checkUsernameAvailability = async () => {
+    // Check if the username field is filled
+    if (!userName.trim()) {
+      setShowError(false); // Reset showError state if username field is empty
+      setError(''); // Reset error state
+      return;
+    }
+  
     try {
       const response = await fetch('http://localhost:8080/api/v1/auth/check-username', {
         method: 'POST',
@@ -182,118 +184,127 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
     }
   };
   
-
+  const handlePhoneNumberChange = (e) => {
+    const enteredPhoneNumber = e.target.value;
+    // Remove any non-numeric characters from the entered phone number
+    const cleanedPhoneNumber = enteredPhoneNumber.replace(/\D/g, '');
+    setPhoneNumber(cleanedPhoneNumber);
+  
+    // Validate the phone number format
+    const phoneNumberRegex = /^09\d{9}$/;
+    const isValidPhoneNumber = phoneNumberRegex.test(cleanedPhoneNumber);
+  
+    if (cleanedPhoneNumber.length === 11 && isValidPhoneNumber) {
+      setPhoneNumberError('');
+      setShowError(false); // Reset showError state
+    } else {
+      setPhoneNumberError('Please enter a valid 11-digit phone number starting with "09".');
+      setShowError(true);
+    }
+  };
+  
   return (
-    <div className="register-form-container"> {/* Container for the entire form */}
-    <form onSubmit={handleRegister} className="template-form">
-      <Link to="/">
-        <div className="qBackbutton">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-left" viewBox="0 0 16 16">
-            <path fillRule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
-          </svg>
-        </div>
-      </Link>
-      <h2>Sign up an account.</h2>
-      <h2>Be part of the success.</h2>
+    <div className="register-form-container">
+      <form onSubmit={handleRegister} className="template-form">
+        <h2>Sign up an account.</h2>
+        <h2>Be part of the success.</h2>
+       
+        <div className="group_input">
+          <input
+            type="text"
+            id="username"
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
+            onBlur={checkUsernameAvailability}
+            placeholder={`Username (${role === 'Admin' ? 'Admin' : role})`}
+            required
+          />
 
-      <div className="group_input">
+          <select
+            id="Role"
+            value={role}
+            onChange={handleRoleChange}
+          >
+            <option value="STUDENT">Student</option>
+            <option value="INSTRUCTOR">Instructor</option>
+          </select>
+        </div>
         <input
           type="text"
-          id="username"
-          value={userName}
-          onChange={(e) => setUserName(e.target.value)}
-          onBlur={checkUsernameAvailability}
-          placeholder={`Username (${role === 'Admin' ? 'Admin' : role})`}
+          id="FirstName"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+          placeholder="First Name"
           required
         />
-
-        <select
-          id="Role"
-          value={role}
-          onChange={handleRoleChange}
-        >
-          <option value="STUDENT">Student</option>
-          <option value="INSTRUCTOR">Instructor</option>
-        </select>
-      </div>
-      <input
-        type="text"
-        id="FirstName"
-        value={firstName}
-        onChange={(e) => setFirstName(e.target.value)}
-        placeholder="First Name"
-        required
-      />
-      <input
-        type="text"
-        id="lastName"
-        value={lastName}
-        onChange={(e) => setLastName(e.target.value)}
-        placeholder="Last Name"
-        required
-      />
-      <input
-        type="email"
-        id="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        onBlur={checkEmailAvailability}
-        placeholder="Email Address"
-        required
-      />
-      <input
-        type="tel"
-        id="phoneNumber"
-        value={phoneNumber}
-        onChange={handlePhoneNumberChange}
-        placeholder="Phone Number"
-        required
-      />
-      <input
-        type="password"
-        id="password"
-        value={password}
-        onChange={handlePasswordChange}
-        onKeyPress={handleKeyPress}
-        placeholder="Password"
-        required
-      />
-      <div className="data-validation">
-        {showError && (
-          <label style={{ color: 'red', fontSize: '15px', fontWeight: '700', transition: 'color 0.3s' }}>
-            {error}
-          </label>
-        )}
-        {phoneNumberError && (
-          <label style={{ color: 'red', fontSize: '15px', fontWeight: '700', transition: 'color 0.3s' }}>
-            {phoneNumberError}
-          </label>
-        )}
-      </div>
-      <div>
-        <h3 style={{ fontSize: '15px' }}>By clicking Sign up you agree to our Terms of Use and our Privacy Policy.</h3>
-      </div>
-      <div className="existing-account" onClick={() => {
-          openLoginModal(); // Open login modal
-          closeRegisterModal(); // Close register modal
-        }}> {/* Using openLoginModal function */}
-        Already have an account?
-      </div>
-      <button className="TeamA-button" style={{ backgroundColor: '#126912' }} disabled={loading}>
-        {loading ? 'Loading...' : 'Sign Up'}
-          </button>
-    </form>
-    {showSuccessMessage && (
-      <React.Fragment>
-        <div className="modal-overlay"></div>
-        <div className="success-popup">
-          <p>Registration Successful. Verification Code Sent to Email.</p>
-          <button onClick={handleProceed}>Proceed</button>
+        <input
+          type="text"
+          id="lastName"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+          placeholder="Last Name"
+          required
+        />
+        <input
+          type="email"
+          id="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          onBlur={checkEmailAvailability}
+          placeholder="Email Address"
+          required
+        />
+        <input
+          type="tel"
+          id="phoneNumber"
+          value={phoneNumber}
+          onChange={handlePhoneNumberChange}
+          placeholder="Phone Number"
+          required
+        />
+        <input
+          type="password"
+          id="password"
+          value={password}
+          onChange={handlePasswordChange}
+          onKeyPress={handleKeyPress}
+          placeholder="Password"
+          required
+        />
+        <div className="data-validation">
+          {showError && (
+            <label style={{ color: 'red', fontSize: '15px', fontWeight: '700', transition: 'color 0.3s' }}>
+              {error}
+            </label>
+          )}
+          {phoneNumberError && (
+            <label style={{ color: 'red', fontSize: '15px', fontWeight: '700', transition: 'color 0.3s' }}>
+              {phoneNumberError}
+            </label>
+          )}
         </div>
-      </React.Fragment>
-    )}
-  </div>
+        <div>
+        </div>
+          <h3 style={{ fontSize: '15px' }}>By clicking Sign up you agree to our Terms of Use and our Privacy Policy.</h3>
 
+        <div className="existing-account" onClick={() => {
+            openLoginModal(); // Open login modal
+            closeRegisterModal(); // Close register modal
+          }}>
+          Already have an account?
+        </div>
+        <button className="TeamA-button" style={{ backgroundColor: showError ? '#999999' : '#126912' }} disabled={showError}>Sign Up</button>
+      </form>
+      {showSuccessMessage && (
+        <React.Fragment>
+          <div className="modal-overlay"></div>
+          <div className="success-popup">
+            <p>Registration Successful. Verification Code Sent to Email.</p>
+            <button onClick={handleProceed}>Proceed</button>
+          </div>
+        </React.Fragment>
+      )}
+    </div>
   );
 }
 

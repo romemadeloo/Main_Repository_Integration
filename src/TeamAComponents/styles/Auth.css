@@ -362,9 +362,9 @@ background-color: gray;
 .forgot-container {
   /* Center the content horizontally */
   text-align: center;
-  width: 700px; /* Set the width to 90% of the viewport width */
+  width: 600px; /* Set the width to 90% of the viewport width */
   max-width: 700px; /* Set a maximum width of 700px */
-margin-left: -30px;
+margin-left: -10px;
 }
 
 @media (max-width: 768px) {
@@ -1895,18 +1895,7 @@ strong{
 }
 
 
-.forgot-auth-label {
-  height: 60px;  /* Set the height of the element to 60 pixels */
-  width: 300px;  /* Set the width of the element to 400 pixels */
-  border-radius: 5px 5px 0px 0px;   /* Apply border-radius to create rounded corners (top-left: 5px, top-right: 5px, bottom-left: 0px, bottom-right: 0px) */
-  background-color: #126912;  /* Set the background color to #126912 */
-  
-  /* Use flexbox to center items both horizontally and vertically within the container */
-  display: flex;  
-  justify-content: center;
-  align-items: center;
-  margin-left:0px;
-}
+
 
 .forgot-auth-label {
   height: 60px;
@@ -1917,7 +1906,7 @@ strong{
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: -30px;
+  margin-left: -10px;
 }
 
 @media (max-width: 768px) {
