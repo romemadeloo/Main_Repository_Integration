@@ -17,8 +17,6 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
 
   const navigate = useNavigate();
 
- 
-
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
@@ -31,16 +29,16 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
 
     if (!/(?=.*[A-Z])/.test(password)) {
       errors.push('Password must contain at least one uppercase letter.');
-  }
-  if (!/(?=.*\d)/.test(password)) {
+    }
+    if (!/(?=.*\d)/.test(password)) {
       errors.push('Password must contain at least one numeric digit.');
-  }
-  if (!/(?=.*[!@#$%^&*()_+])/.test(password)) {
+    }
+    if (!/(?=.*[!@#$%^&*()_+])/.test(password)) {
       errors.push('Password must contain at least one special character.');
-  }
-  if (password.length < 8) {
+    }
+    if (password.length < 8) {
       errors.push('Password must be at least 8 characters.');
-  }
+    }
 
     setError(errors.join(' ')); // Display errors as a whole phrase
     return isValid;
@@ -117,7 +115,7 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
       setError(''); // Reset error state
       return;
     }
-  
+
     try {
       const response = await fetch('http://localhost:8080/api/v1/auth/check-email', {
         method: 'POST',
@@ -126,7 +124,7 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
         },
         body: JSON.stringify({ email }),
       });
-  
+
       if (response.ok) {
         console.log('Email is available');
         setError(''); // Reset error state
@@ -146,7 +144,7 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
       setShowError(true);
     }
   };
-  
+
   const checkUsernameAvailability = async () => {
     // Check if the username field is filled
     if (!userName.trim()) {
@@ -154,7 +152,7 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
       setError(''); // Reset error state
       return;
     }
-  
+
     try {
       const response = await fetch('http://localhost:8080/api/v1/auth/check-username', {
         method: 'POST',
@@ -163,7 +161,7 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
         },
         body: JSON.stringify({ username: userName }),
       });
-  
+
       if (response.ok) {
         console.log('Username is available');
         setError(''); // Reset error state
@@ -183,17 +181,17 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
       setShowError(true);
     }
   };
-  
+
   const handlePhoneNumberChange = (e) => {
     const enteredPhoneNumber = e.target.value;
     // Remove any non-numeric characters from the entered phone number
     const cleanedPhoneNumber = enteredPhoneNumber.replace(/\D/g, '');
     setPhoneNumber(cleanedPhoneNumber);
-  
+
     // Validate the phone number format
     const phoneNumberRegex = /^09\d{9}$/;
     const isValidPhoneNumber = phoneNumberRegex.test(cleanedPhoneNumber);
-  
+
     if (cleanedPhoneNumber.length === 11 && isValidPhoneNumber) {
       setPhoneNumberError('');
       setShowError(false); // Reset showError state
@@ -202,13 +200,13 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
       setShowError(true);
     }
   };
-  
+
   return (
     <div className="register-form-container">
       <form onSubmit={handleRegister} className="template-form">
         <h2>Sign up an account.</h2>
         <h2>Be part of the success.</h2>
-       
+
         <div className="group_input">
           <input
             type="text"
@@ -285,12 +283,12 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
         </div>
         <div>
         </div>
-          <h3 style={{ fontSize: '15px' }}>By clicking Sign up you agree to our Terms of Use and our Privacy Policy.</h3>
+        <h3 style={{ fontSize: '15px' }}>By clicking Sign up you agree to our Terms of Use and our Privacy Policy.</h3>
 
         <div className="existing-account" onClick={() => {
-            openLoginModal(); // Open login modal
-            closeRegisterModal(); // Close register modal
-          }}>
+          openLoginModal(); // Open login modal
+          closeRegisterModal(); // Close register modal
+        }}>
           Already have an account?
         </div>
         <button className="TeamA-button" style={{ backgroundColor: showError ? '#999999' : '#126912' }} disabled={showError}>Sign Up</button>
