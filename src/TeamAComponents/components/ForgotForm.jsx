@@ -159,13 +159,7 @@ function ForgotForm({openNewPassModal, closeForgotModal, openLoginModal}) {
                {loading ? 'Loading...' : 'Continue'}
               </button>
               {resendStatus && <p className="error-message">{resendStatus}</p>}
-              <p>
-                {resending ? 'Resending verification code...' : (
-                  <a href="#" className="resend-link" onClick={resendForgotCode}>
-                    Resend Code
-                  </a>
-                )}
-              </p>
+            
               </div>
             </>
           )}

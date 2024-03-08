@@ -14,6 +14,7 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
   const [phoneNumberError, setPhoneNumberError] = useState('');
   const [verificationCodeSent, setVerificationCodeSent] = useState(false);  
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [loading, setLoading] = useState(false); // Loading state
 
   const navigate = useNavigate();
 
@@ -62,6 +63,8 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
       return;
     }
 
+    setLoading(true); // Set loading state to true
+
     try {
       const mappedRole = role === 'INSTRUCTOR' ? 'INSTRUCTOR' : 'STUDENT';
       console.log('Selected Role:', role);
@@ -108,6 +111,8 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
     } catch (error) {
       console.error('Error during registration:', error);
       setError('Registration failed. Please try again.');
+    } finally {
+      setLoading(false); // Set loading state to false
     }
   };
 
@@ -274,7 +279,9 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
         }}> {/* Using openLoginModal function */}
         Already have an account?
       </div>
-      <button className="TeamA-button" style={{ backgroundColor: '#126912' }}>Sign Up</button>
+      <button className="TeamA-button" style={{ backgroundColor: '#126912' }} disabled={loading}>
+        {loading ? 'Loading...' : 'Sign Up'}
+          </button>
     </form>
     {showSuccessMessage && (
       <React.Fragment>
