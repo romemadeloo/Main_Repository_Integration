@@ -29,7 +29,7 @@ function TeamC_ChapterSvn() {
       <Team_D_HeaderV2 />
       <div className="container mt-5 mx-auto" id="c_course_maincontainer">
         {/* Program Overview Title */}
-        <h2 className="text-center mb-4" style={{ fontWeight: 'bold', fontSize: '2rem' }}>Program Overview</h2>
+        <h2 className="text-center mb-4" id="progovv">Program Overview</h2>
         <hr />
 
        {chapters.map((chapter, idx) => {

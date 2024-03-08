@@ -27,7 +27,8 @@ function TeamC_Assessments() {
     <Fragment>
       <Team_D_HeaderV2 />
       <div className="container mt-5 mx-auto">
-        <p className="text-left mb-4" style={{ fontSize: '2rem' }}>ASSESSMENTS</p>
+        <p className="text-center mb-3" id="assessmentlabel">Assessments</p>
+        <hr />
         {chapters.map((chapter, index) => (
         <Link to='/assessment_sql'>
         <div className="card mb-3" id="c_assessment_courses" style={{ borderRadius: '15px', backgroundColor: '#bce8b1' }}>
