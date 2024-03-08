@@ -172,7 +172,7 @@ function VerificationForm({openVerificationModal, openLoginModal,closeVerificati
               {resending ? (
                 <p>Resending verification code...</p>
               ) : (
-                <button  type="submit" className="TeamA-button">
+                <button  className="TeamA-button">
                   Send
           </button>
               )}
