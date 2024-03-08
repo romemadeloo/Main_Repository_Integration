@@ -32,6 +32,10 @@
     max-height: 100%; /* Sets maximum height to 100% */
     box-sizing: border-box; /* Includes border and padding in the element's total width and height */
   }
+
+  #c_preview_courseprev{
+    font-size: 2.5rem; /* Sets the font size of the Course Preview*/
+  }
   
   #c_preview_headerTitle {
     font-size: 2.5rem; /* Sets the font size of the header title */
@@ -152,6 +156,16 @@
     right: 10%;
     margin: 20px;
   }
+
+  #progovv{
+    font-weight: bold;
+    font-size: 2rem;
+  }
+
+  #assessmentlabel{
+    font-weight: bold;
+    font-size: 2rem;
+  }
   
   /* LARGE DESKTOP */
   /* For screens with a maximum width of 1024px */
@@ -174,6 +188,19 @@
     #c_maincontent_textcontainer {
       font-size: 18px; /* Adjusts font size of text container in main content */
     }
+
+    #c_preview_headerTitle{
+      font-size: 15px;
+    }
+    #c_preview_headerSub{
+      font-size: 19px;
+    }
+
+    #c_dashboard_header {
+      background-color: #bce8b1; /* Sets background color for dashboard header */
+      max-height: 100px;
+    }
+
   }
   
   /* For typical laptops with a maximum width of 992px */
@@ -199,6 +226,18 @@
       width: 7rem; /* Sets width of course tag */
       height: 4rem; /* Sets height of course tag */
     }
+
+    #c_dashboard_header {
+      background-color: #bce8b1; /* Sets background color for dashboard header */
+      max-height: 100px;
+    }
+
+    #c_preview_headerTitle{
+      font-size: 19px;
+    }
+    #c_preview_headerSub{
+      font-size: 24px;
+    }
   }
   
   /* TYPICAL TABLET */
@@ -218,7 +257,7 @@
   
     #c_dashboard_header {
       background-color: #bce8b1; /* Sets background color for dashboard header */
-      max-height: 300px;
+      max-height: 100px;
     }
   
     #c_course_cardbody {
@@ -249,6 +288,23 @@
       width: 300px;
       margin-right: 70px;
     }
+
+    #c_preview_headerTitle{
+      font-size: 15px;
+    }
+    #c_preview_headerSub{
+      font-size: 19px;
+    }
+
+    #progovv{
+      margin-top: -25px;
+      font-size: 20px;
+    }
+
+    #assessmentlabel{
+      margin-top: -25px;
+      font-size: 30px;
+    }
   }
   
   /* TYPICAL SMARTPHONE */
@@ -263,10 +319,6 @@
       align-items: center; /* Aligns items to the center */
       max-height: 100%; /* Sets maximum height to 100% */
       margin-left: 80px;
-    }
-    #c_dashboard_header {
-      background-color: #bce8b1; /* Sets background color for dashboard header */
-      max-height: 300px;
     }
   
     #c_course_cardbody {
@@ -323,6 +375,129 @@
   
     .modal-content {
       margin-top: 400px;
+    }
+
+    #c_dashboard_header {
+      background-color: #bce8b1; /* Sets background color for dashboard header */
+      max-height: 100px;
+    }
+
+    #c_preview_courseprev{
+      font-size: 1.5rem; /* Sets the font size of the Course Preview*/
+      margin-top: -50px;
+    }
+
+    #c_preview_headerTitle{
+      font-size: 14px;
+    }
+    #c_preview_headerSub{
+      font-size: 17px;
+    }
+
+    #progovv{
+      margin-top: -25px;
+      font-size: 20px;
+    }
+
+    #assessmentlabel{
+      margin-top: -25px;
+      font-size: 30px;
+    }
+  }
+
+  @media only screen and (max-width: 260px) {
+    .mobile_profile {
+      margin-right: 1px;
+    }
+  
+    #c_cardpreview_cardouter {
+      display: flex; /* Changes display to flex layout */
+      flex-direction: column; /* Arranges items in a column */
+      align-items: center; /* Aligns items to the center */
+      max-height: 100%; /* Sets maximum height to 100% */
+      margin-left: 80px;
+    }
+  
+    #c_course_cardbody {
+      background-color: #126912; /* Changes background color of course card body */
+      border-radius: 1rem; /* Applies border radius to course card body */
+    }
+  
+    #c_course_tagtext,
+    #c_course_cardbody {
+      font-size: 0.5rem; /* Adjusts font size of course tag text and card body */
+      justify-content: center; /* Aligns content to the center */
+    }
+  
+    #c_course_tag {
+      width: 4rem; /* Sets width of course tag */
+      height: 2rem; /* Sets height of course tag */
+    }
+  
+    #c_maincontent_textcontainer {
+      width: 20rem; /* Sets width of text container */
+      margin-top: 10px;
+      margin-left: 75px;
+    }
+  
+    #c_maincontent_maincontainer {
+      text-align: left; /* Aligns text to the left */
+      font-size: 1.5rem; /* Adjusts font size of main container */
+    }
+  
+    #c_maincontent_mainlayout {
+      margin-top: 1.5rem; /* Sets top margin */
+      margin-left: 0rem; /* Sets left margin */
+      margin-right: 0rem; /* Sets right margin */
+    }
+  
+    #c_maincontent_buttoncontainer {
+      /* D-GRID */
+      display: center; /* Aligns items to the center */
+      gap: 0.5rem; /* Sets gap between items */
+      margin: 10px; /* Sets margin */
+  
+      /* GAP-2 */
+      > * {
+        margin-top: 0.5rem; /* Sets top margin */
+        margin-bottom: 0.5rem; /* Sets bottom margin */
+      }
+  
+      /* D-MD-FLEX */
+      display: flex; /* Changes display to flex layout */
+  
+      /* JUSTIFY-CONTENT-MD-END */
+      justify-content: flex-end; /* Aligns content to the end */
+    }
+  
+    .modal-content {
+      margin-top: 400px;
+    }
+
+    #c_dashboard_header {
+      background-color: #bce8b1; /* Sets background color for dashboard header */
+      max-height: 100px;
+    }
+
+    #c_preview_courseprev{
+      font-size: 1rem; /* Sets the font size of the Course Preview*/
+      margin-top: -50px;
+    }
+    #c_preview_headerTitle{
+      font-size: 12px;
+    }
+    #c_preview_headerSub{
+      font-size: 15px;
+    }
+
+    #progovv{
+      margin-top: -25px;
+      font-size: 20px;
+    }
+
+    #assessmentlabel{
+      margin-top: -25px;
+      font-size: 30px;
     }
   }
   
