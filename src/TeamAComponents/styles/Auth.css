@@ -526,7 +526,7 @@ input::placeholder{
   width: 100%;  /* Set width of the group to 100% to make it responsive */
   max-width: 400px;  /* Set maximum width of the group to 400px */
   display: flex;  /* Use flexbox for layout */
-  flex-direction: column;  /* Arrange elements in a column on smaller screens */
+  flex-direction: row;  /* Arrange elements in a column on smaller screens */
   margin-top: 20px;  /* Set top margin */
 }
 
