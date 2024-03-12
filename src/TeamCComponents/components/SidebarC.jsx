@@ -42,7 +42,7 @@ const SidebarC = () => {
   };
 
   const [showCourse, setShowcourse] = useState(null);
-  const [showContent, setShowContent] = useState(false);
+  // const [showContent, setShowContent] = useState(false);
 
   return (
     <div className="sidebar-wrapper">
@@ -130,7 +130,7 @@ const SidebarC = () => {
           })}
         </div>
       </nav>
-      {showTopic.map((showTpc, idx) => {
+      {/* {showTopic.map((showTpc, idx) => {
         const { topic } = showTpc;
         console.log(topic);
         return (
@@ -143,7 +143,7 @@ const SidebarC = () => {
             })}
           </ul>
         );
-      })}
+      })} */}
 
      
     </div>

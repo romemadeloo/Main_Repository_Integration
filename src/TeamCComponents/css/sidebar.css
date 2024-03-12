@@ -71,14 +71,14 @@
 
   @media (max-width: 768px) {
     .buttonReturn{
-      margin-top:700px;
+      /* margin-top:700px; */
     }
     
   }
 
   @media (max-width: 1024px){  
     .buttonReturn{
-      margin-top:700px;
+      /* margin-top:700px; */
     }
   }
 
