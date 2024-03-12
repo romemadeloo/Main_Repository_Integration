@@ -74,6 +74,8 @@ import AddQuiz from "./TeamCComponents/pages/AddQuiz";
 import TeamC_Topics from "./TeamCComponents/pages/Topics";
 import TeamC_QuizForm from "./TeamCComponents/pages/quizForm";
 import AssessmentQuiz from "./TeamCComponents/pages/AssessmentQuiz";
+import Component_MainContent from "./TeamCComponents/components/quiz_form";
+
 
 // team D
 import Team_D_View from "./TeamDComponents/Team_D_View";
