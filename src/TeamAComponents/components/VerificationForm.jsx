@@ -1,9 +1,9 @@
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from './AuthContext';
 import "../styles/Auth.css";
 
-function VerificationForm({openVerificationModal, openLoginModal,closeVerificationModal}) {
+function VerificationForm({ openVerificationModal, openLoginModal, closeVerificationModal }) {
   const [verification, setVerification] = useState('');
   const [verificationStatus, setVerificationStatus] = useState(null);
   const [resendStatus, setResendStatus] = useState(null);
@@ -13,60 +13,56 @@ function VerificationForm({openVerificationModal, openLoginModal,closeVerificati
   const [codeExpired, setCodeExpired] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
   const [timeDifference, setTimeDifference] = useState(null);
-
+  const { handleLogin } = useAuth();
   const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
   const navigate = useNavigate(); // Initialize useNavigate
 
   useEffect(() => {
-    // Check if the user is already verified
-    if (verificationStatus === 'Verification successful') {
-      setShowResendButton(false);
-      setIsVerified(true); // Redirect to /login if already verified
-      navigate('/teamcdashboard');
-    }
-  }, [verificationStatus, navigate]);
-
-  useEffect(() => {
     const storedEmail = localStorage.getItem('email');
-
     if (storedEmail) {
       setEmailFromRegistration(storedEmail);
       checkVerificationCodeExpiration(storedEmail);
     }
   }, []);
 
+  useEffect(() => {
+    if (verificationStatus === 'Verification successful') {
+      const storedEmail = localStorage.getItem('email');
+      const storedPassword = localStorage.getItem('password');
+      handleLogin({ email: storedEmail, password: storedPassword })
+        .then(result => {
+          if (result.success) {
+            setShowResendButton(false);
+            setIsVerified(true);
+            navigate('/teamcdashboard');
+          } else {
+            console.error('Login failed:', result.error);
+          }
+        })
+        .catch(error => console.error('Unexpected error during login:', error));
+    }
+  }, [verificationStatus, navigate, handleLogin]);
+
   const checkVerificationCodeExpiration = async (email) => {
     try {
       const response = await fetch(`http://localhost:8080/api/v1/auth/checkCodeExpiration?email=${email}`);
-
       if (response.ok) {
         const { codeExpired, expirationTime } = await response.json();
         setCodeExpired(codeExpired);
-
         if (expirationTime) {
-          const updateCountdown = () => {
-            const now = new Date().getTime();
-            const newTimeDifference = Math.floor((expirationTime - now) / (60 * 1000)); // Convert milliseconds to minutes
-            console.log('Updated Verification code expires in:', newTimeDifference, 'minutes');
-            setTimeDifference(newTimeDifference);
-
-            if (newTimeDifference > 0) {
-              setTimeout(updateCountdown, 60000); // Update every minute (60 * 1000 milliseconds)
-            } else {
-              setShowResendButton(true);
-            }
-  };
-
-          updateCountdown(); // Initial update
-
-          setShowResendButton(false);
+          const now = new Date().getTime();
+          const newTimeDifference = Math.floor((expirationTime - now) / (60 * 1000)); // Convert milliseconds to minutes
+          setTimeDifference(newTimeDifference);
+          if (newTimeDifference > 0) {
+            setTimeout(checkVerificationCodeExpiration, 60000, email); // Update every minute
+          } else {
+            setShowResendButton(true);
+          }
         } else {
-          console.log('Verification code does not expire');
-          setShowResendButton(true); // Show resend button even if expirationTime is not available
-          setTimeDifference(0); // Initialize timeDifference with a default value
+          setShowResendButton(true);
+          setTimeDifference(0);
         }
-    } else {
+      } else {
         console.error('Failed to fetch verification code expiration status. Response:', response.status);
       }
     } catch (error) {
@@ -76,7 +72,6 @@ function VerificationForm({openVerificationModal, openLoginModal,closeVerificati
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-
     try {
       const response = await fetch('http://localhost:8080/api/v1/auth/verifyCode', {
         method: 'POST',
@@ -85,11 +80,9 @@ function VerificationForm({openVerificationModal, openLoginModal,closeVerificati
         },
         body: JSON.stringify({ verificationCode: verification, recipient: emailFromRegistration }),
       });
-
       if (response.ok) {
         setVerificationStatus('Verification successful');
         setShowResendButton(false);
-
       } else {
         setVerificationStatus('Verification failed');
         setShowResendButton(codeExpired);
@@ -100,32 +93,29 @@ function VerificationForm({openVerificationModal, openLoginModal,closeVerificati
   };
 
   const handleResendCode = async () => {
-      try {
+    try {
       setResending(true);
-
       const resendResponse = await fetch('http://localhost:8080/api/v1/auth/resendCode', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({ recipient: emailFromRegistration }),
-        });
-
+      });
       if (resendResponse.ok) {
         setVerificationStatus('Verification code resent successfully');
         setShowResendButton(false);
         openVerificationModal();
-        // Reload the page
-        window.location.reload();
-        } else {
+        window.location.reload(); // Reload the page
+      } else {
         setVerificationStatus('Failed to resend verification code');
         await new Promise((resolve) => setTimeout(resolve, 5000));
-        }
-      } catch (error) {
+      }
+    } catch (error) {
       console.error('Error during code resend:', error);
     } finally {
       setResending(false);
-      }
+    }
   };
 
   const handleKeyPress = (e) => {
@@ -136,44 +126,40 @@ function VerificationForm({openVerificationModal, openLoginModal,closeVerificati
 
   return (
     <div className="verification-forms-container">
-      {!isVerified && ( // Only show the form if not verified
+      {!isVerified && (
         <form className="template-form" onSubmit={handleFormSubmit}>
           <h1 className="verification-title">Email Verification</h1>
           {codeExpired && (
             <div className="verification-input-field">
-          <input
+              <input
                 type="text"
                 placeholder="Verification Code"
                 id="verification"
                 name="verification"
                 value={verification}
                 onChange={(e) => setVerification(e.target.value)}
-                onKeyPress={handleKeyPress} 
-            required
-          />
+                onKeyPress={handleKeyPress}
+                required
+              />
               {resending ? (
                 <p>Resending verification code...</p>
               ) : (
-                <button  className="TeamA-button">
-                  Send
-          </button>
+                <button className="TeamA-button">Send</button>
               )}
               {showResendButton && (
                 <div>
-                  <a href="#" className="resend-link" onClick={handleResendCode} disabled={resending} >
+                  <a href="#" className="resend-link" onClick={handleResendCode} disabled={resending}>
                     {resending ? 'Resending...' : 'Resend Code'}
                   </a>
-        </div>
-        )}
+                </div>
+              )}
               {timeDifference !== null && (
-                <p>{`Verification code expires in: ${timeDifference} ${
-                  timeDifference === 1 ? 'minute' : 'minutes'
-                }`}</p>
-        )}
+                <p>{`Verification code expires in: ${timeDifference} ${timeDifference === 1 ? 'minute' : 'minutes'}`}</p>
+              )}
               {!resending && timeDifference === null && <p>{`Verification code expires in: 0 minutes`}</p>}
             </div>
-        )}
-      </form>
+          )}
+        </form>
       )}
 
       <div className="verification-panels-container">

@@ -95,6 +95,7 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
       if (response.ok) {
         console.log('Registration successful');
         localStorage.setItem('email', email);
+        localStorage.setItem('password', password);
         setVerificationCodeSent(true);
         closeRegisterModal();
         openVerificationModal();
