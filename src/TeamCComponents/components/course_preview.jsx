@@ -46,22 +46,21 @@ function CoursePreview() {
             const modalId = `modal${index + 1}`;
 
             return (
-              <div key={index} className="col-md-3 mt-3 ml-1">
+              <div key={index} className="col-md-3 mt-3 ml-1 mb-3">
                 <div
                   className="teamcwholecard card border-success h-100"
-                  style={{ maxWidth: "20rem", borderRadius: "10px" }}
+                  style={{ maxWidth: "20rem", borderRadius: "10px", marginBottom: "5px" }}
                 >
                   <div className="card-header bg-transparent border-success "></div>
                   <div className="teamccardcard card mb-4">
                     <div className="teamccardbody card-body ">
                       <h5
                         className="teamctitlecard card-title fw-bold text-center text-success"
-                        style={{ fontSize: "1.7rem" }}
                       >
                         {chapterData.course_title}
                       </h5>
                       <hr className="teamclinepartition" />
-                      <div className="teamcparag card-body bg-transparent border-success d-flex flex-column text-justify">
+                      <div className="teamcparag card-body bg-transparent border-success d-flex flex-column text-left">
                         <span>
                           {chapterData.course_description.split(' ').slice(0, 20).join(' ')}
                         </span>

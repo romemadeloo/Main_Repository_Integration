@@ -7,7 +7,7 @@ import ModalSeeMore from "../components/modal_course_seemore";
 import axios from "axios";
 
 
-import "../css/base_style.css";
+import "../css/dashboard.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 
