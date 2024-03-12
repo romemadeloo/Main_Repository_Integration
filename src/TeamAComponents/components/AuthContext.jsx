@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
   const timeoutRef = useRef(null); // Ref to store the timeout ID
   const navigate = useNavigate();
 
-  const IDLE_TIMEOUT = 15000; // 5 minutes in milliseconds
+  const IDLE_TIMEOUT = 1800000; // 30 minutes in milliseconds
 
   const resetIdleTimeout = useCallback(() => {
     clearTimeout(timeoutRef.current);
@@ -57,11 +57,10 @@ export const AuthProvider = ({ children }) => {
         localStorage.removeItem('lastName');
         localStorage.removeItem('userId');
         localStorage.removeItem('firstName');
-  
         localStorage.removeItem('password');
+  
 
         setLoggedIn(false);
-        resetIdleTimeout(); // Reset the timeout on logout
   
         navigate('/');
       } else {
@@ -83,7 +82,6 @@ export const AuthProvider = ({ children }) => {
       }
     }
   };
-
   const handleLogin = async (credentials) => {
     try {
       setLoading(true);
