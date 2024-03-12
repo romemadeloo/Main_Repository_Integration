@@ -11,6 +11,9 @@
   color: white;  /* Set the text color of the content inside .app-header to white */
   margin: 0;  /* Remove any margin around the .app-header element */
 }
+.error-message {
+  color: red;
+}
 
 .TeamA-button {
   margin: 10px 10px 10px;   /* Set margin around the .TeamA-button element - 10px top, 10px right, 10px bottom, 10px left */
@@ -526,7 +529,7 @@ input::placeholder{
   width: 100%;  /* Set width of the group to 100% to make it responsive */
   max-width: 400px;  /* Set maximum width of the group to 400px */
   display: flex;  /* Use flexbox for layout */
-  flex-direction: column;  /* Arrange elements in a column on smaller screens */
+  flex-direction: row;  /* Arrange elements in a column on smaller screens */
   margin-top: 20px;  /* Set top margin */
 }
 
@@ -1952,4 +1955,59 @@ background-color: gray;
     width: auto; /* Reset width to auto for smaller screens */
     margin-bottom: 10px; /* Adjust spacing for smaller screens */
   }
+}
+.logoutmodal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+.logoutmodal {
+  background-color: #BCE8B1;
+  width: 400px;
+  height:150px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Drop shadow effect */
+  font-size: 16px;
+  align-items: center;
+}
+.auth-label{
+  font-size: 18px;
+}
+.logoutmodal h2 {
+  margin-top: 0;
+}
+.logoutmodal p {
+  margin-bottom: 10px;
+}
+.logoutmodal button {
+  margin-right: 20px;
+  padding: 8px 16px;
+  background-color: #126912; /* Blue color */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100px; /* Set the desired width */
+  display: inline-block; /* Display buttons side by side */
+  margin-left: 50px;  
+  margin-top: 30px; /* Add some top margin between buttons */
+}
+.logoutmodal button:first-child {
+  margin-right: 10px; /* Add right margin to the first button for spacing */
+}
+.logoutmodal button:hover {
+  background-color: #c6c6c6; /* Darker shade of blue on hover */
+}
+
+.Remember-pass {
+  margin-top: 2rem;
+
 }
