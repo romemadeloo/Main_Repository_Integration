@@ -54,6 +54,20 @@ function VerificationForm({
     }
   }, [verificationStatus, navigate, handleLogin]);
 
+  useEffect(() => {
+    const handleBeforeUnload = (event) => {
+      // Prevent the modal from closing when the page is reloaded
+      event.preventDefault();
+      event.returnValue = '';
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, []);
+
   const checkVerificationCodeExpiration = async (email) => {
     try {
       const response = await fetch(
