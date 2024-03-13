@@ -5,9 +5,6 @@ import CoursePreview from "../components/course_preview";
 import Team_D_HeaderV2 from "../../TeamDComponents/Team_D_HeaderV2";
 import ModalSeeMore from "../components/modal_course_seemore";
 import axios from "axios";
-
-
-import "../css/dashboard.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 
