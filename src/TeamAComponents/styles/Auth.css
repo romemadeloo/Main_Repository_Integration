@@ -11,6 +11,9 @@
   color: white;  /* Set the text color of the content inside .app-header to white */
   margin: 0;  /* Remove any margin around the .app-header element */
 }
+.error-message {
+  color: red;
+}
 
 .TeamA-button {
   margin: 10px 10px 10px;   /* Set margin around the .TeamA-button element - 10px top, 10px right, 10px bottom, 10px left */
@@ -1967,9 +1970,16 @@ background-color: gray;
 }
 .logoutmodal {
   background-color: #BCE8B1;
+  width: 400px;
+  height:150px;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Drop shadow effect */
+  font-size: 16px;
+  align-items: center;
+}
+.auth-label{
+  font-size: 18px;
 }
 .logoutmodal h2 {
   margin-top: 0;
@@ -1978,7 +1988,7 @@ background-color: gray;
   margin-bottom: 10px;
 }
 .logoutmodal button {
-  margin-right: 10px;
+  margin-right: 20px;
   padding: 8px 16px;
   background-color: #126912; /* Blue color */
   color: white;
@@ -1987,8 +1997,8 @@ background-color: gray;
   cursor: pointer;
   width: 100px; /* Set the desired width */
   display: inline-block; /* Display buttons side by side */
-  margin-left: 37px;  
-  margin-top: 10px; /* Add some top margin between buttons */
+  margin-left: 50px;  
+  margin-top: 30px; /* Add some top margin between buttons */
 }
 .logoutmodal button:first-child {
   margin-right: 10px; /* Add right margin to the first button for spacing */
