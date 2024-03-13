@@ -199,6 +199,20 @@
   align-items: left;
 }
 
+@media only screen and (max-width: 1920px) {
+  #c_cardpreview_cardouter {
+    display: flex; /* Changes display to flex layout */
+    flex-direction: row; /* Arranges items in a column */
+    align-items: center; /* Aligns items to the center */
+    max-height: 100%; /* Sets maximum height to 100% */
+  }
+
+  #c_course_seemoretext{
+    font-size: 0.8rem;
+    color: #677266;
+  }
+}
+
 @media only screen and (max-width: 1440px) {
   #c_cardpreview_cardouter {
     display: flex; /* Changes display to flex layout */
@@ -266,7 +280,7 @@
 @media only screen and (max-width: 992px) {
   #c_cardpreview_cardouter {
     display: flex; /* Changes display to flex layout */
-    flex-direction: column; /* Arranges items in a column */
+    flex-direction: row; /* Arranges items in a column */
     justify-content: center; /* Aligns items to the center */
     max-height: 100%; /* Sets maximum height to 100% */
     transition: all 2s ease-in-out;

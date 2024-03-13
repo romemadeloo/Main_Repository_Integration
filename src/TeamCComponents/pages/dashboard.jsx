@@ -51,7 +51,7 @@ function TeamC_Dashboard() {
       {/* Course Previews */}
       <div className="course-title">
         <h1 className="course-prev fw-bold text-center mt-3 mb-3" id="c_preview_courseprev">
-          Course Previews
+          Explore Courses
         </h1>
       </div>
 
