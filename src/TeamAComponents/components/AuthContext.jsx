@@ -58,6 +58,7 @@ export const AuthProvider = ({ children }) => {
         localStorage.removeItem('userId');
         localStorage.removeItem('firstName');
         localStorage.removeItem('password');
+        localStorage.removeItem('Mapped role:');
   
 
         setLoggedIn(false);
@@ -108,6 +109,7 @@ export const AuthProvider = ({ children }) => {
           updateLocalStorage('lastName', data.lastName);
           updateLocalStorage('email', data.email);
           updateLocalStorage('username', data.userName);
+          updateLocalStorage('Mapped role:', data.role);
 
           setLoggedIn(true);
           setError(null);

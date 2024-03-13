@@ -19,6 +19,9 @@ import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 //Importing NavBarContext from context
 import { NavBarContext } from "../context/NavBarContext";
 import { ProfileContext } from "../context/ProfileContext";
+
+import { useAuth } from "../../../TeamAComponents/components/AuthContext";
+import { useState } from "react";
 //Nav functional component
 const Nav = () => {
   //Destructuring values from NavBarContext
@@ -44,7 +47,29 @@ const Nav = () => {
 
   const { users, file } = useContext(ProfileContext);
 
-  const { firstName, lastName, email } = users;
+  // const { firstName, lastName, email } = users;
+  const [showLogoutConfirmationModal, setShowLogoutConfirmationModal] = useState(false);
+  const { handleLogout } = useAuth();
+
+  const handleConfirmLogout = () => {
+    handleLogout();
+    setShowLogoutConfirmationModal(false);
+    navigate("/"); // Use navigate function to redirect
+  };
+
+  const handleOpenLogoutConfirmationModal = () => {
+    setShowLogoutConfirmationModal(true);
+  };
+
+  const handleCloseLogoutConfirmationModal = () => {
+    setShowLogoutConfirmationModal(false);
+  };
+
+  
+  const userName = localStorage.getItem('username');
+  const firstname = localStorage.getItem('firstName');
+  const lastname = localStorage.getItem('lastName');
+  const email = localStorage.getItem('email');
 
   return (
     <>
@@ -117,7 +142,7 @@ const Nav = () => {
                     alt="profileLogo"
                   />
                   <div className="text-[.8rem] leading-3">
-                    <p>{`${firstName} ${lastName}`}</p>
+                    <p>{firstname} {lastname}</p>
                     <p>{email}</p>
                   </div>
                 </div>
@@ -154,7 +179,7 @@ const Nav = () => {
                 className="w-[50px] line-clamp-1"
                 onClick={() =>
                   setShowDropDown((prev) => !prev)
-                }>{` ${firstName}!`}</span>
+                }>{userName}</span>
 
               <span
                 onClick={() => setShowDropDown((prev) => !prev)}
@@ -185,9 +210,8 @@ const Nav = () => {
                   </Link>
                   {/* Link to logout */}
                   <Link
-                    to="/"
                     src="CgProfile"
-                    onClick={showLogout}
+                    onClick={handleOpenLogoutConfirmationModal}
                     className="w-full text-center ">
                     <p
                       className={
@@ -214,6 +238,25 @@ const Nav = () => {
           </div>
         )}
       </nav>
+      {showLogoutConfirmationModal && (
+          
+          <div className="logoutmodal-overlay" onClick={handleCloseLogoutConfirmationModal}>
+              <div className="label-container">
+          <div className="container-under">
+            <div className="auth-label">
+              <h1>Logout Confirmation</h1>
+            </div>
+            <div className="logoutmodal">
+              <h2>Are you sure you want to log out?</h2>
+              <div>
+                <button onClick={handleConfirmLogout}>Yes</button>
+                <button onClick={handleCloseLogoutConfirmationModal}>Cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )}
     </>
   );
 };

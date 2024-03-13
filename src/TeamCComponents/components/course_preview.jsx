@@ -6,6 +6,7 @@ import { incrementAttributes } from "../js/script";
 
 function CoursePreview() {
   const [chapters, setChapters] = useState([]);
+  const [enrollments, setEnrollments] = useState([]);
   const [error, setError] = useState(null);
   const [buttonCounter, setButtonCounter] = useState(1); // Initialize button counter
 
@@ -23,6 +24,23 @@ function CoursePreview() {
 
     fetchChapters();
   }, []);
+
+  useEffect(() => {
+    const fetchEnrollmentsByUser = async () => {
+      try {
+        const userId = localStorage.getItem('userId');
+        const response = await axios.get(`http://localhost:8080/api/v1/auth/enrollment-by-user/${userId}`);
+        setEnrollments(response.data); // Assuming the response contains the enrollment data
+      } catch (error) {
+        console.error('Error fetching enrollments:', error);
+        // Handle errors
+      }
+    };
+
+    fetchEnrollmentsByUser();
+  }, []);
+
+  console.log(enrollments)
 
   const incrementCounterAndAttributes = () => {
     setButtonCounter((prevCounter) => prevCounter + 1); // Increment button counter
@@ -44,7 +62,8 @@ function CoursePreview() {
           {chapters.map((chapterData, index) => {
             const buttonId = `enrollButton${index + 1}`;
             const modalId = `modal${index + 1}`;
-
+            const isEnrolled = enrollments.some(enrollments => enrollments.course.course_id === chapterData.course_id);
+            console.log(isEnrolled);
             return (
               <div key={index} className="col-md-3 mt-3 ml-1">
                 <div
@@ -85,6 +104,7 @@ function CoursePreview() {
                         data-bs-target={`#${modalId}`}
                         id={buttonId}
                         onClick={incrementCounterAndAttributes}
+                        disabled={isEnrolled}
                         style={{
                           display: 'flex',
                           alignItems: 'center',
@@ -92,7 +112,7 @@ function CoursePreview() {
                           height: '30px'
                         }}
                       >
-                        Enroll Now
+                        {isEnrolled ? 'Enrolled' : 'Enroll Now'}
                       </button>
                     </div>
                   </div>
