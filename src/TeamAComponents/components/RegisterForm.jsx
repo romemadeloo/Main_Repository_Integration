@@ -15,6 +15,8 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
   const [verificationCodeSent, setVerificationCodeSent] = useState(false);  
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [loading, setLoading] = useState(false); // Loading state
+  const [emailClicked, setEmailClicked] = useState(false); // Track if email field is clicked
+  const [usernameClicked, setUsernameClicked] = useState(false); // Track if username field is clicked
 
   const navigate = useNavigate();
 
@@ -30,18 +32,44 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
   const validatePassword = (password) => {
     const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{8,}$/;
     const isValid = passwordRegex.test(password);
-    setError(isValid ? '' : 'Password must be at least 8 characters with at least 1 uppercase, 1 numeric, and 1 symbol.');
+
+    let errorMessage = '';
+
+    if (!isValid) {
+      if (password.length < 8) {
+        errorMessage += '\nAt least 8 characters';
+      }
+      if (!/(?=.*[A-Z])/.test(password)) {
+        errorMessage += '\nAt least 1 uppercase letter';
+      }
+      if (!/(?=.*\d)/.test(password)) {
+        errorMessage += '\nAt least 1 numeric digit';
+      }
+      if (!/(?=.*[!@#$%^&*()_+])/.test(password)) {
+        errorMessage += '\nAt least 1 special character';
+      }
+    }
+
+    if (errorMessage === '') {
+      errorMessage = <span style={{ color: 'green' }}>Good Password</span>;
+    }
+
+    setError(errorMessage);
     return isValid;
   };
 
   const handlePhoneNumberChange = (e) => {
     const enteredPhoneNumber = e.target.value;
-    setPhoneNumber(enteredPhoneNumber);
-
+    
+    // Limit phone number to 11 digits
+    const limitedPhoneNumber = enteredPhoneNumber.slice(0, 11);
+    
+    setPhoneNumber(limitedPhoneNumber);
+  
     // Validate the phone number format
     const phoneNumberRegex = /^09\d{9}$/;
-    const isValidPhoneNumber = phoneNumberRegex.test(enteredPhoneNumber);
-
+    const isValidPhoneNumber = phoneNumberRegex.test(limitedPhoneNumber);
+  
     setPhoneNumberError(
       isValidPhoneNumber ? '' : 'Please enter a valid 11-digit phone number starting with "09".'
     );
@@ -153,7 +181,7 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
       setShowError(true);
     }
   };
-  
+
   const checkUsernameAvailability = async () => {
     try {
       const response = await fetch('http://localhost:8080/api/v1/auth/check-username', {
@@ -183,7 +211,14 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
       setShowError(true);
     }
   };
-  
+
+  const handleEmailClick = () => {
+    setEmailClicked(true);
+  };
+
+  const handleUsernameClick = () => {
+    setUsernameClicked(true);
+  };
 
   return (
     <div className="register-form-container"> {/* Container for the entire form */}
@@ -198,6 +233,7 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
           onBlur={checkUsernameAvailability}
+          onClick={handleUsernameClick}
           placeholder={`Username (${role === 'Admin' ? 'Admin' : role})`}
           required
         />
@@ -233,6 +269,7 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         onBlur={checkEmailAvailability}
+        onClick={handleEmailClick}
         placeholder="Email Address"
         required
       />
@@ -254,7 +291,7 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
         required
       />
       <div className="data-validation">
-        {showError && (
+        {(showError && emailClicked) && (
           <label style={{ color: 'red', fontSize: '15px', fontWeight: '700', transition: 'color 0.3s' }}>
             {error}
           </label>
