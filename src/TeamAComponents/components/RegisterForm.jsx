@@ -96,6 +96,7 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
         console.log('Registration successful');
         localStorage.setItem('email', email);
         localStorage.setItem('password', password);
+        localStorage.setItem('Mapped role:', mappedRole);
         setVerificationCodeSent(true);
         closeRegisterModal();
         openVerificationModal();

@@ -10,6 +10,7 @@ import { FiLogOut } from "react-icons/fi";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import ForumF from "./../TeamCComponents/pages/ForumF";
 import { useAuth } from "../TeamAComponents/components/AuthContext";
+import ProfileModal from "../TeamAComponents/components/ProfileModal";
 
 function getUserImageType(profilePicture) {
   // Check if profilePicture is defined and not null
@@ -89,18 +90,19 @@ const Team_D_HeaderV2 = () => {
         </NavLink>
         <div>
           <ul id="navbar" className={clicked ? "active" : ""}>
-            {/* Profile Info */}
-            <li className="profile_info">
-              <span className="profile_info_con">
-                <img src={Profile} alt="Logo" />
-                <span className="profile_info_name">
-                  <p className="profile_fName">{firstname + " " + lastname}</p>
-                  <p className="profile_email">{email}</p>
-                </span>
+                    {/* Profile Info */}
+          <li className="profile_info">
+            <button className="profile_info_con" onClick={handleClick}>
+              <img src={Profile} alt="Logo" />
+              <span className="profile_info_name">
+                <p className="profile_fName">{firstname + " " + lastname}</p>
+                <p className="profile_email">{email}</p>
               </span>
-            </li>
-            {/* Profile Links */}
-            <li className="profile_link">
+            </button>
+          </li>
+          {/* Profile Links */}
+          <li className="profile_link">
+            <button onClick={handleClick}>
               <NavLink
                 to="/profile"
                 activeClassName="active"
@@ -108,7 +110,9 @@ const Team_D_HeaderV2 = () => {
               >
                 Profile
               </NavLink>
-            </li>
+            </button>
+          </li>
+
             <li className="profile_link">
               <NavLink
                 to="/certificate"
@@ -137,10 +141,10 @@ const Team_D_HeaderV2 = () => {
                 className="mycourse_dd"
               >
                 <NavDropdown.Item href="course" activeClassName="active">
-                  Program Overview
+                  Enrolled Courses
                 </NavDropdown.Item>
                 <NavDropdown.Item href="assessment" activeClassName="active">
-                  Assessment
+                  Assessments
                 </NavDropdown.Item>
                 <NavDropdown.Item href="/CertGen" activeClassName="active">
                   Get Certification

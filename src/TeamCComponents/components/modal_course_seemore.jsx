@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "../css/base_style.css";
 import axios from 'axios';
 
 function ModalSeeMore() {

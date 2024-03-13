@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "./AuthContext";
 import Login from "./Login";
@@ -53,10 +52,11 @@ const CustomModal = ({ show, handleClose, children }) => {
     </>
   );
 };
+
 // Navigation component
 const Navigation = () => {
   // Extracting isLoggedIn and handleLogout from the useAuth hook
-  const { isLoggedIn, handleLogout } = useAuth();
+  const { isLoggedIn, handleLogout } = useAuth(); 
   // State variables for controlling the visibility of login and register modals
   const [loginModalIsOpen, setLoginModalIsOpen] = useState(false);
   const [registerModalIsOpen, setRegisterModalIsOpen] = useState(false);
@@ -73,7 +73,9 @@ const Navigation = () => {
   const closeRegisterModal = () => setRegisterModalIsOpen(false);
 
   const openVerificationModal = () => setVerificationModalIsOpen(true); // Function to open Verification modal
-  const closeVerificationModal = () => setVerificationModalIsOpen(false); // Function to close Verification modal
+  const closeVerificationModal = () => {
+    localStorage.setItem('isVerified', 'true'); // Set verification status to true in localStorage
+  };
 
   const openForgotModal = () => setForgotModalIsOpen(true);
   const closeForgotModal = () => setForgotModalIsOpen(false);
@@ -81,6 +83,13 @@ const Navigation = () => {
   const openNewPassModal = () => setNewPassModalIsOpen(true);
   const closeNewPassModal = () => setNewPassModalIsOpen(false);
 
+  // Check if the verification status is true in localStorage on component mount
+  useEffect(() => {
+    const isVerified = localStorage.getItem('isVerified');
+    if (isVerified === 'true') {
+      setVerificationModalIsOpen(true);
+    }
+  }, []);
 
   return (
     // Main navigation container
@@ -161,7 +170,7 @@ const Navigation = () => {
           </>
         )}
         {/* Verification modal */}
-        <CustomModal show={verificationModalIsOpen} handleClose={closeVerificationModal} childType="verification">
+        <CustomModal show={verificationModalIsOpen} handleClose={() => {}} childType="verification">
           <Verification closeVerificationModal={closeVerificationModal} openLoginModal={openLoginModal}/>
         </CustomModal>
         <CustomModal show={forgotModalIsOpen} handleClose={closeForgotModal} childType="forgot">
