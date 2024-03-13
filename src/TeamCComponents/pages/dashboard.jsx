@@ -5,9 +5,6 @@ import CoursePreview from "../components/course_preview";
 import Team_D_HeaderV2 from "../../TeamDComponents/Team_D_HeaderV2";
 import ModalSeeMore from "../components/modal_course_seemore";
 import axios from "axios";
-
-
-import "../css/base_style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 
@@ -50,8 +47,8 @@ function TeamC_Dashboard() {
 
       {/* Course Previews */}
       <div className="course-title">
-        <h1 className="course-prev fw-bold text-center mt-5" id="c_preview_headerTitle">
-          Course Previews
+        <h1 className="course-prev fw-bold text-center mt-3 mb-3" id="c_preview_courseprev">
+          Explore Courses
         </h1>
       </div>
 
