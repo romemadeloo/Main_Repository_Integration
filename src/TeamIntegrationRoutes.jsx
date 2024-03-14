@@ -16,6 +16,7 @@ import ChangePassword from "../src/TeamAComponents/components/ChangePassword";
 import About from "../src/TeamAComponents/components/About";
 import Footer from "./TeamAComponents/components/Footer";
 import Email from "./TeamAComponents/components/Email";
+import ProfileModal from "./TeamAComponents/components/ProfileModal";
 
 // TEAM B IMPORTS
 
@@ -104,6 +105,7 @@ function TeamIntegrationRoutes() {
           <Route path="/about" element={<About />} />
           <Route path="/email" element={<Email />} />
           <Route path="new" element={<TeamA_NewPass />} />
+          <Route path="ProfileModal" element={<ProfileModal/>}/>
 
           {/* TEAM B */}
           <Route path="/teambdashboard" element={<TeamB_Dashboard />} />
