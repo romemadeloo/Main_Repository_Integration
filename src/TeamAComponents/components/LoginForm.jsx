@@ -15,9 +15,11 @@ function LoginForm({ openForgotModal, closeLoginModal }) {
 
   useEffect(() => {
     const storedEmail = localStorage.getItem("rememberedEmail");
-    if (storedEmail) {
+    const storedPassword = localStorage.getItem("rememberedPassword");
+    if (storedEmail && storedPassword) {
       setEmail(storedEmail);
-      setRememberMe(true); // Only set to true if stored email exists
+      setPassword(storedPassword);
+      setRememberMe(true); // Only set to true if stored email and password exist
     }
   }, []);
 
@@ -30,8 +32,10 @@ function LoginForm({ openForgotModal, closeLoginModal }) {
       if (result.success) {
         if (rememberMe) {
           localStorage.setItem("rememberedEmail", email);
+          localStorage.setItem("rememberedPassword", password);
         } else {
           localStorage.removeItem("rememberedEmail");
+          localStorage.removeItem("rememberedPassword");
         }
 
         const storedRole = localStorage.getItem("Mapped role:");
