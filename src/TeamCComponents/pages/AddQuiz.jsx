@@ -75,15 +75,31 @@ const AddQuiz = () => {
             <div className="">
               <div className="d-flex justify-content-between align-items-center mb-3">
                 <span className="mr-auto">
-                  <p className="AddQuizTitle ml-3">Topic 1: Quiz</p>
+                <input
+                    className="teambaddtitle form-control"
+                    placeholder="Title"
+                    name="choice_3"
+                    value={choice_3}
+                    onChange={(e) => handleInputChange(e)}
+                    required
+                  />
                 </span>
-                <span className="">
+                
+              </div>
+              <textarea
+                className="teamcadddesc form-control p-4 mb-4"
+                rows="5"
+                name="question"
+                placeholder="Add description"
+                value={question}
+                onChange={(e) => handleInputChange(e)}
+              />
+            </div>
+            <span className="">
                   <button className="teamcquizbtn btn btn-lg btn-success roboto-bold mr-3 ">
                     <IoIosAdd />
                   </button>
                 </span>
-              </div>
-            </div>
 
             <div className="container text-center">
               <textarea
