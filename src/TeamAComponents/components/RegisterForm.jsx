@@ -50,9 +50,9 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
       }
     }
   
-    if (errorMessage === '') {
-      errorMessage = <span style={{ color: 'green' }}>Good Password</span>;
-    }
+    // if (errorMessage === '') {
+    //   errorMessage = <span style={{ color: 'green' }}>ANSARAP MO PIA </span>;
+    // }
   
     setError(errorMessage); // Set the error message as a string
     return isValid;
@@ -279,6 +279,8 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
         value={phoneNumber}
         onChange={handlePhoneNumberChange}
         placeholder="Phone Number"
+        pattern="[0-9]{11}" // Add pattern attribute for exactly 11 digits
+        title="Please enter a valid 11-digit phone number starting with '09'."
         required
       />
       <input
