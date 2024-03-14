@@ -15,6 +15,8 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
   const [verificationCodeSent, setVerificationCodeSent] = useState(false);  
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [loading, setLoading] = useState(false); // Loading state
+  const [emailClicked, setEmailClicked] = useState(false); // Track if email field is clicked
+  const [usernameClicked, setUsernameClicked] = useState(false); // Track if username field is clicked
 
   const navigate = useNavigate();
 
@@ -30,18 +32,44 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
   const validatePassword = (password) => {
     const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{8,}$/;
     const isValid = passwordRegex.test(password);
-    setError(isValid ? '' : 'Password must be at least 8 characters with at least 1 uppercase, 1 numeric, and 1 symbol.');
+  
+    let errorMessage = '';
+  
+    if (!isValid) {
+      if (password.length < 8) {
+        errorMessage += '\nAt least 8 characters';
+      }
+      if (!/(?=.*[A-Z])/.test(password)) {
+        errorMessage += '\nAt least 1 uppercase letter';
+      }
+      if (!/(?=.*\d)/.test(password)) {
+        errorMessage += '\nAt least 1 numeric digit';
+      }
+      if (!/(?=.*[!@#$%^&*()_+])/.test(password)) {
+        errorMessage += '\nAt least 1 special character';
+      }
+    }
+  
+    if (errorMessage === '') {
+      errorMessage = <span style={{ color: 'green' }}>Good Password</span>;
+    }
+  
+    setError(errorMessage); // Set the error message as a string
     return isValid;
   };
 
   const handlePhoneNumberChange = (e) => {
     const enteredPhoneNumber = e.target.value;
-    setPhoneNumber(enteredPhoneNumber);
-
+    
+    // Limit phone number to 11 digits
+    const limitedPhoneNumber = enteredPhoneNumber.slice(0, 11);
+    
+    setPhoneNumber(limitedPhoneNumber);
+  
     // Validate the phone number format
     const phoneNumberRegex = /^09\d{9}$/;
-    const isValidPhoneNumber = phoneNumberRegex.test(enteredPhoneNumber);
-
+    const isValidPhoneNumber = phoneNumberRegex.test(limitedPhoneNumber);
+  
     setPhoneNumberError(
       isValidPhoneNumber ? '' : 'Please enter a valid 11-digit phone number starting with "09".'
     );
@@ -95,6 +123,8 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
       if (response.ok) {
         console.log('Registration successful');
         localStorage.setItem('email', email);
+        localStorage.setItem('password', password);
+        localStorage.setItem('Mapped role:', mappedRole);
         setVerificationCodeSent(true);
         closeRegisterModal();
         openVerificationModal();
@@ -151,7 +181,7 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
       setShowError(true);
     }
   };
-  
+
   const checkUsernameAvailability = async () => {
     try {
       const response = await fetch('http://localhost:8080/api/v1/auth/check-username', {
@@ -181,18 +211,18 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
       setShowError(true);
     }
   };
-  
+
+  const handleEmailClick = () => {
+    setEmailClicked(true);
+  };
+
+  const handleUsernameClick = () => {
+    setUsernameClicked(true);
+  };
 
   return (
     <div className="register-form-container"> {/* Container for the entire form */}
     <form onSubmit={handleRegister} className="template-form">
-      <Link to="/">
-        <div className="qBackbutton">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-left" viewBox="0 0 16 16">
-            <path fillRule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
-          </svg>
-        </div>
-      </Link>
       <h2>Sign up an account.</h2>
       <h2>Be part of the success.</h2>
 
@@ -203,6 +233,7 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
           onBlur={checkUsernameAvailability}
+          onClick={handleUsernameClick}
           placeholder={`Username (${role === 'Admin' ? 'Admin' : role})`}
           required
         />
@@ -238,6 +269,7 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         onBlur={checkEmailAvailability}
+        onClick={handleEmailClick}
         placeholder="Email Address"
         required
       />
@@ -259,17 +291,18 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
         required
       />
       <div className="data-validation">
-        {showError && (
-          <label style={{ color: 'red', fontSize: '15px', fontWeight: '700', transition: 'color 0.3s' }}>
-            {error}
-          </label>
-        )}
-        {phoneNumberError && (
-          <label style={{ color: 'red', fontSize: '15px', fontWeight: '700', transition: 'color 0.3s' }}>
-            {phoneNumberError}
-          </label>
-        )}
-      </div>
+  {error && !phoneNumberError && ( // Render email error only if there is no phone number error
+    <label style={{ color: 'red', fontSize: '15px', fontWeight: '700', transition: 'color 0.3s' }}>
+      {error}
+    </label>
+  )}
+  {phoneNumberError && ( // Always render phone number error
+    <label style={{ color: 'red', fontSize: '15px', fontWeight: '700', transition: 'color 0.3s' }}>
+      {phoneNumberError}
+    </label>
+  )}
+</div>
+
       <div>
         <h3 style={{ fontSize: '15px' }}>By clicking Sign up you agree to our Terms of Use and our Privacy Policy.</h3>
       </div>

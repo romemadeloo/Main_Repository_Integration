@@ -1,144 +1,226 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import Footer from "./Footer";
+import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "./AuthContext";
+import "../styles/Auth.css";
 
-// NewPassForm component
-function NewPassForm({closeNewPassModal, openLoginModal}) {
-  const [newPassword, setNewPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
-  const [newPasswordError, setNewPasswordError] = useState('');
-  const [confirmPasswordError, setConfirmPasswordError] = useState('');
- 
+function VerificationForm({
+  openVerificationModal,
+  openLoginModal,
+  closeVerificationModal,
+}) {
+  const [verification, setVerification] = useState("");
+  const [verificationStatus, setVerificationStatus] = useState(null);
+  const [resendStatus, setResendStatus] = useState(null);
+  const [showResendButton, setShowResendButton] = useState(true);
+  const [emailFromRegistration, setEmailFromRegistration] = useState("");
+  const [resending, setResending] = useState(false);
+  const [codeExpired, setCodeExpired] = useState(false);
+  const [isVerified, setIsVerified] = useState(false);
+  const [timeDifference, setTimeDifference] = useState(null);
+  const { handleLogin } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate(); // Initialize useNavigate
 
-  const handleTogglePassword = () => {
-    setShowPassword(!showPassword);
-  };
+  useEffect(() => {
+    const storedEmail = localStorage.getItem("email");
+    if (storedEmail) {
+      setEmailFromRegistration(storedEmail);
+      checkVerificationCodeExpiration(storedEmail);
+    }
+  }, []);
 
-  const handleConfirmPasswordChange = (e) => {
-    const confirmedPassword = e.target.value.trim();
-    setConfirmPassword(confirmedPassword);
+  useEffect(() => {
+    if (verificationStatus === "Verification successful") {
+      const storedEmail = localStorage.getItem("email");
+      const storedPassword = localStorage.getItem("password");
+      const storedRole = localStorage.getItem("Mapped role:");
+      handleLogin({ email: storedEmail, password: storedPassword })
+        .then((result) => {
+          if (result.success) {
+            setShowResendButton(false);
+            setIsVerified(true);
+            {
+              storedRole === "INSTRUCTOR"
+                ? navigate("/teambdashboard")
+                : navigate("/teamcdashboard");
+            }
+          } else {
+            console.error("Login failed:", result.error);
+          }
+        })
+        .catch((error) =>
+          console.error("Unexpected error during login:", error)
+        );
+    }
+  }, [verificationStatus, navigate, handleLogin]);
 
-    if (newPassword !== confirmedPassword) {
-      setConfirmPasswordError('Passwords do not match');
-    } else {
-      setConfirmPasswordError('');
+  useEffect(() => {
+    const handleBeforeUnload = (event) => {
+      // Prevent the modal from closing when the page is reloaded
+      event.preventDefault();
+      event.returnValue = '';
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, []);
+
+  const checkVerificationCodeExpiration = async (email) => {
+    try {
+      const response = await fetch(
+        `http://localhost:8080/api/v1/auth/checkCodeExpiration?email=${email}`
+      );
+      if (response.ok) {
+        const { codeExpired, expirationTime } = await response.json();
+        setCodeExpired(codeExpired);
+        if (expirationTime) {
+          const now = new Date().getTime();
+          const newTimeDifference = Math.floor(
+            (expirationTime - now) / (60 * 1000)
+          ); // Convert milliseconds to minutes
+          setTimeDifference(newTimeDifference);
+          if (newTimeDifference > 0) {
+            setTimeout(checkVerificationCodeExpiration, 60000, email); // Update every minute
+          } else {
+            setShowResendButton(true);
+          }
+        } else {
+          setShowResendButton(true);
+          setTimeDifference(0);
+        }
+      } else {
+        console.error(
+          "Failed to fetch verification code expiration status. Response:",
+          response.status
+        );
+      }
+    } catch (error) {
+      console.error("Error during code expiration check:", error);
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-
-    // Retrieve ForgotEmail and ForgotCode from local storage
-    const forgotEmail = localStorage.getItem('forgotEmail');
-    const forgotCode = localStorage.getItem('forgotCode');
-
-    // Perform your form submission here
-    if (newPassword === confirmPassword && newPassword.trim() !== '') {
-      console.log('Password match! Submitting...');
-
-      try {
-        const response = await fetch('http://localhost:8080/api/v1/auth/reset-password', {
-          method: 'POST',
+    try {
+      const response = await fetch(
+        "http://localhost:8080/api/v1/auth/verifyCode",
+        {
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            email: forgotEmail,
-            code: forgotCode,
-            newPassword: newPassword,
+            verificationCode: verification,
+            recipient: emailFromRegistration,
           }),
-        });
-
-        if (response.ok) {
-          console.log('Password reset successfully.');
-          // Clear local storage after successful password reset
-          closeNewPassModal();
-          openLoginModal();
-          localStorage.removeItem('forgotEmail');
-          localStorage.removeItem('forgotCode');
-          // Add your logic for successful password reset, e.g., redirect to login page
-        } else {
-          console.error('Failed to reset password.');
-          // Add your logic for failed password reset
         }
-      } catch (error) {
-        console.error('Error resetting password:', error);
-        // Add your logic for handling errors
+      );
+      if (response.ok) {
+        setVerificationStatus("Verification successful");
+        setShowResendButton(false);
+      } else {
+        setVerificationStatus("Verification failed");
+        setShowResendButton(codeExpired);
       }
-    } else {
-      console.error('Passwords do not match or are empty. Please check.');
-      // Add your logic for passwords mismatch or empty fields
+    } catch (error) {
+      console.error("Error during verification:", error);
     }
   };
+
+  const handleResendCode = async () => {
+    try {
+      setResending(true);
+      const resendResponse = await fetch(
+        "http://localhost:8080/api/v1/auth/resendCode",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ recipient: emailFromRegistration }),
+        }
+      );
+      if (resendResponse.ok) {
+        setVerificationStatus("Verification code resent successfully");
+        setShowResendButton(false);
+        openVerificationModal();
+        window.location.reload(); // Reload the page
+      } else {
+        setVerificationStatus("Failed to resend verification code");
+        await new Promise((resolve) => setTimeout(resolve, 5000));
+      }
+    } catch (error) {
+      console.error("Error during code resend:", error);
+    } finally {
+      setResending(false);
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleFormSubmit(e);
+    }
+  };
+
   return (
-    <div className="email-forms-container" style={{ fontFamily: 'sans-serif' }}>
-      <form className="template-form" onSubmit={handleSubmit}>
-        <Link to="/forgot">
-          <button className="wBackbutton">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-left" viewBox="0 0 16 16">
-              <path fillRule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
-            </svg>
-          </button>
-        </Link>
-        <h2 className="email-title">Change Password</h2>
-        <p>Please Change Your Password Here.</p>
-        <label htmlFor="newPassword">
-          <i className="fas fa-envelope"></i>
-        </label>
-        <div className="email-input-field">
-          <input
-            type={showPassword ? 'text' : 'password'}
-            placeholder="Enter New Password here*"
-            id="newPassword"
-            name="newPassword"
-            value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
-            onFocus={() => setNewPasswordError('')}
-            required
-          />
-          <button type="button" className="toggle-button" onClick={handleTogglePassword}>
-            {showPassword ? 'Hide' : 'Show'}
-          </button>
-        </div>
-        <div className="email-input-field">
-          <input
-            type={showPassword ? 'text' : 'password'}
-            placeholder="Confirm New Password*"
-            id="confirmPassword"
-            name="confirmPassword"
-            value={confirmPassword}
-            onChange={handleConfirmPasswordChange}
-            onFocus={() => setConfirmPasswordError('')}
-            required
-          />
-        </div>
+    <div className="verification-forms-container">
+      {!isVerified && (
+        <form className="template-form" onSubmit={handleFormSubmit}>
+          <h1 className="verification-title">Email Verification</h1>
+          {codeExpired && (
+            <>
+              <div className="verification-input-field">
+                <input
+                  type="text"
+                  placeholder="Verification Code"
+                  id="verification"
+                  name="verification"
+                  value={verification}
+                  onChange={(e) => setVerification(e.target.value)}
+                  onKeyPress={handleKeyPress}
+                  required
+                />
+                {resending ? (
+                  <p>Resending verification code...</p>
+                ) : (
+                  <button className="TeamA-button">Send</button>
+                )}
+                {showResendButton && (
+                  <div>
+                    <a
+                      href="#"
+                      className="resend-link"
+                      onClick={handleResendCode}
+                      disabled={resending}
+                    >
+                      {resending ? "Resending..." : "Resend Code"}
+                    </a>
+                  </div>
+                )}
+                {timeDifference !== null && (
+                  <p>{`Verification code expires in: ${timeDifference} ${
+                    timeDifference === 1 ? "minute" : "minutes"
+                  }`}</p>
+                )}
+                {!resending && timeDifference === null && (
+                  <p>{`Verification code expires in: 0 minutes`}</p>
+                )}
+              </div>
+              {verificationStatus && <p>{verificationStatus}</p>}{" "}
+              {/* Move verification status inside the form */}
+            </>
+          )}
+        </form>
+      )}
 
-        {newPassword === confirmPassword && newPassword.trim() !== '' && (
-          <span style={{ color: 'green', fontSize: '14px', marginTop: '15px', display: 'block' }}>Passwords match</span>
-        )}
-
-        {newPassword !== confirmPassword && newPassword.trim() !== '' && (
-          <span style={{ color: 'red', fontSize: '14px', marginTop: '15px', display: 'block' }}>{confirmPasswordError || 'Passwords do not match'}</span>
-        )}
-
-        {newPassword.trim() === '' && confirmPassword.trim() === '' && (
-          <span style={{ color: 'red', fontSize: '14px', marginTop: '15px', display: 'block' }}>{newPasswordError}</span>
-        )}
-
-        <button className="TeamA-button" style={{ marginTop: '10px' }}>Confirm</button>
-      </form>
-
-      <div className="email-panels-container">
-        <div className="email-panel email-left-panel">
-          <div className="content">
-            {/* Add content for the left panel */}
-          </div>
-          <img src="your-image.png" className="email-image" alt="" />
-        </div>
+      <div className="verification-panels-container">
+        {showResendButton && resendStatus && <p>{resendStatus}</p>}
       </div>
     </div>
   );
 }
 
-export default NewPassForm;
+export default VerificationForm;

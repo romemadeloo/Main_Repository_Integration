@@ -5,36 +5,9 @@ import axios from "axios";
 
 import '../css/quizform_style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { CourseContext } from './../../TeamBComponents/components/context/CourseContext';
 
 function TeamC_QuizForm_Component() {
-  const navigate = useNavigate();
-
-  const goBack = () => {
-    navigate(-1);
-  };
-
-  const [quiz, setQuiz] = useState([]);
-
-  const { id } = useParams()
-  useEffect(() => {
-      const fetchQuiz = async () => {
-          try {
-              const result = await axios.get(`http://localhost:8080/api/v1/auth/quiz/${id}`);
-
-              // Ensure that result.data is always an array by converting it
-              const coursesArray = Array.isArray(result.data)
-                  ? result.data
-                  : [result.data];
-              setQuiz(coursesArray);
-          } catch (error) {
-              console.error("Error loading quiz:", error);
-          }
-      };
-
-      fetchQuiz();
-  }, [id]);
-  console.log(quiz)
-
   {/* FOR QUIZ QUESTIONS */ }
   let [index, setIndex] = useState(0);
   let [question, setQuestion] = useState(data[index]);
@@ -117,7 +90,7 @@ function TeamC_QuizForm_Component() {
   return (
     <>
     {/* BACK BUTTON HERE */}
-      <Link to={goBack} className="buttonReturn d-flex align-items-center c_chapter_returncontainer" style={{ textDecoration: 'none', color: 'black', width: 'fit-content', }}>
+      <Link to="/teamcdashboard" className="buttonReturn d-flex align-items-center c_chapter_returncontainer" style={{ textDecoration: 'none', color: 'black', width: 'fit-content', }}>
         <div className="d-flex align-items-center" style={{ marginTop: '1rem' }}>
           <div>
             <img src="../../src/assets/TeamCassets/green_button.png" className="btnReturn c_chapter_return" alt="return-icon" style={{
@@ -130,17 +103,13 @@ function TeamC_QuizForm_Component() {
       </Link>
 
       {/* MAIN LAYOUT */}
-      {quiz.map((chap, idx) => {
-      const { quiz_description, quiz_title} = chap
-      console.log(quiz)
-      return (<>
-      <main className="c_chapcourse_mainlayout" key={idx} style={{ marginTop: '1.5rem', marginLeft: '10rem', marginRight: '10rem' }}>
+      <main className="c_chapcourse_mainlayout" style={{ marginTop: '1.5rem', marginLeft: '10rem', marginRight: '10rem' }}>
 
         {/* START OF TOPIC CONTAINER */}
         <div>
 
-          <div className="container" key ={idx}>
-            <p style={{ fontSize: '2.5rem' }}>{quiz_title}</p>
+          <div className="container">
+            <p style={{ fontSize: '2.5rem' }}>QUIZ TITLE</p>
             <br />
             <div className="row gy-5" style={{ backgroundColor: "#EBFFE5" }}>
               <div className="col-12">
@@ -156,7 +125,7 @@ function TeamC_QuizForm_Component() {
                     borderColor: "#0e3b03"
                   }}
                 >
-                  <p className="lh-base" style={{ fontSize: '1.3rem', marginTop: '1rem', marginLeft: '1rem', marginRight: '1rem', marginBottom: '1rem', }}>{quiz_description}</p>
+                  <p className="lh-base" style={{ fontSize: '1.3rem', marginTop: '1rem', marginLeft: '1rem', marginRight: '1rem', marginBottom: '1rem', }}>QUIZ DESC HERE</p>
 
                   {/* QUIZ QUESTIONS GOES HERE */}
                   <div id="quizContainer" style={{ marginTop: '2.5rem', marginBottom: '2.5rem', marginLeft: '2.5rem', marginRight: '2.5rem', }}>
@@ -220,7 +189,6 @@ function TeamC_QuizForm_Component() {
           </div>
         </div>
       </main>
-      </>)})}
       {/* End of Topic Container */}
       {/* End of Main Layout */}
 

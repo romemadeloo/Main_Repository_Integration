@@ -7,8 +7,7 @@ import { IoArrowBackCircleSharp } from "react-icons/io5";
 
 import axios from "axios";
 
-
-function Component_MainContent() {
+function Component_MainContent() {  
 
 
   const [chapter, setChapters] = useState([]);
@@ -43,7 +42,9 @@ function Component_MainContent() {
           const { topic } = top
           return (
 
+            
             <div key={idx} id="topic0" className="c_maincontent_parentcontainer">
+               
               {topic.map((topic,idc) => {
                 const {topic_title, topic_description, topic_link} = topic
                 return(

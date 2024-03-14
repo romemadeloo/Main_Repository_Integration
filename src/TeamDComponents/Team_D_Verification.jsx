@@ -23,7 +23,7 @@ const Team_D_Verification = () => {
     setVerifyClicked(true);
     try {
       const response = await fetch(
-        `http://localhost:8080/api/verifications/verifyCertificate/${code}`
+        `http://localhost:8080/api/v1/auth/verifyCertificate/${code}`
       );
       if (response.ok) {
         const data = await response.json();
@@ -212,7 +212,7 @@ const Team_D_Verification = () => {
                       <Form.Control
                         size="sm"
                         type="text"
-                        placeholder={verificationResult[0].full_name}
+                        placeholder={verificationResult[0].firstName + " " + verificationResult[0].lastName}
                         readOnly
                       />
                     </div>

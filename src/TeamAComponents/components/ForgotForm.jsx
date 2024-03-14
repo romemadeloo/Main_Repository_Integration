@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Footer from "./Footer";
@@ -14,7 +13,6 @@ function ForgotForm({openNewPassModal, closeForgotModal, openLoginModal}) {
   const [resendStatus, setResendStatus] = useState('');
   const [resending, setResending] = useState(false);
   const [loading, setLoading] = useState(false); 
-
 
   const navigate = useNavigate();
 
@@ -73,7 +71,6 @@ function ForgotForm({openNewPassModal, closeForgotModal, openLoginModal}) {
     }
   };
 
-
   const verifyOtp = async (otp) => {
     try {
       const response = await fetch(`http://localhost:8080/api/v1/auth/verify-forgot-code?email=${email}&code=${otp}`, {
@@ -109,14 +106,6 @@ function ForgotForm({openNewPassModal, closeForgotModal, openLoginModal}) {
     <div className="forgot-container">
       <div className="template-form-container">
         <form className="forgot-template-form" onSubmit={handleFormSubmit}>
-            <button className="wBackbutton" onClick={() => {
-          openLoginModal();
-          closeForgotModal(); 
-        }}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-left" viewBox="0 0 16 16">
-                <path fillRule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
-              </svg>
-            </button>
 
           <h2 className="title">Forgot Password</h2>
           {emailSubmitted ? (
@@ -155,12 +144,19 @@ function ForgotForm({openNewPassModal, closeForgotModal, openLoginModal}) {
                 )}
               </div>
               <div className='lower'>
-              <button className="TeamA-button" onClick={sendForgotCode} disabled={loading}>
-               {loading ? 'Loading...' : 'Continue'}
-              </button>
-              {resendStatus && <p className="error-message">{resendStatus}</p>}
-            
+                <Link className='Remember-pass'
+                  onClick={() => {
+                    openLoginModal();
+                    closeForgotModal();
+                  }}
+                >
+                  <p>Remember Password?</p>
+                </Link>
+                <button className="TeamA-button" onClick={sendForgotCode} disabled={loading}>
+                  {loading ? 'Loading...' : 'Continue'}
+                </button>
               </div>
+              {resendStatus && <p className="error-message">{resendStatus}</p>}
             </>
           )}
         </form>
