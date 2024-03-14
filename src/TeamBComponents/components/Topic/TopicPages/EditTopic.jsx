@@ -201,20 +201,7 @@ const EditTopic = ({ topicId, courseTitle, chapterTitle }) => {
             </div>
           </div>
 
-          <Link
-            to="/AddQuiz"
-            className=" relative w-[100%] h-[200px]  md:w-[50%]
-           lg:w-[20vw] lg:h-[20vh] bg-[#fff] rounded-lg flex
-           items-center justify-center cursor-pointer">
-            {/* <iframe
-              src={topic_link}
-              frameborder="0"
-              scrolling="no"
-              className="blur-[.05rem] h-[200px]  hidden lg:flex"></iframe> */}
-            <span className="absolute ">
-              <FaEdit className="w-[30px] h-[30px] lg:w-[30px] lg:h-[30px]  opacity-[80%]" />
-            </span>
-          </Link>
+         
         </div>
 
         {/* Video Popup */}
