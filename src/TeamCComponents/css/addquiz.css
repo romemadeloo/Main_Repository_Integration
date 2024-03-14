@@ -16,29 +16,29 @@
     padding: 10px;
   }
 
-  .teambaddtitle{
+  .teambaddtitle {
     margin-left: 10px;
     background-color: #e0f8d9;
     color: black;
     width: 480px;
   }
 
-  .teamcadddesc{
+  .teamcadddesc {
     margin-left: 10px;
     width: 945px;
     height: 100px;
   }
 
-  .teamcadddesc{
+  .teamcadddesc {
     background-color: #e0f8d9;
     color: black;
   }
-  
-  .teamcadddesc:focus{
+
+  .teamcadddesc:focus {
     background-color: #ebffe5;
   }
 
-  .teambaddtitle:focus{
+  .teambaddtitle:focus {
     background-color: #ebffe5;
   }
 
