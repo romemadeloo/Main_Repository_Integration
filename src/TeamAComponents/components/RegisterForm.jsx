@@ -50,9 +50,9 @@ function RegisterForm({ openLoginModal, closeRegisterModal, openVerificationModa
       }
     }
   
-    if (errorMessage === '') {
-      errorMessage = <span style={{ color: 'green' }}>Good Password</span>;
-    }
+    // if (errorMessage === '') {
+    //   errorMessage = <span style={{ color: 'green' }}>ANSARAP MO PIA </span>;
+    // }
   
     setError(errorMessage); // Set the error message as a string
     return isValid;
