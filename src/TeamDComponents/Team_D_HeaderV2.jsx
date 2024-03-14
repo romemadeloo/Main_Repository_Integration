@@ -11,25 +11,26 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import ForumF from "./../TeamCComponents/pages/ForumF";
 import { useAuth } from "../TeamAComponents/components/AuthContext";
 import ProfileModal from "../TeamAComponents/components/ProfileModal";
+import { color } from "style-value-types";
 
 function getUserImageType(profilePicture) {
   // Check if profilePicture is defined and not null
   if (profilePicture && profilePicture.startsWith) {
     // Check the image type based on the data
-    const isPNG = profilePicture.startsWith('data:image/png;base64,');
-    const isJPEG = profilePicture.startsWith('data:image/jpeg;base64,');
-    
+    const isPNG = profilePicture.startsWith("data:image/png;base64,");
+    const isJPEG = profilePicture.startsWith("data:image/jpeg;base64,");
+
     if (isPNG) {
-      return 'png';
+      return "png";
     } else if (isJPEG) {
-      return 'jpeg';
+      return "jpeg";
     } else {
       // Return a default type or handle accordingly
-      return 'unknown'; // You can change this to 'jpeg' or handle as needed
+      return "unknown"; // You can change this to 'jpeg' or handle as needed
     }
   } else {
     // Return a default type or handle accordingly
-    return 'unknown'; // You can change this to 'jpeg' or handle as needed
+    return "unknown"; // You can change this to 'jpeg' or handle as needed
   }
 }
 
@@ -238,6 +239,17 @@ const Team_D_HeaderV2 = ({ onUserDataFetched, openModal, showModal }) => { // Pa
                 onClick={closeMobileNavbar}
               >
                 Verification
+              </NavLink>
+            </li>
+            <li className="profile_link">
+              <NavLink
+                activeClassName="active"
+                onClick={() => {
+                  handleOpenLogoutConfirmationModal();
+                  closeMobileNavbar();
+                }}
+              >
+                <span className="teamD_LogOut_Btn">Log Out</span>
               </NavLink>
             </li>
           </ul>
