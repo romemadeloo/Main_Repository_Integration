@@ -55,12 +55,12 @@ const AddQuiz = () => {
   return (
     <>
       <div className="teamcaddquizbody container mt-5">
-        {/* <Link onClick={() => goBack} className="buttonReturn d-flex align-items-center c_chapter_returncontainer" style={{ textDecoration: 'none', color: 'black', width: 'fit-content', }}> */}
         <div
           className="d-flex align-items-center"
           style={{ marginTop: "1rem" }}
         >
-          <div>
+          <button>
+            {/* Attach onClick event to the back button */}
             <IoArrowBackCircleSharp
               className="btnReturn c_chapter_return"
               alt="return-icon"
@@ -71,8 +71,9 @@ const AddQuiz = () => {
                 width: "2rem",
                 height: "2rem",
               }}
+              onClick={goBack} // Attach goBack function here
             />
-          </div>
+          </button>
           <span
             className="returnTitle c_chapter_returnText"
             style={{
@@ -85,7 +86,6 @@ const AddQuiz = () => {
             Back
           </span>
         </div>
-        {/* </Link> */}
         <form className="p-3" onSubmit={saveQuiz}>
           <div className="">
             <div className="">
@@ -175,7 +175,7 @@ const AddQuiz = () => {
               <span>
                 <button
                   className="teamcquizbtntwo btn btn-lg btn-success py-2 px-4 m-3 bg-op-6 roboto-bold"
-                  type="submit"
+                  type="save"
                   onClick={() => {
                     if (
                       !question ||
