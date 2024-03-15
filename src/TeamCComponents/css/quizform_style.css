@@ -39,3 +39,9 @@
     background-color: #0e3b03;
     color: #fff;
 }
+.modal-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Optional: Adds some space between the buttons */
+  }
