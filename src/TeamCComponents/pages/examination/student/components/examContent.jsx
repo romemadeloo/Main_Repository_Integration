@@ -1,6 +1,6 @@
 import CancelModal from "../components/cancelModal";
 import "../s_examPage.css";
-import 'bootstrap/dist/js/bootstrap.js';
+import "bootstrap/dist/js/bootstrap.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -19,9 +19,18 @@ export default function ExamContent() {
   useEffect(() => {
     const fetchMain = async () => {
       try {
+<<<<<<< HEAD
         // Fetch questions
         const questionsResult = await axios.get(`http://localhost:8080/api/v1/auth/questionbyquiz/${id}`);
         const coursesArray = Array.isArray(questionsResult.data) ? questionsResult.data : [questionsResult.data];
+=======
+        const result = await axios.get(
+          `http://localhost:8080/api/v1/auth/questionbyquiz/${id}`
+        );
+        const coursesArray = Array.isArray(result.data)
+          ? result.data
+          : [result.data];
+>>>>>>> fcfea2f47ba2c0fba69afa9e117079c4f53b663f
         setMain(coursesArray);
         setTotalItems(coursesArray.length);
 
@@ -41,7 +50,12 @@ export default function ExamContent() {
   useEffect(() => {
     // Shuffle choices only once when the component mounts
     if (main.length > 0) {
-      const choicesArray = main.map(con => [con.choice_1, con.choice_2, con.choice_3, con.correct_answer]);
+      const choicesArray = main.map((con) => [
+        con.choice_1,
+        con.choice_2,
+        con.choice_3,
+        con.correct_answer,
+      ]);
       setShuffledChoices(choicesArray.map(shuffleArray));
     }
   }, [main]);
@@ -54,6 +68,7 @@ export default function ExamContent() {
   }));
 };
 
+<<<<<<< HEAD
 // Function to handle scoring and show alert on submission
 const scoringFunction = () => {
   let score = 0;
@@ -74,7 +89,24 @@ const scoringFunction = () => {
   // Display alert after calculating the score
   alert(`Your score: ${score}/${totalItems}`);
 };
+=======
+  // Function to handle scoring and show alert on submission
+  const scoringFunction = () => {
+    let score = 0;
 
+    main.forEach((question) => {
+      const { id, correct_answer } = question;
+      const userAnswer = userSelection[id];
+
+      if (userAnswer === correct_answer) {
+        score += 1; // Increment the score by 1 for each correct answer
+      }
+    });
+>>>>>>> fcfea2f47ba2c0fba69afa9e117079c4f53b663f
+
+    setTotalScore(score);
+    alert(`User scored ${score} out of ${totalItems}.`); // Display total score
+  };
 
 
 
@@ -102,6 +134,7 @@ const scoringFunction = () => {
                       {ida + 1}. {question}
                     </p>
 
+<<<<<<< HEAD
                     {shuffledChoices.length > 0 && shuffledChoices[ida].map((choice, index) => (
                       <div className="form-check" key={index}>
                         <input
@@ -119,6 +152,28 @@ const scoringFunction = () => {
                         </label>
                       </div>
                     ))}
+=======
+                    {shuffledChoices.length > 0 &&
+                      shuffledChoices[ida].map((choice, index) => (
+                        <div className="form-check" key={index}>
+                          <input
+                            className="form-check-input"
+                            type="radio"
+                            name={`flexRadioDefault${ida}`}
+                            id={`flexRadioDefault${ida}_${index}`}
+                            onChange={() =>
+                              handleRadioSelection(con.id, choice)
+                            }
+                          />
+                          <label
+                            className="form-check-label"
+                            htmlFor={`flexRadioDefault${ida}_${index}`}
+                          >
+                            {choice}
+                          </label>
+                        </div>
+                      ))}
+>>>>>>> fcfea2f47ba2c0fba69afa9e117079c4f53b663f
                   </div>
                 </div>
               );
