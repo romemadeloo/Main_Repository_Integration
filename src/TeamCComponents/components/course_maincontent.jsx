@@ -1,18 +1,14 @@
+
 import { Link, useParams, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { IoArrowBackCircleSharp } from "react-icons/io5";
-<<<<<<< HEAD
 import Team_D_HeaderV2 from "../../TeamDComponents/Team_D_HeaderV2";
-=======
-//import Team_D_HeaderV2 from "../../TeamDComponents/Team_D_HeaderV2";
->>>>>>> fcfea2f47ba2c0fba69afa9e117079c4f53b663f
 
 import axios from "axios";
 
 function Component_MainContent() {
   const [chapter, setChapters] = useState([]);
-  const navigate = useNavigate(); // Import useNavigate hook
 
   const { id } = useParams();
   useEffect(() => {
@@ -35,23 +31,6 @@ function Component_MainContent() {
     fetchChapters();
   }, [id]);
   console.log(chapter);
-<<<<<<< HEAD
-
-  const handleQuizButtonClick = async () => {
-    try {
-      const response = await axios.get(
-        `http://localhost:8080/api/v1/auth/studentexam/${id}`
-      );
-      // Do something with the response, for example, log it
-      console.log(response.data);
-      // After receiving the data, you can navigate to the exam content page if needed
-      navigate('/examContent'); // Change '/examContent' to your actual route
-    } catch (error) {
-      console.error("Error loading exam content:", error);
-    }
-  };
-=======
->>>>>>> fcfea2f47ba2c0fba69afa9e117079c4f53b663f
 
   return (
     <>
@@ -142,13 +121,9 @@ function Component_MainContent() {
                 type="button"
                 className="btn btn-primary"
                 data-bs-dismiss="modal"
-<<<<<<< HEAD
-                onClick={handleQuizButtonClick}
-=======
                 onClick={() => {
                   window.location.href = urlQuiz;
                 }}
->>>>>>> fcfea2f47ba2c0fba69afa9e117079c4f53b663f
                 style={{
                   backgroundColor: "#0e3b03",
                   color: "#ffffff",
@@ -178,8 +153,6 @@ function Component_MainContent() {
         </div>
         {/* Modal contents for quiz */}
       </div>
-<<<<<<< HEAD
-=======
 
       <div
         className="modal fade modalSub"
@@ -239,7 +212,6 @@ function Component_MainContent() {
           </div>
         </div>
       </div>
->>>>>>> fcfea2f47ba2c0fba69afa9e117079c4f53b663f
     </>
   );
 }
