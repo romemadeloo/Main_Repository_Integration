@@ -20,6 +20,7 @@ import axios from "axios";
 import Footer from "../../Footer";
 import DeleteAllTopics from "../TopicModal/DeleteAllTopics";
 
+
 const TopicPage = () => {
   const navigate = useNavigate();
 
@@ -212,6 +213,23 @@ const TopicPage = () => {
               })}
             </div>
 
+            <Link to="/AddQuiz">     
+ <div className="w-[100%] flex justify-center items-center">
+ <button
+    className="btn courseButton"
+    data-bs-toggle="modal"
+    data-bs-target="#mainId"
+    type="button"
+    style={{
+      backgroundColor: '#0E3B03',
+      color: 'white',
+      boxShadow: '0 2px 5px 0 rgb(0 0 0 / 25%), 0 5px 5px 0 rgb(0 0 0 / 30%)',
+    }}
+  >
+    Create Quiz
+  </button>
+ </div>
+</Link>
             <div
               className="flex items-center justify-center h-[30%] "
               onClick={showAddHandle}>
@@ -291,6 +309,22 @@ const TopicPage = () => {
                   );
                 })}
               </div>
+
+              <div className="w-[100%] flex justify-center items-center">
+ <button
+    className="btn courseButton"
+    data-bs-toggle="modal"
+    data-bs-target="#mainId"
+    type="button"
+    style={{
+      backgroundColor: '#0E3B03',
+      color: 'white',
+      boxShadow: '0 2px 5px 0 rgb(0 0 0 / 25%), 0 5px 5px 0 rgb(0 0 0 / 30%)',
+    }}
+  >
+    Create Quiz
+  </button>
+ </div>
 
               <div
                 className="flex items-center h-[30%] justify-center"
