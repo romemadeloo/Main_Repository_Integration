@@ -216,6 +216,7 @@ background-color: gray;
 @media screen and (max-width: 768px) {
   .container-under {
       align-items: center;
+      flex-wrap: wrap;
   }
 }
 
@@ -1921,17 +1922,28 @@ strong{
   /* Adjust styles for smaller screens (tablets) */
   .forgot-auth-label {
       width: 80%; /* Adjust width for tablets */
-      margin-left: 0; /* Reset margin-left */
+      margin-right: 8.5rem;
   }
 }
 
 @media (max-width: 576px) {
   /* Adjust styles for even smaller screens (phones) */
   .forgot-auth-label {
-      width: 90%; /* Adjust width for phones */
-      margin-left: 0; /* Reset margin-left */
+    width: 80%;
+    margin-right: 0px;
+    margin-left: -56px;
   }
 }
+
+@media (max-width: 375px) {
+  /* Adjust styles for smaller screens (phones) */
+  .forgot-auth-label {
+    width: 89%;
+    margin-right: 0px;
+    margin-left: -25px;
+  }
+}
+
 .lower {
   margin-top:35px;
   
