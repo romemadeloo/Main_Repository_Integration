@@ -50,7 +50,7 @@
 .pagination-custom {
   background-color: transparent !important;
   border-color: transparent !important;
-  position: absolute;
+  position: fixed;
   bottom: 3rem;
   text-align: center; /* Center pagination horizontally */
 }
