@@ -233,9 +233,20 @@ const TopicPage = () => {
                     const {chapter_id} = chapter
                     return (
                       <div key={idx}>
-                        <Link to={`/addquiz/${chapter_id}`} >Add Quiz</Link>
-                        {/* {setChapterId(chapter_id)} */}
-                      </div>
+                      <Link to={`/addquiz/${chapter_id}`}>Add Quiz</Link>
+                      
+                    </div>
+                    )
+                  })}
+                </div>
+                <div>
+                  {chapters.map((chapter, idx) => {
+                    const {chapter_id} = chapter
+                    return (
+                      <div key={idx}>
+                      <Link to={`/QuizDesc/${chapter_id}`}>Add Quiz2</Link>
+                      
+                    </div>
                     )
                   })}
                 </div>
