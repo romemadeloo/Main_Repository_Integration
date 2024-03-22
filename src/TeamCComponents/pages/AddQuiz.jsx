@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"; // Import React and useState hook from 'react'
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import "../css/addquiz.css";
 import { IoIosAdd } from "react-icons/io";
 import { FaTrashAlt } from "react-icons/fa";
@@ -8,8 +8,10 @@ import { IoArrowBackCircleSharp } from "react-icons/io5";
 
 import axios from "axios";
 
-const AddQuiz = () => {
+const AddQuiz = (props) => {
+  
   const navigate = useNavigate();
+  const { chapter_id } = useParams();
 
   const goBack = () => {
     navigate(-1);
@@ -19,20 +21,19 @@ const AddQuiz = () => {
   const [isSaved, setIsSaved] = useState([]);
 
   const [inputData, setInputData] = useState({
-    question: "",
-    choice_1: "",
-    choice_2: "",
-    choice_3: "",
-    correct_answer: "",
+    chapter: chapter_id,
+    quiz_title: "",
+    quiz_description: "",
+   
   });
 
-  const { question, choice_1, choice_2, choice_3, correct_answer } = inputData;
+  const {chapter, quiz_title, quiz_description,  } = inputData;
 
   const handleInputChange = (e) => {
     setInputData({ ...inputData, [e.target.name]: e.target.value });
   };
 
-  const saveQuiz = async (e) => {
+  const saveQuestion = async (e) => {
     e.preventDefault();
 
     try {
@@ -44,15 +45,45 @@ const AddQuiz = () => {
     }
   };
 
+  const saveQuiz = async (e) => {
+    e.preventDefault();
+  
+    try {
+      const data = {
+        quiz_title: inputData.quiz_title,
+        quiz_description: inputData.quiz_description,
+        chapter: {
+          chapter_id: chapter_id
+        },
+        target_score:  inputData.target_score,
+      };
+  
+      await axios.post(`http://localhost:8080/api/v1/auth/quiz`, data);
+      // showModal(false);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      // Handle error if the API call fails
+    }
+  };
+  
+
+
   useEffect(() => {
     getAllQuiz();
   }, []);
 
   const getAllQuiz = async () => {
-    const res = await axios.get("http://localhost:8080/api/v1/auth/question/1");
+    const res = await axios.get("http://localhost:8080/api/v1/auth/quizzes");
     setIsSaved(res.data);
+    console.log(res.data)
   };
+  
 
+ 
+  const[showQuestion, setShowQuestion] = useState(false)
+
+   console.log(chapter_id)
+  
   return (
     <>
       <div className="teamcaddquizbody container mt-5">
@@ -87,25 +118,49 @@ const AddQuiz = () => {
             Back
           </span>
         </div>
-        <form className="p-3" onSubmit={saveQuiz}>
-          <div className="">
-            <div className="">
+    
+    {/* for quiz */}
+          <form action="" onSubmit={saveQuiz}>
+           <div className="">
               <div className="d-flex justify-content-between align-items-center mb-3">
                 <span className="mr-auto">
                   <input
                     className="teambaddtitle form-control"
                     placeholder="Title"
-                    name="Add Title"
+                    name="quiz_title"
+                    value={quiz_title}
+                    onChange={(e) => handleInputChange(e)}
                   />
                 </span>
               </div>
               <textarea
                 className="teamcadddesc form-control p-4 mb-4"
-                rows="5"
-                name="Add Description"
+                name="quiz_description"
                 placeholder="Add description"
+                value={quiz_description}
+                onChange={(e) => handleInputChange(e)}
               />
+
+                    {/* <textarea
+                className="teamcadddesc form-control p-4 mb-4"
+                name="chapter"
+                placeholder="Add description"
+                value={chapter_id}
+                onChange={(e) => handleInputChange(e)}
+              /> */}
             </div>
+            <button
+                  className="teamcquizbtntwo btn btn-lg btn-success py-2 px-4 m-3 bg-op-6 roboto-bold"
+                  type="save" onClick={(() => window.alert("Congrats"))}
+                >
+                  <IoIosSave />
+                </button>
+          </form>
+
+
+
+       {!showQuestion && <form className="p-3" onSubmit={saveQuestion}>
+          <div className="">
             <span className="">
               <button className="teamcquizbtn btn btn-lg btn-success roboto-bold mr-3 ">
                 <IoIosAdd />
@@ -197,7 +252,7 @@ const AddQuiz = () => {
               </span>
             </div>
           </div>
-        </form>
+        </form>}
       </div>
     </>
   );

@@ -20,6 +20,7 @@ import axios from "axios";
 import Footer from "../../Footer";
 import DeleteAllTopics from "../TopicModal/DeleteAllTopics";
 import { TbPlugX } from "react-icons/tb";
+import AddQuiz from "../../../../TeamCComponents/pages/AddQuiz";
 
 const TopicPage = () => {
   const navigate = useNavigate();
@@ -150,6 +151,8 @@ const TopicPage = () => {
   useEffect(() => {
     chapterId
   },[])
+
+
   return (
     <>
       <Nav />
@@ -225,36 +228,7 @@ const TopicPage = () => {
                 );
               })}
             </div>
-                <div>
-                  {chapters.map((chapter, idx) => {
-                    const {chapter_id} = chapter
-                    return (
-                      <div key={idx}>
-                        <Link to={`/addquiz/${chapter_id}`} >Add Quiz</Link>
-                        {/* {setChapterId(chapter_id)} */}
-                      </div>
-                    )
-                  })}
-                </div>
 
-            <Link to="/AddQuiz">
-              <div className="w-[100%] flex justify-center items-center">
-                <button
-                  className="btn courseButton"
-                  data-bs-toggle="modal"
-                  data-bs-target="#mainId"
-                  type="button"
-                  style={{
-                    backgroundColor: "white",
-                    color: "#0E3B03",
-                    boxShadow:
-                      "0 2px 5px 0 rgb(0 0 0 / 25%), 0 5px 5px 0 rgb(0 0 0 / 30%)",
-                  }}
-                >
-                  Create Quiz
-                </button>
-              </div>
-            </Link>
             <div
               className="flex items-center justify-center h-[30%] "
               onClick={showAddHandle}
