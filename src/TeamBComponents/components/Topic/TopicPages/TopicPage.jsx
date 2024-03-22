@@ -228,7 +228,17 @@ const TopicPage = () => {
                 );
               })}
             </div>
-
+                <div>
+                  {chapters.map((chapter, idx) => {
+                    const {chapter_id} = chapter
+                    return (
+                      <div key={idx}>
+                        <Link to={`/addquiz/${chapter_id}`} >Add Quiz</Link>
+                        {/* {setChapterId(chapter_id)} */}
+                      </div>
+                    )
+                  })}
+                </div>
             <div
               className="flex items-center justify-center h-[30%] "
               onClick={showAddHandle}

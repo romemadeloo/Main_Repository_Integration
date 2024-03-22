@@ -77,13 +77,6 @@ const AddQuiz = (props) => {
     setIsSaved(res.data);
     console.log(res.data)
   };
-  
-
- 
-  const[showQuestion, setShowQuestion] = useState(false)
-
-   console.log(chapter_id)
-  
   return (
     <>
       <div className="teamcaddquizbody container mt-5">
