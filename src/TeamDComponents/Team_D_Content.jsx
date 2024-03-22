@@ -44,36 +44,19 @@ const Team_D_Content = () => {
     handleCategoryChange(DateIssued); // Trigger filtering on initial render
   }, [pdfFileNames]); // Trigger filtering when pdfFileNames changes
 
-  //old version default ascending order
-  // const handleCategoryChange = (value) => {
-  //   setDateIssued(value);
-  //   if (value === "recent") {
-  //     // Filter recent certificates
-  //     const filtered = pdfFileNames.filter(
-  //       (cert) => FilterDate(cert.date_issued) === "recent"
-  //     );
-  //     setFilteredCertificates(filtered);
-  //   } else {
-  //     // Display all certificates
-  //     setFilteredCertificates(pdfFileNames);
-  //   }
-  // };
-
-
-//new version displaying it descending order
   const handleCategoryChange = (value) => {
     setDateIssued(value);
     if (value === "recent") {
-        // Filter recent certificates
-        const filtered = pdfFileNames
-            .filter(cert => FilterDate(cert.date_issued) === "recent")
-            .sort((a, b) => new Date(b.date_issued) - new Date(a.date_issued)); // Sort by date in descending order
-        setFilteredCertificates(filtered);
+      // Filter recent certificates
+      const filtered = pdfFileNames.filter(
+        (cert) => FilterDate(cert.date_issued) === "recent"
+      );
+      setFilteredCertificates(filtered);
     } else {
-        // Display all certificates
-        setFilteredCertificates(pdfFileNames);
+      // Display all certificates
+      setFilteredCertificates(pdfFileNames);
     }
-};
+  };
 
   if (value !== null) {
     // Value exists, you can use it
