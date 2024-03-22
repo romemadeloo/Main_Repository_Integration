@@ -19,6 +19,7 @@ import { CourseContext } from "../../context/CourseContext";
 import axios from "axios";
 import Footer from "../../Footer";
 import DeleteAllTopics from "../TopicModal/DeleteAllTopics";
+import { TbPlugX } from "react-icons/tb";
 
 const TopicPage = () => {
   const navigate = useNavigate();
@@ -141,6 +142,14 @@ const TopicPage = () => {
   console.log(courses);
 
   // const [showDeleteAllTopics, setShowDeleteAllTopics] = useState(false);
+  // added by dasup
+  
+  console.log(chapters);
+  const [chapterId, setChapterId] = useState("")
+  console.log(chapterId)
+  useEffect(() => {
+    chapterId
+  },[])
   return (
     <>
       <Nav />
@@ -216,6 +225,17 @@ const TopicPage = () => {
                 );
               })}
             </div>
+                <div>
+                  {chapters.map((chapter, idx) => {
+                    const {chapter_id} = chapter
+                    return (
+                      <div key={idx}>
+                        <Link to={`/addquiz/${chapter_id}`} >Add Quiz</Link>
+                        {/* {setChapterId(chapter_id)} */}
+                      </div>
+                    )
+                  })}
+                </div>
 
             <Link to="/AddQuiz">
               <div className="w-[100%] flex justify-center items-center">
@@ -246,6 +266,13 @@ const TopicPage = () => {
                 Add New Topic
               </span>
             </div>
+{/*              
+            <Link
+                to={`/AddQuiz/${chapter_id}`}>
+              add quiz
+            </Link> */}
+
+            {/*  */}
           </div>
         </div>
 

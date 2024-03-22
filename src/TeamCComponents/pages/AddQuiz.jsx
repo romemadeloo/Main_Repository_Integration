@@ -52,6 +52,7 @@ const AddQuiz = () => {
     const res = await axios.get("http://localhost:8080/api/v1/auth/question/1");
     setIsSaved(res.data);
   };
+
   return (
     <>
       <div className="teamcaddquizbody container mt-5">
