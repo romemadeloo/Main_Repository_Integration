@@ -149,9 +149,7 @@ function TeamIntegrationRoutes() {
           <Route path="/api/v1/auth/chapters/:id" element={<ChapterList />} />
           <Route path="/api/v1/auth/topics/:id" element={<TeamC_Topics />} />
           <Route path="/quizform" element={<TeamC_QuizForm />} />
-          <Route
-            path="/api/v1/auth/studentexam/:id"
-            element={<StudentExamPage />}
+          <Route path="/api/v1/auth/studentexam/:id" element={<StudentExamPage />}
           />
           <Route path="/instructorexam" element={<InstructorExamPage />} />
 
