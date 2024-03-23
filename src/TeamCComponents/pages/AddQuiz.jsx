@@ -11,7 +11,7 @@ import axios from "axios";
 const AddQuiz = (props) => {
   
   const navigate = useNavigate();
-  const { chapter_id } = useParams();
+  const { quiz_id } = useParams();
 
   const goBack = () => {
     navigate(-1);
@@ -21,44 +21,51 @@ const AddQuiz = (props) => {
   const [isSaved, setIsSaved] = useState([]);
 
   const [inputData, setInputData] = useState({
-    chapter: chapter_id,
+    quiz: quiz_id,
     quiz_title: "",
     quiz_description: "",
+    choice_1: "",
+    choice_2: "",
+    choice_3: "",
+    correct_answer: "",
    
   });
 
-  const {chapter, quiz_title, quiz_description,  } = inputData;
+  const {quiz, question, choice_1, choice_2, choice_3, correct_answer } = inputData;
 
   const handleInputChange = (e) => {
     setInputData({ ...inputData, [e.target.name]: e.target.value });
   };
 
+  // const saveQuestion = async (e) => {
+  //   e.preventDefault();
+
+  //   try {
+  //     await axios.post(`http://localhost:8080/api/v1/auth/question`, inputData);
+  //     // showModal(false);
+  //   } catch (error) {
+  //     console.error("Error submitting form:", error);
+  //     // Handle error if the API call fails
+  //   }
+  // };
+
   const saveQuestion = async (e) => {
-    e.preventDefault();
-
-    try {
-      await axios.post(`http://localhost:8080/api/v1/auth/question`, inputData);
-      // showModal(false);
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      // Handle error if the API call fails
-    }
-  };
-
-  const saveQuiz = async (e) => {
     e.preventDefault();
   
     try {
       const data = {
-        quiz_title: inputData.quiz_title,
-        quiz_description: inputData.quiz_description,
-        chapter: {
-          chapter_id: chapter_id
+        question: inputData.question,
+        choice_1: inputData.choice_1,
+        choice_2: inputData.choice_2,
+        choice_3: inputData.choice_3,
+        correct_answer: inputData.correct_answer,
+        quiz: {
+          quiz_id: quiz_id
         },
         target_score:  inputData.target_score,
       };
   
-      await axios.post(`http://localhost:8080/api/v1/auth/quiz`, data);
+      await axios.post(`http://localhost:8080/api/v1/auth/question`, data);
       // showModal(false);
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -82,7 +89,7 @@ const AddQuiz = (props) => {
  
   const[showQuestion, setShowQuestion] = useState(false)
 
-   console.log(chapter_id)
+   console.log(quiz_id)
   
   return (
     <>
@@ -119,47 +126,7 @@ const AddQuiz = (props) => {
           </span>
         </div>
     
-    {/* for quiz */}
-          <form action="" onSubmit={saveQuiz}>
-           <div className="">
-              <div className="d-flex justify-content-between align-items-center mb-3">
-                <span className="mr-auto">
-                  <input
-                    className="teambaddtitle form-control"
-                    placeholder="Title"
-                    name="quiz_title"
-                    value={quiz_title}
-                    onChange={(e) => handleInputChange(e)}
-                  />
-                </span>
-              </div>
-              <textarea
-                className="teamcadddesc form-control p-4 mb-4"
-                name="quiz_description"
-                placeholder="Add description"
-                value={quiz_description}
-                onChange={(e) => handleInputChange(e)}
-              />
-
-                    {/* <textarea
-                className="teamcadddesc form-control p-4 mb-4"
-                name="chapter"
-                placeholder="Add description"
-                value={chapter_id}
-                onChange={(e) => handleInputChange(e)}
-              /> */}
-            </div>
-            <button
-                  className="teamcquizbtntwo btn btn-lg btn-success py-2 px-4 m-3 bg-op-6 roboto-bold"
-                  type="save" onClick={(() => window.alert("Congrats"))}
-                >
-                  <IoIosSave />
-                </button>
-          </form>
-
-
-
-       {!showQuestion && <form className="p-3" onSubmit={saveQuestion}>
+    <form className="p-3" onSubmit={saveQuestion}>
           <div className="">
             <span className="">
               <button className="teamcquizbtn btn btn-lg btn-success roboto-bold mr-3 ">
@@ -252,7 +219,7 @@ const AddQuiz = (props) => {
               </span>
             </div>
           </div>
-        </form>}
+        </form>
       </div>
     </>
   );
