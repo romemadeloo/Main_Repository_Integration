@@ -20,9 +20,30 @@ import { NavBarContext } from "../context/NavBarContext";
 import { ProfileContext } from "../context/ProfileContext";
 
 import { useAuth } from "../../../TeamAComponents/components/AuthContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 //Nav functional component
-const Nav = ({showModal, handleClose}) => {
+function getUserImageType(profilePicture) {
+  // Check if profilePicture is defined and not null
+  if (profilePicture && profilePicture.startsWith) {
+    // Check the image type based on the data
+    const isPNG = profilePicture.startsWith("data:image/png;base64,");
+    const isJPEG = profilePicture.startsWith("data:image/jpeg;base64,");
+
+    if (isPNG) {
+      return "png";
+    } else if (isJPEG) {
+      return "jpeg";
+    } else {
+      // Return a default type or handle accordingly
+      return "unknown"; // You can change this to 'jpeg' or handle as needed
+    }
+  } else {
+    // Return a default type or handle accordingly
+    return "unknown"; // You can change this to 'jpeg' or handle as needed
+  }
+}
+
+const Nav = ({onUserDataFetched, showModal, handleClose}) => {
   //Destructuring values from NavBarContext
   const {
     header,
@@ -43,10 +64,10 @@ const Nav = ({showModal, handleClose}) => {
     logout,
     setForumShow,
   } = useContext(NavBarContext);
-
+  const [userData, setUserData] = useState({});
   const { users, file } = useContext(ProfileContext);
   const [showProfileModal, setShowProfileModal] = useState(false); // State to control the visibility of the profile modal
-
+  const [clicked, setClicked] = useState(false);
   const openProfileModal = () => {
     setShowProfileModal(true); // Function to open the profile modal
   };
@@ -78,6 +99,76 @@ const Nav = ({showModal, handleClose}) => {
   const firstname = localStorage.getItem("firstName");
   const lastname = localStorage.getItem("lastName");
   const email = localStorage.getItem("email");
+
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const userId = localStorage.getItem("userId");
+        if (!userId) {
+          console.error("User ID not found in local storage");
+          return;
+        }
+
+        const response = await fetch(
+          `http://localhost:8080/api/v1/auth/users/${userId}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (response.ok) {
+          const userData = await response.json();
+          setUserData(userData);
+
+          if (
+            userData.profilePicture !== undefined &&
+            userData.profilePicture !== null
+          ) {
+            const base64 = btoa(
+              String.fromCharCode(...new Uint8Array(userData.profilePicture))
+            );
+            const imageType = getUserImageType(userData.profilePicture);
+            const dataUrl = `data:image/${imageType};base64,${base64}`;
+
+            onUserDataFetched({
+              ...userData,
+              profilePicture: dataUrl,
+            });
+          } else {
+            console.error("Profile picture is undefined or null in user data");
+          }
+        } else {
+          console.error(
+            "Failed to fetch user data",
+            response.status,
+            response.statusText
+          );
+        }
+      } catch (error) {
+        console.error("Unexpected error during user data fetch", error);
+      }
+    };
+
+    fetchUserData();
+  }, [onUserDataFetched]);
+
+  // Add or remove the 'no-scroll' class based on the 'clicked' state
+  useEffect(() => {
+    if (clicked) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = ""; // Cleanup on component unmount
+    };
+  }, [clicked]);
+
 
   return (
     <>
@@ -149,11 +240,23 @@ const Nav = ({showModal, handleClose}) => {
                   onClick={() => setShow((prev) => !prev)}
                   className="w-[250px] TeamB_text-shadow gap-x-4 py-2 px-4 bg-[#bce8b1] rounded-[.5rem] shadow-lg flex justify-center items-center lg:hidden"
                 >
-                  <img
-                    className="h-[40px] w-[40px] rounded-[50%] border-2 border-green-800"
-                    src={file}
-                    alt="profileLogo"
-                  />
+                  {userData.profilePicture ? (
+            <img
+              src={`data:image/${getUserImageType(
+                userData.profilePicture
+              )};base64,${userData.profilePicture}`}
+              alt=""
+              className="h-[40px] w-[40px] rounded-[50%] border-2 border-green-800"
+            />
+          ) : (
+            <Link to="#" onClick={openProfileModal}>
+              <img
+                src={file} // Replace 'file' with the URL or path to your default picture
+                alt="profileLogo"
+                className="h-[40px] w-[40px] rounded-[50%] border-2 border-green-800"
+              />
+            </Link>
+          )}
                   <div className="text-[.8rem] leading-3">
                     <p>
                       {firstname} {lastname}
@@ -179,11 +282,10 @@ const Nav = ({showModal, handleClose}) => {
           {/* Profile dropdown */}
           <div className="drop-shadow-lg shadow-lg w-[150px] bg-[#ffffff] mr-2 cursor-pointer lg:text-[1rem] rounded-md ml-auto hidden border-lime-900 border-[.1rem] lg:flex justify-between items-center p-1 text-[#126912]">
             <div className="flex items-center justify-center gap-x-1">
-              <img
-                src={file}
+                <img
+                src={`data:image/${getUserImageType(userData.profilePicture)};base64,${userData.profilePicture}`}
                 alt=""
-                className="h-[30px] w-[30px] rounded-[50%]"
-                onClick={() => setShowDropDown((prev) => !prev)}
+                className="profile_img"
               />
               <p
                 onClick={() => setShowDropDown((prev) => !prev)}
