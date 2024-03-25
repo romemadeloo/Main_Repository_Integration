@@ -287,7 +287,16 @@ const Team_D_HeaderV2 = ({ onUserDataFetched, openModal, showModal }) => {
               id="dropdown-basic"
               className="button_profile"
             >
-              <img src={Profile} alt="" className="profile_img" />
+             {userData.profilePicture ? (
+                <img
+                  src={`data:image/${getUserImageType(userData.profilePicture)};base64,${userData.profilePicture}`}
+                  alt=""
+                  className="profile_img"
+                />
+              ) : (
+                <img src={Profile} alt="" className="profile_img" />
+              )}
+
               Hi, {value}!
             </Dropdown.Toggle>
 

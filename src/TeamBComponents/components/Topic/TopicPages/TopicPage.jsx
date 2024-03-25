@@ -228,7 +228,7 @@ const TopicPage = () => {
                 );
               })}
             </div>
-                <div>
+                {/* <div>
                   {chapters.map((chapter, idx) => {
                     const {chapter_id} = chapter
                     return (
@@ -238,7 +238,7 @@ const TopicPage = () => {
                     </div>
                     )
                   })}
-                </div>
+                </div> */}
 
                 <div className="w-[100%] flex justify-center items-center">
                   <button

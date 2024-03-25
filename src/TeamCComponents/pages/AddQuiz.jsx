@@ -1,15 +1,13 @@
-import React, { useEffect, useState } from "react"; // Import React and useState hook from 'react'
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import "../css/addquiz.css";
 import { IoIosAdd } from "react-icons/io";
 import { FaTrashAlt } from "react-icons/fa";
 import { IoIosSave } from "react-icons/io";
 import { IoArrowBackCircleSharp } from "react-icons/io5";
-
 import axios from "axios";
 
 const AddQuiz = (props) => {
-  
   const navigate = useNavigate();
   const { quiz_id } = useParams();
 
@@ -17,41 +15,23 @@ const AddQuiz = (props) => {
     navigate(-1);
   };
 
-  // to save
-  const [isSaved, setIsSaved] = useState([]);
-
   const [inputData, setInputData] = useState({
-    quiz: quiz_id,
-    quiz_title: "",
-    quiz_description: "",
+    question: "",
     choice_1: "",
     choice_2: "",
     choice_3: "",
     correct_answer: "",
-   
   });
 
-  const {quiz, question, choice_1, choice_2, choice_3, correct_answer } = inputData;
+  const { question, choice_1, choice_2, choice_3, correct_answer } = inputData;
 
   const handleInputChange = (e) => {
     setInputData({ ...inputData, [e.target.name]: e.target.value });
   };
 
-  // const saveQuestion = async (e) => {
-  //   e.preventDefault();
-
-  //   try {
-  //     await axios.post(`http://localhost:8080/api/v1/auth/question`, inputData);
-  //     // showModal(false);
-  //   } catch (error) {
-  //     console.error("Error submitting form:", error);
-  //     // Handle error if the API call fails
-  //   }
-  // };
-
   const saveQuestion = async (e) => {
     e.preventDefault();
-  
+
     try {
       const data = {
         question: inputData.question,
@@ -62,18 +42,24 @@ const AddQuiz = (props) => {
         quiz: {
           quiz_id: quiz_id
         },
-        target_score:  inputData.target_score,
+        target_score: inputData.target_score,
       };
-  
+
       await axios.post(`http://localhost:8080/api/v1/auth/question`, data);
-      // showModal(false);
+      navigate(`/addquiz/${quiz_id}`); // Navigate to the same page to add another question
+      setInputData({
+        ...inputData,
+        question: "",
+        choice_1: "",
+        choice_2: "",
+        choice_3: "",
+        correct_answer: ""
+      }); // Clear input fields
     } catch (error) {
       console.error("Error submitting form:", error);
       // Handle error if the API call fails
     }
   };
-  
-
 
   useEffect(() => {
     getAllQuiz();
@@ -84,22 +70,13 @@ const AddQuiz = (props) => {
     setIsSaved(res.data);
     console.log(res.data)
   };
-  
 
- 
-  const[showQuestion, setShowQuestion] = useState(false)
-
-   console.log(quiz_id)
-  
   return (
     <>
+  
       <div className="teamcaddquizbody container mt-5">
-        <div
-          className="d-flex align-items-center"
-          style={{ marginTop: "1rem" }}
-        >
+        <div className="d-flex align-items-center" style={{ marginTop: "1rem" }}>
           <button>
-            {/* Attach onClick event to the back button */}
             <IoArrowBackCircleSharp
               className="btnReturn c_chapter_return"
               alt="return-icon"
@@ -110,30 +87,16 @@ const AddQuiz = (props) => {
                 width: "2rem",
                 height: "2rem",
               }}
-              onClick={goBack} // Attach goBack function here
+              onClick={goBack}
             />
           </button>
-          <span
-            className="returnTitle c_chapter_returnText"
-            style={{
-              marginLeft: "0.5rem",
-              color: "#126912",
-              fontSize: "1.5rem",
-              marginTop: "0rem",
-            }}
-          >
+          <span className="returnTitle c_chapter_returnText" style={{ marginLeft: "0.5rem", color: "#126912", fontSize: "1.5rem", marginTop: "0rem" }}>
             Back
           </span>
         </div>
-    
-    <form className="p-3" onSubmit={saveQuestion}>
-          <div className="">
-            <span className="">
-              <button className="teamcquizbtn btn btn-lg btn-success roboto-bold mr-3 ">
-                <IoIosAdd />
-              </button>
-            </span>
 
+        <form className="p-3" onSubmit={saveQuestion}>
+          <div className="">
             <div className="container text-center">
               <textarea
                 className="teamcaddform form-control p-4 mb-4"
@@ -177,7 +140,7 @@ const AddQuiz = (props) => {
                 <div className="col-lg-6 mb-3">
                   <input
                     className="teamcaddform form-control"
-                    placeholder="Option 4"
+                    placeholder="Correct Answer"
                     name="correct_answer"
                     value={correct_answer}
                     onChange={(e) => handleInputChange(e)}
@@ -200,13 +163,7 @@ const AddQuiz = (props) => {
                   className="teamcquizbtntwo btn btn-lg btn-success py-2 px-4 m-3 bg-op-6 roboto-bold"
                   type="save"
                   onClick={() => {
-                    if (
-                      !question ||
-                      !choice_1 ||
-                      !choice_2 ||
-                      !choice_3 ||
-                      !correct_answer
-                    ) {
+                    if (!question || !choice_1 || !choice_2 || !choice_3 || !correct_answer) {
                       window.alert("Please fill in all fields before saving.");
                       return false;
                     } else {
