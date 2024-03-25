@@ -1,7 +1,3 @@
-import CancelModal from "../components/cancelModal";
-import "../s_examPage.css";
-import 'bootstrap/dist/js/bootstrap.js';
-import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -10,13 +6,36 @@ import Team_D_HeaderV2 from "../../../../../TeamDComponents/Team_D_HeaderV2";
 export default function ExamContent() {
   const [main, setMain] = useState([]);
   const [totalItems, setTotalItems] = useState(0);
-  const [totalScore, setTotalScore] = useState(0);
   const [userSelection, setUserSelection] = useState({});
   const [shuffledChoices, setShuffledChoices] = useState([]);
   const [quizTitle, setQuizTitle] = useState(""); // State to store the quiz title
   const { id } = useParams();
-  
+  const [score, setScore] = useState(0); // State to store the score
+  const [enrollmentId, setEnrollmentId] = useState(""); // State to store enrollment id
+  const [quizId, setQuizId] = useState(""); // State to store quiz id
+  const [currentDate, setCurrentDate] = useState(""); // State to store current date
+  const [loading, setLoading] = useState(true); // Loading state
+
   useEffect(() => {
+    // Fetch user enrollment id, quiz id, and current date
+    const fetchUserData = async () => {
+      try {
+        // Fetch user data from your backend API or any other source
+        // For demonstration, let's assume you have a function getUserData() that returns user data
+        const userData = await getUserData();
+        setEnrollmentId(userData.enrollmentId);
+        setQuizId(id); // Quiz id is obtained from URL params
+        setCurrentDate(new Date().toISOString());
+        setLoading(false); // Set loading to false after data is fetched
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    // Call fetchUserData function
+    fetchUserData();
+
+    // Your existing code for fetching questions and quiz title
     const fetchMain = async () => {
       try {
         // Fetch questions
@@ -36,6 +55,7 @@ export default function ExamContent() {
 
     // Call the API request
     fetchMain();
+
   }, [id]);
 
   useEffect(() => {
@@ -46,41 +66,73 @@ export default function ExamContent() {
     }
   }, [main]);
 
- // Function to handle radio button selection
- const handleRadioSelection = (questionId, selectedChoice) => {
-  setUserSelection((prevSelection) => ({
-    ...prevSelection,
-    [questionId]: selectedChoice,
-  }));
-};
+  // Function to handle radio button selection
+  const handleRadioSelection = (questionId, selectedChoice) => {
+    setUserSelection((prevSelection) => ({
+      ...prevSelection,
+      [questionId]: selectedChoice,
+    }));
+  };
 
-// Function to handle scoring and show alert on submission
-const scoringFunction = () => {
-  let score = 0;
-  for (let i = 0; i < main.length; i++) {
-    const questionId = main[i].question_id;
-    const correctAnswer = main[i].correct_answer;
-    const userAnswer = userSelection[questionId]; // Access selected choice for the question
+  // Function to handle scoring and show alert on submission
+  const scoringFunction = () => {
+    let score = 0;
+    for (let i = 0; i < main.length; i++) {
+      const questionId = main[i].question_id;
+      const correctAnswer = main[i].correct_answer;
+      const userAnswer = userSelection[questionId]; // Access selected choice for the question
 
-    console.log("Question ID:", questionId);
-    console.log("Correct Answer:", correctAnswer);
-    console.log("User's Answer:", userAnswer);
+      console.log("Question ID:", questionId);
+      console.log("Correct Answer:", correctAnswer);
+      console.log("User's Answer:", userAnswer);
 
-    if (correctAnswer === userAnswer) {
-      score++;
+      if (correctAnswer === userAnswer) {
+        score++;
+      }
     }
-  }
 
-  // Display alert after calculating the score
-  alert(`Your score: ${score}/${totalItems}`);
-};
+    // Set the score to state
+    setScore(score);
+
+    // Display alert after calculating the score
+    alert(`Your score: ${score}/${totalItems}`);
+
+    // Call function to save quiz taken data
+    saveQuizTakenData(score);
+  };
+
+  // Function to save quiz taken data
+  const saveQuizTakenData = async (score) => {
+    // Prepare data for the POST request
+    const quizTakenData = {
+      enrollmentId: enrollmentId,
+      quizId: quizId,
+      score: score,
+      dateTaken: currentDate,
+    };
+
+    // Make a POST request to your backend API
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/api/v1/auth/quiztaken",
+        quizTakenData
+      );
+      console.log("Quiz taken data saved successfully:", response.data);
+    } catch (error) {
+      console.error("Error saving quiz taken data:", error);
+    }
+  };
+
+  if (loading) {
+    return <div>Loading...</div>; // Display loading indicator while data is being fetched
+  }
 
   return (
     <>
-    <Team_D_HeaderV2/>
+      <Team_D_HeaderV2 />
       <div id="outerContainer">
-      <div className="mt-10 ml-20 text-[2rem] font-semibold">{quizTitle}</div>
-        <div className=" ml-20"> TOTAL ITEMS: {totalItems}</div>
+        <div className="mt-10 ml-20 text-[2rem] font-semibold">{quizTitle}</div>
+        <div className="ml-20"> TOTAL ITEMS: {totalItems}</div>
         <div id="parentExamContent">
           {main &&
             main.map((con, ida) => {
@@ -93,23 +145,24 @@ const scoringFunction = () => {
                       {ida + 1}. {question}
                     </p>
 
-                    {shuffledChoices.length > 0 && shuffledChoices[ida].map((choice, index) => (
-                      <div className="form-check" key={index}>
-                        <input
-                          className="form-check-input"
-                          type="radio"
-                          name={`flexRadioDefault${ida}`}
-                          id={`flexRadioDefault${ida}_${index}`}
-                          onChange={() => handleRadioSelection(con.question_id, choice)}
-                        />
-                        <label
-                          className="form-check-label"
-                          htmlFor={`flexRadioDefault${ida}_${index}`}
-                        >
-                          {choice}
-                        </label>
-                      </div>
-                    ))}
+                    {shuffledChoices.length > 0 &&
+                      shuffledChoices[ida].map((choice, index) => (
+                        <div className="form-check" key={index}>
+                          <input
+                            className="form-check-input"
+                            type="radio"
+                            name={`flexRadioDefault${ida}`}
+                            id={`flexRadioDefault${ida}_${index}`}
+                            onChange={() => handleRadioSelection(con.question_id, choice)}
+                          />
+                          <label
+                            className="form-check-label"
+                            htmlFor={`flexRadioDefault${ida}_${index}`}
+                          >
+                            {choice}
+                          </label>
+                        </div>
+                      ))}
                   </div>
                 </div>
               );
@@ -128,7 +181,7 @@ const scoringFunction = () => {
               Submit
             </button>
           </div>
-          <CancelModal />
+          
         </div>
       </div>
     </>
@@ -142,4 +195,11 @@ function shuffleArray(array) {
     [array[i], array[j]] = [array[j], array[i]];
   }
   return array;
+}
+
+// Dummy function to simulate fetching user data
+async function getUserData() {
+  return {
+    enrollmentId: "user123", // Replace with actual enrollment id
+  };
 }
